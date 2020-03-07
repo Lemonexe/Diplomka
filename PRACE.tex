@@ -1,0 +1,198 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+\documentclass[a4paper, 12pt]{article}
+\usepackage{ifxetex}
+
+\ifxetex
+  \usepackage{fontspec}
+  \usepackage{xltxtra}
+  \usepackage[czech]{babel}
+\else
+  \usepackage[cp1250]{inputenc}
+  \usepackage[czech]{babel}
+\fi
+
+\usepackage{diplomova_prace}
+\usepackage{makecell}
+\usepackage{caption}
+
+\begin{document}
+\setlength{\parindent}{0pt}
+\pagenumbering{gobble} % don't number pages until after TOC
+
+% souhrn
+\section*{SOUHRN}
+Souhrn v ČJ
+
+\section*{SUMMARY}
+Souhrn v AJ
+
+% podekovani
+\newpage \section*{PODĚKOVÁNÍ}
+Rád bych poděkoval atd\ldots
+
+% insert TOC, and start numbering pages
+\newpage \tableofcontents \newpage
+\pagenumbering{arabic}
+
+
+
+\section{ÚVOD} \label{intro}
+\textit{Toto je první kapitola.}
+
+
+
+\newpage \section{LITERÁRNÍ ČÁST} \label{lit}
+\textit{lorem ipsum}
+
+\subsection{Technologie kaprolaktamu} \label{CPLtechnology}
+\textit{o výrobě kaprolaktamu, že tam odpadají louhy a ty se čistí extrakcí a reextrakcí}
+
+\subsection{Metody extrakce} \label{extraction}
+\textit{stručný popis protiproudé extrakce, jaké jsou konstrukční možnosti}
+
+\subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
+\textit{Krátký teoretický popis, nějaká data z literatury, ta ale nestačí - proč?}
+
+
+
+\newpage \section{EXPERIMENTÁLNÍ ČÁST} \label{exp}
+
+\subsection{Použité chemikálie a materiály} \label{materials}
+\begin{center}
+\captionof{table}{Seznam použitých chemikálií} \label{tab:chemicals_materials}
+\begin{tabular}{llll}
+látka & výrobce & čistota & H/P věty \\
+destilovaná voda & VŠCHT &  &  \\
+i-propanol & Penta & \makecell{p.a.,\\>99,0 \%} & H225, H319, H336, P210, P233, P305+P351+P338 \\
+n-heptanol & Fluka & \makecell{p.a.,\\>99,0 \%} & H319, P305+P351+P338 \\
+n-heptan & Penta & \makecell{p.a.,\\>99,0 \%} & H225, H304, H315, H336, H410, P210, P243, P273, P301+P310, P331 \\
+toluen & Penta & \makecell{p.a.,\\>99,0 \%} & H225, H304, H315, H336, H361d, H373, P210, P261, P280, P301+P310, P331 \\
+trichlorethylen & \makecell{Spolana\\provozní vzorek} & \makecell{destilovaný\\>99,7 \%} & H315, H317, H319, H341, H350, H412, P201, P273, P280, P302+P352, P305+P351+P338, P308+P313 \\
+kaprolaktam & \makecell{Spolana\\provozní vzorek} & \makecell{čištěný?,\\>??.? \%} & H319, H315, H332, H302, H335, P261, P280, P304+P340, P305+P351+P338, P301+P330, P403+P233 \\
+síran amonný & Lachema & p.a. & H315, H319, H335, P280, P305+P351+P338 \\
+\end{tabular} \end{center}
+
+\subsection{Měření rovnováhy kapalina-kapalina} \label{LLE}
+\textit{lorem ipsum}
+
+\subsubsection{Popis aparatury} \label{LLE_a}
+K provádění experimentů na měření dat LLE byla použita aparatura znázorněná na obrázku \ref{fig:LLE_a}. Aparaturu tvoří skleněná cela, ve které je připravena fáze těžší~(1) i lehčí~(2). Jejich disperzi zajišťuje magnetické míchadlo (3), k udržení konstantní teploty slouží duplikátor, do nějž vstupuje (4) a vystupuje (5) voda z termostatu. Těchto cel bylo k~dispozici celkem sedm. V~celách byly připraveny příslušné kapalné směsi, a~to~tak, aby objem obou fází činil zhruba 20~ml, načež bylo nastaveno míchání dostatečně intenzivní, aby vznikla jemná disperze kapalných fází. Po zapnutí termostatu s příslušným teplotním nastavením bylo vyčkáno na ustálení teploty, načež bylo míchání ponecháno v běhu minimálně 30~min, aby se systém dostal dostatečně blízko k fázové rovnováze, poté bylo míchání vypnuto a systém byl ponechán potřebnou dobu v klidu, aby došlo k úplnému mechanickému oddělení kapalných fází (minimálně však 5~min). Poté byly z obou fází odebrány vzorky o hmotnosti zhruba 1 g, pro účely analýzy však byla vždy změřena také přesná navážka na analytických vahách.
+
+\begin{center}
+	\includegraphics[width=6cm,height=6cm,keepaspectratio,]{../../images/LLE_cela.png}
+	\captionof{figure}{Aparatura na měření LLE} \label{fig:LLE_a}
+\end{center}
+
+\subsubsection{Metodika experimentů} \label{LLE_m}
+\textit{lorem ipsum}
+
+\subsubsection{Plynová chromatografie} \label{GC}
+\textit{Zde bude metodika, nadepsaná tabulka s podmínkama}
+
+\subsubsection*{Zpracování chromatogramů}
+\textit{lorem ipsum}
+
+\subsection{Měření mezifázového napětí} \label{gamma}
+\textit{lorem ipsum}
+
+\subsection{Laboratorní model extraktoru} \label{labmodel}
+\textit{lorem ipsum}
+
+\subsubsection{Popis aparatury} \label{labmodel_a}
+\textit{lorem ipsum}
+
+\subsubsection{Metodika experimentů} \label{labmodel_m}
+o analýze jen viz kapitolu \ref{GC}
+
+
+
+\newpage \section{VÝPOČETNÍ ČÁST} \label{comp}
+\textit{intro}
+
+\subsection{Zpracování rovnovážných dat} \label{compLLE}
+\textit{lorem ipsum}
+
+\subsection{Patrový model} \label{compStage}
+\textit{lorem ipsum}
+
+\subsection{Přenosový model} \label{compTransfer}
+\textit{lorem ipsum}
+
+\newpage \section{VÝSLEDKY A DISKUSE} \label{res}
+\textit{lorem ipsum}
+
+\subsection{Výsledky experimentů}
+\textit{lorem ipsum}
+
+\subsubsection{Rozsah měření rovnovážných dat}
+\textit{lorem ipsum}
+
+\subsubsection{Rovnovážná data}
+\textit{lorem ipsum}
+
+\subsubsection{Mezifázové napětí}
+\textit{lorem ipsum}
+
+\subsubsection{Laboratorní model extraktoru}
+\textit{lorem ipsum}
+
+\subsection{Výsledky modelů}
+\textit{Nejdříve tabulka jednoho modelového zadání programu se verb 2}
+
+\subsubsection{Parametrická studie}
+\textit{Tabulky z callTable}
+
+\subsubsection{Možnosti návrhu extraktorů}
+\textit{lorem ipsum}
+
+\subsubsection{Srovnání s laboratorním extraktorem}
+\textit{lorem ipsum}
+
+
+
+\newpage \section{ZÁVĚR} \label{zaver}
+\textit{lorem ipsum}
+
+
+
+\newpage \section*{LITERATURA}
+\addcontentsline{toc}{section}{LITERATURA} % manually add TOC entry cause section* doesn't by default
+\textit{TODO jak se to v latexu dělá?}
+\bibliography{papers,books} % pozor, nesmi byt mezera
+
+\newpage \section*{SEZNAM POUŽITÝCH ZKRATEK}
+\addcontentsline{toc}{section}{SEZNAM POUŽITÝCH ZKRATEK}
+\textit{abecedně seřadit\\pokud jsou anglicky, tak: český překlad (english meaning)}\\
+\begin{tabular}{ll}
+aq  & vodná fáze\\
+CPL & kaprolaktam\\
+FID & plamenově-ionizační detektor pro GC\\
+GC  & plynová chromatografie\\
+LLE & rovnováha kapalina-kapalina (liquid-liquid equilibrium)\\
+org & organická fáze\\
+TCE & trichlorethylen\\
+TOL & toluen\\
+TP  & teoretické patro\\
+\end{tabular}
+
+\newpage \section*{SEZNAM SYMBOLŮ}
+\addcontentsline{toc}{section}{SEZNAM SYMBOLŮ}
+\textit{seřadit abecedně, a to: latinka (aAbBcC), řecká písmena, jiné znaky}
+
+\newpage \section*{SEZNAM TABULEK}
+\addcontentsline{toc}{section}{SEZNAM TABULEK}
+\renewcommand{\listtablename}{} % prevent automatic heading list of titles
+\listoftables
+
+\newpage \section*{SEZNAM OBRÁZKŮ}
+\addcontentsline{toc}{section}{SEZNAM OBRÁZKŮ}
+\renewcommand{\listfigurename}{}
+\listoffigures
+
+\newpage
+\appendix
+\section{ZDROJOVÝ KÓD} \label{sourceCode}
+\textit{here be matlab, či spíše sdělení že to je na CD}
+
+\end{document}
