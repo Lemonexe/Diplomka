@@ -1,0 +1,42 @@
+<<< NOTES POUZE K PSANÍ DIPLOMKY >>>
+	https://intranet.vscht.cz/student/zaverecne-prace/D
+	https://intranet.vscht.cz/student/zaverecne-prace/generator
+
+	btw NESMÍ se psát m [kg], matematicky správně je m/kg
+
+
+<<< LATEX >>>
+	distribuce: MiKTeX
+	typesetting engine: XeTeX
+	editor: používám Texmaker, jaké jsou výhody Texstudio?
+	?? co je overleaf, tablemaker
+
+
+<<< TODO >>>
+	> psát kapitoly:
+		exp
+		lit
+		výpočty
+		výsledky
+		úvod, závěr, souhrn +EN, thx
+	> zjistit výrobce a čistoty chemických látek
+	> najít si diplomky z ústavu 111 a Trejbalovy články
+	> projít rešerše Spolana 2017
+	> zprovoznit latex
+		use git?
+		bibliografie
+		zkusit udělat číslování 3.1, 3.2, 4.1 místo 1, 2, 3
+	>> vytvořit obrázky - vše co nejvíc černobílé
+	>> reference na všechna použitá data
+	>> reference na všechny použité rovnice
+	>> udělat prezentaci (vyjít z SVK)
+?	>> zjistit, jak odevzdat zdroják
+
+
+<<< ZADÁNÍ >>>
+	Extrakce kaprolaktamu ze síranových louhů (Caprolactame recovery from sulfate solution)
+Kaprolaktam je vyráběn z cyklohexyloximu Beckmanovým přesmykem v prostředí kyseliny sírové. Následně po neutralizaci směsi amoniakem je kaprolaktam isolován pomocí extrakce trichlorethylenem. Z procesu odpadá 40% roztok síranu amonného s obsahem do 1 % kaprolaktamu. Cílem práce je posoudit jiné možnosti isolace kaprolaktamu ze síranového roztoku bez použití chlorovaných rozpouštědel. Rozsah práce by měl zahrnovat následující oblasti:
+- Literární rešerše zaměřená na isolaci kaprolaktamu.
+- Měření rovnovah kapalina - kapalina.
+- Sestavení matematických modelů různých typů extraktorů v prostředí Matlab.
+- Testování extrakce na laboratorních modelech za použití provozních vzorků.

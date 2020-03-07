@@ -38,21 +38,41 @@ Rád bych poděkoval atd\ldots
 
 
 \section{ÚVOD} \label{intro}
-\textit{Toto je první kapitola.}
+Kaprolaktam je významnou průmyslovou chemikálií, které se ročně vyrobí zhruba ?? tun.
+V Evropě jsou jeho největší producenti ???, v České republice je to podnik Spolana s.r.o. (dále jen Spolana) v Neratovicích.
+$\varepsilon$-Kaprolaktam vyráběný Spolanou je bílá krystalická látka s bodem tání 69,0°C <<CITACE: materiálový list Spolany>>,
+z chemického hlediska se jedná o laktam $\varepsilon$-aminokapronové kyseliny.
+Jeho hlavní využití spočívá v polymeraci na polyamid, který se označuje jako Nylon 6 a uplatnění nalézá zaprvé ve výrobě umělých vláken pro textilní průmysl i speciální náročné aplikace, zadruhé pak jako pevný a houževnatý materiál pro strojírenství a konstrukce <<???CITACE: Ullmann???>>.
+
+Je známo mnoho postupů pro průmyslovou výrobu kaprolaktamu, tím nejběžnějším, který je využíván i ve Spolaně, je výroba z cyklohexanonu přes cyklohexanon-oxim pomocí kyseliny sírové.
+Při výrobě vznikají dvě nemísitelné fáze - organická, skládající se převážně z kaprolaktamu, a vodný roztok síranu amonného, který obsahuje zhruba 1~\% kaprolaktamu.
+Tato práce se zabývá právě izolací zbytkového kaprolaktamu z vodné fáze, což se v současnosti provádí kapalinovou extrakcí trichlorethylenem, který je však v rámci evropské směrnice REACH zařazen nejen mezi látky vzbuzující mimořádné obavy (SVHC)<<CITACE ECHA>>, ale i na seznam látek podléhajících povolení (příloha XIV)<<CITACE ECHA>>, proto jsou hledány alternativy.
+
+Jako velmi perspektivní se jeví náhrada trichlorethylenu toluenem, a tato práce poslouží k vyhodnocení proveditelnosti nové technologie i pro vypracování podkladů pro přestavbu procesu.
+V rámci práce byla tedy nejprve v laboratoři naměřena data popisující rovnováhy kapalina-kapalina v rozsahu, který je pro řešení problému užitečný,
+následně byl vypracován program v programovém prostředí MATLAB®, který obsahuje dva matematické modely, a to zaprvé model patrový, sloužící k vyhodnocení výkonu laboratorního či průmyslového extraktoru, zadruhé model přenosový, který pomocí základních veličin vypočte buďto návrh geometrie a provozních parametrů extraktoru, nebo simulaci specifikovaného zařízení pro předpověď jeho separační účinnosti.
+Kromě toho byl sestaven laboratorní model extraktoru, aby mohla být funkce extraktoru testována pomocí provozních vzorků.
+
+Výsledky této práce budou využity k návrhu extraktorů síranových louhů v rámci nové technologie na separaci kaprolaktamu, která již nebude využívat chlorovaných rozpouštědel, a sníží se tak zátěž životního prostředí v České republice.
 
 
 
 \newpage \section{LITERÁRNÍ ČÁST} \label{lit}
-\textit{lorem ipsum}
+Literární část této práce se bude zabývat výčtem současně užívaných technologií na výrobu kaprolaktamu (dále jen CPL), možnostmi zařízení na průmyslovou kapalinovou extrakci, matematickým popisem extraktoru a teorií rovnováhy kapalina-kapalina.
 
 \subsection{Technologie kaprolaktamu} \label{CPLtechnology}
-\textit{o výrobě kaprolaktamu, že tam odpadají louhy a ty se čistí extrakcí a reextrakcí}
+\textit{rozvést alternativy (subsubsection)}
+V literatuře je popsáno mnoho technologií na výrobu kaprolaktamu, nejvýznamnější (?? \% světové produkce) je však výroba z cyklohexanonu, který je nejprve substituován hydroxylaminem na cyklohexanon-oxim <<???CITACE: Ullmann???>> a následně podroben Beckmannově přesmyku katalyzovaném koncentrovanou kyselinou sírovou.
+Vzniklá sloučenina kyseliny sírové a kaprolaktamu je nakonec neutralizována roztokem amoniaku, v důsledku čehož se reakční směs rozdělí na dvě fáze: organickou, která obsahuje většinu kaprolaktamu, vedlejších produktů i část vody, a vodný roztok síranu amonného o koncentraci okolo 40~\%, který však obsahuje také zhruba 1~\% CPL, jakož i stopové množství nečistot.
 
 \subsection{Metody extrakce} \label{extraction}
 \textit{stručný popis protiproudé extrakce, jaké jsou konstrukční možnosti}
 
+\subsection{Matematický popis extraktoru} \label{extraction}
+\textit{popis všech pojmů, rovnice samotného modelu, co musí splňovat a tak}
+
 \subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
-\textit{Krátký teoretický popis, nějaká data z literatury, ta ale nestačí - proč?}
+\textit{Krátký teoretický popis, proč my na teorii kašleme, nějaká data z literatury, ta ale nestačí a proč}
 
 
 
