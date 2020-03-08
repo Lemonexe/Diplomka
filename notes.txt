@@ -18,7 +18,7 @@
 		lit
 		výpočty
 		výsledky
-		úvod, závěr, souhrn +EN, thx
+		závěr, souhrn +EN, thx
 	> zjistit výrobce a čistoty chemických látek
 		CPL z chromatogramu
 	> najít si diplomky z ústavu 111 a Trejbalovy články
