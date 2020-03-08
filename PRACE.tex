@@ -1,8 +1,9 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 \documentclass[a4paper, 12pt]{article}
-\usepackage{ifxetex}
 
+% DEFAULT PACKAGES
+\usepackage{ifxetex}
 \ifxetex
   \usepackage{fontspec}
   \usepackage{xltxtra}
@@ -11,13 +12,22 @@
   \usepackage[cp1250]{inputenc}
   \usepackage[czech]{babel}
 \fi
-
 \usepackage{diplomova_prace}
+
+% MY PACKAGES
 \usepackage{makecell}
 \usepackage{caption}
+\usepackage{parskip} % just by calling this package: paragraph indentation will be suppressed, instead there will be a space after
+\usepackage{tabularx}
+\usepackage[margin=2.5cm]{geometry}
 
+% MY CMDS
+\newcolumntype{Z}{>{\raggedright\arraybackslash}X} % new column, which has responsive width like X, but is left-aligned
+\AtBeginEnvironment{tabularx}{\singlespacing} % tables will have singlespacing
+\renewcommand{\arraystretch}{1.2} % space after each row in table
+
+% BEGIN
 \begin{document}
-\setlength{\parindent}{0pt}
 \pagenumbering{gobble} % don't number pages until after TOC
 
 % souhrn
@@ -28,7 +38,7 @@ Souhrn v ČJ
 Souhrn v AJ
 
 % podekovani
-\newpage \section*{PODĚKOVÁNÍ}
+\newpage ~ \vspace{17cm} \section*{PODĚKOVÁNÍ}
 Rád bych poděkoval atd\ldots
 
 % insert TOC, and start numbering pages
@@ -68,7 +78,7 @@ Vzniklá sloučenina kyseliny sírové a kaprolaktamu je nakonec neutralizována
 \subsection{Metody extrakce} \label{extraction}
 \textit{stručný popis protiproudé extrakce, jaké jsou konstrukční možnosti}
 
-\subsection{Matematický popis extraktoru} \label{extraction}
+\subsection{Matematický popis extraktoru} \label{equations}
 \textit{popis všech pojmů, rovnice samotného modelu, co musí splňovat a tak}
 
 \subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
@@ -79,19 +89,20 @@ Vzniklá sloučenina kyseliny sírové a kaprolaktamu je nakonec neutralizována
 \newpage \section{EXPERIMENTÁLNÍ ČÁST} \label{exp}
 
 \subsection{Použité chemikálie a materiály} \label{materials}
-\begin{center}
-\captionof{table}{Seznam použitých chemikálií} \label{tab:chemicals_materials}
-\begin{tabular}{llll}
-látka & výrobce & čistota & H/P věty \\
-destilovaná voda & VŠCHT &  &  \\
-i-propanol & Penta & \makecell{p.a.,\\>99,0 \%} & H225, H319, H336, P210, P233, P305+P351+P338 \\
-n-heptanol & Fluka & \makecell{p.a.,\\>99,0 \%} & H319, P305+P351+P338 \\
-n-heptan & Penta & \makecell{p.a.,\\>99,0 \%} & H225, H304, H315, H336, H410, P210, P243, P273, P301+P310, P331 \\
-toluen & Penta & \makecell{p.a.,\\>99,0 \%} & H225, H304, H315, H336, H361d, H373, P210, P261, P280, P301+P310, P331 \\
-trichlorethylen & \makecell{Spolana\\provozní vzorek} & \makecell{destilovaný\\>99,7 \%} & H315, H317, H319, H341, H350, H412, P201, P273, P280, P302+P352, P305+P351+P338, P308+P313 \\
-kaprolaktam & \makecell{Spolana\\provozní vzorek} & \makecell{čištěný?,\\>??.? \%} & H319, H315, H332, H302, H335, P261, P280, P304+P340, P305+P351+P338, P301+P330, P403+P233 \\
-síran amonný & Lachema & p.a. & H315, H319, H335, P280, P305+P351+P338 \\
-\end{tabular} \end{center}
+Tabulka \ref{tab:chemicals} je výčtem všech použitých chemikálií.
+
+\captionsetup{type=table} \caption{Seznam použitých chemikálií} \label{tab:chemicals}
+\begin{tabularx}{\textwidth}{llp{1.9cm}Z}
+	\Xhline{2pt} látka & výrobce & čistota & H/P věty \\ \hline
+	destilovaná voda & VŠCHT & & \\
+	i-propanol & Penta & p.a. >99,0~\% & H225, H319, H336, P210, P233, P305+P351+P338 \\
+	n-heptanol & Fluka & p.a. >99,0~\% & H319, P305+P351+P338 \\
+	n-heptan & Penta & p.a. >99,0~\% & H225, H304, H315, H336, H410, P210, P243, P273, P301+P310, P331 \\
+	toluen & Penta & p.a. >99,0~\% & H225, H304, H315, H336, H361d, H373, P210, P261, P280, P301+P310, P331 \\
+	trichlorethylen & Spolana & destilovaný 99,7~\% & H315, H317, H319, H341, H350, H412, P201, P273, P280, P302+P352, P305+P351+P338, P308+P313 \\
+	kaprolaktam & Spolana & čištěný? ??.?~\% & H319, H315, H332, H302, H335, P261, P280, P304+P340, P305+P351+P338, P301+P330, P403+P233 \\
+	síran amonný & Lachema & p.a. & H315, H319, H335, P280, P305+P351+P338 \\ \Xhline{2pt}
+\end{tabularx}
 
 \subsection{Měření rovnováhy kapalina-kapalina} \label{LLE}
 \textit{lorem ipsum}
@@ -101,7 +112,7 @@ K provádění experimentů na měření dat LLE byla použita aparatura znázor
 
 \begin{center}
 	\includegraphics[width=6cm,height=6cm,keepaspectratio,]{../../images/LLE_cela.png}
-	\captionof{figure}{Aparatura na měření LLE} \label{fig:LLE_a}
+	\captionsetup{type=figure} \caption{Aparatura na měření LLE} \label{fig:LLE_a}
 \end{center}
 
 \subsubsection{Metodika experimentů} \label{LLE_m}
