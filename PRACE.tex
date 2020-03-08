@@ -54,7 +54,7 @@ Jeho hlavní využití spočívá v polymeraci na polyamid, který se označuje 
 
 Je známo mnoho postupů pro průmyslovou výrobu kaprolaktamu, tím nejběžnějším, který je využíván i ve Spolaně, je výroba z cyklohexanonu přes cyklohexanon-oxim pomocí kyseliny sírové.
 Při výrobě vznikají dvě nemísitelné fáze - organická, skládající se převážně z kaprolaktamu, a vodný roztok síranu amonného, který obsahuje zhruba 1~\% kaprolaktamu.
-Tato práce se zabývá právě izolací zbytkového kaprolaktamu z vodné fáze, což se v současnosti provádí kapalinovou extrakcí trichlorethylenem, který je však v rámci evropské směrnice REACH zařazen mezi látky vzbuzující mimořádné obavy (SVHC)<<CITACE ECHA>> i na seznam látek podléhajících povolení (příloha XIV)<<CITACE ECHA>>, proto jsou hledány alternativy.
+Tato práce se zabývá právě izolací zbytkového kaprolaktamu z vodné fáze, což se v současnosti provádí kapalinovou extrakcí trichlorethylenem, který je však v rámci evropské směrnice REACH zařazen mezi látky vzbuzující mimořádné obavy (SVHC) i na seznam látek podléhajících povolení (příloha XIV)~\cite{ECHA_TCE}, proto jsou hledány alternativy.
 
 Tato práce poslouží k vypracování technologických podkladů pro náhradu trichlorethylenu toluenem, což se jeví jako velmi perspektivní.
 V rámci práce byla tedy nejprve v laboratoři naměřena data popisující rovnováhy kapalina-kapalina v rozsahu, který je pro řešení problému praktický,
@@ -71,7 +71,7 @@ Literární část této práce se bude zabývat výčtem současně užívanýc
 \subsection{Technologie kaprolaktamu} \label{CPLtechnology}
 \textit{tohle je málo - rozvést alternativy (subsubsection)}
 
-$\varepsilon$-Kaprolaktam je bílá krystalická látka s bodem tání 69,0°C <<CITACE: materiálový list Spolany>>. 
+$\varepsilon$-Kaprolaktam je bílá krystalická látka s bodem tání 69,0°C~\cite{CPLSpolanaList}.
 Tato sloučeina se sumárním vzorcem \ce{C6H11NO} je z chemického hlediska laktam $\varepsilon$-aminokapronové kyseliny, molekula tedy tvoří sedmičetný cyklus.
 V literatuře je popsáno mnoho technologií na výrobu kaprolaktamu, z toho nejvýznamnější (?? \% světové produkce) je však postup popsaný v kapitole \ref{CHON}, který je zaveden i ve Spolaně a týká se jej tato práce.
 
@@ -87,6 +87,8 @@ organickou, která obsahuje většinu kaprolaktamu, vedlejších produktů i č�
 
 \subsection{Matematický popis extraktoru} \label{equations}
 \textit{popis všech pojmů, rovnice samotného modelu, co musí splňovat a tak}
+
+test cituji hartland kumar 1997~\cite{HartlandKumar1997} mccabe~\cite{McCabe1925}
 
 \subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
 \textit{Krátký teoretický popis, proč my na teorii kašleme, nějaká data z literatury, ta ale nestačí a proč}
@@ -196,8 +198,8 @@ o analýze jen viz kapitolu \ref{GC}
 
 \newpage \section*{LITERATURA}
 \addcontentsline{toc}{section}{LITERATURA} % manually add TOC entry cause section* doesn't by default
-\textit{TODO jak se to v latexu dělá?}
-\bibliography{papers,books} % pozor, nesmi byt mezera
+\renewcommand\refname{\vskip -1cm} % clear the automatic title and remove empty space
+\bibliography{references}
 
 \newpage \section*{SEZNAM POUŽITÝCH ZKRATEK}
 \addcontentsline{toc}{section}{SEZNAM POUŽITÝCH ZKRATEK}
@@ -220,12 +222,12 @@ TP  & teoretické patro\\
 
 \newpage \section*{SEZNAM TABULEK}
 \addcontentsline{toc}{section}{SEZNAM TABULEK}
-\renewcommand{\listtablename}{} % prevent automatic heading list of titles
+\renewcommand{\listtablename}{\vskip -1cm}
 \listoftables
 
 \newpage \section*{SEZNAM OBRÁZKŮ}
 \addcontentsline{toc}{section}{SEZNAM OBRÁZKŮ}
-\renewcommand{\listfigurename}{}
+\renewcommand{\listfigurename}{\vskip -1cm}
 \listoffigures
 
 \newpage
