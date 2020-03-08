@@ -13,6 +13,7 @@
 
 
 <<< TODO >>>
+	> předělat captionof, zkusit to s těma figurama a příslušnýma flags na umístění
 	> psát kapitoly:
 		exp
 		lit
@@ -24,7 +25,6 @@
 	> najít si diplomky z ústavu 111 a Trejbalovy články
 	> projít rešerše Spolana 2017
 	> zprovoznit latex
-		bibliografie
 		zkusit udělat číslování 3.1, 3.2, 4.1 místo 1, 2, 3
 	>> vytvořit obrázky - vše co nejvíc černobílé
 	>> reference na všechna použitá data
