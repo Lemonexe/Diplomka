@@ -18,13 +18,16 @@
 \usepackage{makecell}
 \usepackage{caption}
 \usepackage{parskip} % just by calling this package: paragraph indentation will be suppressed, instead there will be a space after
-\usepackage{tabularx}
 \usepackage[margin=2.5cm]{geometry}
 
-% MY CMDS
+\usepackage{tabularx}
 \newcolumntype{Z}{>{\raggedright\arraybackslash}X} % new column, which has responsive width like X, but is left-aligned
-\AtBeginEnvironment{tabularx}{\singlespacing} % tables will have singlespacing
+%\AtBeginEnvironment{tabularx}{\singlespacing} % tables will have singlespacing
 \renewcommand{\arraystretch}{1.2} % space after each row in table
+
+\usepackage{chngcntr} % numbering for figures, tables and equations will include section
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
 
 % BEGIN
 \begin{document}
@@ -100,19 +103,21 @@ test cituji hartland kumar 1997~\cite{HartlandKumar1997} mccabe~\cite{McCabe1925
 \subsection{Použité chemikálie a materiály} \label{materials}
 Tabulka \ref{tab:chemicals} je výčtem všech použitých chemikálií.
 
-\captionsetup{type=table} \caption{Seznam použitých chemikálií} \label{tab:chemicals}
+\begin{table}[ht]
+\caption{Seznam použitých chemikálií} \label{tab:chemicals}
 \begin{tabularx}{\textwidth}{llp{1.9cm}Z}
 	\Xhline{2pt} látka & výrobce & čistota & H/P věty \\ \hline
 	destilovaná voda & VŠCHT & & \\
-	i-propanol & Penta & p.a. >99,0~\% & H225, H319, H336, P210, P233, P305+P351+P338 \\
+	propan-2-ol & Penta & p.a. >99,8~\% & H225, H319, H336, P210, P233, P305+P351+P338 \\
 	n-heptanol & Fluka & p.a. >99,0~\% & H319, P305+P351+P338 \\
 	n-heptan & Penta & p.a. >99,0~\% & H225, H304, H315, H336, H410, P210, P243, P273, P301+P310, P331 \\
 	toluen & Penta & p.a. >99,0~\% & H225, H304, H315, H336, H361d, H373, P210, P261, P280, P301+P310, P331 \\
 	trichlorethylen & Spolana & destilovaný 99,7~\% & H315, H317, H319, H341, H350, H412, P201, P273, P280, P302+P352, P305+P351+P338, P308+P313 \\
-	kaprolaktam & Spolana & čištěný? ??.?~\% & H319, H315, H332, H302, H335, P261, P280, P304+P340, P305+P351+P338, P301+P330, P403+P233 \\
-	síran amonný & Lachema & p.a. & H315, H319, H335, P280, P305+P351+P338 \\
+	kaprolaktam & Spolana & destilovaný 100,0~\% & H319, H315, H332, H302, H335, P261, P280, P304+P340, P305+P351+P338, P301+P330, P403+P233 \\
+	síran amonný & Lachema & p.a. >99,0~\% & H315, H319, H335, P280, P305+P351+P338 \\
 	\Xhline{2pt}
 \end{tabularx}
+\end{table}
 
 \subsection{Měření rovnováhy kapalina-kapalina} \label{LLE}
 \textit{lorem ipsum}
@@ -125,10 +130,12 @@ Po zapnutí termostatu s příslušným teplotním nastavením bylo vyčkáno na
 Poté bylo míchání vypnuto a systém byl ponechán potřebnou dobu v klidu, aby došlo k úplnému mechanickému oddělení kapalných fází, tedy aby byly obě fáze vizuálně čiré (minimálně však 5~min).
 Nakonec byly z obou fází odebrány vzorky o hmotnosti cca. 1~g, pro účely analýzy (kapitola \ref{GC}) však byla vždy změřena také přesná navážka na analytických vahách.
 
+\begin{figure}[ht]
 \begin{center}
 	\includegraphics[width=6cm,height=6cm,keepaspectratio,]{../../images/LLE_cela.png}
-	\captionsetup{type=figure} \caption{Aparatura na měření LLE} \label{fig:LLE_a}
+	\caption{Aparatura na měření LLE} \label{fig:LLE_a}
 \end{center}
+\end{figure}
 
 \subsubsection{Plynová chromatografie} \label{GC}
 \textit{Zde bude metodika, nadepsaná tabulka s podmínkama}
@@ -145,8 +152,10 @@ Proto byla po vysrážení soli odebrána pouze kapalná fáze, která byla pře
 
 Parametry kolony a podmínky při chromatografii jsou uvedeny v tabulce \ref{tab:GC}
 
-\captionsetup{type=table} \caption{Parametry kolony a podmínky analýzy na GC} \label{tab:GC}
-\begin{center} \begin{tabular}{ll}
+\begin{table}[ht]
+\caption{Parametry kolony a podmínky analýzy na GC} \label{tab:GC}
+\begin{center}
+\begin{tabular}{ll}
 	\Xhline{2pt}
 	chromatograf & Shimadzu GC-2014\\
 	ovládací software & Clarity 7.0 (DataApex)\\
@@ -161,7 +170,9 @@ Parametry kolony a podmínky při chromatografii jsou uvedeny v tabulce \ref{tab
 	přetlak na vstupu do kolony & 72 kPa\\
 	střední rychlost nosného plynu & 33,0 cm/s\\
 	\Xhline{2pt}
-\end{tabular} \end{center}
+\end{tabular}
+\end{center}
+\end{table}
 
 Teplotní profil: 100°C 2 min, pak 25°C/min až na 200°C (4 min), pak 2 min (celkem 8 min)
 

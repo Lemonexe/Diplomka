@@ -12,15 +12,23 @@
   \usepackage[czech]{babel}
 \fi
 
+\iffalse
+BLOCK COMMENT
+\fi
+
 \usepackage{diplomova_prace}
 \usepackage{makecell}
 \usepackage{caption}
 \usepackage{tabularx}
 \usepackage{parskip}
+\usepackage{chngcntr}
 \usepackage[margin=2.5cm]{geometry}
 %\newcolumntype{Z}{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}X}
 \newcolumntype{Z}{>{\raggedright\arraybackslash}X}
-\AtBeginEnvironment{tabularx}{\singlespacing}
+%\AtBeginEnvironment{tabularx}{\singlespacing}
+
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
 
 \begin{document}
 
@@ -66,28 +74,23 @@ asdf = fghjk
 \subsection{První kapitola}
 Prvni kapitola \ldots.
 
-\iffalse % BLOCK COMMENT
-\begin{center}
-\captionof{table}{Seznam použitých chemikálií} \label{tab:chemicals_materials}
-\begin{tabular*}{\textwidth}{lp{3cm}p{2cm}p{5cm}}
-látka & výrobce & čistota & H/P věty \\
-destilovaná voda & VŠCHT &  &  \\
-trichlorethylen & Spolana & destilovaný >99,7~\% & H315, H317, H319, H341, H350, H412, P201, P273, P280, P302+P352, P305+P351+P338, P308+P313 \\
-\end{tabular*} \end{center}
-\fi
 
-
-\captionof{table}{Seznam použitých chemikálií} \label{tab:chemicals_materials}
+\begin{table}[h]
+\caption{Seznam použitých chemikálií} \label{tab:chemicals_materials}
 \begin{tabularx}{\textwidth}{llp{1.9cm}Z}
 látka & výrobce & čistota & H/P věty \\
 destilovaná voda & VŠCHT &  &  \\
 trichlorethylen & Spolana & destilovaný >99,7~\% & H315, H317, H319, H341, H350, H412, P201, P273, P280, P302+P352, P305+P351+P338, P308+P313 \\
 \end{tabularx}
+\end{table}
+
 
 Následuje ukázka textu (a zároveň pokyny)
 \subsubsection{Technické pokyny k~vypracování diplomové práce}
 \subsubsection*{Forma psaní}
 Text práce pište písmem s~patkou (Times) o velikosti 11~nebo 12 b po jedné straně bílého hladkého papíru formátu A4. Šíři levého okraje nastavte na 3,5~cm, pravý, horní a dolní okraj minimálně 2 cm. Text musí být pouze v~jediném sloupci zarovnaném na obou stranách nebo jen vlevo. Stránky číslujte. Žádoucí je dodržování typografických pravidel: po větné čárce a~tečce musí být vždy mezera, text uvnitř závorek pokračuje bez mezery. Základní typografická pravidla jsou např. uvedena na adrese http://www.typo.cz .
+
+new paragraph
 
 \subsubsection*{Chemické vzorce a rovnice}
 Chemické vzorce a rovnice můžeme psát v prostředí \texttt{mhchem} -- například \texttt{\textbackslash{}ce\{H2SO4\}} produkuje \ce{H2SO4}.
@@ -133,10 +136,24 @@ Prvni podkapitola viz \cite{HartlandKumar1997}.
 
 \newpage
 \section{VÝSLEDKY A DISKUSE}
+par1
+
+par2
 
 \newpage
 \section{ZÁVĚR}
+\begin{table}[h]
+\caption{Toto je blablab}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+1 & 2\\
+3 & 4\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
 
+\listoftables
 
 %%% Vytvoření seznamu literatury.
 \newpage
