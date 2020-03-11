@@ -19,6 +19,7 @@
 \usepackage{caption}
 \usepackage{parskip} % just by calling this package: paragraph indentation will be suppressed, instead there will be a space after
 \usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath}
 
 \usepackage{tabularx}
 \newcolumntype{Z}{>{\raggedright\arraybackslash}X} % new column, which has responsive width like X, but is left-aligned
@@ -28,6 +29,7 @@
 \usepackage{chngcntr} % numbering for figures, tables and equations will include section
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
+\counterwithin{equation}{section}
 
 % BEGIN
 \begin{document}
@@ -88,7 +90,7 @@ organickou, která obsahuje většinu kaprolaktamu, vedlejších produktů i č�
 \subsection{Metody extrakce} \label{extraction}
 \textit{stručný popis protiproudé extrakce, jaké jsou konstrukční možnosti}
 
-\subsection{Matematický popis extraktoru} \label{equations}
+\subsection{Matematický popis extraktoru} \label{the_Math}
 \textit{popis všech pojmů, rovnice samotného modelu, co musí splňovat a tak}
 
 test cituji hartland kumar 1997~\cite{HartlandKumar1997} mccabe~\cite{McCabe1925}
@@ -106,7 +108,7 @@ Tabulka \ref{tab:chemicals} je výčtem všech použitých chemikálií.
 \begin{table}[ht]
 \caption{Seznam použitých chemikálií} \label{tab:chemicals}
 \begin{tabularx}{\textwidth}{llp{1.9cm}Z}
-	\Xhline{2pt} látka & výrobce & čistota & H/P věty \\ \hline
+	\Xhline{2pt} \textbf{látka} & \textbf{výrobce} & \textbf{čistota} & \textbf{H/P věty} \\ \hline
 	destilovaná voda & VŠCHT & & \\
 	propan-2-ol & Penta & p.a. >99,8~\% & H225, H319, H336, P210, P233, P305+P351+P338 \\
 	n-heptanol & Fluka & p.a. >99,0~\% & H319, P305+P351+P338 \\
@@ -126,9 +128,9 @@ Tabulka \ref{tab:chemicals} je výčtem všech použitých chemikálií.
 K provádění experimentů na měření dat LLE byla použita aparatura znázorněná na obrázku \ref{fig:LLE_a}. Aparaturu tvoří skleněná cela, ve které je připravena fáze těžší~(1) i lehčí~(2).
 Jejich disperzi zajišťuje magnetické míchadlo~(3), k udržení konstantní teploty slouží duplikátor, do nějž vstupuje~(4) a vystupuje~(5) voda z termostatu.
 Těchto cel bylo k~dispozici celkem sedm. V~celách byly připraveny příslušné kapalné směsi, a~to~tak, aby objem obou fází činil zhruba 20~ml, načež bylo nastaveno míchání dostatečně intenzivní, aby vznikla jemná disperze kapalných fází.
-Po zapnutí termostatu s příslušným teplotním nastavením bylo vyčkáno na ustálení teploty, dále pak bylo míchání ponecháno v běhu minimálně 30~min, aby se systém dostal dostatečně blízko k fázové rovnováze.
-Poté bylo míchání vypnuto a systém byl ponechán potřebnou dobu v klidu, aby došlo k úplnému mechanickému oddělení kapalných fází, tedy aby byly obě fáze vizuálně čiré (minimálně však 5~min).
-Nakonec byly z obou fází odebrány vzorky o hmotnosti cca. 1~g, pro účely analýzy (kapitola \ref{GC}) však byla vždy změřena také přesná navážka na analytických vahách.
+Po zapnutí termostatu s příslušným teplotním nastavením bylo vyčkáno na ustálení teploty, poté bylo míchání ponecháno v běhu minimálně 30~min, aby se systém dostal dostatečně blízko k fázové rovnováze.
+Po uplynutí této doby bylo míchání vypnuto a systém byl ponechán potřebnou dobu v klidu, aby došlo k úplnému mechanickému oddělení kapalných fází, tedy aby byly obě fáze vizuálně čiré (minimálně však 5~min).
+Nakonec byly z obou fází odebrány vzorky o hmotnosti cca. 1~g, pro účely analýzy (kapitola \ref{GC}) byla vždy změřena také jejich přesná navážka na analytických vahách.
 
 \begin{figure}[ht]
 \begin{center}
@@ -138,32 +140,34 @@ Nakonec byly z obou fází odebrány vzorky o hmotnosti cca. 1~g, pro účely an
 \end{figure}
 
 \subsubsection{Plynová chromatografie} \label{GC}
-\textit{Zde bude metodika, nadepsaná tabulka s podmínkama}
-
 Vzorky organické i vodné fáze jak z měření dat LLE, tak z experimentů s laboratorním extraktorem (kapitola \ref{labmodel}), bylo třeba podrobit kvantitativní analýze, k čemuž byl využit plynový chromatograf (GC) Shimadzu GC-2014 vybavený plamenově ionizačním detektorem (FID).
-Měřen byl pouze obsah CPL, neboť vzhledem k rozsahu měřených koncentrací lze předvídat nemísitelnost organických a vodných fází a obsah nečistot se ukázal být pouze stopový.
+Měřen byl pouze obsah CPL, neboť vzhledem k rozsahu měřených koncentrací lze předvídat nemísitelnost organických a vodných fází, i obsah nečistot se ukázal být pouze stopový.
 Na měření obsahu SA ve vodné fázi nebyly k dispozici prostředky, takže ten byl zajištěn pouze navážkou při přípravě roztoku.
 Pro účely analýzy tedy bylo předpokládáno, že vzorky organické fáze obsahují pouze CPL a solvent (TCE či TOL), zatímco vzorky kapalné fáze obsahují CPL, vodu a SA.
 
-Stanovení obsahu CPL bylo provedeno metodou vnitřního standardu, kterým byl 1-heptanol.
-Do každého vzorku o známé navážce bylo na analytických vahách odváženo zhruba dvojnásobné množství standardu.
-Standard, obsahující přibližně 0,5~\% 1-heptanolu v isopropylalkoholu, plní nejen funkci vnitřního standardu, ale také jako srážecí činidlo pro SA - vzorky vodné fáze s rozpuštěnou solí by nebylo možné analyzovat, neboť by mohlo dojít k ucpání chromatografické kolony.
-Proto byla po vysrážení soli odebrána pouze kapalná fáze, která byla před nástřikem na GC ještě odstředěna na laboratorní centrifuze.
+Stanovení obsahu CPL bylo provedeno metodou vnitřního standardu, kterým byl n-heptanol -- do každého vzorku o známé navážce bylo na analytických vahách odváženo zhruba dvojnásobné množství standardního roztoku, který obsahuje přibližně 0,5~\% n-heptanolu v isopropylalkoholu.
+Tento roztok plní nejen funkci vnitřního standardu, ale také jako srážecí činidlo pro SA - vzorky vodné fáze s rozpuštěnou solí by nebylo možné analyzovat, neboť by mohlo dojít k ucpání chromatografické kolony.
+Po vysrážení soli tedy byla odebrána pouze kapalná fáze, která byla před nástřikem na GC ještě odstředěna na laboratorní centrifuze.
 
-Parametry kolony a podmínky při chromatografii jsou uvedeny v tabulce \ref{tab:GC}
+Parametry kolony a podmínky při chromatografii jsou uvedeny v tabulce \ref{tab:GC}.
+Teplotní profil byl zvolen tak, aby byl retenční čas kaprolaktamu (nejméně těkavá látka z analytů) co nejnižší, a tedy aby jeho pík měl tvar co nejbližší Gaussově funkci, ale zároveň aby byly píky kaprolaktamu i n-heptanolu dostatečně oddělené od sebe i od píků rozpouštědel.
+K tomuto účelu byl přizpůsoben následující teplotní profil: 100°C po dobu 2~min, ohřev na teplotu 200°C trvající 4~min a nakonec 2~min při této teplotě.
+Tabulka \ref{tab:GCtime} shrnuje přibližné hodnoty retenčních časů ($\tau_\mathrm{R}$), které byly za těchto podmínek pozorovány.
+V případě, že je retenční čas zadán jako rozmezí, se jedná o pík s šikmým tvarem a jeho vrchol se proto pohybuje v závislosti na celkové ploše píku.
 
 \begin{table}[ht]
-\caption{Parametry kolony a podmínky analýzy na GC} \label{tab:GC}
+\caption{Podmínky při analýze GC a popis kolony} \label{tab:GC}
 \begin{center}
 \begin{tabular}{ll}
 	\Xhline{2pt}
 	chromatograf & Shimadzu GC-2014\\
 	ovládací software & Clarity 7.0 (DataApex)\\
-	kolona & SPB-5 (Výrobce ???)\\
+	kolona & SPB-5 (Výrobce Supelco, Inc.)\\
 	délka kolony & 30 m\\
 	průměr kolony & 0,32 mm\\
 	tloušťka filmu & 0,25 \textmu m\\
 	splitovací poměr & 15\\
+	objem nástřiku & 0,6 \textmu l\\ % ??? nejsem si jist, zda-li je to v mikrolitrech
 	teplota injektoru & 250°C\\
 	teplota detektoru & 250°C\\
 	nosný plyn & He\\
@@ -174,13 +178,56 @@ Parametry kolony a podmínky při chromatografii jsou uvedeny v tabulce \ref{tab
 \end{center}
 \end{table}
 
-Teplotní profil: 100°C 2 min, pak 25°C/min až na 200°C (4 min), pak 2 min (celkem 8 min)
+\begin{table}[ht]
+\caption{Retenční časy analytů na GC} \label{tab:GCtime}
+\begin{center}
+\begin{tabular}{ll}
+	\Xhline{2pt}
+	\textbf{Analyt} & \textbf{$\tau_\mathrm{R}$/min}\\ \hline
+	propan-2-ol & 1,80\\
+	toluen & 2,17\\
+	n-heptanol & 3,01\\
+	kaprolaktam & 5,17--5,46\\
+	\Xhline{2pt}
+\end{tabular}
+\end{center}
+\end{table}
 
 \subsubsection*{Zpracování chromatogramů}
-\textit{lorem ipsum}
+
+Po analýze vzorku v plynovém chromatografu poskytne ovládací software chromatogram a z něj vyhodnotí různé veličiny, z nichž nejdůležitější je retenční čas, který slouží pro přiřazení píku určité látce, a plocha píku, pomocí níž lze obsah látky kvantifikovat.
+
+Při využití metody vnitřní kalibrace lze využít vzorec \ref{eqn:GC_cal}, kde $w_\mathrm{CPL,s}$ a $w_\mathrm{Hep,s}$ značí obsah CPL a n-heptanolu v analyzovaném vzorku (po přidání standardu), $A_\mathrm{CPL}$ a $A_\mathrm{Hep}$ značí plochy píků a $S_{^\mathrm{CPL}/_\mathrm{Hep}}$ je kalibrační koeficient kaprolaktamu vůči n-heptanolu.
+Při známých navážkách původního vzorku i standardu je tedy nejprve vypočten $w_\mathrm{Hep,s}$, následně $w_\mathrm{CPL,s}$ a nakonec lze určit $w_\mathrm{CPL}$, tedy obsah CPL v původním vzorku.
+
+\begin{equation}
+	w_\mathrm{CPL,s} = S_{^\mathrm{CPL}/_\mathrm{Hep}} w_\mathrm{Hep,s} \frac{A_\mathrm{CPL}}{A_\mathrm{Hep}}
+\label{eqn:GC_cal}
+\end{equation}
+
+Pro zpracování chromatogramů však bylo nejprve nutné provést kalibraci pomocí roztoků se známým obsahem n-heptanolu, který je při dané metodice víceméně konstantní, i kaprolaktamu, jehož obsah se může mezi měřenými vzorky řádově lišit.
+Kalibrační vzorky proto byly připraveny v širokém rozsahu koncentrací, a to od 0.004--10.2~\% včetně standardu, což odpovídá 0.012--30.4~\% ve vzorku bez standardu.
+Pro každý kalibrační vzorek byla určena hodnota $S_{^\mathrm{CPL}/_\mathrm{Hep}}$, a jelikož koeficient nevykazoval trend vůči obsahu CPL, byla v této práci používána průměrná hodnota.
 
 \subsection{Měření mezifázového napětí} \label{gamma}
-\textit{lorem ipsum}
+Pro účely sestavení matematických modelů se později ukázalo, že je třeba změřit také mezifázové napětí, neboť sice lze v literatuře nalézt vzorce na jeho odhad~\cite{Demond1993,Perry_15}, ty však bývají velmi nespolehlivé.
+Proto bylo provedeno měření pro systém \ce{H2O}--SA--CPL--TOL, aby mohla být zjištěna závislost mezifázového napětí na koncentraci CPL ve vodné fázi.
+
+Měření bylo provedeno pomocí kapkové metody (též známá jako stalagmometrická metoda), která je klasicky využívána pro měření povrchového napětí, lze ji však modifikovat pro měření mezifázového napětí, a to tak, že je nádoba stalagmometru naplněna vzorkem těžší fáze a kapilára je ponořena pod hladinu vzorku lehčí fáze, kde se tak tvoří rozhraní obou fází.
+Postup měření je takový, že se nastaví takový vhodný tok těžší fáze, aby vznikaly kapky dostatečně pomalu, a ty jsou pak váženy v sériích čítajících alespoň dvacet kapek.
+Doba mezi odtržením kapek musí být dostatečně dlouhá, jinak je měření zkresleno jevem, kdy přitékající kapalina kapku zvětší ještě při jejím odtrhávání, což vede k vyšší pozorované hmotnosti~\cite{Harkins1919}.
+
+Mezifázové napětí~($\gamma$) lze vypočítat postupem, který popsali J.~L.~Lando a H.~T.~Oakley~\cite{Lando1967}. Vztah je uveden v rovnici~\ref{eqn:gamma}, kde $\rho_\mathrm{H}$ a $\rho_\mathrm{L}$ znamená hustotu těžší, resp. lehčí fáze, $m$ je hmotnost jedné kapky, $g$ tíhové zrychlení, $r$ poloměr kapiláry a $\Phi$ je korekční faktor, pro který autoři uvádějí empirický vztah. Ten je zde uveden v rovnici~\ref{eqn:gammaCorr}.
+
+\begin{equation}
+	\gamma = \frac{\rho_\mathrm{H} - \rho_\mathrm{L}}{\rho_\mathrm{H}} \frac{m g \Phi}{2 \pi r}
+\label{eqn:gamma}
+\end{equation}
+
+\begin{equation}
+	\Phi = -1.044 \left(\frac{r}{\sqrt[3]{m / \rho_\mathrm{H}}}\right)^2 + 1.754 \frac{r}{\sqrt[3]{m / \rho_\mathrm{H}}} + 0.929
+\label{eqn:gammaCorr}
+\end{equation}
 
 \subsection{Laboratorní model extraktoru} \label{labmodel}
 \textit{lorem ipsum}
@@ -220,7 +267,7 @@ o analýze jen viz kapitolu \ref{GC}
 \textit{lorem ipsum}
 
 \subsubsection{Mezifázové napětí}
-\textit{lorem ipsum}
+\textit{doba mezi kapkama nebyla dost dlouhá...}
 
 \subsubsection{Laboratorní model extraktoru}
 \textit{lorem ipsum}
@@ -267,20 +314,25 @@ SA  & síran amonný\\
 \addcontentsline{toc}{section}{SEZNAM SYMBOLŮ}
 \textit{seřadit abecedně, a to: latinka (aAbBcC), řecká písmena, jiné znaky}
 
+\singlespacing
 \begin{tabular}{ll}
-$A$ & plocha píku chromatogramu [$\mathrm{mV \cdot s}$]\\
-$u$ & hmotnostní zlomek CPL v organické fázi\\
-$w$ & hmotnostní zlomek CPL v organické fázi\\
-$\gamma$ & mezifázové napětí [$\mathrm{N / m}$]\\
-$\rho$ & hustota těžší fáze, lehčí fáze [$\mathrm{kg \cdot m^{-3}}$]\\
-$\Phi$ & korekční faktor pro výpočet mezifázového napětí\\
-$r$ & efektivní poloměr kapiláry [$\mathrm{m}$]\\
-$\beta$ & koeficient přestupu hmoty [$\mathrm{m \cdot s^{-1}}$]\\
-$E$ & koeficient axiální disperze [$\mathrm{m^2 \cdot s^{-1}}$]\\
 $a$ & měrný mezifázový povrch [$\mathrm{m^{-1}}$]\\
-$\phi$ & zádrž dispergované fáze v kontinuální\\
+$A$ & plocha píku chromatogramu [$\mathrm{mV \cdot s}$]\\
 $A$ & průřez kolony [$\mathrm{m^2}$]\\
 $d_{32}$ & Sauterova střední velikost kapek [$\mathrm{m}$]\\
+$E$ & koeficient axiální disperze [$\mathrm{m^2 \cdot s^{-1}}$]\\
+$g$ & tíhové zrychlení [$\mathrm{m \cdot s^{-2}}$]\\
+$m$ & hmotnost [$\mathrm{kg}$]\\
+$r$ & efektivní poloměr kapiláry [$\mathrm{m}$]\\
+$S_{^i/_j}$ & kalibrační koeficient látky $i$ vůči $j$\\
+$u$ & hmotnostní zlomek CPL v organické fázi\\
+$V$ & objem [$\mathrm{m^3}$]\\
+$w$ & hmotnostní zlomek CPL v organické fázi\\
+$\beta$ & koeficient přestupu hmoty [$\mathrm{m \cdot s^{-1}}$]\\
+$\gamma$ & mezifázové napětí [$\mathrm{N / m}$]\\
+$\rho$ & hustota [$\mathrm{kg \cdot m^{-3}}$]\\
+$\phi$ & zádrž dispergované fáze v kontinuální\\
+$\Phi$ & korekční faktor pro výpočet mezifázového napětí\\
 \end{tabular}
 
 \vspace{0.5cm} \textbf{Indexy}
@@ -294,7 +346,7 @@ org & organická fáze\\
 H & těžší fáze\\
 L & lehčí fáze\\
 \end{tabular}
-
+\onehalfspacing
 
 \newpage \section*{SEZNAM TABULEK}
 \addcontentsline{toc}{section}{SEZNAM TABULEK}
