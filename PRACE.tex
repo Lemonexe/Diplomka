@@ -23,13 +23,15 @@
 
 \usepackage{tabularx}
 \newcolumntype{Z}{>{\raggedright\arraybackslash}X} % new column, which has responsive width like X, but is left-aligned
-%\AtBeginEnvironment{tabularx}{\singlespacing} % tables will have singlespacing
 \renewcommand{\arraystretch}{1.2} % space after each row in table
 
 \usepackage{chngcntr} % numbering for figures, tables and equations will include section
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 \counterwithin{equation}{section}
+
+% MY COMMANDS
+\defineshorthand{"-}{\babelhyphen{nobreak}} % non-breakable hyphen
 
 % BEGIN
 \begin{document}
@@ -81,7 +83,7 @@ Tato sloučeina se sumárním vzorcem \ce{C6H11NO} je z chemického hlediska lak
 V literatuře je popsáno mnoho technologií na výrobu kaprolaktamu, z toho nejvýznamnější (?? \% světové produkce) je však postup popsaný v kapitole \ref{CHON}, který je zaveden i ve Spolaně a týká se jej tato práce.
 
 \subsubsection{Tradiční výroba z cyklohexanonu} \label{CHON}
-\textit{udělat reakční schéma}
+\textit{udělat reakční schéma, napsat proč je obsah síranu takový či makový}
 
 Surovinou pro tuto technologie je cyklohexanon, typicky vyráběný oxidací cyklohexanu. Ten je nejprve substituován hydroxylaminem na cyklohexanon-oxim <<???CITACE: Ullmann???>> a následně podroben Beckmannově přesmyku katalyzovaném koncentrovanou kyselinou sírovou.
 Vzniklá sloučenina kyseliny sírové a kaprolaktamu je nakonec neutralizována roztokem amoniaku, v důsledku čehož se reakční směs rozdělí na dvě fáze:
@@ -93,7 +95,7 @@ organickou, která obsahuje většinu kaprolaktamu, vedlejších produktů i č�
 \subsection{Matematický popis extraktoru} \label{the_Math}
 \textit{popis všech pojmů, rovnice samotného modelu, co musí splňovat a tak}
 
-test cituji hartland kumar 1997~\cite{HartlandKumar1997} mccabe~\cite{McCabe1925}
+test cituji hartland kumar 1997~\cite{HartlandKumar1997}
 
 \subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
 \textit{Krátký teoretický popis, proč my na teorii kašleme, nějaká data z literatury, ta ale nestačí a proč}
@@ -111,7 +113,7 @@ Tabulka \ref{tab:chemicals} je výčtem všech použitých chemikálií.
 	\Xhline{2pt} \textbf{látka} & \textbf{výrobce} & \textbf{čistota} & \textbf{H/P věty} \\ \hline
 	destilovaná voda & VŠCHT & & \\
 	propan-2-ol & Penta & \makecell{p.a.\\>99,8~\%} & H225, H319, H336, P210, P233, P305+P351+P338 \\
-	n-heptanol & Fluka & \makecell{p.a.\\>99,0~\%} & H319, P305+P351+P338 \\
+	n"-heptanol & Fluka & \makecell{p.a.\\>99,0~\%} & H319, P305+P351+P338 \\
 	n-heptan & Penta & \makecell{p.a.\\>99,0~\%} & H225, H304, H315, H336, H410, P210, P243, P273, P301+P310, P331 \\
 	toluen & Penta & \makecell{p.a.\\>99,0~\%} & H225, H304, H315, H336, H361d, H373, P210, P261, P280, P301+P310, P331 \\
 	trichlorethylen & Spolana & \makecell{destilovaný\\99,7~\%} & H315, H317, H319, H341, H350, H412, P201, P273, P280, P302+P352, P305+P351+P338, P308+P313 \\
@@ -145,12 +147,12 @@ Měřen byl pouze obsah CPL, neboť vzhledem k rozsahu měřených koncentrací 
 Na měření obsahu SA ve vodné fázi nebyly k dispozici prostředky, takže ten byl zajištěn pouze navážkou při přípravě roztoku.
 Pro účely analýzy tedy bylo předpokládáno, že vzorky organické fáze obsahují pouze CPL a solvent (TCE či TOL), zatímco vzorky kapalné fáze obsahují CPL, vodu a SA.
 
-Stanovení obsahu CPL bylo provedeno metodou vnitřního standardu, kterým byl n-heptanol -- do každého vzorku o známé navážce bylo na analytických vahách odváženo zhruba dvojnásobné množství standardního roztoku, který obsahuje přibližně 0,5~\% n-heptanolu v isopropylalkoholu.
+Stanovení obsahu CPL bylo provedeno metodou vnitřního standardu, kterým byl n"-heptanol -- do každého vzorku o známé navážce bylo na analytických vahách odváženo zhruba dvojnásobné množství standardního roztoku, který obsahuje přibližně 0,5~\% n"-heptanolu v isopropylalkoholu.
 Tento roztok plní nejen funkci vnitřního standardu, ale také jako srážecí činidlo pro SA - vzorky vodné fáze s rozpuštěnou solí by nebylo možné analyzovat, neboť by mohlo dojít k ucpání chromatografické kolony.
 Po vysrážení soli tedy byla odebrána pouze kapalná fáze, která byla před nástřikem na GC ještě odstředěna na laboratorní centrifuze.
 
 Parametry kolony a podmínky při chromatografii jsou uvedeny v tabulce \ref{tab:GC}.
-Teplotní profil byl zvolen tak, aby byl retenční čas kaprolaktamu (nejméně těkavá látka z analytů) co nejnižší, a tedy aby jeho pík měl tvar co nejbližší Gaussově funkci, ale zároveň aby byly píky kaprolaktamu i n-heptanolu dostatečně oddělené od sebe i od píků rozpouštědel.
+Teplotní profil byl zvolen tak, aby byl retenční čas kaprolaktamu (nejméně těkavá látka z analytů) co nejnižší, a tedy aby jeho pík měl tvar co nejbližší Gaussově funkci, ale zároveň aby byly píky kaprolaktamu i n"-heptanolu dostatečně oddělené od sebe i od píků rozpouštědel.
 K tomuto účelu byl přizpůsoben následující teplotní profil: 100°C po dobu 2~min, ohřev na teplotu 200°C trvající 4~min a nakonec 2~min při této teplotě.
 Tabulka \ref{tab:GCtime} shrnuje přibližné hodnoty retenčních časů ($\tau_\mathrm{R}$), které byly za těchto podmínek pozorovány.
 V případě, že je retenční čas zadán jako rozmezí, se jedná o pík s šikmým tvarem a jeho vrchol se proto pohybuje v závislosti na celkové ploše píku.
@@ -186,7 +188,7 @@ V případě, že je retenční čas zadán jako rozmezí, se jedná o pík s š
 	\textbf{Analyt} & \textbf{$\tau_\mathrm{R}$/min}\\ \hline
 	propan-2-ol & 1,80\\
 	toluen & 2,17\\
-	n-heptanol & 3,01\\
+	n"-heptanol & 3,01\\
 	kaprolaktam & 5,17--5,46\\
 	\Xhline{2pt}
 \end{tabular}
@@ -197,7 +199,7 @@ V případě, že je retenční čas zadán jako rozmezí, se jedná o pík s š
 
 Po analýze vzorku v plynovém chromatografu poskytne ovládací software chromatogram a z něj vyhodnotí různé veličiny, z nichž nejdůležitější je retenční čas, který slouží pro přiřazení píku určité látce, a plocha píku, pomocí níž lze obsah látky kvantifikovat.
 
-Při využití metody vnitřní kalibrace lze využít vzorec \ref{eqn:GC_cal}, kde $w_\mathrm{CPL,s}$ a $w_\mathrm{Hep,s}$ značí obsah CPL a n-heptanolu v analyzovaném vzorku (po přidání standardu), $A_\mathrm{CPL}$ a $A_\mathrm{Hep}$ značí plochy píků a $S_{^\mathrm{CPL}/_\mathrm{Hep}}$ je kalibrační koeficient kaprolaktamu vůči n-heptanolu.
+Při využití metody vnitřní kalibrace lze využít vzorec \ref{eqn:GC_cal}, kde $w_\mathrm{CPL,s}$ a $w_\mathrm{Hep,s}$ značí obsah CPL a n"-heptanolu v analyzovaném vzorku (po přidání standardu), $A_\mathrm{CPL}$ a $A_\mathrm{Hep}$ značí plochy píků a $S_{^\mathrm{CPL}/_\mathrm{Hep}}$ je kalibrační koeficient kaprolaktamu vůči n"-heptanolu.
 Při známých navážkách původního vzorku i standardu je tedy nejprve vypočten $w_\mathrm{Hep,s}$, následně $w_\mathrm{CPL,s}$ a nakonec lze určit $w_\mathrm{CPL}$, tedy obsah CPL v původním vzorku.
 
 \begin{equation}
@@ -205,7 +207,7 @@ Při známých navážkách původního vzorku i standardu je tedy nejprve vypo�
 \label{eqn:GC_cal}
 \end{equation}
 
-Pro zpracování chromatogramů však bylo nejprve nutné provést kalibraci pomocí roztoků se známým obsahem n-heptanolu, který je při dané metodice víceméně konstantní, i kaprolaktamu, jehož obsah se může mezi měřenými vzorky řádově lišit.
+Pro zpracování chromatogramů však bylo nejprve nutné provést kalibraci pomocí roztoků se známým obsahem n"-heptanolu, který je při dané metodice víceméně konstantní, i kaprolaktamu, jehož obsah se může mezi měřenými vzorky řádově lišit.
 Kalibrační vzorky proto byly připraveny v širokém rozsahu koncentrací, a to od 0.004--10.2~\% včetně standardu, což odpovídá 0.012--30.4~\% ve vzorku bez standardu.
 Pro každý kalibrační vzorek byla určena hodnota $S_{^\mathrm{CPL}/_\mathrm{Hep}}$, a jelikož koeficient nevykazoval trend vůči obsahu CPL, byla v této práci používána průměrná hodnota.
 
@@ -218,17 +220,14 @@ Postup měření je takový, že se nastaví takový vhodný tok těžší fáze
 Doba mezi odtržením kapek musí být dostatečně dlouhá, jinak je měření zkresleno jevem, kdy přitékající kapalina kapku zvětší ještě při jejím odtrhávání, což vede k vyšší pozorované hmotnosti~\cite{Harkins1919}.
 
 Mezifázové napětí~($\gamma$) lze vypočítat postupem, který popsali J.~L.~Lando a H.~T.~Oakley~\cite{Lando1967}. Vztah je uveden v rovnici~\ref{eqn:gamma}, kde $\rho_\mathrm{H}$ a $\rho_\mathrm{L}$ znamená hustotu těžší, resp. lehčí fáze, $m$ je hmotnost jedné kapky, $g$ tíhové zrychlení, $r$ poloměr kapiláry a $\Phi$ je korekční faktor, pro který autoři uvádějí empirický vztah. Ten je zde uveden v rovnici~\ref{eqn:gammaCorr}.
-
 \begin{equation}
 	\gamma = \frac{\rho_\mathrm{H} - \rho_\mathrm{L}}{\rho_\mathrm{H}} \frac{m g \Phi}{2 \pi r}
 \label{eqn:gamma}
 \end{equation}
-
 \begin{equation}
 	\Phi = -1.044 \left(\frac{r}{\sqrt[3]{m / \rho_\mathrm{H}}}\right)^2 + 1.754 \frac{r}{\sqrt[3]{m / \rho_\mathrm{H}}} + 0.929
 \label{eqn:gammaCorr}
 \end{equation}
-
 \subsection{Laboratorní model extraktoru} \label{labmodel}
 \textit{lorem ipsum}
 
@@ -241,13 +240,45 @@ o analýze jen viz kapitolu \ref{GC}
 
 
 \newpage \section{VÝPOČETNÍ ČÁST} \label{comp}
-\textit{intro}
+Stěžejní částí této práce je komplexní počítačový program vytvořený v programovém prostředí MATLAB, který se skládá se z několika oddělených, avšak na sebe navazujících částí, kterými jsou: zpracování dat LLE na rovnovážné funkce, patrový model extraktoru a model přenosový.
+V následujících kapitolách budou popsány principy fungování programu a způsob výpočtů, zatímco samotný zdrojový kód a podrobná dokumentace jeho použití se nachází v příloze~\ref{sourceCode}.
 
 \subsection{Zpracování rovnovážných dat} \label{compLLE}
-\textit{lorem ipsum}
+Tato část programu slouží ke zpracování naměřených dat LLE na funkce popisující rovnováhu ve tvaru $u = f(w, t)$, kde $u$ je hm. zlomek CPL v organické fázi, $w$ hm. zlomek ve vodné fázi a $t$ je teplota v °C.
+Vzhledem k tomu, že data byla měřena pouze v malém koncentračním rozmezí ($w$ nepřesahuje 1~\%), bylo možné použít empirickou rovnici namísto modelů aktivitních koeficientů, které, byť jsou termodynamicky konzistentní, nebylo možné spolehlivě proložit.
+V daném rozsahu $w$ a $t$ plně postačuje funkce, která je polynomem třetího řádu vůči $w$ (avšak bez absolutního členu, neboť funkce musí procházet bodem $(0,0)$) a polynom prvního řádu (lineární funkce) vůči $t$, jak je popsáno v rovnici~\ref{eqn:eqFun0}. Tato funkce má 5 parametrů $a$--$e$.
+\begin{equation}
+	u = (a w^3 + b w^2 + c w)(d t + e)
+\label{eqn:eqFun0}
+\end{equation}
+V tomto tvaru jsou však parametry na sobě jasně závislé.
+Numerický algoritmus na nelineární regresi, který je v prostředí MATLAB poskytován, potom hledá optimum obtížně a nespolehlivě, proto byla funkce použita v jiném tvaru, který je popsán v rovnici~\ref{eqn:eqFun}. Tato funkce má 6 parametrů $a$--$f$.
+\begin{equation}
+	u = a w^3 t + b w^2 t + c w t + d w^3 + e w^2 + f w
+\label{eqn:eqFun}
+\end{equation}
+Do regrese by sice bylo možné zahrnout obsah síranu amonného ve vodné fázi jako třetí nezávislou proměnnou, regrese by tím však byla méně spolehlivá.
+Obsah SA lze přitom považovat za zaručený, z důvodů popsaných v kapitole~\ref{CHON} jej navíc ani není možné příliš měnit, proto byly jako nezávislé proměnné zahrnuty pouze $w$ a $t$.
+
+Výše popsaná nelineární regrese je implementována ve funkci \textit{fitEqCurves.m}, kde je tak získána sada parametrů pro každou dvojici fází (vodná fáze s daným obsahem SA a vybrané rozpouštědlo).
+Po úspěšném proložení regresních křivek lze spouštět funkci \textit{getEqFun.m}, která rovnovážnou funkci za zadané teploty tabeluje jako vektory $u$ a $w$.
+Tabelace funkce je výhodná pro výpočetně nenáročnou implementaci funkce inverzní, tedy $w = f^{-1}(u)$, která je hojně využívána v modelech extraktorů~(viz níže).
+
+Pro vizualizaci naměřených dat byla vytvořena ještě funkce \textit{plotLLEdata.m}, která do grafu závislosti $u(w)$ vykreslí pro zadanou dvojici fází všechna data LLE, která jsou seskupena do sad dle teploty při měření.
 
 \subsection{Patrový model} \label{compStage}
-\textit{lorem ipsum}
+Rovnovážné funkce využívá patrový model extraktoru, který ze zadané bilance vypočte počet teoretických pater (TP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro popis kapalinové extrakce, jak ji popisuje Perry's Chemical Engineers' Handbook~\cite{Perry_15} (strana~15"-45).
+Hlavním účelem patrového modelu je vyčíslení separační účinnosti laboratorního či průmyslového extraktoru pomocí počtu TP za zadané hmotnostní bilance.
+Kromě toho je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace není možná.
+
+Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež je vypočtena hodnota $\dot{m}_\mathrm{S,min}$, nakonec je modifikovanou McCabe"-Thielovou metodou určen počet TP.
+
+Algoritmus na výpočet $\dot{m}_\mathrm{S,min}$ funguje obdobně jako dobře známá metoda půlení intervalu, nejprve jsou tedy zvoleny dvě hodnoty toku solventu -- velmi nízká hodnota $\dot{m}_1$ a velmi vysoká hodnota $\dot{m}_2$, přičemž se očekává, že hodnota $\dot{m}_\mathrm{S,min}$ bude ležet mezi těmito krajními hodnotami.
+Následuje cyklus, kdy je při každé iteraci určena hodnota $\dot{m}_3$ jako aritmetický průměr hodnot $\dot{m}_1$ a $\dot{m}_2$ a následně je zjištěno, zda-li má pracovní přímka průsečík s rovnovážnou křivkou pro hodnoty $\dot{m}_1$, $\dot{m}_2$ a $\dot{m}_3$.
+Pokud je průsečík nalezen pro $\dot{m}_1$ a $\dot{m}_3$, bude v další iteraci platit $\dot{m}_1 = \dot{m}_3$, zatímco pokud je průsečík nalezen pouze pro $\dot{m}_1$, bude platit $\dot{m}_2 = \dot{m}_3$. Takovýchto iterací je provedeno 30, což zaručuje vysokou přesnost určení hodnoty $\dot{m}_\mathrm{S,min}$.
+
+Protože tato funkce poskytuje jen strojový výstup, byla vytvořena také funkce \textit{extractorPlot.m}, která přehledně vypíše důležité výsledky do konzole prostředí MATLAB a vykreslí graf závislosti $u(w)$, kde je vynesena rovnovážná křivka, pracovní úsečka a úsečky znázorňující jednotlivá teoretická patra.
+Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extractorFeed.m}, která umožní vybranou vstupní veličinu měnit v definovaném rozmezí, výsledkem je pak tabulka závislosti počtu TP a $\dot{m}_\mathrm{S,min}$ na vybraném parametru.
 
 \subsection{Přenosový model} \label{compTransfer}
 \textit{lorem ipsum}
@@ -323,6 +354,8 @@ $d_{32}$ & Sauterova střední velikost kapek [$\mathrm{m}$]\\
 $E$ & koeficient axiální disperze [$\mathrm{m^2 \cdot s^{-1}}$]\\
 $g$ & tíhové zrychlení [$\mathrm{m \cdot s^{-2}}$]\\
 $m$ & hmotnost [$\mathrm{kg}$]\\
+$\dot{m}$ & hmotnostní tok [$\mathrm{kg \cdot s^{-1}}$]\\
+$Q$ & objemový tok [$\mathrm{m^3 \cdot s^{-1}}$]\\
 $r$ & efektivní poloměr kapiláry [$\mathrm{m}$]\\
 $S_{^i/_j}$ & kalibrační koeficient látky $i$ vůči $j$\\
 $u$ & hmotnostní zlomek CPL v organické fázi\\
@@ -361,6 +394,7 @@ L & lehčí fáze\\
 \newpage
 \appendix
 \section{ZDROJOVÝ KÓD} \label{sourceCode}
-\textit{here be matlab, či spíše sdělení že to je na CD}
+Nedílnou částí této práce je počítačový program, který je možné nalézt na přiloženém CD"-R nosiči.
+Ten obsahuje zaprvé složku \textit{matlab}, v níž se nachází samotný program spustitelný v prostředí MATLAB (verze 2007 či novější), zadruhé soubor \textit{Dokumentace.pdf}, v němž je podrobně popsána struktura programu a použití jednotlivých funkcí včetně příkladů použití.
 
 \end{document}
