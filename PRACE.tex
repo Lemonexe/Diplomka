@@ -90,7 +90,7 @@ Vzniklá sloučenina kyseliny sírové a kaprolaktamu je nakonec neutralizována
 organickou, která obsahuje většinu kaprolaktamu, vedlejších produktů i část vody, a vodný roztok síranu amonného (dále jen SA) o koncentraci okolo 40~\%, který však vedle stopových nečistot obsahuje také zhruba 1~\% hm. CPL (v této práci bude složení uváděno jako hmotnostní zlomek, pokud nebude uvedeno jinak).
 
 \subsection{Metody extrakce} \label{extraction}
-\textit{stručný popis protiproudé extrakce, jaké jsou konstrukční možnosti}
+\textit{stručný popis protiproudé extrakce, jaké jsou konstrukční možnosti, KARR UPSCALING}
 
 \subsection{Matematický popis extraktoru} \label{the_Math}
 \textit{popis všech pojmů, rovnice samotného modelu, co musí splňovat a tak}
@@ -243,26 +243,28 @@ o analýze jen viz kapitolu \ref{GC}
 Stěžejní částí této práce je komplexní počítačový program vytvořený v programovém prostředí MATLAB, který se skládá se z několika oddělených, avšak na sebe navazujících částí, kterými jsou: zpracování dat LLE na rovnovážné funkce, patrový model extraktoru a model přenosový.
 V následujících kapitolách budou popsány principy fungování programu a způsob výpočtů, zatímco samotný zdrojový kód a podrobná dokumentace jeho použití se nachází v příloze~\ref{sourceCode}.
 
+V textu níže budou používány m.j. tyto veličiny: $t$ znamená teplota v °C, $\dot{m}$ je hmotnostní tok, $u$ a $w$ jsou obecně hmotnostní zlomky CPL v organické fázi, resp. ve vodné fázi, $u_\mathrm{S}$ a $u_\mathrm{E}$ se pak vztahují k solventu a extraktu, zatímco $w_\mathrm{F}$ a $w_\mathrm{R}$ k surovině a rafinátu.
+
 \subsection{Zpracování rovnovážných dat} \label{compLLE}
-Tato část programu slouží ke zpracování naměřených dat LLE na funkce popisující rovnováhu ve tvaru $u = f(w, t)$, kde $u$ je hm. zlomek CPL v organické fázi, $w$ hm. zlomek ve vodné fázi a $t$ je teplota v °C.
+Tato část programu slouží ke zpracování naměřených dat LLE na funkce popisující rovnováhu ve tvaru $u = f(w, t)$.
 Vzhledem k tomu, že data byla měřena pouze v malém koncentračním rozmezí ($w$ nepřesahuje 1~\%), bylo možné použít empirickou rovnici namísto modelů aktivitních koeficientů, které, byť jsou termodynamicky konzistentní, nebylo možné spolehlivě proložit.
-V daném rozsahu $w$ a $t$ plně postačuje funkce, která je polynomem třetího řádu vůči $w$ (avšak bez absolutního členu, neboť funkce musí procházet bodem $(0,0)$) a polynom prvního řádu (lineární funkce) vůči $t$, jak je popsáno v rovnici~\ref{eqn:eqFun0}. Tato funkce má 5 parametrů $a$--$e$.
+V daném rozsahu $w$ a $t$ plně postačuje funkce, která je polynomem třetího řádu vůči $w$ (avšak bez absolutního členu, neboť funkce musí procházet bodem $(0,0)$) a polynom prvního řádu (lineární funkce) vůči $t$, jak je popsáno v rovnici~\ref{eqn:eqFun0}. Tato funkce má 5 parametrů $p_1$--$p_5$.
 \begin{equation}
-	u = (a w^3 + b w^2 + c w)(d t + e)
+	u = (p_1 w^3 + p_2 w^2 + p_3 w)(p_4 t + p_5)
 \label{eqn:eqFun0}
 \end{equation}
 V tomto tvaru jsou však parametry na sobě jasně závislé.
-Numerický algoritmus na nelineární regresi, který je v prostředí MATLAB poskytován, potom hledá optimum obtížně a nespolehlivě, proto byla funkce použita v jiném tvaru, který je popsán v rovnici~\ref{eqn:eqFun}. Tato funkce má 6 parametrů $a$--$f$.
+Numerický algoritmus na nelineární regresi, který je v prostředí MATLAB poskytován, potom hledá optimum obtížně a nespolehlivě, proto byla funkce použita v jiném tvaru, který je popsán v rovnici~\ref{eqn:eqFun}. Tato funkce má 6 parametrů $p_1$--$p_6$.
 \begin{equation}
-	u = a w^3 t + b w^2 t + c w t + d w^3 + e w^2 + f w
+	u = p_1 w^3 t + p_2 w^2 t + p_3 w t + p_4 w^3 + p_5 w^2 + p_6 w
 \label{eqn:eqFun}
 \end{equation}
 Do regrese by sice bylo možné zahrnout obsah síranu amonného ve vodné fázi jako třetí nezávislou proměnnou, regrese by tím však byla méně spolehlivá.
 Obsah SA lze přitom považovat za zaručený, z důvodů popsaných v kapitole~\ref{CHON} jej navíc ani není možné příliš měnit, proto byly jako nezávislé proměnné zahrnuty pouze $w$ a $t$.
 
 Výše popsaná nelineární regrese je implementována ve funkci \textit{fitEqCurves.m}, kde je tak získána sada parametrů pro každou dvojici fází (vodná fáze s daným obsahem SA a vybrané rozpouštědlo).
-Po úspěšném proložení regresních křivek lze spouštět funkci \textit{getEqFun.m}, která rovnovážnou funkci za zadané teploty tabeluje jako vektory $u$ a $w$.
-Tabelace funkce je výhodná pro výpočetně nenáročnou implementaci funkce inverzní, tedy $w = f^{-1}(u)$, která je hojně využívána v modelech extraktorů~(viz níže).
+Po úspěšném proložení regresních křivek lze spouštět funkci \textit{getEqFun.m}, která do rovnovážné funkce dosadí zadanou teplotu a získanou funkci $u = f(w)$ tabeluje jako vektory $u$ a $w$.
+Tabelace funkce je výhodná pro výpočetně nenáročnou implementaci funkce inverzní, tedy $w = f^{-1}(u)$, která je hojně využívána v modelech extraktorů.
 
 Pro vizualizaci naměřených dat byla vytvořena ještě funkce \textit{plotLLEdata.m}, která do grafu závislosti $u(w)$ vykreslí pro zadanou dvojici fází všechna data LLE, která jsou seskupena do sad dle teploty při měření.
 
@@ -271,7 +273,8 @@ Rovnovážné funkce využívá patrový model extraktoru, který ze zadané bil
 Hlavním účelem patrového modelu je vyčíslení separační účinnosti laboratorního či průmyslového extraktoru pomocí počtu TP za zadané hmotnostní bilance.
 Kromě toho je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace není možná.
 
-Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež je vypočtena hodnota $\dot{m}_\mathrm{S,min}$, nakonec je modifikovanou McCabe"-Thielovou metodou určen počet TP.
+Patrový model lze využít zejména na porovnání separační účinnosti existujících extraktorů na základě změřených bilančních veličin, v případě Karrova extraktoru i na zvětšování měřítka z laboratorních experimentů na průmyslového zařízení, jak je popsáno v kapitole~\ref{extraction}.
+Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež je vypočtena hodnota $\dot{m}_\mathrm{S,min}$ a nakonec je modifikovanou McCabe"-Thielovou metodou určen počet TP.
 
 Algoritmus na výpočet $\dot{m}_\mathrm{S,min}$ funguje obdobně jako dobře známá metoda půlení intervalu, nejprve jsou tedy zvoleny dvě hodnoty toku solventu -- velmi nízká hodnota $\dot{m}_1$ a velmi vysoká hodnota $\dot{m}_2$, přičemž se očekává, že hodnota $\dot{m}_\mathrm{S,min}$ bude ležet mezi těmito krajními hodnotami.
 Následuje cyklus, kdy je při každé iteraci určena hodnota $\dot{m}_3$ jako aritmetický průměr hodnot $\dot{m}_1$ a $\dot{m}_2$ a následně je zjištěno, zda-li má pracovní přímka průsečík s rovnovážnou křivkou pro hodnoty $\dot{m}_1$, $\dot{m}_2$ a $\dot{m}_3$.
@@ -281,7 +284,20 @@ Protože tato funkce poskytuje jen strojový výstup, byla vytvořena také funk
 Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extractorFeed.m}, která umožní vybranou vstupní veličinu měnit v definovaném rozmezí, výsledkem je pak tabulka závislosti počtu TP a $\dot{m}_\mathrm{S,min}$ na vybraném parametru.
 
 \subsection{Přenosový model} \label{compTransfer}
-\textit{lorem ipsum}
+Zatímco patrový model umožní navrhnout extraktor pomocí zvětšování měřítka, přenosový model k problému přistupuje jiným způsobem - cílem je namodelovat chování extraktoru pouze ze znalostí základních vlastností látek či systému.
+Relevantní vlastnosti látek jsou hustota ($\rho$), dynamická viskozita ($\mu$) a difuzivita kaprolaktamu ($D$), vlastnosti systému jsou rovnovážná funkce $u = f(w)$ a mezifázové napětí ($\gamma$).
+Vlastnosti látek byly exportovány z databáze simulačního programu Aspen Plus v širokém rozmezí teplot, aby bylo možné dle potřeby interpolovat a získat tak hodnoty za libovolně zvolené teploty.
+Hodnoty pochází z různých literárních zdrojů, a to <<<???CITACE???>>>.
+Rovnovážná funkce tabelovaná jako vektor $u$ a $w$ je získána spuštěním funkce \textit{getEqFun.m} popsané v kapitole~\ref{compLLE}, naměřené hodnoty mezifázového napětí byly zpracovány na funkci $\gamma(w)$, k čemuž postačuje polynom druhého řádu (viz kapitolu~\ref{resgamma}).
+
+Přenosový model umožňuje buďto výpočet návrhový, kdy jsou vypočteny potřebné rozměry zařízení na dosažení požadované hm. bilance, a nebo výpočet simulační, kdy jsou rozměry zařízení specifikovány a model předpovídá separační účinnost extraktoru, čili doplní hm. bilanci.
+
+\subsubsection{Diferenciální model} \label{compDesign}
+Jádrem výpočtu je matematický model, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu.
+Nezávislou veličinou modelu je bezrozměrná výška $z$ definovaná jako podíl výškové souřadnice vůči celkové výšce extraktoru, závislé veličiny jsou $c_x$ a $c_y$, tedy hmotnostní koncentrace CPL ve fázi ochuzované, resp. obohacované o CPL, což v případě této práce vždy znamená fázi vodnou, resp. organickou.
+Tyto diferenciální rovnice popsali S.~Hartland a A.~Kumar~\cite{HartlandKumar1997}
+
+\subsubsection{Kvantifikace parametrů přestupu hmoty} \label{compInsfun}
 
 
 
@@ -297,7 +313,7 @@ Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extr
 \subsubsection{Rovnovážná data}
 \textit{lorem ipsum}
 
-\subsubsection{Mezifázové napětí}
+\subsubsection{Mezifázové napětí} \label{resgamma}
 \textit{doba mezi kapkama nebyla dost dlouhá...}
 
 \subsubsection{Laboratorní model extraktoru}
@@ -331,14 +347,14 @@ Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extr
 \addcontentsline{toc}{section}{SEZNAM POUŽITÝCH ZKRATEK}
 \textit{abecedně seřadit\\pokud jsou anglicky, tak: český překlad (english meaning)}\\
 \begin{tabular}{ll}
-CPL & kaprolaktam\\
-FID & plamenově-ionizační detektor pro GC\\
-GC  & plynová chromatografie\\
-LLE & rovnováha kapalina-kapalina (liquid-liquid equilibrium)\\
-TCE & trichlorethylen\\
-TOL & toluen\\
-TP  & teoretické patro\\
-SA  & síran amonný\\
+	CPL & kaprolaktam\\
+	FID & plamenově-ionizační detektor pro GC\\
+	GC  & plynová chromatografie\\
+	LLE & rovnováha kapalina-kapalina (liquid-liquid equilibrium)\\
+	TCE & trichlorethylen\\
+	TOL & toluen\\
+	TP  & teoretické patro\\
+	SA  & síran amonný\\
 \end{tabular}
 
 \newpage \section*{SEZNAM SYMBOLŮ}
@@ -347,37 +363,40 @@ SA  & síran amonný\\
 
 \singlespacing
 \begin{tabular}{ll}
-$a$ & měrný mezifázový povrch [$\mathrm{m^{-1}}$]\\
-$A$ & plocha píku chromatogramu [$\mathrm{mV \cdot s}$]\\
-$A$ & průřez kolony [$\mathrm{m^2}$]\\
-$d_{32}$ & Sauterova střední velikost kapek [$\mathrm{m}$]\\
-$E$ & koeficient axiální disperze [$\mathrm{m^2 \cdot s^{-1}}$]\\
-$g$ & tíhové zrychlení [$\mathrm{m \cdot s^{-2}}$]\\
-$m$ & hmotnost [$\mathrm{kg}$]\\
-$\dot{m}$ & hmotnostní tok [$\mathrm{kg \cdot s^{-1}}$]\\
-$Q$ & objemový tok [$\mathrm{m^3 \cdot s^{-1}}$]\\
-$r$ & efektivní poloměr kapiláry [$\mathrm{m}$]\\
-$S_{^i/_j}$ & kalibrační koeficient látky $i$ vůči $j$\\
-$u$ & hmotnostní zlomek CPL v organické fázi\\
-$V$ & objem [$\mathrm{m^3}$]\\
-$w$ & hmotnostní zlomek CPL v organické fázi\\
-$\beta$ & koeficient přestupu hmoty [$\mathrm{m \cdot s^{-1}}$]\\
-$\gamma$ & mezifázové napětí [$\mathrm{N / m}$]\\
-$\rho$ & hustota [$\mathrm{kg \cdot m^{-3}}$]\\
-$\phi$ & zádrž dispergované fáze v kontinuální\\
-$\Phi$ & korekční faktor pro výpočet mezifázového napětí\\
+	$a$ & měrný mezifázový povrch [$\mathrm{m^{-1}}$]\\
+	$A$ & plocha píku chromatogramu [$\mathrm{mV \cdot s}$]\\
+	$A$ & průřez kolony [$\mathrm{m^2}$]\\
+	$d_{32}$ & Sauterova střední velikost kapek [$\mathrm{m}$]\\
+	$D$ & difuzivita kaprolaktamu v prostředí [$\mathrm{m^2 \cdot s^{-1}}$]\\
+	$E$ & koeficient axiální disperze [$\mathrm{m^2 \cdot s^{-1}}$]\\
+	$g$ & tíhové zrychlení [$\mathrm{m \cdot s^{-2}}$]\\
+	$m$ & hmotnost [$\mathrm{kg}$]\\
+	$\dot{m}$ & hmotnostní tok [$\mathrm{kg \cdot s^{-1}}$]\\
+	$Q$ & objemový tok [$\mathrm{m^3 \cdot s^{-1}}$]\\
+	$r$ & efektivní poloměr kapiláry [$\mathrm{m}$]\\
+	$S_{^i/_j}$ & kalibrační koeficient látky $i$ vůči $j$\\
+	$u$ & hmotnostní zlomek CPL v organické fázi\\
+	$V$ & objem [$\mathrm{m^3}$]\\
+	$w$ & hmotnostní zlomek CPL v organické fázi\\
+	$\beta$ & koeficient přestupu hmoty [$\mathrm{m \cdot s^{-1}}$]\\
+	$\gamma$ & mezifázové napětí [$\mathrm{N / m}$]\\
+	$\rho$ & hustota [$\mathrm{kg \cdot m^{-3}}$]\\
+	$\phi$ & zádrž dispergované fáze v kontinuální\\
+	$\Phi$ & korekční faktor pro výpočet mezifázového napětí\\
 \end{tabular}
 
 \vspace{0.5cm} \textbf{Indexy}
 
 \begin{tabular}{ll}
-* & hodnota v rovnováze\\
-C & kontinuální fáze\\
-D & dispergovaná fáze\\
-aq  & vodná fáze\\
-org & organická fáze\\
-H & těžší fáze\\
-L & lehčí fáze\\
+	* & hodnota v rovnováze\\
+	C & kontinuální fáze\\
+	D & dispergovaná fáze\\
+	aq  & vodná fáze\\
+	org & organická fáze\\
+	x & fáze suroviny\\
+	y & fáze rozpouštědla\\
+	H & těžší fáze\\
+	L & lehčí fáze\\
 \end{tabular}
 \onehalfspacing
 
