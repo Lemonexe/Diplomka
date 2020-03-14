@@ -97,15 +97,16 @@ organickou, která obsahuje většinu kaprolaktamu, vedlejších produktů i č�
 Kontinuální protiproudý extraktor v ustáleném stavu lze matematicky popsat buďto patrovým modelem nebo přenosovým modelem, tyto modely se však zásadně liší požadovanými informacemi i možností použití.
 Patrový model, který bude dále popsán až v kapitole~\ref{compStage}, má využití zejména na porovnání separační účinnosti reálných extraktorů na základě změřených bilančních veličin, v případě Karrova extraktoru i na zvětšování měřítka z laboratorních experimentů na průmyslové zařízení, jak bylo popsáno v kapitole~\ref{extraction}.
 
-Naproti tomu přenosový model k problému přistupuje jiným způsobem -- cílem je namodelovat chování extraktoru pouze ze znalostí základních vlastností látek (hustota, dynamická viskozita a difuzivita kaprolaktamu v dané látce) a vlastností celého systému (mezifázové napětí a popis rovnováhy kapalina-kapalina).
+Naproti tomu přenosový model k problému přistupuje jiným způsobem -- cílem je namodelovat chování extraktoru pouze ze znalostí základních vlastností, jedná se o vlastnosti látek, jako je hustota, dynamická viskozita a difuzivita kaprolaktamu v dané látce, a také o vlastnosti celého systému, jako je mezifázové napětí a popis rovnováhy kapalina-kapalina v podobě rovnovážné funkce: $u=f(w)$.
 
-Ve fyzikálních vztazích budou dále používány m.j. tyto veličiny: $t$ znamená teplota v °C, $\dot{m}$ je hmotnostní tok, $Q$ je objemový tok, $u$ a $w$ jsou obecně hmotnostní zlomky CPL v organické fázi, resp. ve vodné fázi.
+Ve tomto textu budou dále používány m.j. tyto veličiny: $t$ znamená teplota v °C, $\dot{m}$ je hmotnostní tok, $Q$ je objemový tok, $u$ a $w$ jsou obecně hmotnostní zlomky CPL v organické fázi, resp. ve vodné fázi.
 Veličiny s dolními indexy F, R, S a E se vztahují popořadě k surovině, rafinátu, solventu a extraktu.
 
 \subsubsection{Přenosový model s axiální disperzí} \label{diff2}
 V této kapitole bude podrobně vysvětlen výpočetní postup, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, kde každá rovnice popisuje jednu fázi.
 Nezávislou veličinou modelu je bezrozměrná výška $z$ definovaná jako podíl výškové souřadnice $l$ vůči celkové výšce extraktoru $L$, a to ve směru od suroviny k rafinátu (či od extraktu k solventu).
-Závislé veličiny jsou $c_x$ a $c_y$, tedy hmotnostní koncentrace CPL ve fázi ochuzované, resp. obohacované o CPL, což v případě této práce vždy znamená fázi vodnou, resp. organickou. Tento výpočetní postup, který popsali S.~Hartland a A.~Kumar~\cite{HartlandKumar1997}, je vyjádřen soustavou rovnic~\ref{eqn:diff2}, kde $Pe_x$ a $Pe_y$ jsou Pécletova čísla definovaná v rovnicích~\ref{eqn:Peclet} a~\ref{eqn:Peclet2} a $T_x$ je počet přenosových jednotek vzhledem k fázi x, ten je definován v rovnici~\ref{eqn:Tx}.
+Závislé veličiny jsou $c_x$ a $c_y$, tedy hmotnostní koncentrace CPL ve fázi ochuzované, resp. obohacované o CPL, což v případě této práce vždy znamená fázi vodnou, resp. organickou.
+Tento výpočetní postup, který popsali S.~Hartland a A.~Kumar~\cite{HartlandKumar1997}, je vyjádřen soustavou rovnic~\ref{eqn:diff2}, kde $Pe_x$ a $Pe_y$ jsou Pécletova čísla (definovaná v rovnicích~\ref{eqn:Peclet} a~\ref{eqn:Peclet2}), $T_x$ je počet přenosových jednotek vzhledem k fázi x (definovaný v rovnici~\ref{eqn:Tx}) a $c_y^*$ je taková hodnota $c_x$, která by byla v rovnováze s $c_y$.
 \begin{align}
 \label{eqn:diff2}
 	\frac{\D^2 c_x}{\D z^2} - Pe_x \frac{\D c_x}{\D z} &=  Pe_x T_x (c_x - c_y^*) \\
@@ -330,7 +331,7 @@ Numerický algoritmus na nelineární regresi, který je v prostředí MATLAB po
 Do regrese by sice bylo možné zahrnout obsah síranu amonného ve vodné fázi jako třetí nezávislou proměnnou, regrese by tím však byla méně spolehlivá.
 Obsah SA lze přitom považovat za zaručený, z důvodů popsaných v kapitole~\ref{CHON} jej navíc ani není možné příliš měnit, proto byly jako nezávislé proměnné zahrnuty pouze $w$ a $t$.
 
-Výše popsaná nelineární regrese je implementována ve funkci \textit{fitEqCurves.m}, kde je tak získána sada parametrů pro každou dvojici fází (vodná fáze s daným obsahem SA a vybrané rozpouštědlo).
+Výše popsaná nelineární regrese je implementována ve funkci \textit{fitEqCurves.m}, kde je využita vestavěná funkce \textit{lsqcurvefit} nabízená prostředím MATLAB, aby byla získána sada parametrů pro každou dvojici fází (vodná fáze s daným obsahem SA a vybrané rozpouštědlo).
 Po úspěšném proložení regresních křivek lze spouštět funkci \textit{getEqFun.m}, která do rovnovážné funkce dosadí zadanou teplotu a získanou funkci $u = f(w)$ tabeluje jako vektory $u$ a $w$.
 Tabelace funkce je výhodná pro výpočetně nenáročnou implementaci funkce inverzní, tedy $w = f^{-1}(u)$, která je hojně využívána v modelech extraktorů.
 
@@ -360,10 +361,34 @@ Naměřené hodnoty mezifázového napětí byly zpracovány na funkci $\gamma(w
 Přenosový model může být realizován buďto jako výpočet návrhový, kdy jsou vypočteny potřebné rozměry zařízení na dosažení požadované hm. bilance, a nebo jako výpočet simulační, kdy jsou rozměry zařízení specifikovány a model předpovídá separační účinnost extraktoru, čili doplní hm. bilanci.
 
 \subsubsection{Řešení diferenciálních rovnic} \label{compDesign}
-Jádrem výpočtu je matematický model, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, která byla podrobně popsána v kapitole~\ref{the_Math}.
+Jádrem výpočtu je matematický model, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, jak bylo podrobně popsáno v kapitole~\ref{the_Math}.
 
-HERE BE IMPLEMENTACE -- použitý solver, guessfunctions, initial L, následnost diff1 -> diff2 (diff2 potřebuje dobrý odhad páč nestabilní)
-lze řešit ANALYTICKY, ale my to neděláme
+S.~Hartland a A.~Kumar~\cite{HartlandKumar1997} uvádějí analytické řešení diferenciálních rovnic při návrhovém výpočtu -- řešením modelu s pístovým tokem je přímé vyjádření $L$, zatímco řešením modelu s axiální disperzí je rovnice transcendentní pro $L$, z níž lze $L$ určit numerickým algoritmem na hledáním kořene.
+Analytická řešení ovšem platí pouze za předpokladu lineární rovnováhy, což, jak bude ukázáno v kapitole~\ref{resLLE}, v našem případě neplatí, rovnovážná funkce je totiž značně nelineární.
+Autoři uvádí, že při nelineární rovnováze diferenciální rovnice nemají analytické řešení a je nutné je řešit numericky.
+
+K numerickému řešení diferenciálních rovnic s okrajovou podmínkou MATLAB nabízí funkci \textit{bvp5c}, ta pro svůj běh potřebuje zaprvé funkci popisující diferenciální model prvního řádu, která ze závislých a nezávislých proměnných vypočítá derivace závislých proměnných, zadruhé funkci definující počáteční podmínky jakožto rovnice v anulovaném tvaru, zatřetí pak funkci sloužící jako počáteční odhad řešení.
+V případě návrhového výpočtu je třeba zahrnout i počáteční odhad výšky extraktoru.
+
+Protože algoritmy řešení okrajových problémů nebývají zcela robustní a řešení může často divergovat, je třeba poskytnout dobrý počáteční odhad řešení.
+Model s axiální disperzí se bez kvalitního odhadu ukázal být velmi nestabilní, proto je nejprve numericky vypočten model s pístovým tokem, jehož řešení je snazší a zcela přitom postačuje jednoduchý odhad lineárních profilů koncentrace.
+V případě návrhového výpočtu, kdy jsou koncentrace vstupních i výstupních proudů známy, jsou lineární profily od $c_F$ do $c_R$, resp. od $c_E$ do $c_S$, v případě simulačního výpočtu lze namísto $c_R$ a $c_S$ dosadit nulovou koncentraci.
+Pro odhad výšky, je-li třeba, postačuje použít výšku ekvivalentu teoretického patra 0,5~m, která se vynásobí počtem TP získaným zavoláním patrového modelu.
+Diferenciální rovnice prvního řádu i jejich počáteční podmínky byly již popsány v rovnicích~\ref{eqn:diff1}, \ref{eqn:bound1_1}, \ref{eqn:bound1_2} a~\ref{eqn:boundExtra}.
+
+Nalezené řešení pro model s pístovým tokem má využití pro sestavení počátečního odhadu pro model s axiální disperzí, ten je však nutné nejprve upravit ze soustavy dvou dif. rovnic druhého řádu, jak jsou uvedeny v rovnici~\ref{eqn:diff2}, na soustavu čtyř rovnic prvního řádu.
+To je možné provést zavedením derivací koncentrací jako dvou dalších závislých proměnných: $d_x = \D c_x / \D z$ a $d_y = \D c_y / \D z$.
+Diferenciální model připravený pro numerický řešič je rozveden v rovnici~\ref{eqn:diff24}.
+\begin{align}
+\label{eqn:diff24}
+	\frac{\D c_x}{\D z} &= d_x \\
+	\frac{\D c_y}{\D z} &= d_y \\ \nonumber
+	\frac{\D d_x}{\D z} &=  Pe_x d_x + Pe_x T_x (c_x - c_y^*) \\ \nonumber
+	\frac{\D d_y}{\D z} &= -Pe_y d_y - Pe_y T_x (c_x - c_y^*) \frac{Q_x}{Q_y} \nonumber
+\end{align}
+Protože řešení modelu s pístovým tokem je ve formě vektorů hodnot $c_x$ a $c_y$ odpovídajících vektoru $z$, odhadovou funkci pro model s axiální disperzí lze realizovat jako algoritmus, který pro požadované $z$ nalezne dva sousedící body existujícího řešení, mezi nimiž požadované $z$ leží.
+Hodnoty $c_x$ a $c_y$ jsou lineárně interpolovány, zatímco hodnoty $d_x$ a $d_y$ jsou vypočteny běžnou dvoubodovou formulí pro numerickou derivaci.
+Při návrhovém výpočtu je součástí řešení modelu s pístovým tokem také vypočtená výška extraktoru -- pro počáteční odhad výšky modelu s axiální disperzí je použit její dvojnásobek.
 
 \subsubsection{Kvantifikace parametrů přestupu hmoty} \label{compInsfun}
 \textit{lorem ipsum}
@@ -379,7 +404,7 @@ lze řešit ANALYTICKY, ale my to neděláme
 \subsubsection{Rozsah měření rovnovážných dat}
 \textit{lorem ipsum}
 
-\subsubsection{Rovnovážná data}
+\subsubsection{Rovnovážná data} \label{resLLE}
 \textit{lorem ipsum}
 
 \subsubsection{Mezifázové napětí} \label{resgamma}
