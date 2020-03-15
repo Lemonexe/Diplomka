@@ -1,0 +1,84 @@
+% include file for chapter 4
+
+\newpage \section{VÝPOČETNÍ ČÁST} \label{comp}
+Stěžejní částí této práce je komplexní počítačový program vytvořený v programovém prostředí MATLAB, který se skládá se z několika oddělených, avšak na sebe navazujících částí, kterými jsou: zpracování dat LLE na rovnovážné funkce, patrový model extraktoru a model přenosový.
+V následujících kapitolách budou popsány principy fungování programu a způsob výpočtů, zatímco samotný zdrojový kód a podrobná dokumentace jeho použití se nachází v příloze~\ref{sourceCode}.
+
+\subsection{Zpracování rovnovážných dat} \label{compLLE}
+Tato část programu slouží ke zpracování naměřených dat LLE na funkce popisující rovnováhu ve tvaru $u = f(w, t)$.
+Vzhledem k tomu, že data byla měřena pouze v malém koncentračním rozmezí ($w$ nepřesahuje 1~\%), bylo možné použít empirickou rovnici namísto modelů aktivitních koeficientů, které, byť jsou termodynamicky konzistentní, nebylo možné spolehlivě proložit.
+V daném rozsahu $w$ a $t$ plně postačuje funkce, která je polynomem třetího řádu vůči $w$ (avšak bez absolutního členu, neboť funkce musí procházet bodem $(0,0)$) a polynom prvního řádu (lineární funkce) vůči $t$, jak je popsáno v rovnici~\ref{eqn:eqFun0}. Tato funkce má 5 parametrů $p_1$--$p_5$.
+\begin{equation}
+	u = (p_1 w^3 + p_2 w^2 + p_3 w)(p_4 t + p_5)
+\label{eqn:eqFun0}
+\end{equation}
+V tomto tvaru jsou však parametry na sobě jasně závislé.
+Numerický algoritmus na nelineární regresi, který je v prostředí MATLAB poskytován, potom hledá optimum obtížně a nespolehlivě, proto byla funkce použita v jiném tvaru, který je popsán v rovnici~\ref{eqn:eqFun}. Tato funkce má 6 parametrů $p_1$--$p_6$.
+\begin{equation}
+	u = p_1 w^3 t + p_2 w^2 t + p_3 w t + p_4 w^3 + p_5 w^2 + p_6 w
+\label{eqn:eqFun}
+\end{equation}
+Do regrese by sice bylo možné zahrnout obsah síranu amonného ve vodné fázi jako třetí nezávislou proměnnou, regrese by tím však byla méně spolehlivá.
+Obsah SA lze přitom považovat za zaručený, z důvodů popsaných v kapitole~\ref{CHON} jej navíc ani není možné příliš měnit, proto byly jako nezávislé proměnné zahrnuty pouze $w$ a $t$.
+
+Výše popsaná nelineární regrese je implementována ve funkci \textit{fitEqCurves.m}, kde je využita vestavěná funkce \textit{lsqcurvefit} nabízená prostředím MATLAB, aby byla získána sada parametrů pro každou dvojici fází (vodná fáze s daným obsahem SA a vybrané rozpouštědlo).
+Po úspěšném proložení regresních křivek lze spouštět funkci \textit{getEqFun.m}, která do rovnovážné funkce dosadí zadanou teplotu a získanou funkci $u = f(w)$ tabeluje jako vektory $u$ a $w$.
+Tabelace funkce je výhodná pro výpočetně nenáročnou implementaci funkce inverzní, tedy $w = f^{-1}(u)$, která je hojně využívána v modelech extraktorů.
+
+Pro vizualizaci naměřených dat byla vytvořena ještě funkce \textit{plotLLEdata.m}, která do grafu závislosti $u(w)$ vykreslí pro zadanou dvojici fází všechna data LLE, která jsou seskupena do sad dle teploty při měření.
+
+\subsection{Implementace patrového modelu} \label{compStage}
+Rovnovážné funkce využívá patrový model extraktoru, který ze zadané bilance vypočte počet teoretických pater (TP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro popis kapalinové extrakce, jak ji popisuje Perry's Chemical Engineers' Handbook~\cite{Perry_15} (strana~15"-45).
+Hlavním účelem patrového modelu je vyčíslení separační účinnosti laboratorního či průmyslového extraktoru pomocí počtu TP za zadané hmotnostní bilance.
+Kromě toho je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace není možná.
+Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež je vypočtena hodnota $\dot{m}_\mathrm{S,min}$ a nakonec je modifikovanou McCabe"-Thielovou metodou určen počet TP.
+
+Algoritmus na výpočet $\dot{m}_\mathrm{S,min}$ funguje obdobně jako dobře známá metoda půlení intervalu, nejprve jsou tedy zvoleny dvě hodnoty toku solventu -- velmi nízká hodnota $\dot{m}_1$ a velmi vysoká hodnota $\dot{m}_2$, přičemž se očekává, že hodnota $\dot{m}_\mathrm{S,min}$ bude ležet mezi těmito krajními hodnotami.
+Následuje cyklus, kdy je při každé iteraci určena hodnota $\dot{m}_3$ jako aritmetický průměr hodnot $\dot{m}_1$ a $\dot{m}_2$ a následně je zjištěno, zda-li má pracovní přímka průsečík s rovnovážnou křivkou pro hodnoty $\dot{m}_1$, $\dot{m}_2$ a $\dot{m}_3$.
+Pokud je průsečík nalezen pro $\dot{m}_1$ a $\dot{m}_3$, bude v další iteraci platit $\dot{m}_1 = \dot{m}_3$, zatímco pokud je průsečík nalezen pouze pro $\dot{m}_1$, bude platit $\dot{m}_2 = \dot{m}_3$. Takovýchto iterací je provedeno 30, což zaručuje vysokou přesnost určení hodnoty $\dot{m}_\mathrm{S,min}$.
+
+Protože tato funkce poskytuje jen strojový výstup, byla vytvořena také funkce \textit{extractorPlot.m}, která přehledně vypíše důležité výsledky do konzole prostředí MATLAB a vykreslí graf závislosti $u(w)$, kde je vynesena rovnovážná křivka, pracovní úsečka a úsečky znázorňující jednotlivá teoretická patra.
+Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extractorFeed.m}, která umožní vybranou vstupní veličinu měnit v definovaném rozmezí, výsledkem je pak tabulka závislosti počtu TP a $\dot{m}_\mathrm{S,min}$ na vybraném parametru.
+
+\subsection{Implementace přenosového modelu} \label{compTransfer}
+Jak již bylo dříve zmíněno, přenosový model při předpovědi chování extraktoru vychází ze znalostí základních vlastností látek či systému.
+Relevantní vlastnosti látek jsou hustota ($\rho$), dynamická viskozita ($\mu$) a difuzivita kaprolaktamu v dané látce ($D$), vlastnosti systému jsou rovnovážná funkce $u = f(w)$ a mezifázové napětí ($\gamma$).
+Vlastnosti látek byly exportovány z databáze simulačního programu Aspen Plus v širokém rozmezí teplot, aby je bylo možné dle potřeby interpolovat a získat tak hodnoty za libovolně zvolené teploty.
+Hodnoty pochází z různých literárních zdrojů, a to <<<???CITACE???>>>.
+Rovnovážná funkce tabelovaná jako vektor $u$ a $w$ je získána spuštěním funkce \textit{getEqFun.m} popsané v kapitole~\ref{compLLE}.
+Naměřené hodnoty mezifázového napětí byly zpracovány na funkci $\gamma(w)$, k čemuž postačuje regrese naměřených dat pomocí polynomu druhého řádu (viz kapitolu~\ref{resgamma}).
+
+Přenosový model může být realizován buďto jako výpočet návrhový, kdy jsou vypočteny potřebné rozměry zařízení na dosažení požadované hm. bilance, a nebo jako výpočet simulační, kdy jsou rozměry zařízení specifikovány a model předpovídá separační účinnost extraktoru, čili doplní hm. bilanci.
+
+\subsubsection{Řešení diferenciálních rovnic} \label{compDesign}
+Jádrem výpočtu je matematický model, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, jak bylo podrobně popsáno v kapitole~\ref{the_Math}.
+
+S.~Hartland a A.~Kumar~\cite{HartlandKumar1997} uvádějí analytické řešení diferenciálních rovnic při návrhovém výpočtu -- řešením modelu s pístovým tokem je přímé vyjádření $L$, zatímco řešením modelu s axiální disperzí je rovnice transcendentní pro $L$, z níž lze $L$ určit numerickým algoritmem na hledáním kořene.
+Analytická řešení ovšem platí pouze za předpokladu lineární rovnováhy, což, jak bude ukázáno v kapitole~\ref{resLLE}, v našem případě neplatí, rovnovážná funkce je totiž značně nelineární.
+Autoři uvádí, že při nelineární rovnováze diferenciální rovnice nemají analytické řešení a je nutné je řešit numericky.
+
+K numerickému řešení diferenciálních rovnic s okrajovou podmínkou MATLAB nabízí funkci \textit{bvp5c}, ta pro svůj běh potřebuje zaprvé funkci popisující diferenciální model prvního řádu, která ze závislých a nezávislých proměnných vypočítá derivace závislých proměnných, zadruhé funkci definující počáteční podmínky jakožto rovnice v anulovaném tvaru, zatřetí pak funkci sloužící jako počáteční odhad řešení.
+V případě návrhového výpočtu je třeba zahrnout i počáteční odhad výšky extraktoru.
+
+Protože algoritmy řešení okrajových problémů nebývají zcela robustní a řešení může často divergovat, je třeba poskytnout dobrý počáteční odhad řešení.
+Model s axiální disperzí se bez kvalitního odhadu ukázal být velmi nestabilní, proto je nejprve numericky vypočten model s pístovým tokem, jehož řešení je snazší a zcela přitom postačuje jednoduchý odhad lineárních profilů koncentrace.
+V případě návrhového výpočtu, kdy jsou koncentrace vstupních i výstupních proudů známy, jsou lineární profily od $c_F$ do $c_R$, resp. od $c_E$ do $c_S$, v případě simulačního výpočtu lze namísto $c_R$ a $c_S$ dosadit nulovou koncentraci.
+Pro odhad výšky, je-li třeba, postačuje použít výšku ekvivalentu teoretického patra 0,5~m, která se vynásobí počtem TP získaným zavoláním patrového modelu.
+Diferenciální rovnice prvního řádu i jejich počáteční podmínky byly již popsány v rovnicích~\ref{eqn:diff1}, \ref{eqn:bound1_1}, \ref{eqn:bound1_2} a~\ref{eqn:boundExtra}.
+
+Nalezené řešení pro model s pístovým tokem má využití pro sestavení počátečního odhadu pro model s axiální disperzí, ten je však nutné nejprve upravit ze soustavy dvou dif. rovnic druhého řádu, jak jsou uvedeny v rovnici~\ref{eqn:diff2}, na soustavu čtyř rovnic prvního řádu.
+To je možné provést zavedením derivací koncentrací jako dvou dalších závislých proměnných: $d_x = \D c_x / \D z$ a $d_y = \D c_y / \D z$.
+Diferenciální model připravený pro numerický řešič je rozveden v rovnici~\ref{eqn:diff24}.
+\begin{align}
+\label{eqn:diff24}
+	\frac{\D c_x}{\D z} &= d_x \\
+	\frac{\D c_y}{\D z} &= d_y \\ \nonumber
+	\frac{\D d_x}{\D z} &=  Pe_x d_x + Pe_x T_x (c_x - c_y^*) \\ \nonumber
+	\frac{\D d_y}{\D z} &= -Pe_y d_y - Pe_y T_x (c_x - c_y^*) \frac{Q_x}{Q_y} \nonumber
+\end{align}
+Protože řešení modelu s pístovým tokem je ve formě vektorů hodnot $c_x$ a $c_y$ odpovídajících vektoru $z$, odhadovou funkci pro model s axiální disperzí lze realizovat jako algoritmus, který pro požadované $z$ nalezne dva sousedící body existujícího řešení, mezi nimiž požadované $z$ leží.
+Hodnoty $c_x$ a $c_y$ jsou lineárně interpolovány, zatímco hodnoty $d_x$ a $d_y$ jsou vypočteny běžnou dvoubodovou formulí pro numerickou derivaci.
+Při návrhovém výpočtu je součástí řešení modelu s pístovým tokem také vypočtená výška extraktoru -- pro počáteční odhad výšky modelu s axiální disperzí je použit její dvojnásobek.
+
+\subsubsection{Kvantifikace parametrů přestupu hmoty} \label{compInsfun}
+\textit{lorem ipsum}

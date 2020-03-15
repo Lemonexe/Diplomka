@@ -1,10 +1,15 @@
 # Ignore everything
 *
 
-# Except
+# Except my own files
 !.gitignore
-!PRACE.tex
-!sablona_cs.tex
-!diplomova_prace.sty
+!*.tex
 !references.bib
-!notes.txt
+!_notes.txt
+!images/
+!images/*.png
+
+# And the package files
+!*.sty
+!*.bst
+!*.cls

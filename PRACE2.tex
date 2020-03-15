@@ -1,0 +1,99 @@
+% include file for chapter 2
+
+\newpage \section{LITERÁRNÍ ČÁST} \label{lit}
+Literární část této práce se bude zabývat výčtem současně užívaných technologií na výrobu kaprolaktamu (dále jen CPL), možnostmi zařízení na průmyslovou kapalinovou extrakci, matematickým popisem extraktoru a teorií rovnováhy kapalina-kapalina.
+
+\subsection{Technologie kaprolaktamu} \label{CPLtechnology}
+\textit{tohle je málo - rozvést alternativy (subsubsection)}
+
+$\varepsilon$-Kaprolaktam je bílá krystalická látka s bodem tání 69,0°C~\cite{CPLSpolanaList}.
+Tato sloučeina se sumárním vzorcem \ce{C6H11NO} je z chemického hlediska laktam $\varepsilon$-aminokapronové kyseliny, molekula tedy tvoří sedmičetný cyklus.
+V literatuře je popsáno mnoho technologií na výrobu kaprolaktamu, z toho nejvýznamnější (?? \% světové produkce) je však postup popsaný v kapitole \ref{CHON}, který je zaveden i ve Spolaně a týká se jej tato práce.
+
+\subsubsection{Tradiční výroba z cyklohexanonu} \label{CHON}
+\textit{udělat reakční schéma, napsat proč je obsah síranu takový či makový}
+
+Surovinou pro tuto technologie je cyklohexanon, typicky vyráběný oxidací cyklohexanu. Ten je nejprve substituován hydroxylaminem na cyklohexanon-oxim <<???CITACE: Ullmann???>> a následně podroben Beckmannově přesmyku katalyzovaném koncentrovanou kyselinou sírovou.
+Vzniklá sloučenina kyseliny sírové a kaprolaktamu je nakonec neutralizována roztokem amoniaku, v důsledku čehož se reakční směs rozdělí na dvě fáze:
+organickou, která obsahuje většinu kaprolaktamu, vedlejších produktů i část vody, a vodný roztok síranu amonného (dále jen SA) o koncentraci okolo 40~\%, který však vedle stopových nečistot obsahuje také zhruba 1~\% hm. CPL (v této práci bude složení uváděno jako hmotnostní zlomek, pokud nebude uvedeno jinak).
+
+\subsection{Metody extrakce} \label{extraction}
+\textit{stručný popis protiproudé extrakce, jaké jsou konstrukční možnosti, KARR UPSCALING}
+
+\subsection{Matematický popis extraktoru} \label{the_Math}
+Kontinuální protiproudý extraktor v ustáleném stavu lze matematicky popsat buďto patrovým modelem nebo přenosovým modelem, tyto modely se však zásadně liší požadovanými informacemi i možností použití.
+Patrový model, který bude dále popsán až v kapitole~\ref{compStage}, má využití zejména na porovnání separační účinnosti reálných extraktorů na základě změřených bilančních veličin, v případě Karrova extraktoru i na zvětšování měřítka z laboratorních experimentů na průmyslové zařízení, jak bylo popsáno v kapitole~\ref{extraction}.
+
+Naproti tomu přenosový model k problému přistupuje jiným způsobem -- cílem je namodelovat chování extraktoru pouze ze znalostí základních vlastností, jedná se o vlastnosti látek, jako je hustota, dynamická viskozita a difuzivita kaprolaktamu v dané látce, a také o vlastnosti celého systému, jako je mezifázové napětí a popis rovnováhy kapalina-kapalina v podobě rovnovážné funkce: $u=f(w)$.
+
+Ve tomto textu budou dále používány m.j. tyto veličiny: $t$ znamená teplota v °C, $\dot{m}$ je hmotnostní tok, $Q$ je objemový tok, $u$ a $w$ jsou obecně hmotnostní zlomky CPL v organické fázi, resp. ve vodné fázi.
+Veličiny s dolními indexy F, R, S a E se vztahují popořadě k surovině, rafinátu, solventu a extraktu.
+
+\subsubsection{Přenosový model s axiální disperzí} \label{diff2}
+V této kapitole bude podrobně vysvětlen výpočetní postup, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, kde každá rovnice popisuje jednu fázi.
+Nezávislou veličinou modelu je bezrozměrná výška $z$ definovaná jako podíl výškové souřadnice $l$ vůči celkové výšce extraktoru $L$, a to ve směru od suroviny k rafinátu (či od extraktu k solventu).
+Závislé veličiny jsou $c_x$ a $c_y$, tedy hmotnostní koncentrace CPL ve fázi ochuzované, resp. obohacované o CPL, což v případě této práce vždy znamená fázi vodnou, resp. organickou.
+Tento výpočetní postup, který popsali S.~Hartland a A.~Kumar~\cite{HartlandKumar1997}, je vyjádřen soustavou rovnic~\ref{eqn:diff2}, kde $Pe_x$ a $Pe_y$ jsou Pécletova čísla (definovaná v rovnicích~\ref{eqn:Peclet} a~\ref{eqn:Peclet2}), $T_x$ je počet přenosových jednotek vzhledem k fázi x (definovaný v rovnici~\ref{eqn:Tx}) a $c_y^*$ je taková hodnota $c_x$, která by byla v rovnováze s $c_y$.
+\begin{align}
+\label{eqn:diff2}
+	\frac{\D^2 c_x}{\D z^2} - Pe_x \frac{\D c_x}{\D z} &=  Pe_x T_x (c_x - c_y^*) \\
+	\frac{\D^2 c_y}{\D z^2} + Pe_y \frac{\D c_y}{\D z} &= -Pe_y T_x (c_x - c_y^*) \frac{Q_x}{Q_y} \nonumber
+\end{align}
+\begin{align}
+\label{eqn:Peclet}
+	Pe_x = \frac{Q_x L}{A E_x} \\
+\label{eqn:Peclet2}
+	Pe_y = \frac{Q_y L}{A E_y}
+\end{align}
+$E_x$ a $E_y$ v rovnicích ~\ref{eqn:Peclet} a~\ref{eqn:Peclet2} jsou koeficienty axiální disperze.
+$K_x$ v rovnici~\ref{eqn:Tx} je koeficient prostupu hmoty vztažený k fázi x, $a$ je specifická mezifázová plocha a $A$ je plocha průřezu extraktoru.
+\begin{equation}
+	T_x = \frac{K_x a A L}{Q_x}
+\label{eqn:Tx}
+\end{equation}
+
+Řešení soustavy rovnic~\ref{eqn:diff2} musí splňovat okrajové podmínky, které jsou pro bod $z=0$ definovány v rovnicích~\ref{eqn:bound2_1} a~\ref{eqn:bound2_2}.
+\begin{align}
+\label{eqn:bound2_1}
+	\left( \frac{\D c_x}{\D z} \right)_{z=0} &= Pe_x (c_{x,0} - c_{x,\mathrm{in}}) \\
+\label{eqn:bound2_2}
+	\left( \frac{\D c_y}{\D z} \right)_{z=0} &= 0
+\end{align}
+V bodě $z=1$ musí být splněny podmínky definované v rovnicích~\ref{eqn:bound2_3} a~\ref{eqn:bound2_4}.
+\begin{align}
+\label{eqn:bound2_3}
+	\left( \frac{\D c_x}{\D z} \right)_{z=1} &= 0 \\
+\label{eqn:bound2_4}
+	\left( \frac{\D c_y}{\D z} \right)_{z=1} &= Pe_y (c_{y,\mathrm{in}} - c_{y,1})
+\end{align}
+Řešením této soustavy pak je funkce $(c_x, c_y) = f(z)$, přičemž je nutné podotknout, že krajní hodnoty $c_x$ a $c_y$ odpovídají výstupním proudům, avšak nikoliv vstupním proudům, tedy $c_x(0) \neq c_\mathrm{F}$, $c_y(0) = c_\mathrm{E}$, $c_x(1) = c_\mathrm{R}$ a $c_y(1) \neq c_\mathrm{S}$. Při vstupech proudů dochází ke skokovým změnám koncentrací, lze tedy říci, že s vyšší hodnotou koeficientů axiální disperze se charakter toku obou fází vzdaluje pístovému toku a přibližuje ideálnímu mísiči.
+
+Při výše uvedeném výpočtu je $L$ považováno za konstantu, takovýto výpočet tedy slouží jako výpočet simulační, zrovna tak jej však lze realizovat jako výpočet návrhový, kdy $L$ je v soustavě dif. rovnic neznámým parametrem, který je hledán na základě počátečního odhadu.
+Při zavedení neznámého parametru je však nutné specifikovat další okrajovou podmínku, kterou je deklarace požadované koncentrace rafinátu (rovnice~\ref{eqn:boundExtra}).
+\begin{equation}
+	\left( c_x \right)_{z=1} = c_\mathrm{R}
+\label{eqn:boundExtra}
+\end{equation}
+
+Programová implementace tohoto modelu je popsána v kapitole~\ref{compTransfer}.
+
+\subsubsection{Přenosový model s pístovým tokem} \label{diff1}
+Popsaný matematický model lze zjednodušit pomocí předpokladu pístového toku, pak jsou koeficienty axiální disperze nulové a lze odvodit soustavu rovnic~\ref{eqn:diff1}.
+\begin{align}
+\label{eqn:diff1}
+	\frac{\D c_x}{\D z} &= -T_x (c_x - c_y^*)\\
+	\frac{\D c_y}{\D z} &= -T_x (c_x - c_y^*) \frac{Q_x}{Q_y} \nonumber
+\end{align}
+Při pístovém toku jsou však odlišné okrajové podmínky -- nedochází ke skokovým změnám koncentrací, okrajové podmínky jsou tedy vlastně deklaracemi krajních hodnot $c_x$ a $c_y$, jak je uvedeno v rovnicích~\ref{eqn:bound1_1}, ~\ref{eqn:bound1_2}.
+Při návrhovém výpočtu je zde, obdobně jako u modelu s axiální disperzí, jedna okrajová podmínka navíc, která již byla definována v rovnici~\ref{eqn:boundExtra}.
+\begin{align}
+\label{eqn:bound1_1}
+	\left( c_x \right)_{z=0} &= c_\mathrm{F} \\
+\label{eqn:bound1_2}
+	\left( c_y \right)_{z=1} &= c_\mathrm{S}
+\end{align}
+
+Model s pístovým tokem je využit jako mezivýpočet při implementaci axiálně disperzního modelu, jak je popsáno v kapitole~\ref{compTransfer}.
+
+\subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
+\textit{Krátký teoretický popis, proč my na teorii kašleme, nějaká data z literatury, ta ale nestačí a proč}
