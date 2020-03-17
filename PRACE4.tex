@@ -28,7 +28,7 @@ Tabelace funkce je výhodná pro výpočetně nenáročnou implementaci funkce i
 Pro vizualizaci naměřených dat byla vytvořena ještě funkce \textit{plotLLEdata.m}, která do grafu závislosti $u(w)$ vykreslí pro zadanou dvojici fází všechna data LLE, která jsou seskupena do sad dle teploty při měření.
 
 \subsection{Implementace patrového modelu} \label{compStage}
-Rovnovážné funkce využívá patrový model extraktoru, který ze zadané bilance vypočte počet teoretických pater (TP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro popis kapalinové extrakce, jak ji popisuje Perry's Chemical Engineers' Handbook~\cite{Perry_15} (strana~15"-45).
+Rovnovážné funkce využívá patrový model extraktoru, který ze zadané bilance vypočte počet teoretických pater (TP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro popis kapalinové extrakce, jak ji popisuje T. W. Evans~\cite{Evans1934}.
 Hlavním účelem patrového modelu je vyčíslení separační účinnosti laboratorního či průmyslového extraktoru pomocí počtu TP za zadané hmotnostní bilance.
 Kromě toho je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace není možná.
 Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež je vypočtena hodnota $\dot{m}_\mathrm{S,min}$ a nakonec je modifikovanou McCabe"-Thielovou metodou určen počet TP.
@@ -42,7 +42,7 @@ Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extr
 
 \subsection{Implementace přenosového modelu} \label{compTransfer}
 Jak již bylo dříve zmíněno, přenosový model při předpovědi chování extraktoru vychází ze znalostí základních vlastností látek či systému.
-Relevantní vlastnosti látek jsou hustota ($\rho$), dynamická viskozita ($\mu$) a difuzivita kaprolaktamu v dané látce ($D$), vlastnosti systému jsou rovnovážná funkce $u = f(w)$ a mezifázové napětí ($\gamma$).
+Relevantní vlastnosti látek jsou hustota, dynamická viskozita a difuzivita kaprolaktamu v dané látce, vlastnosti systému jsou rovnovážná funkce $u = f(w)$ a mezifázové napětí ($\gamma$).
 Vlastnosti látek byly exportovány z databáze simulačního programu Aspen Plus v širokém rozmezí teplot, aby je bylo možné dle potřeby interpolovat a získat tak hodnoty za libovolně zvolené teploty.
 Hodnoty pochází z různých literárních zdrojů, a to <<<???CITACE???>>>.
 Rovnovážná funkce tabelovaná jako vektor $u$ a $w$ je získána spuštěním funkce \textit{getEqFun.m} popsané v kapitole~\ref{compLLE}.
@@ -81,4 +81,4 @@ Hodnoty $c_x$ a $c_y$ jsou lineárně interpolovány, zatímco hodnoty $d_x$ a $
 Při návrhovém výpočtu je součástí řešení modelu s pístovým tokem také vypočtená výška extraktoru -- pro počáteční odhad výšky modelu s axiální disperzí je použit její dvojnásobek.
 
 \subsubsection{Kvantifikace parametrů přestupu hmoty} \label{compInsfun}
-\textit{lorem ipsum}
+\textit{zde bude pouze implementace, co se řešilo iterativně a tak}

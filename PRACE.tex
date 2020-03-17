@@ -95,14 +95,15 @@ Výsledky této práce budou využity k návrhu extraktorů síranových louhů 
 \addcontentsline{toc}{section}{SEZNAM POUŽITÝCH ZKRATEK}
 \textit{abecedně seřadit\\pokud jsou anglicky, tak: český překlad (english meaning)}\\
 \begin{tabular}{ll}
-	CPL & kaprolaktam\\
-	FID & plamenově-ionizační detektor pro GC\\
-	GC  & plynová chromatografie\\
-	LLE & rovnováha kapalina-kapalina (liquid-liquid equilibrium)\\
-	TCE & trichlorethylen\\
-	TOL & toluen\\
-	TP  & teoretické patro\\
-	SA  & síran amonný\\
+	CPL & kaprolaktam \\
+	FID & plamenově-ionizační detektor pro GC \\
+	GC  & plynová chromatografie \\
+	LLE & rovnováha kapalina-kapalina (liquid-liquid equilibrium) \\
+	RDC & extraktor s rotujícími disky (rotating-disc column) \\
+	TCE & trichlorethylen \\
+	TOL & toluen \\
+	TP  & teoretické patro \\
+	SA  & síran amonný \\
 \end{tabular}
 
 \newpage \section*{SEZNAM SYMBOLŮ}
@@ -111,49 +112,55 @@ Výsledky této práce budou využity k návrhu extraktorů síranových louhů 
 
 \singlespacing
 \begin{tabular}{ll}
-	$a$ & specifická mezifázová plocha [$\mathrm{m^{-1}}$]\\
-	$A$ & plocha píku chromatogramu [$\mathrm{mV \cdot s}$]\\
-	$A$ & průřez kolony [$\mathrm{m^2}$]\\
-	$d_{32}$ & Sauterova střední velikost kapek [$\mathrm{m}$]\\
-	$D$ & difuzivita kaprolaktamu v prostředí [$\mathrm{m^2 \cdot s^{-1}}$]\\
-	$E$ & koeficient axiální disperze [$\mathrm{m^2 \cdot s^{-1}}$]\\
-	$g$ & tíhové zrychlení [$\mathrm{m \cdot s^{-2}}$]\\
-	$K$ & koeficient prostupu hmoty [$\mathrm{m \cdot s^{-1}}$]\\
-	$m$ & hmotnost [$\mathrm{kg}$]\\
-	$\dot{m}$ & hmotnostní tok [$\mathrm{kg \cdot s^{-1}}$]\\
-	$Pe$ & Pécletovo číslo\\
-	$Q$ & objemový tok [$\mathrm{m^3 \cdot s^{-1}}$]\\
-	$r$ & efektivní poloměr kapiláry [$\mathrm{m}$]\\
-	$S_{^i/_j}$ & kalibrační koeficient látky $i$ vůči $j$\\
-	$T_x$ & počet přenosových jednotek vzhledem k fázi x\\
-	$u$ & hmotnostní zlomek CPL v organické fázi\\
-	$V$ & objem [$\mathrm{m^3}$]\\
-	$w$ & hmotnostní zlomek CPL v organické fázi\\
-	$\beta$ & koeficient přestupu hmoty [$\mathrm{m \cdot s^{-1}}$]\\
-	$\gamma$ & mezifázové napětí [$\mathrm{N / m}$]\\
-	$\rho$ & hustota [$\mathrm{kg \cdot m^{-3}}$]\\
-	$\phi$ & zádrž dispergované fáze v kontinuální\\
-	$\Phi$ & korekční faktor pro výpočet mezifázového napětí\\
+	$a$ & specifická mezifázová plocha [$\mathrm{m^{-1}}$] \\
+	$A$ & plocha píku chromatogramu [$\mathrm{mV \cdot s}$] \\
+	$A$ & průřez kolony [$\mathrm{m^2}$] \\
+	$d_{32}$ & Sauterova střední velikost kapek [$\mathrm{m}$] \\
+	$D$ & difuzivita kaprolaktamu v prostředí [$\mathrm{m^2 \cdot s^{-1}}$] \\
+	$E$ & koeficient axiální disperze [$\mathrm{m^2 \cdot s^{-1}}$] \\
+	$g$ & tíhové zrychlení [$\mathrm{m \cdot s^{-2}}$] \\
+	$K$ & koeficient prostupu hmoty [$\mathrm{m \cdot s^{-1}}$] \\
+	$m$ & hmotnost [$\mathrm{kg}$] \\
+	$\dot{m}$ & hmotnostní tok [$\mathrm{kg \cdot s^{-1}}$] \\
+	$N$ & frekvence [Hz] \\
+	$Pe$ & Pécletovo číslo \\
+	$Q$ & objemový tok [$\mathrm{m^3 \cdot s^{-1}}$] \\
+	$r$ & efektivní poloměr kapiláry [$\mathrm{m}$] \\
+	$R$ & poměr toků dispergované a kontinuální fáze \\
+	$S_{^i/_j}$ & kalibrační koeficient látky $i$ vůči $j$ \\
+	$T_x$ & počet přenosových jednotek vzhledem k fázi x \\
+	$u$ & hmotnostní zlomek CPL v organické fázi \\
+	$V$ & objem [$\mathrm{m^3}$] \\
+	$w$ & hmotnostní zlomek CPL v organické fázi \\
+	$\beta$ & koeficient přestupu hmoty [$\mathrm{m \cdot s^{-1}}$] \\
+	$\gamma$ & mezifázové napětí [$\mathrm{N \cdot m^{-1}}$] \\
+	$\varepsilon$ & porozita výplně \\
+	$\rho$ & hustota [$\mathrm{kg \cdot m^{-3}}$] \\
+	$\sigma$ & relativní volná plocha disku \\
+	$\phi$ & zádrž dispergované fáze v kontinuální \\
+	$\Phi$ & korekční faktor pro výpočet mezifázového napětí \\
+	$\chi$ & parametr pro předpověď disperze \\
+	$\psi$ & měrná hustota výkonu [$\mathrm{W \cdot kg^{-1}}$] \\
 \end{tabular}
 
 \vspace{0.5cm} \textbf{Indexy}
 
 \begin{tabular}{ll}
-	* & hodnota v rovnováze\\
-	C & kontinuální fáze\\
-	D & dispergovaná fáze\\
-	aq  & vodná fáze\\
-	org & organická fáze\\
-	x & fáze suroviny\\
-	y & fáze rozpouštědla\\
-	H & těžší fáze\\
-	L & lehčí fáze\\
-	F & surovina\\
-	R & rafinát\\
-	S & solvent\\
-	E & extrakt\\
-	in  & vstupní\\
-	out & výstupní\\
+	* & hodnota v rovnováze \\
+	C & kontinuální fáze \\
+	D & dispergovaná fáze \\
+	aq  & vodná fáze \\
+	org & organická fáze \\
+	x & fáze suroviny \\
+	y & fáze rozpouštědla \\
+	H & těžší fáze \\
+	L & lehčí fáze \\
+	F & surovina \\
+	R & rafinát \\
+	S & solvent \\
+	E & extrakt \\
+	in  & vstupní \\
+	out & výstupní \\
 \end{tabular}
 \onehalfspacing
 

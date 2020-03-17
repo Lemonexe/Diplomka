@@ -17,14 +17,15 @@ Surovinou pro tuto technologie je cyklohexanon, typicky vyráběný oxidací cyk
 Vzniklá sloučenina kyseliny sírové a kaprolaktamu je nakonec neutralizována roztokem amoniaku, v důsledku čehož se reakční směs rozdělí na dvě fáze:
 organickou, která obsahuje většinu kaprolaktamu, vedlejších produktů i část vody, a vodný roztok síranu amonného (dále jen SA) o koncentraci okolo 40~\%, který však vedle stopových nečistot obsahuje také zhruba 1~\% hm. CPL (v této práci bude složení uváděno jako hmotnostní zlomek, pokud nebude uvedeno jinak).
 
-\subsection{Metody extrakce} \label{extraction}
+\subsection{Zařízení pro kapalinovou extrakci} \label{extraction}
 \textit{stručný popis protiproudé extrakce, jaké jsou konstrukční možnosti, KARR UPSCALING}
+zkratka RDC!
 
 \subsection{Matematický popis extraktoru} \label{the_Math}
 Kontinuální protiproudý extraktor v ustáleném stavu lze matematicky popsat buďto patrovým modelem nebo přenosovým modelem, tyto modely se však zásadně liší požadovanými informacemi i možností použití.
 Patrový model, který bude dále popsán až v kapitole~\ref{compStage}, má využití zejména na porovnání separační účinnosti reálných extraktorů na základě změřených bilančních veličin, v případě Karrova extraktoru i na zvětšování měřítka z laboratorních experimentů na průmyslové zařízení, jak bylo popsáno v kapitole~\ref{extraction}.
 
-Naproti tomu přenosový model k problému přistupuje jiným způsobem -- cílem je namodelovat chování extraktoru pouze ze znalostí základních vlastností, jedná se o vlastnosti látek, jako je hustota, dynamická viskozita a difuzivita kaprolaktamu v dané látce, a také o vlastnosti celého systému, jako je mezifázové napětí a popis rovnováhy kapalina-kapalina v podobě rovnovážné funkce: $u=f(w)$.
+Naproti tomu přenosový model k problému přistupuje jiným způsobem -- cílem je namodelovat chování extraktoru pouze ze znalostí základních vlastností, jedná se o vlastnosti látek, jako je hustota~($\rho$), dynamická viskozita~($\mu$) a difuzivita kaprolaktamu v dané látce~($D$), a také o vlastnosti celého systému, jako je mezifázové napětí a popis rovnováhy kapalina-kapalina v podobě rovnovážné funkce: $u=f(w)$.
 
 Ve tomto textu budou dále používány m.j. tyto veličiny: $t$ znamená teplota v °C, $\dot{m}$ je hmotnostní tok, $Q$ je objemový tok, $u$ a $w$ jsou obecně hmotnostní zlomky CPL v organické fázi, resp. ve vodné fázi.
 Veličiny s dolními indexy F, R, S a E se vztahují popořadě k surovině, rafinátu, solventu a extraktu.
@@ -33,20 +34,18 @@ Veličiny s dolními indexy F, R, S a E se vztahují popořadě k surovině, raf
 V této kapitole bude podrobně vysvětlen výpočetní postup, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, kde každá rovnice popisuje jednu fázi.
 Nezávislou veličinou modelu je bezrozměrná výška $z$ definovaná jako podíl výškové souřadnice $l$ vůči celkové výšce extraktoru $L$, a to ve směru od suroviny k rafinátu (či od extraktu k solventu).
 Závislé veličiny jsou $c_x$ a $c_y$, tedy hmotnostní koncentrace CPL ve fázi ochuzované, resp. obohacované o CPL, což v případě této práce vždy znamená fázi vodnou, resp. organickou.
-Tento výpočetní postup, který popsali S.~Hartland a A.~Kumar~\cite{HartlandKumar1997}, je vyjádřen soustavou rovnic~\ref{eqn:diff2}, kde $Pe_x$ a $Pe_y$ jsou Pécletova čísla (definovaná v rovnicích~\ref{eqn:Peclet} a~\ref{eqn:Peclet2}), $T_x$ je počet přenosových jednotek vzhledem k fázi x (definovaný v rovnici~\ref{eqn:Tx}) a $c_y^*$ je taková hodnota $c_x$, která by byla v rovnováze s $c_y$.
+Tento výpočetní postup, který popsali S.~Hartland a A.~Kumar~\cite{HartlandKumar1997}, je vyjádřen soustavou rovnic~\ref{eqn:diff2}, kde $Pe_x$ a $Pe_y$ jsou Pécletova čísla (definováno v rovnici~\ref{eqn:Peclet} pro fázi $i$), $T_x$ je počet přenosových jednotek vzhledem k fázi x (definovaný v rovnici~\ref{eqn:Tx}) a $c_y^*$ je taková hodnota $c_x$, která by byla v rovnováze s $c_y$.
 \begin{align}
 \label{eqn:diff2}
 	\frac{\D^2 c_x}{\D z^2} - Pe_x \frac{\D c_x}{\D z} &=  Pe_x T_x (c_x - c_y^*) \\
 	\frac{\D^2 c_y}{\D z^2} + Pe_y \frac{\D c_y}{\D z} &= -Pe_y T_x (c_x - c_y^*) \frac{Q_x}{Q_y} \nonumber
 \end{align}
-\begin{align}
+\begin{equation}
 \label{eqn:Peclet}
-	Pe_x = \frac{Q_x L}{A E_x} \\
-\label{eqn:Peclet2}
-	Pe_y = \frac{Q_y L}{A E_y}
-\end{align}
-$E_x$ a $E_y$ v rovnicích ~\ref{eqn:Peclet} a~\ref{eqn:Peclet2} jsou koeficienty axiální disperze.
-$K_x$ v rovnici~\ref{eqn:Tx} je koeficient prostupu hmoty vztažený k fázi x, $a$ je specifická mezifázová plocha a $A$ je plocha průřezu extraktoru.
+	Pe_i = \frac{Q_i L}{A E_i}
+\end{equation}
+$E_i$ v rovnici~\ref{eqn:Peclet} je koeficient axiální disperze pro fázi $i$.
+$K_x$ v rovnici~\ref{eqn:Tx} je koeficient prostupu hmoty vztažený vždy k fázi $x$, $a$ je specifická mezifázová plocha a $A$ je plocha průřezu extraktoru.
 \begin{equation}
 	T_x = \frac{K_x a A L}{Q_x}
 \label{eqn:Tx}
@@ -94,6 +93,49 @@ Při návrhovém výpočtu je zde, obdobně jako u modelu s axiální disperzí,
 \end{align}
 
 Model s pístovým tokem je využit jako mezivýpočet při implementaci axiálně disperzního modelu, jak je popsáno v kapitole~\ref{compTransfer}.
+
+\subsection{Charakterizace přenosu hmoty} \label{insfun}
+Výpočet přenosového modelu, jak byl popsán v kapitole~\ref{the_Math}, vyžaduje znalost průřezu extraktoru $A$ a veličin charakterizujících přenos hmoty v extraktoru, a to $K_x$, $E_y$, $E_x$ a $a$.
+Pro přílišnou složitost hydrodynamických výpočtů nelze tyto veličiny určit jinak než na základě empirických rovnic.
+Ty jsou v literatuře dostupné pro různé konstrukce extraktorů, přičemž v této práci byly převzaty rovnice popisující výplňovou kolonu, RDC, Kühniho a Karrův extraktor.
+Tyto empirické vztahy pracují se základními vlastnostmi obou fází ($\rho$, $\mu$ a $D$), mezifázovým napětím $\gamma$ a parametry specifickými pro konstrukci extraktoru, což pro výplňovou kolonu je popis výplně (tvar výplně, charakteristický rozměr $d_\mathrm{P}$, specifická plocha $a_\mathrm{P}$ a porozita $\varepsilon$), pro RDC a Kühniho extraktor je to pouze frekvence $N$ a pro Karrův extraktor jsou parametry hlavně frekvence $N$ a zdvih $s$, případně i relativní volná plocha disku $\sigma$ a vzdálenost mezi disky $H$.
+
+Výpočet koeficientu prostupu hmoty $K_x$ není přímý, skládá se totiž z koeficientů přestupu obou fází ($\beta$), jak je popsáno v rovnici~\ref{eqn:Kx}~\cite{HartlandKumar1997}, kde $m$ je směrnice rovnovážné funkce $c_y = f(c_x)$ na dané souřadnici kolony.
+V některých případech je k dispozici výpočet koeficientů axiální disperze, jindy je namísto toho vypočteno přímo Pécletovo číslo (viz rovnici~\ref{eqn:Peclet}).
+Specifickou mezifázovou plochu $a$ lze vypočítat ze zádrže dispergované fáze $\phi$ a Sauterovy střední velikosti kapek $d_{32}$, jak je popsáno v rovnici~\ref{eqn:aint}~\cite{HartlandKumar1997}.
+Porozita je přitom parametrem pouze pro výplňovou kolonu, zatímco pro ostatní konstrukce extraktoru se předpokládá jednotková porozita, míchadla i hřídel se do ní tedy nezapočítávají.
+Rovnice~\ref{eqn:R_ratio}"-\ref{eqn:Sherwood}~\cite{HartlandKumar1997} pak definují různé mezivýsledky, které budou v následujících podkapitolách často používány.
+Popořadě se jedná o poměr toků dispergované a kontinuální fáze $R$, rychlost kluzu fází (z angl. slip velocity) $v_\mathrm{s}$, střední hustotu $\bar{\rho}$ i rozdíl hustot $\Delta\rho$, Reynoldsovo číslo pro kontinuální fázi (charakterizující její turbulenci), Schmidtovo číslo pro fázi $i$ (charakterizující difúzi a vnitřní tření v kapalině) a konečně Sherwoodovo číslo pro fázi $i$, z nějž lze určit hodnoty $\beta_i$.
+
+\begin{align}
+\label{eqn:Kx}
+	\frac{1}{K_x} &= \frac{1}{\beta_x} + \frac{1}{ \beta_y m } \\
+\label{eqn:aint}
+	a &= \frac{6 \varepsilon \phi }{ d_{32} } \\
+\label{eqn:R_ratio}
+	R &= \frac{ v_\mathrm{D} }{ v_\mathrm{C} } \\
+	v_\mathrm{s} &= \frac{ v_\mathrm{C} }{ \varepsilon (1-\phi) } + \frac{ v_\mathrm{D} }{ \varepsilon \phi} \\
+	\bar{\rho} &= \rho_\mathrm{C} (1-\phi) + \rho_\mathrm{D} \phi \\
+	\Delta\rho &= |\rho_\mathrm{C} - \rho_\mathrm{D}| \\
+	Re_\mathrm{C} &= \frac{ \rho_\mathrm{C} d_{32} v_\mathrm{s} }{ \mu_\mathrm{C} } \\
+	Sc_i &= \frac{ \mu_i }{ \rho_i D_i } \\
+\label{eqn:Sherwood}
+	Sh_i &= \frac{ \beta_i d_{32} }{ D_i } \\
+\label{eqn:chi}
+	\chi &= \frac{\phi}{1 - \phi}  \left(\frac{\rho_\mathrm{D} \mu_\mathrm{C} }{ \rho_\mathrm{C} \mu_\mathrm{D}}\right)^{0.3}
+\end{align}
+Užitečnou dodatkovou informaci můžeme nalézt v rovnici~\ref{eqn:chi}, kde je definován parametr $\chi$, který předpovídá stabilitu disperze~\cite{chi} (strana~149).
+Hodnota menší než 0,3 zaručuje stabilitu dispergované fáze, hodnota do 0,5 stále znamená nejspíše stabilní disperzi, oblast 0,5--2,0 je oblast neurčitá, hodnota větší než 2,0 pak předpovídá možnou inverzi fází, hodnota větší než 3,3 ji zaručuje.
+
+Přenosový model vyžaduje také znalost průřezu extraktoru -- ten je při simulačním výpočtu zadán, zatímco při návrhovém výpočtu je určen pomocí meze zahlcení $v_\mathrm{C,E}$, což je charakteristická rychlost, při jejímž překročení dochází ke značnému únosu dispergované fáze fází kontinuální~\cite{Perry_15} (strana~15"-11).
+Je tedy určen takový průřez, aby rychlost kontinuální fáze $v_\mathrm{C}$ dosahovala hodnoty meze zahlcení redukované na určitý bezpečnostní faktor, obvykle na 50--70~\%.
+
+\subsubsection{Výpočty pro výplňovou kolonu} \label{insfunPacked}
+
+\subsubsection{Výpočty pro RDC a Kühniho extraktor} \label{insfunRotDisc}
+
+\subsubsection{Výpočty pro Karrův extraktor} \label{insfunKarr}
+
 
 \subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
 \textit{Krátký teoretický popis, proč my na teorii kašleme, nějaká data z literatury, ta ale nestačí a proč}
