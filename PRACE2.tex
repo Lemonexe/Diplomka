@@ -132,6 +132,75 @@ Přenosový model vyžaduje také znalost průřezu extraktoru -- ten je při si
 Je tedy určen takový průřez, aby rychlost kontinuální fáze $v_\mathrm{C}$ dosahovala hodnoty meze zahlcení redukované na určitý bezpečnostní faktor, obvykle na 50--70~\%.
 
 \subsubsection{Výpočty pro výplňovou kolonu} \label{insfunPacked}
+Pro návrh výplňové kolony je nejprve nutné vhodně zvolit rozměry a tvar výplně.
+R.~L.~Gayler popisuje výpočet kritické velikosti výplně~\cite{Gayler1953} (viz v rovnici~\ref{eqn:packedDnCrit}), kdy střední dráha kapek mezi dvěma srážkami s výplní je nulová.
+Charakteristická velikost výplně musí být větší než $d_\mathrm{P}^*$, jinak budou kapky deformovány a dále uváděné vztahy nebudou platné, zároveň musí být menší než desetina průměru kolony, aby byl tok dostatečně uniformní, jak uvádí J.~P.~Duroudier~\cite{Duroudier2016}.
+\begin{equation}
+\label{eqn:packedDnCrit}
+	d_\mathrm{P}^* = 2,42 \sqrt{\frac{\gamma}{\Delta\rho g}}
+\end{equation}
+
+Podle rovnic~\ref{eqn:packedVCF}--\ref{eqn:packedVSlipCorr}, které popsali A.~Kumar a S.~Hartland~\cite{Kumar1994}, lze vypočítat popořadě mez zahlcení, zádrž dispergované fáze, střední velikost kapek a rychlost kluzu.
+Rovnice obsahují číselné konstanty označované jako $C_i$, kde hodnota $C_1$ závisí na tvaru výplně: 0,28 pro Raschigovy kroužky a Intalox kroužky, 0,37 pro Berlova sedla a 0,20 pro Pallovy kroužky.
+\begin{equation}
+\label{eqn:packedVCF}
+	v_\mathrm{C,F} =
+	\frac{ \sqrt{g/a_\mathrm{P}} }{ \left(1 + \sqrt{R} \right)^2 }
+	C_1 \varepsilon^{1,54} \left( \frac{ \Delta\rho }{ \rho_\mathrm{D} } \right)^{0,41}
+	\left( \frac{1}{a_\mathrm{P}} \sqrt[3]{\frac{\Delta\rho^2 g}{\mu_\mathrm{C}^2}} \right)^{0,3}
+	\left( \mu_\mathrm{C} \sqrt{\frac{a_\mathrm{P}}{ \Delta\rho \gamma }} \right)^{0,15}
+\end{equation}
+Hodnoty $C_2$, $C_3$ a $C_4$ závisí na tom, zda-li probíhá přenos hmoty z kont. fáze do disp. fáze, nebo zda-li je tomu naopak:\\
+$C_2$ nabývá hodnot 6,16, resp. 3,76.\\
+$C_3$ nabývá hodnot 2,24, resp. 3,13.\\
+$C_4$ nabývá hodnot 0,27, resp. 0,38.
+\begin{equation}
+\label{eqn:packedPhi}
+	\phi =
+	C_2 \varepsilon^{-1,11}
+	\sqrt{ \frac{ \rho_\mathrm{C} }{ \Delta\rho } }
+    \left( \frac{1}{a_\mathrm{P}} \sqrt[3]{ \frac{ \rho_\mathrm{C}^2 g }{ \mu_\mathrm{C}^2 } } \right)^{-0,72}
+    \left( \frac{ \mu_\mathrm{D} }{ \mu_\mathrm{C} } \right)^{0,1}
+    \left( v_\mathrm{D} \sqrt[3]{ \frac{ \rho_\mathrm{C} }{ g \mu_\mathrm{C}} } \right)^{1,03}
+    \exp\left( 0,95 v_\mathrm{C} \sqrt[3]{ \frac{ \rho_\mathrm{C} }{ g \mu_\mathrm{C}} } \right)
+\end{equation}
+\begin{equation}
+\label{eqn:packedD32}
+	d_{32} =
+	\sqrt{ \frac{ \gamma }{ \Delta\rho g } }
+	C_3 \left( \frac{ \mu_\mathrm{W} g^{0,25} }{ \Delta\rho^{0,25} \gamma^{0,75} } \frac{ \rho_\mathrm{W} }{ \rho_\mathrm{D} } \right)^{0,19}
+\end{equation}
+Veličiny $\rho_\mathrm{W}$ a $\mu_\mathrm{W}$ v rovnici~\ref{eqn:packedD32} představují standardní hustotu (1000 $\mathrm{kg / m^3}$) a standardní viskozitu ($10^{-3} \mathrm{Pa \cdot s}$).
+Přibližně se jedná o hodnoty pro čistou vodu při 25°C.
+\begin{equation}
+\label{eqn:packedVSlipCorr}
+    v_\mathrm{s} =
+    \sqrt[3]{ \frac{ g \mu_\mathrm{C} }{ \rho_\mathrm{C} } }  C_4 \varepsilon^{-0,17}
+    \left( \frac{ \Delta\rho }{ \rho_\mathrm{C} } \right)^{0,41}
+    \left( \frac{1}{ a_\mathrm{P} } \sqrt[3]{ \frac{ \rho_\mathrm{C}^2 g }{ \mu_\mathrm{C}^2 } } \right)^{0,59}
+    \left( \frac{ \mu_\mathrm{D} }{ \mu_\mathrm{C} } \right)^{-0,1} (1 - \phi)
+\end{equation}
+Ačkoliv $v_\mathrm{s}$ lze exaktně vypočítat pomocí rovnice~\ref{eqn:vSlipCalc} na základě předchozích výpočtů, existuje také přímá empirická korelace v rovnici~\ref{eqn:packedVSlipCorr}.
+J.~P.~Duroudier~\cite{Duroudier2016} doporučuje použít průměr obou získaných hodnot.
+
+Způsoby výpočty koeficientů přestupu hmoty jsou odlišné -- A.~F.~Seibert a J.~R.~Fair~\cite{Seibert1988} popsali nepřímý výpočet $\beta_\mathrm{C}$ pomocí Sherwoodova kritéria (rovnice~\ref{eqn:packedBetaC}), zatímco výpočet $\beta_\mathrm{D}$ je přímý, jak uvádějí G.~S.~Laddha a T.~E.~Degaleesan~\cite{Laddha1978} (rovnice~\ref{eqn:packedBetaD}).
+\begin{align}
+\label{eqn:packedBetaC}
+	Sh_\mathrm{C} = 0,698 Sc_\mathrm{C}^{0,4} Re_\mathrm{C}^{0,5} (1-\phi) \\
+\label{eqn:packedBetaD}
+	\beta_\mathrm{D} = 0,023 v_\mathrm{s} Sc_\mathrm{D}^{-0,5}
+\end{align}
+
+Nakonec jsou vypočtena Pécletova čísla dle T.~Vermeulena a~kol.~\cite{Vermeulen1966} -- rovnice~\ref{eqn:packedDAC} a~\ref{eqn:packedDAD} popisují jejich výpočet pro kontiniální a dispergovanou fázi.
+Pro kontinuální fázi je navíc v rovnici~\ref{eqn:packedDACLim} definována nejvyšší možná hodnota $Pe_\mathrm{C}$, která je použita v případě, že ji vypočtená hodnota přesáhne.
+\begin{align}
+\label{eqn:packedDAC}
+	Pe_\mathrm{C} = 0,01268 \left( R \sqrt{ \frac{ 0,6 \mu_\mathrm{C} }{ \rho_\mathrm{C} d_\mathrm{P} v_\mathrm{C} } } \right)^{-0,9043} \\
+\label{eqn:packedDACLim}
+	Pe_\mathrm{C, Lim} = 0,1443 \ln \left( \frac{ v_\mathrm{C} \rho_\mathrm{C} d_\mathrm{P} }{ \mu_\mathrm{C} (1-\varepsilon) } \right) - 0,232 \\
+\label{eqn:packedDAD}
+	Pe_\mathrm{D} = 0,45 \exp \left( - \frac{0,405}{R} \right)
+\end{align}
 
 \subsubsection{Výpočty pro RDC a Kühniho extraktor} \label{insfunRotDisc}
 
