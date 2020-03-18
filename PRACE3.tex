@@ -101,8 +101,8 @@ Při využití metody vnitřní kalibrace lze využít vzorec \ref{eqn:GC_cal}, 
 Při známých navážkách původního vzorku i standardu je tedy nejprve vypočten $w_\mathrm{Hep,s}$, následně $w_\mathrm{CPL,s}$ a nakonec lze určit $w_\mathrm{CPL}$, tedy obsah CPL v původním vzorku.
 
 \begin{equation}
-	w_\mathrm{CPL,s} = S_{^\mathrm{CPL}/_\mathrm{Hep}} w_\mathrm{Hep,s} \frac{A_\mathrm{CPL}}{A_\mathrm{Hep}}
 \label{eqn:GC_cal}
+	w_\mathrm{CPL,s} = S_{^\mathrm{CPL}/_\mathrm{Hep}} w_\mathrm{Hep,s} \frac{A_\mathrm{CPL}}{A_\mathrm{Hep}}
 \end{equation}
 
 Pro zpracování chromatogramů však bylo nejprve nutné provést kalibraci pomocí roztoků se známým obsahem n"-heptanolu, který je při dané metodice víceméně konstantní, i kaprolaktamu, jehož obsah se může mezi měřenými vzorky řádově lišit.
@@ -110,7 +110,7 @@ Kalibrační vzorky proto byly připraveny v širokém rozsahu koncentrací, a t
 Pro každý kalibrační vzorek byla určena hodnota $S_{^\mathrm{CPL}/_\mathrm{Hep}}$, a jelikož koeficient nevykazoval trend vůči obsahu CPL, byla v této práci používána průměrná hodnota.
 
 \subsection{Měření mezifázového napětí} \label{gamma}
-Pro účely sestavení matematických modelů se později ukázalo, že je třeba změřit také mezifázové napětí, neboť sice lze v literatuře nalézt vzorce na jeho odhad~\cite{Demond1993,Perry_15}, ty však bývají velmi nespolehlivé.
+Pro účely sestavení matematických modelů se později ukázalo, že je třeba změřit také mezifázové napětí, neboť sice lze v literatuře nalézt vzorce na jeho odhad, jak uvádí například G.~N.~Antonov~\cite{Antonov1907} či D.~J.~Donahue a F.~E.~Bartell~\cite{Donahue1952}, ty však bývají značně nespolehlivé.
 Proto bylo provedeno měření pro systém \ce{H2O}--SA--CPL--TOL, aby mohla být zjištěna závislost mezifázového napětí na koncentraci CPL ve vodné fázi.
 
 Měření bylo provedeno pomocí kapkové metody (též známá jako stalagmometrická metoda), která je klasicky využívána pro měření povrchového napětí, lze ji však modifikovat pro měření mezifázového napětí, a to tak, že je nádoba stalagmometru naplněna vzorkem těžší fáze a kapilára je ponořena pod hladinu vzorku lehčí fáze, kde se tak tvoří rozhraní obou fází.
@@ -119,12 +119,12 @@ Doba mezi odtržením kapek musí být dostatečně dlouhá, jinak je měření 
 
 Mezifázové napětí~($\gamma$) lze vypočítat postupem, který popsali J.~L.~Lando a H.~T.~Oakley~\cite{Lando1967}. Vztah je uveden v rovnici~\ref{eqn:gamma}, kde $\rho_\mathrm{H}$ a $\rho_\mathrm{L}$ znamená hustotu těžší, resp. lehčí fáze, $m$ je hmotnost jedné kapky, $g$ tíhové zrychlení, $r$ poloměr kapiláry a $\Phi$ je korekční faktor, pro který autoři uvádějí empirický vztah. Ten je zde uveden v rovnici~\ref{eqn:gammaCorr}.
 \begin{equation}
-	\gamma = \frac{\rho_\mathrm{H} - \rho_\mathrm{L}}{\rho_\mathrm{H}} \frac{m g \Phi}{2 \pi r}
 \label{eqn:gamma}
+	\gamma = \frac{\rho_\mathrm{H} - \rho_\mathrm{L}}{\rho_\mathrm{H}} \frac{m g \Phi}{2 \pi r}
 \end{equation}
 \begin{equation}
-	\Phi = -1.044 \left(\frac{r}{\sqrt[3]{m / \rho_\mathrm{H}}}\right)^2 + 1.754 \frac{r}{\sqrt[3]{m / \rho_\mathrm{H}}} + 0.929
 \label{eqn:gammaCorr}
+	\Phi = -1.044 \left(\frac{r}{\sqrt[3]{m / \rho_\mathrm{H}}}\right)^2 + 1.754 \frac{r}{\sqrt[3]{m / \rho_\mathrm{H}}} + 0.929
 \end{equation}
 \subsection{Laboratorní model extraktoru} \label{labmodel}
 \textit{lorem ipsum}

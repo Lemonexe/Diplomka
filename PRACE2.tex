@@ -47,8 +47,8 @@ Tento výpočetní postup, který popsali S.~Hartland a A.~Kumar~\cite{HartlandK
 $E_i$ v rovnici~\ref{eqn:Peclet} je koeficient axiální disperze pro fázi $i$.
 $K_x$ v rovnici~\ref{eqn:Tx} je koeficient prostupu hmoty vztažený vždy k fázi $x$, $a$ je specifická mezifázová plocha a $A$ je plocha průřezu extraktoru.
 \begin{equation}
-	T_x = \frac{K_x a A L}{Q_x}
 \label{eqn:Tx}
+	T_x = \frac{K_x a A L}{Q_x}
 \end{equation}
 
 Řešení soustavy rovnic~\ref{eqn:diff2} musí splňovat okrajové podmínky, které jsou pro bod $z=0$ definovány v rovnicích~\ref{eqn:bound2_1} a~\ref{eqn:bound2_2}.
@@ -70,8 +70,8 @@ V bodě $z=1$ musí být splněny podmínky definované v rovnicích~\ref{eqn:bo
 Při výše uvedeném výpočtu je $L$ považováno za konstantu, takovýto výpočet tedy slouží jako výpočet simulační, zrovna tak jej však lze realizovat jako výpočet návrhový, kdy $L$ je v soustavě dif. rovnic neznámým parametrem, který je hledán na základě počátečního odhadu.
 Při zavedení neznámého parametru je však nutné specifikovat další okrajovou podmínku, kterou je deklarace požadované koncentrace rafinátu (rovnice~\ref{eqn:boundExtra}).
 \begin{equation}
-	\left( c_x \right)_{z=1} = c_\mathrm{R}
 \label{eqn:boundExtra}
+	\left( c_x \right)_{z=1} = c_\mathrm{R}
 \end{equation}
 
 Programová implementace tohoto modelu je popsána v kapitole~\ref{compTransfer}.
@@ -114,6 +114,7 @@ Popořadě se jedná o poměr toků dispergované a kontinuální fáze $R$, ryc
 	a &= \frac{6 \varepsilon \phi }{ d_{32} } \\
 \label{eqn:R_ratio}
 	R &= \frac{ v_\mathrm{D} }{ v_\mathrm{C} } \\
+\label{eqn:vSlipCalc}
 	v_\mathrm{s} &= \frac{ v_\mathrm{C} }{ \varepsilon (1-\phi) } + \frac{ v_\mathrm{D} }{ \varepsilon \phi} \\
 	\bar{\rho} &= \rho_\mathrm{C} (1-\phi) + \rho_\mathrm{D} \phi \\
 	\Delta\rho &= |\rho_\mathrm{C} - \rho_\mathrm{D}| \\
@@ -122,12 +123,12 @@ Popořadě se jedná o poměr toků dispergované a kontinuální fáze $R$, ryc
 \label{eqn:Sherwood}
 	Sh_i &= \frac{ \beta_i d_{32} }{ D_i } \\
 \label{eqn:chi}
-	\chi &= \frac{\phi}{1 - \phi}  \left(\frac{\rho_\mathrm{D} \mu_\mathrm{C} }{ \rho_\mathrm{C} \mu_\mathrm{D}}\right)^{0.3}
+	\chi &= \frac{\phi}{1 - \phi}  \left(\frac{\rho_\mathrm{D} \mu_\mathrm{C} }{ \rho_\mathrm{C} \mu_\mathrm{D}}\right)^{0,3}
 \end{align}
 Užitečnou dodatkovou informaci můžeme nalézt v rovnici~\ref{eqn:chi}, kde je definován parametr $\chi$, který předpovídá stabilitu disperze~\cite{chi} (strana~149).
 Hodnota menší než 0,3 zaručuje stabilitu dispergované fáze, hodnota do 0,5 stále znamená nejspíše stabilní disperzi, oblast 0,5--2,0 je oblast neurčitá, hodnota větší než 2,0 pak předpovídá možnou inverzi fází, hodnota větší než 3,3 ji zaručuje.
 
-Přenosový model vyžaduje také znalost průřezu extraktoru -- ten je při simulačním výpočtu zadán, zatímco při návrhovém výpočtu je určen pomocí meze zahlcení $v_\mathrm{C,E}$, což je charakteristická rychlost, při jejímž překročení dochází ke značnému únosu dispergované fáze fází kontinuální~\cite{Perry_15} (strana~15"-11).
+Přenosový model vyžaduje také znalost průřezu extraktoru -- ten je při simulačním výpočtu zadán, zatímco při návrhovém výpočtu je určen pomocí meze zahlcení $v_\mathrm{C,F}$, což je charakteristická rychlost, při jejímž překročení dochází ke značnému únosu dispergované fáze fází kontinuální~\cite{Perry_15} (strana~15"-11).
 Je tedy určen takový průřez, aby rychlost kontinuální fáze $v_\mathrm{C}$ dosahovala hodnoty meze zahlcení redukované na určitý bezpečnostní faktor, obvykle na 50--70~\%.
 
 \subsubsection{Výpočty pro výplňovou kolonu} \label{insfunPacked}

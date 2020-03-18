@@ -9,14 +9,14 @@ Tato část programu slouží ke zpracování naměřených dat LLE na funkce po
 Vzhledem k tomu, že data byla měřena pouze v malém koncentračním rozmezí ($w$ nepřesahuje 1~\%), bylo možné použít empirickou rovnici namísto modelů aktivitních koeficientů, které, byť jsou termodynamicky konzistentní, nebylo možné spolehlivě proložit.
 V daném rozsahu $w$ a $t$ plně postačuje funkce, která je polynomem třetího řádu vůči $w$ (avšak bez absolutního členu, neboť funkce musí procházet bodem $(0,0)$) a polynom prvního řádu (lineární funkce) vůči $t$, jak je popsáno v rovnici~\ref{eqn:eqFun0}. Tato funkce má 5 parametrů $p_1$--$p_5$.
 \begin{equation}
-	u = (p_1 w^3 + p_2 w^2 + p_3 w)(p_4 t + p_5)
 \label{eqn:eqFun0}
+	u = (p_1 w^3 + p_2 w^2 + p_3 w)(p_4 t + p_5)
 \end{equation}
 V tomto tvaru jsou však parametry na sobě jasně závislé.
 Numerický algoritmus na nelineární regresi, který je v prostředí MATLAB poskytován, potom hledá optimum obtížně a nespolehlivě, proto byla funkce použita v jiném tvaru, který je popsán v rovnici~\ref{eqn:eqFun}. Tato funkce má 6 parametrů $p_1$--$p_6$.
 \begin{equation}
-	u = p_1 w^3 t + p_2 w^2 t + p_3 w t + p_4 w^3 + p_5 w^2 + p_6 w
 \label{eqn:eqFun}
+	u = p_1 w^3 t + p_2 w^2 t + p_3 w t + p_4 w^3 + p_5 w^2 + p_6 w
 \end{equation}
 Do regrese by sice bylo možné zahrnout obsah síranu amonného ve vodné fázi jako třetí nezávislou proměnnou, regrese by tím však byla méně spolehlivá.
 Obsah SA lze přitom považovat za zaručený, z důvodů popsaných v kapitole~\ref{CHON} jej navíc ani není možné příliš měnit, proto byly jako nezávislé proměnné zahrnuty pouze $w$ a $t$.
@@ -28,7 +28,7 @@ Tabelace funkce je výhodná pro výpočetně nenáročnou implementaci funkce i
 Pro vizualizaci naměřených dat byla vytvořena ještě funkce \textit{plotLLEdata.m}, která do grafu závislosti $u(w)$ vykreslí pro zadanou dvojici fází všechna data LLE, která jsou seskupena do sad dle teploty při měření.
 
 \subsection{Implementace patrového modelu} \label{compStage}
-Rovnovážné funkce využívá patrový model extraktoru, který ze zadané bilance vypočte počet teoretických pater (TP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro popis kapalinové extrakce, jak ji popisuje T. W. Evans~\cite{Evans1934}.
+Rovnovážné funkce využívá patrový model extraktoru, který ze zadané bilance vypočte počet teoretických pater (TP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro popis kapalinové extrakce, jak ji popisuje T.~W.~Evans~\cite{Evans1934}.
 Hlavním účelem patrového modelu je vyčíslení separační účinnosti laboratorního či průmyslového extraktoru pomocí počtu TP za zadané hmotnostní bilance.
 Kromě toho je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace není možná.
 Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež je vypočtena hodnota $\dot{m}_\mathrm{S,min}$ a nakonec je modifikovanou McCabe"-Thielovou metodou určen počet TP.
@@ -62,18 +62,18 @@ V případě návrhového výpočtu je třeba zahrnout i počáteční odhad vý
 
 Protože algoritmy řešení okrajových problémů nebývají zcela robustní a řešení může často divergovat, je třeba poskytnout dobrý počáteční odhad řešení.
 Model s axiální disperzí se bez kvalitního odhadu ukázal být velmi nestabilní, proto je nejprve numericky vypočten model s pístovým tokem, jehož řešení je snazší a zcela přitom postačuje jednoduchý odhad lineárních profilů koncentrace.
-V případě návrhového výpočtu, kdy jsou koncentrace vstupních i výstupních proudů známy, jsou lineární profily od $c_F$ do $c_R$, resp. od $c_E$ do $c_S$, v případě simulačního výpočtu lze namísto $c_R$ a $c_S$ dosadit nulovou koncentraci.
+V případě návrhového výpočtu, kdy jsou koncentrace vstupních i výstupních proudů známy, jsou lineární profily od $c_F$ do $c_R$, resp. od $c_E$ do $c_S$, v případě simulačního výpočtu lze namísto $c_R$ a $c_S$ dosadit nulu.
 Pro odhad výšky, je-li třeba, postačuje použít výšku ekvivalentu teoretického patra 0,5~m, která se vynásobí počtem TP získaným zavoláním patrového modelu.
 Diferenciální rovnice prvního řádu i jejich počáteční podmínky byly již popsány v rovnicích~\ref{eqn:diff1}, \ref{eqn:bound1_1}, \ref{eqn:bound1_2} a~\ref{eqn:boundExtra}.
 
 Nalezené řešení pro model s pístovým tokem má využití pro sestavení počátečního odhadu pro model s axiální disperzí, ten je však nutné nejprve upravit ze soustavy dvou dif. rovnic druhého řádu, jak jsou uvedeny v rovnici~\ref{eqn:diff2}, na soustavu čtyř rovnic prvního řádu.
 To je možné provést zavedením derivací koncentrací jako dvou dalších závislých proměnných: $d_x = \D c_x / \D z$ a $d_y = \D c_y / \D z$.
-Diferenciální model připravený pro numerický řešič je rozveden v rovnici~\ref{eqn:diff24}.
+Diferenciální model ve formě připravené pro numerický řešič je rozveden v rovnici~\ref{eqn:diff24}.
 \begin{align}
 \label{eqn:diff24}
 	\frac{\D c_x}{\D z} &= d_x \\
-	\frac{\D c_y}{\D z} &= d_y \\ \nonumber
-	\frac{\D d_x}{\D z} &=  Pe_x d_x + Pe_x T_x (c_x - c_y^*) \\ \nonumber
+	\frac{\D c_y}{\D z} &= d_y \nonumber \\
+	\frac{\D d_x}{\D z} &=  Pe_x d_x + Pe_x T_x (c_x - c_y^*) \nonumber \\
 	\frac{\D d_y}{\D z} &= -Pe_y d_y - Pe_y T_x (c_x - c_y^*) \frac{Q_x}{Q_y} \nonumber
 \end{align}
 Protože řešení modelu s pístovým tokem je ve formě vektorů hodnot $c_x$ a $c_y$ odpovídajících vektoru $z$, odhadovou funkci pro model s axiální disperzí lze realizovat jako algoritmus, který pro požadované $z$ nalezne dva sousedící body existujícího řešení, mezi nimiž požadované $z$ leží.
