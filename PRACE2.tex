@@ -98,7 +98,7 @@ Model s pístovým tokem je využit jako mezivýpočet při implementaci axiáln
 Výpočet přenosového modelu, jak byl popsán v kapitole~\ref{the_Math}, vyžaduje znalost průřezu extraktoru $A$ a veličin charakterizujících přenos hmoty v extraktoru, a to $K_x$, $E_y$, $E_x$ a $a$.
 Pro přílišnou složitost hydrodynamických výpočtů nelze tyto veličiny určit jinak než na základě empirických rovnic.
 Ty jsou v literatuře dostupné pro různé konstrukce extraktorů, přičemž v této práci byly převzaty rovnice popisující výplňovou kolonu, RDC, Kühniho a Karrův extraktor.
-Tyto empirické vztahy pracují se základními vlastnostmi obou fází ($\rho$, $\mu$ a $D$), mezifázovým napětím $\gamma$ a parametry specifickými pro konstrukci extraktoru, což pro výplňovou kolonu je popis výplně (tvar výplně, charakteristický rozměr $d_\mathrm{P}$, specifická plocha $a_\mathrm{P}$ a porozita $\varepsilon$), pro RDC a Kühniho extraktor je to pouze frekvence $N$ a pro Karrův extraktor jsou parametry hlavně frekvence $N$ a zdvih $s$, případně i relativní volná plocha disku $\sigma$ a vzdálenost mezi disky $H$.
+Tyto empirické vztahy pracují se základními vlastnostmi obou fází ($\rho$, $\mu$ a $D$), mezifázovým napětím $\gamma$ a parametry specifickými pro konstrukci extraktoru, což pro výplňovou kolonu je popis výplně (tvar výplně, charakteristický rozměr $d_\mathrm{P}$, specifická plocha $a_\mathrm{P}$ a porozita $\varepsilon$), pro RDC a Kühniho extraktor je to pouze frekvence $N$ a pro Karrův extraktor jsou parametry hlavně frekvence $N$ a zdvih $s$, případně i relativní volná plocha disku $\sigma$ a vzdálenost mezi disky $h$.
 
 Výpočet koeficientu prostupu hmoty $K_x$ není přímý, skládá se totiž z koeficientů přestupu obou fází ($\beta$), jak je popsáno v rovnici~\ref{eqn:Kx}~\cite{HartlandKumar1997}, kde $m$ je směrnice rovnovážné funkce $c_y = f(c_x)$ na dané souřadnici kolony.
 V některých případech je k dispozici výpočet koeficientů axiální disperze, jindy je namísto toho vypočteno přímo Pécletovo číslo (viz rovnici~\ref{eqn:Peclet}).
@@ -130,6 +130,8 @@ Hodnota menší než 0,3 zaručuje stabilitu dispergované fáze, hodnota do 0,5
 
 Přenosový model vyžaduje také znalost průřezu extraktoru -- ten je při simulačním výpočtu zadán, zatímco při návrhovém výpočtu je určen pomocí meze zahlcení $v_\mathrm{C,F}$, což je charakteristická rychlost, při jejímž překročení dochází ke značnému únosu dispergované fáze fází kontinuální~\cite{Perry_15} (strana~15"-11).
 Je tedy určen takový průřez, aby rychlost kontinuální fáze $v_\mathrm{C}$ dosahovala hodnoty meze zahlcení redukované na určitý bezpečnostní faktor, obvykle na 50--70~\%.
+
+
 
 \subsubsection{Výpočty pro výplňovou kolonu} \label{insfunPacked}
 Pro návrh výplňové kolony je nejprve nutné vhodně zvolit rozměry a tvar výplně.
@@ -186,25 +188,94 @@ J.~P.~Duroudier~\cite{Duroudier2016} doporučuje použít průměr obou získan�
 Způsoby výpočty koeficientů přestupu hmoty jsou odlišné -- A.~F.~Seibert a J.~R.~Fair~\cite{Seibert1988} popsali nepřímý výpočet $\beta_\mathrm{C}$ pomocí Sherwoodova kritéria (rovnice~\ref{eqn:packedBetaC}), zatímco výpočet $\beta_\mathrm{D}$ je přímý, jak uvádějí G.~S.~Laddha a T.~E.~Degaleesan~\cite{Laddha1978} (rovnice~\ref{eqn:packedBetaD}).
 \begin{align}
 \label{eqn:packedBetaC}
-	Sh_\mathrm{C} = 0,698 Sc_\mathrm{C}^{0,4} Re_\mathrm{C}^{0,5} (1-\phi) \\
+	Sh_\mathrm{C} &= 0,698 Sc_\mathrm{C}^{0,4} Re_\mathrm{C}^{0,5} (1-\phi) \\
 \label{eqn:packedBetaD}
-	\beta_\mathrm{D} = 0,023 v_\mathrm{s} Sc_\mathrm{D}^{-0,5}
+	\beta_\mathrm{D} &= 0,023 v_\mathrm{s} Sc_\mathrm{D}^{-0,5}
 \end{align}
 
 Nakonec jsou vypočtena Pécletova čísla dle T.~Vermeulena a~kol.~\cite{Vermeulen1966} -- rovnice~\ref{eqn:packedDAC} a~\ref{eqn:packedDAD} popisují jejich výpočet pro kontiniální a dispergovanou fázi.
 Pro kontinuální fázi je navíc v rovnici~\ref{eqn:packedDACLim} definována nejvyšší možná hodnota $Pe_\mathrm{C}$, která je použita v případě, že ji vypočtená hodnota přesáhne.
 \begin{align}
 \label{eqn:packedDAC}
-	Pe_\mathrm{C} = 0,01268 \left( R \sqrt{ \frac{ 0,6 \mu_\mathrm{C} }{ \rho_\mathrm{C} d_\mathrm{P} v_\mathrm{C} } } \right)^{-0,9043} \\
+	Pe_\mathrm{C} &= 0,01268 \left( R \sqrt{ \frac{ 0,6 \mu_\mathrm{C} }{ \rho_\mathrm{C} d_\mathrm{P} v_\mathrm{C} } } \right)^{-0,9043} \\
 \label{eqn:packedDACLim}
-	Pe_\mathrm{C, Lim} = 0,1443 \ln \left( \frac{ v_\mathrm{C} \rho_\mathrm{C} d_\mathrm{P} }{ \mu_\mathrm{C} (1-\varepsilon) } \right) - 0,232 \\
+	Pe_\mathrm{C, Lim} &= 0,1443 \ln \left( \frac{ v_\mathrm{C} \rho_\mathrm{C} d_\mathrm{P} }{ \mu_\mathrm{C} (1-\varepsilon) } \right) - 0,232 \\
 \label{eqn:packedDAD}
-	Pe_\mathrm{D} = 0,45 \exp \left( - \frac{0,405}{R} \right)
+	Pe_\mathrm{D} &= 0,45 \exp \left( - \frac{0,405}{R} \right)
 \end{align}
+
+
 
 \subsubsection{Výpočty pro RDC a Kühniho extraktor} \label{insfunRotDisc}
 
+
+
 \subsubsection{Výpočty pro Karrův extraktor} \label{insfunKarr}
+Při návrhu Karrova extraktoru je nutné zvolit více geometrických a provozních parametrů, neboť nejsou k dispozici vztahy mezi parametry, jako tomu bylo u extraktorů s rotujícími míchadly.
+Existují však doporučené meze, v nichž by se parametry měly pohybovat -- A.~Kumar a S.~Hartland~\cite{Kumar1999} uvádějí pro frekvenci ($N$) rozmezí 2--7~Hz, pro zdvih ($s$) 6,5--25~mm, pro relativní volnou plochu disku ($\sigma$) 0,50--0,60 a pro vzdálenost mezi disky ($h$) 25--50~mm.
+Vliv volby těchto parametrů bude dále studován v kapitole~\ref{restables}.
+
+H.~M.~I.~Baird and Z.~J.~Shen~\cite{Baird1984} popsali způsob výpočtu objemové hustoty disipovaného výkonu ($\psi$), střední velikosti kapek, meze zahlcení a zádrže dispergované fáze.
+Nejprve je vypočteno $\psi$ pomocí rovnice~\ref{eqn:Karrpsi}, kde parametr $C_0$ je koeficient průtoku kapaliny skrze perforace disků -- nižší hodnota znamená vyšší disipaci energie, a tedy intenzivnější míchání.
+Hodnotu tohoto parametru lze dohledat v dřívější publikaci jednoho z autorů~\cite{Baird1979}, kde se uvádí 0,6 jako hodnota pro typickou konstrukci Karrova extraktoru.
+Jednoduchým geometrickým odvozením lze pak získat $P$, čili výkon na jeden disk (rovnice~\ref{eqn:KarrP}).
+Následuje výpočet $d_{32}$ (rovnice~\ref{eqn:KarrD32}) a charakteristické rychlosti $v^*$ (rovnice~\ref{eqn:KarrVchar}), která figuruje ve vztahu mezi rychlostí kontinuální fáze a zádrží dispergované fáze (rovnice~\ref{eqn:KarrVC_phi}).
+Do této rovnice lze dosadit hodnotu zádrže při zahlcení, která je vypočtena pomocí rovnice~\ref{eqn:Karrphif}, a získat tak mez zahlcení $v_\mathrm{C,F}$.
+
+\begin{align}
+\label{eqn:Karrpsi}
+	\psi &= \frac{2\pi^2}{3} \frac{ 1 - \sigma^2 }{ h C_0^2 \sigma^2 } \bar{\rho} (s N)^3 \\
+\label{eqn:KarrP}
+	P &= \frac{\pi}{4} d_\mathrm{C}^2 h \psi\\
+\label{eqn:KarrD32}
+	d_{32} &=  0,36 \frac{ \gamma^{0,6} }{ \psi^{0,4} \bar{\rho}^{0,2} } \\
+\label{eqn:KarrVchar}
+	v^* &= d_{32} \sqrt[3]{ \frac{ g^2 \Delta\rho^2 }{ \rho_\mathrm{C} \mu_\mathrm{C} } } K^{-2/3} \\
+\label{eqn:Karrphif}
+	\phi_\mathrm{F} &= \frac{ \sqrt{9R^2 + 54R + 1} - 7R - 1 }{ 10 - 10R } \\
+\label{eqn:KarrVC_phi}
+	v_\mathrm{C} &= v^* \frac{ (1-\phi)^2 }{ (1-R) \phi^{1/3} + R \phi^{-2/3} }
+\end{align}
+
+A.~Kumar a S.~Hartland~\cite{Kumar1999} popsali výpočet Sherwoodových kritérií pro obě fáze.
+Výpočet pro kontinuální fázi se opírá o analyticky odvozené hodnoty $Sh_\mathrm{C,stag}$, která platí pro zcela stojaté kapky (rovnice~\ref{eqn:KarrShCstag}), a $Sh_\mathrm{C,circ}$, která platí pro laminární cirkulaci uvnitř kapek (rovnice~\ref{eqn:KarrShCcirc}).
+Výpočet $Sh_\mathrm{C}$ a $Sh_\mathrm{D}$ je uveden v rovnicích~\ref{eqn:KarrShC} a~\ref{eqn:KarrShD}, kde $\kappa = \mu_\mathrm{D}/\mu_\mathrm{C}$.
+Pro přehlednost byl do rovnice~\ref{eqn:KarrShCaux} vyčleněn výraz využívaný v obou rovnicích.
+\begin{align}
+\label{eqn:KarrShCstag}
+	Sh_\mathrm{C,stag} &= 2,43 + 0,775 Re_\mathrm{C}^{1/2} Sc_\mathrm{C}^{1/3} + 0,0103 Re_\mathrm{C} Sc_\mathrm{C}^{1/3} \\
+\label{eqn:KarrShCcirc}
+	Sh_\mathrm{C,circ} &= 50 + 2 \sqrt{ \frac{ Re_\mathrm{C} Sc_\mathrm{C} }{ \pi } }
+\end{align}
+\begin{equation}
+\label{eqn:KarrShC}
+    \frac{ \frac{ Sh_\mathrm{C} }{ 1-\phi } - Sh_\mathrm{C,stag} }{ Sh_\mathrm{C,circ} - \frac{ Sh_\mathrm{C} }{ 1-\phi }} =
+    5,26 \cdot 10^{-2} Re_\mathrm{C}^{1/3 + 6,59 \cdot 10^{-2} Re_\mathrm{C}^{1/4}}
+    \sqrt[3]{ \frac{ Sc_\mathrm{C} v_\mathrm{s} \mu_\mathrm{C} }{ \gamma } }
+    \frac{ 1 }{ 1 + \kappa^{1,1} }
+    \cdot X
+\end{equation}
+\begin{equation}
+\label{eqn:KarrShD}
+    Sh_\mathrm{D} = 17,7 +
+    \frac{ 3,19 \cdot 10^{-3} (Re_\mathrm{C} Sc_\mathrm{D}^{1/3})^{1,7} }{ 1 + 1,43 \cdot 10^{-2} (Re_\mathrm{C} Sc_\mathrm{D}^{1/3})^{0,7} }
+    \left( \frac{ \rho_\mathrm{D} }{ \rho_\mathrm{C} } \right)^{2/3}
+    \frac{1}{ 1 + \kappa^{2/3} }
+    \cdot X
+\end{equation}
+\begin{equation}
+\label{eqn:KarrShCaux}
+    X = 1 + 2,44 \sqrt[3]{ \frac{ \psi }{ \bar{\rho} g } \left( \frac{ \rho_\mathrm{C} }{ g \gamma } \right)^{1/4} }
+\end{equation}
+
+Axiální disperze v Karrově extraktoru není tak podrobně probádána jako u jiných typů extraktorů.
+M.~H.~I.~Baird and S.~D.~Kim~\cite{Baird1976} uvádí rovnici~\ref{eqn:KarrDAC}, která popisuje kontinuální fázi, zatímco pro dispergovanou fázi nezbývá než přijmout aproximaci $Pe_\mathrm{C} = Pe_\mathrm{D}$.
+Rovnice používá jednotky Hz pro $N$ a cm pro $s$ a $h$, jednotkou $E_\mathrm{C}$ je tedy $\mathrm{cm^2/s}$.
+\begin{equation}
+\label{eqn:KarrDAC}
+	E_\mathrm{C} = 5,62 \left( \frac{s}{2} \right)^{1,41} N^{0,73} h^{-0,88}
+\end{equation}
+
 
 
 \subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
