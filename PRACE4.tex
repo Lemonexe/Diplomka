@@ -62,8 +62,8 @@ V případě návrhového výpočtu je třeba zahrnout i počáteční odhad vý
 
 Protože algoritmy řešení okrajových problémů nebývají zcela robustní a řešení může často divergovat, je třeba poskytnout dobrý počáteční odhad řešení.
 Model s axiální disperzí se bez kvalitního odhadu ukázal být velmi nestabilní, proto je nejprve numericky vypočten model s pístovým tokem, jehož řešení je snazší a zcela přitom postačuje jednoduchý odhad lineárních profilů koncentrace.
-V případě návrhového výpočtu, kdy jsou koncentrace vstupních i výstupních proudů známy, jsou lineární profily od $c_F$ do $c_R$, resp. od $c_E$ do $c_S$, v případě simulačního výpočtu lze namísto $c_R$ a $c_S$ dosadit nulu.
-Pro odhad výšky, je-li třeba, postačuje použít výšku ekvivalentu teoretického patra 0,5~m, která se vynásobí počtem TP získaným zavoláním patrového modelu.
+V případě návrhového výpočtu, kdy jsou koncentrace vstupních i výstupních proudů známy, jsou lineární profily od $c_F$ do $c_R$, resp. od $c_E$ do $c_S$, v případě simulačního výpočtu lze dosadit namísto $c_R$ nulu a namísto $c_E$ 1~\%.
+Pro odhad výšky, je-li třeba, postačuje použít výšku teoretického patra 0,5~m, která se vynásobí počtem TP získaným zavoláním patrového modelu.
 Diferenciální rovnice prvního řádu i jejich počáteční podmínky byly již popsány v rovnicích~\ref{eqn:diff1}, \ref{eqn:bound1_1}, \ref{eqn:bound1_2} a~\ref{eqn:boundExtra}.
 
 Nalezené řešení pro model s pístovým tokem má využití pro sestavení počátečního odhadu pro model s axiální disperzí, ten je však nutné nejprve upravit ze soustavy dvou dif. rovnic druhého řádu, jak jsou uvedeny v rovnici~\ref{eqn:diff2}, na soustavu čtyř rovnic prvního řádu.
@@ -78,8 +78,41 @@ Diferenciální model ve formě připravené pro numerický řešič je rozveden
 \end{align}
 Protože řešení modelu s pístovým tokem je ve formě vektorů hodnot $c_x$ a $c_y$ odpovídajících vektoru $z$, odhadovou funkci pro model s axiální disperzí lze realizovat jako algoritmus, který pro požadované $z$ nalezne dva sousedící body existujícího řešení, mezi nimiž požadované $z$ leží.
 Hodnoty $c_x$ a $c_y$ jsou lineárně interpolovány, zatímco hodnoty $d_x$ a $d_y$ jsou vypočteny běžnou dvoubodovou formulí pro numerickou derivaci.
-Při návrhovém výpočtu je součástí řešení modelu s pístovým tokem také vypočtená výška extraktoru -- pro počáteční odhad výšky modelu s axiální disperzí je použit její dvojnásobek.
+Při návrhovém výpočtu je součástí řešení modelu s pístovým tokem také vypočtená výška extraktoru -- její dvojnásobek je použit jako počáteční odhad výšky pro model s axiální disperzí.
+
+Hlavním výsledkem modelu s axiální disperzí je pak řešení diferenciálního modelu, tedy funkce $(c_x, c_y, d_x, d_y) = f(z)$ ve formě vektorů hodnot.
+Při návrhovém výpočtu je klíčovým výsledkem vypočtená výška extraktoru, při simulačním výpočtu zase hmotnostní bilance extraktoru.
 
 \subsubsection{Kvantifikace parametrů přestupu hmoty} \label{compInsfun}
-\textit{zde bude pouze implementace, co se řešilo iterativně a tak}
-že pro karra jsme využili rci \ref{eqn:KarrVC_phi} dvakrát, nejdřív na VCF pak na phi
+V kapitole~\ref{insfun} byly podrobně popsány vztahy, pomocí nichž lze kvantifikovat veličiny charakterizující přestup hmoty v extraktoru, kterými jsou specifická mezifázová plocha $a$, koeficient prostupu hmoty $K_x$ a koeficienty axiální disperze $E_y$ a $E_x$.
+V případě návrhového výpočtu je také vypočtena plocha průřezu kolony $A$ (resp. průměr kolony $d_\mathrm{C}$) vyplývající z meze zahlcení $v_\mathrm{C,F}$.
+Mez zahlcení je však vypočtena i v případě simulačního výpočtu, neboť se jedná o velmi důležitou provozní vlastnost.
+
+Výpočty se zcela liší pro výplňovou kolonu, extraktory s rotujícími míchadly a Karrův extraktor, a to nejen tvarem rovnic, ale i posloupností výpočtů.
+Ve všech případech jsou však vypočteny následující veličiny jakožto mezivýsledky: střední velikost kapek $d_{32}$, zádrž dispergované fáze $\phi$ a rychlost kluzu $v_\mathrm{s}$, která z $\phi$ vyplývá dle rovnice~\ref{eqn:vSlipCalc}.
+Hodnota $a$ pak přímo vyplývá z hodnot $d_{32}$ a $\phi$ dle rovnice~\ref{eqn:aint}.
+
+Některé dříve uváděné rovnice nejsou explicitní pro veličinu, k jejímuž výpočtu slouží.
+V takových případech byla rovnice převedena na anulovaný tvar a řešena pomocí \textit{fzero}, což je vestavěná funkce, kterou MATLAB nabízí k hledání kořene.
+
+Řešení výplňové kolony (viz kapitolu~\ref{insfunPacked}), které sestavil J."-P.~Duroudier~\cite{Duroudier2016}, je poměrně přímočaré a mez zahlcení lze přitom vypočítat odděleně od zbytku výpočtu.
+Před samotným výpočtem je provedena kontrola, zda-li zvolený rozměr výplně splňuje dříve popsaná omezení, aby bylo možné zaručit spolehlivost dalších výpočtů.
+Nejprve je pak vypočtena $v_\mathrm{C,F}$, následuje $\phi$, $d_{32}$ a empirický výpočet $v_\mathrm{s}$ pomocí $\phi$.
+K dispozici je však také přímý geometrický výpočet, jako výsledná hodnota rychlosti kluzu proto poslouží průměrná hodnota obou metod výpočtu.
+Pomocí Reynoldsova čísla v kontinuální fázi $Re_\mathrm{C}$, Schmidtových čísel pro obě fáze ($Sc$) a předchozích mezivýsledků je vypočten koeficient přestupu pro disp. fázi $\beta_\mathrm{D}$, Sherwoodovo číslo pro kont. fázi $Sh_\mathrm{C}$ (a z něj vyplývající $\beta_\mathrm{C}$) a Pécletova čísla pro kont. i disp. fázi.
+Pécletovo číslo pro kont. fázi je přitom omezeno maximální hodnotou závisející pouze na $Re_\mathrm{C}$, kterou údajně nemůže překročit, ta je proto použita v případě, že by ji standardně vypočtená hodnota převyšovala.
+
+Řešení pro RDC či Kühniho extraktor (viz kapitolu~\ref{insfunRotDisc}), které sestavili S.~Hartland a A.~Kumar~\cite{HartlandKumar1997}, mají společný postup řešení, byť někdy využívají odlišné tvary rovnic.
+Při návrhovém výpočtu program začíná iterativním cyklem, poněvadž měrný disipovaný výkon $\psi$ velmi strmě závisí na rozměru kolony, a tedy i rozměru míchadla.
+Počáteční odhad je pak dle doporučení autorů definován jako $v_\mathrm{C} = 4 \cdot 10^{-3}~\mathrm{m/s}$, zatímco při simulačním výpočtu jsou hodnoty $d_\mathrm{C}$ i $v_\mathrm{C}$ od počátku známy.
+Následuje výpočet ostatních geometrických veličin, výpočet $\psi$ a z něj vyplývající $d_{32}$.
+Pro určení $v_\mathrm{C,F}$ je nejprve vypočtena zádrž při zahlcení $\phi_\mathrm{F}$, která z $d_{32}$ vychází.
+Při návrhovém výpočtu je z hodnoty $v_\mathrm{C,F}$ určena nová hodnota $v_\mathrm{C}$ a cyklus se opakuje až do konvergence, kdy relativní rozdíl mezi $d_\mathrm{C}$ činí méně než $10^{-4}$.
+Po ukončení cyklu je vypočtena $\phi$, $Sh_\mathrm{C}$ pro určení $\beta_\mathrm{C}$, přímá korelace $\beta_\mathrm{D}$ a hodnoty $E$ pro obě fáze.
+
+Řešení Karrova extraktoru (viz kapitolu~\ref{insfunKarr}), které bylo v této práci sestaveno za použití různých literárních zdrojů~\cite{Baird1984,Kumar1999,Baird1976,Baird1979}, je opět iterativní, a to kvůli potřebě znát střední hustotu $\bar{\rho}$ pro výpočet $\psi$.
+Nejprve je tedy odhadnuta zádrž $\phi = 0,05$ a v každé iteraci je vypočteno nejprve $\psi$ a z něj vyplývající $d_{32}$.
+Rovnice~\ref{eqn:KarrVC_phi}, která popisuje vztah mezi rychlostí kont. fáze $v_\mathrm{C}$ a $\phi$, je poprvé využita na výpočet $v_\mathrm{C,F}$ dosazením vypočtené hodnoty $\phi_\mathrm{F}$ (zádrž při zahlcení) a podruhé na určení $\phi$ pomocí $v_\mathrm{C}$ (ta vyplývá buďto ze zadaných rozměrů kolony, nebo vypočtené $v_\mathrm{C,F}$).
+Cyklus se poté opakuje, a vzhledem k tomu, jak malý je vliv $\phi$ na $\bar{\rho}$, bývá velice rychle dosažena konvergence (kdy relativní rozdíl $\phi$ činí méně než $10^{-4}$).
+Po ukončení cyklu je pak proveden výpočet $Sh_\mathrm{C}$, $Sh_\mathrm{D}$ a přímá korelace $E_\mathrm{C}$.
+Protože korelace $E_\mathrm{D}$ nebyla v literatuře nalezena, je jako aproximace předpokládána rovnost $Pe_\mathrm{C} = Pe_\mathrm{D}$.
