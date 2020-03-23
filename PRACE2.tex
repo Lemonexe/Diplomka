@@ -12,14 +12,67 @@ V literatuře je popsáno mnoho technologií na výrobu kaprolaktamu, z toho nej
 
 \subsubsection{Tradiční výroba z cyklohexanonu} \label{CHON}
 \textit{udělat reakční schéma, napsat proč je obsah síranu takový či makový}
+~\cite{Ullmann_CPL}
 
 Surovinou pro tuto technologie je cyklohexanon, typicky vyráběný oxidací cyklohexanu. Ten je nejprve substituován hydroxylaminem na cyklohexanon-oxim <<???CITACE: Ullmann???>> a následně podroben Beckmannově přesmyku katalyzovaném koncentrovanou kyselinou sírovou.
 Vzniklá sloučenina kyseliny sírové a kaprolaktamu je nakonec neutralizována roztokem amoniaku, v důsledku čehož se reakční směs rozdělí na dvě fáze:
 organickou, která obsahuje většinu kaprolaktamu, vedlejších produktů i část vody, a vodný roztok síranu amonného (dále jen SA) o koncentraci okolo 40~\%, který však vedle stopových nečistot obsahuje také zhruba 1~\% hm. CPL (v této práci bude složení uváděno jako hmotnostní zlomek, pokud nebude uvedeno jinak).
 
 \subsection{Zařízení pro kapalinovou extrakci} \label{extraction}
-\textit{stručný popis protiproudé extrakce, jaké jsou konstrukční možnosti, KARR UPSCALING}
-zkratka RDC!
+Existuje mnoho konstrukčních možností, kterými lze realizovat kontinuální protiproudou kapalinovou extrakci.
+V této kapitole budou tedy stručně popsány nejběžnější druhy zařízení, jak je popisuje E.~Müller a~kol. v~Ullmannově encyklopedii~\cite{Ullmann_Extraction}, případně T.~C.~Frank a~kol. v~Perryho příručce~\cite{Perry_15}.
+Extraktory lze rozdělit nejlépe dle způsobu dodávání mechanické práce na nemíchané extraktory, extraktory s pulzním mícháním a extraktory s rotujícími míchadly.
+
+Pro úplnost lze též dodat, že alternativou ke kontinuální protiproudé extrakci je soustava mísičů a usazováků, nebo centrifugální extraktor.
+Centrifugální extraktory jsou konstrukčně vůbec nejsložitější, jsou tedy nákladné na pořízení i provoz, a používají se tedy pouze tam, kde je velmi nízký rozdíl hustot, nebo kde je nutná krátká doba zdržení (zejména farmaceutický průmysl).
+Naproti tomu systém mísič-usazovák je poměrně univerzální zařízení, které lze libovolně škálovat co do průtoku i separační účinnost.
+Nevýhodou jsou však rozměry zařízení, které kvůli horizontálnímu uspořádání zabírá velký areál, a také fakt, že právě jeden mísič-usazovák tvoří jedno teoretické patro (TP), takže je tento systém vhodný spíše tam, kde není potřeba vysoký počet TP.
+
+Spolu s výběrem zařízení je také důležité rozhodnout, která z fází bude dispergována, a která kontinuální.
+Existuje doporučení, které platí obecně, avšak zejména pro Karrův extraktor (viz níže), a to že dispergovaná fáze by neměla smáčet materiál, z něhož je vyroben vnitřní plášť extraktoru i veškeré součástky uvnitř, aby nedošlo ke koalescenci dispergované fáze při kontaktu s materiálem.
+To by vedlo k větším kapkám i méně rovnoměrné distribuci jejich velikosti~\cite{Ullmann_Extraction} (strana~259, 269).
+V případě extrakce CPL z roztoků SA by tedy měla být vodná fáze dispergována, neboť se předpokládá, že extraktor bude vyroben z kovového materiálu, a ty jsou obecně vodnými roztoky hůře smáčeny oproti organickým rozpouštědlům.
+Ještě vhodnější by však nejspíše bylo použítí polymeru.
+
+\subsubsection{Nemíchané extraktory} \label{extractionPacked}
+Extraktory bez míchání obecně vykazují nízkou účinnost ve srovnání s míchanými extraktory, neboť míchání zvětšuje specifickou mezifázovou plochu, avšak jsou konstrukčně jednodušší, a tedy levnější.
+Díky hrubější disperzi lze typicky očekávat vyšší meze zahlcení, a tedy vyšší kapacity.
+Nejjednodušší a nejstarší typy jsou extraktory sprchové, kdy je disperze zajištěna pouze distributorem na vstupu disp. fáze do kolony, a extraktory sítové, kdy jsou pravidelně rozmístěna síta pokrývající celý průřez kolony, na nichž se dispergovaná fáze zadržuje a opět rozděluje na tenké pramínky či kapky.
+Vyšší účinnost, a tedy možnost zmenšit rozměry zařízení, poskytuje kolona se sypanou výplní, které bude věnována pozornost ve výpočetní části této práce (kapitoly~\ref{insfunPacked},~\ref{resmodel})
+Obdobně jako při destilaci, absorbci a podobných procesech se mohou použít například Raschigovy kroužky, Pallovy kroužky, Berlova sedla, Intalox sedla apod.
+
+\subsubsection{Extraktory s pulzním mícháním} \label{extractionKarr}
+Extraktory s pulzním mícháním jsou vždy vybaveny perforovanými disky, které jsou rozmístěny s pravidelným odstupem jako u sítového extraktoru, a míchání je realizováno buďto pulzním tokem, nebo vibrací disků.
+V extraktoru s pulzním tokem (angl. \textit{pulsed sieve-plate column}) jsou disky v koloně připevněné a pulzování je zajištěno speciálním čerpadlem umístěném v té částí kolony, kde vstupuje dispergovaná fáze, zatímco extraktor s vibrujícími disky (Karrův extraktor) má disky umístěné na axiálně se pohybující hřídeli.
+Karrův extraktor je vhodnou volbou díky vysoké účinnosti, nízké axiální disperzi, použitelnosti i pro emulzifikující systémy, ale také díky zkušenostem s jeho dlouhodobým provozem v areálu Spolany, proto bude v této práci podrobně studován nejen ve výpočtní části (kapitoly~\ref{insfunKarr} a~\ref{resmodel}), ale též experimentálně (kapitoly~\ref{labmodel} a~\ref{reslabmodel}).
+
+Je třeba také připomenout další velkou výhodou Karrova extraktoru, kterou je snadné zvětšování měřítka čili \textit{upscaling} díky rovnoměrnější disipaci energie.
+U extraktorů s rotujícími míchadly je značně nerovnoměrná distribuce výkonu v průřezu kolony, neboť míchání je intenzivnější dále od osy otáčení -- disipovaný výkon je dokonce závislý na páté mocnině průměru míchadla (viz rovnice~\ref{eqn:rotDiscNP} a~\ref{eqn:kuhniNP}).
+U nemíchaných extraktorů se zase samovolně tvoří nerovnoměrný tok.
+U Karrova extraktoru k těmto jevům nedochází či dochází méně, a proto byly popsány vztahy, které lze údajně použít na spolehlivý odhad upscalingu laboratorního extraktoru na provozní, popř. poloprovozní.
+Sám A.~Karr~\cite{Karr1985} uvádí vztahy, které jsou vypsány v rovnicích~\ref{eqn:KarrUpscaleHETS}--\ref{eqn:KarrUpscalePsi}.
+První z rovnic popisuje vztah mezi minimální výškou ekvivalentu teoretického patra ($HETS$) a průměrem kolony $D$ -- vyjadřuje tedy fakt, že širší extraktor bude i za optimálních podmínek vykazovat nižší separační účinnost.
+Druhá z rovnic pak ukazuje, jak se bude při zvětšování průměru posouvat optimální hodnota frekvence $N$.
+Poslední rovnice ilustruje zjištění, že výkon jednoho míchadla $P$ je přímo úměrný jeho ploše $A$, tedy že plošná hustota výkonu $P/A$ je prakticky konstantní.
+\begin{align}
+\label{eqn:KarrUpscaleHETS}
+	\frac{(HETS)_2}{(HETS)_1} &= \left( \frac{D_2}{D_1} \right)^{0,38} \\
+\label{eqn:KarrUpscaleN}
+	\left( \frac{N_2}{N_1} \right) &= \left( \frac{D_1}{D_2} \right)^{0,14} \\
+\label{eqn:KarrUpscalePsi}
+	\frac{P_2 / A_2}{P_1 / A_1} &= \left( \frac{D_1}{D_2} \right)^{0,04} \approx 1
+\end{align}
+
+\subsubsection{Extraktory s rotujícími míchadly} \label{extractionRotDisc}
+Bylo vynalezeno mnoho typů extraktorů s rotujícími míchadly, v této práci však bude studován pouze extraktor s rotujícími disky (RDC, angl. \textit{rotating-disc column}), který je také již dlouho zařazen do procesu ve Spolaně, a Kühniho extraktor, neboť je konstrukčně podobný a i jeho matematický popis je analogický.
+Oba tyto typy jsou vybaveny rotující hřídelí s míchadly (rotory), které mají menší průměr než kolona (viz kapitolu~\ref{insfunRotDisc}).
+Rotory mají u RDC podobu hladkých disků, u Kühniho extraktoru se jedná o turbíny, mezi rotory se pak nacházejí zarážky (statory), které jsou u Kühniho kolony perforované, u RDC nikoliv.
+Mechanismus míchání lze vysvětlit tak, že větší kapky dispergované fáze jsou rotorem urychleny od středu ke kraji, kde dojde ke kontaktu se statorem a disipaci energie.
+Výhodou těchto extraktorů je údajná vyšší kapacita a konstrukční jednoduchost oproti Karrovu extraktoru, nevýhodou je značná axiální disperze, která snižuje hybnou sílu přenosu hmoty, a tedy i separační účinnost.
+Tyto extraktory také nelze použití pro systémy s vysokou tendencí k emulzifikaci -- dle zjištění A.~Karra a~kol.~\cite{Karr1990} je pozorováno výrazné zhoršení účinnosti i kapacity RDC při přídavku povrchově aktivního kontaminantu, zatímcu u Karrova extraktoru nebylo pozorováno tak výrazné zhoršení.
+Z alternativních konstrukcí lze zmínit QVF extraktor a Scheibelův extraktor, které jsou konstrukčně podobné Kühniho extraktoru, liší se jen tvarem rotorů a statorů.
+Velmi atypický je extraktor Graesserův (angl. též \textit{raining-bucket contactor}) -- fáze protékají nad sebou v horizontálně položeném válcovém zařízení, kde rotující součásti vytvářejí vertikální míchání.
+Tento extraktor byl vyvinut pro systémy s extrémní tendencí k emulzifikaci, má však velmi malou kapacitu.
 
 \subsection{Matematický popis extraktoru} \label{the_Math}
 Kontinuální protiproudý extraktor v ustáleném stavu lze matematicky popsat buďto patrovým modelem nebo přenosovým modelem, tyto modely se však zásadně liší požadovanými informacemi i možností použití.
@@ -422,3 +475,4 @@ Rovnice používá jednotky Hz pro $N$ a cm pro $s$ a $h$, jednotkou $E_\mathrm{
 
 \subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
 \textit{Krátký teoretický popis, proč my na teorii kašleme, nějaká data z literatury, ta ale nestačí a proč}
+NRTL~\cite{NRTL} a UNIQUAC~\cite{UNIQUAC1,UNIQUAC2}

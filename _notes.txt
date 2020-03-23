@@ -16,7 +16,6 @@
 	> psát kapitoly:
 		exp
 		lit
-		výpočty
 		výsledky
 		závěr, souhrn +EN, thx
 	>> vytvořit obrázky - vše co nejvíc černobílé
