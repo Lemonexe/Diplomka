@@ -24,7 +24,7 @@ V této kapitole budou tedy stručně popsány nejběžnější druhy zařízen�
 Extraktory lze rozdělit nejlépe dle způsobu dodávání mechanické práce na nemíchané extraktory, extraktory s pulzním mícháním a extraktory s rotujícími míchadly.
 
 Pro úplnost lze též dodat, že alternativou ke kontinuální protiproudé extrakci je soustava mísičů a usazováků, nebo centrifugální extraktor.
-Centrifugální extraktory jsou konstrukčně vůbec nejsložitější, jsou tedy nákladné na pořízení i provoz, a používají se tedy pouze tam, kde je velmi nízký rozdíl hustot, nebo kde je nutná krátká doba zdržení (zejména farmaceutický průmysl).
+Centrifugální extraktory jsou konstrukčně vůbec nejsložitější, jsou nákladné na pořízení i provoz, a používají se tedy pouze tam, kde je velmi nízký rozdíl hustot, nebo kde je nutná krátká doba zdržení (zejména farmaceutický průmysl).
 Naproti tomu systém mísič-usazovák je poměrně univerzální zařízení, které lze libovolně škálovat co do průtoku i separační účinnost.
 Nevýhodou jsou však rozměry zařízení, které kvůli horizontálnímu uspořádání zabírá velký areál, a také fakt, že právě jeden mísič-usazovák tvoří jedno teoretické patro (TP), takže je tento systém vhodný spíše tam, kde není potřeba vysoký počet TP.
 
@@ -39,17 +39,17 @@ Extraktory bez míchání obecně vykazují nízkou účinnost ve srovnání s m
 Díky hrubější disperzi lze typicky očekávat vyšší meze zahlcení, a tedy vyšší kapacity.
 Nejjednodušší a nejstarší typy jsou extraktory sprchové, kdy je disperze zajištěna pouze distributorem na vstupu disp. fáze do kolony, a extraktory sítové, kdy jsou pravidelně rozmístěna síta pokrývající celý průřez kolony, na nichž se dispergovaná fáze zadržuje a opět rozděluje na tenké pramínky či kapky.
 Vyšší účinnost, a tedy možnost zmenšit rozměry zařízení, poskytuje kolona se sypanou výplní, které bude věnována pozornost ve výpočetní části této práce (kapitoly~\ref{insfunPacked},~\ref{resmodel})
-Obdobně jako při destilaci, absorbci a podobných procesech se mohou použít například Raschigovy kroužky, Pallovy kroužky, Berlova sedla, Intalox sedla apod.
+Obdobně jako při destilaci, absorbci a podobných procesech lze jako výplň použít například Raschigovy kroužky, Pallovy kroužky, Berlova sedla, Intalox sedla apod.
 
 \subsubsection{Extraktory s pulzním mícháním} \label{extractionKarr}
 Extraktory s pulzním mícháním jsou vždy vybaveny perforovanými disky, které jsou rozmístěny s pravidelným odstupem jako u sítového extraktoru, a míchání je realizováno buďto pulzním tokem, nebo vibrací disků.
 V extraktoru s pulzním tokem (angl. \textit{pulsed sieve-plate column}) jsou disky v koloně připevněné a pulzování je zajištěno speciálním čerpadlem umístěném v té částí kolony, kde vstupuje dispergovaná fáze, zatímco extraktor s vibrujícími disky (Karrův extraktor) má disky umístěné na axiálně se pohybující hřídeli.
 Karrův extraktor je vhodnou volbou díky vysoké účinnosti, nízké axiální disperzi, použitelnosti i pro emulzifikující systémy, ale také díky zkušenostem s jeho dlouhodobým provozem v areálu Spolany, proto bude v této práci podrobně studován nejen ve výpočtní části (kapitoly~\ref{insfunKarr} a~\ref{resmodel}), ale též experimentálně (kapitoly~\ref{labmodel} a~\ref{reslabmodel}).
 
-Je třeba také připomenout další velkou výhodou Karrova extraktoru, kterou je snadné zvětšování měřítka čili \textit{upscaling} díky rovnoměrnější disipaci energie.
+Je třeba také připomenout další velkou výhodou Karrova extraktoru, kterou je snadné zvětšování měřítka díky rovnoměrnější disipaci energie.
 U extraktorů s rotujícími míchadly je značně nerovnoměrná distribuce výkonu v průřezu kolony, neboť míchání je intenzivnější dále od osy otáčení -- disipovaný výkon je dokonce závislý na páté mocnině průměru míchadla (viz rovnice~\ref{eqn:rotDiscNP} a~\ref{eqn:kuhniNP}).
 U nemíchaných extraktorů se zase samovolně tvoří nerovnoměrný tok.
-U Karrova extraktoru k těmto jevům nedochází či dochází méně, a proto byly popsány vztahy, které lze údajně použít na spolehlivý odhad upscalingu laboratorního extraktoru na provozní, popř. poloprovozní.
+U Karrova extraktoru k těmto jevům dochází méně, a proto byly popsány vztahy, které lze údajně použít na spolehlivý odhad zvětšení měřítka z laboratorního extraktoru na poloprovozní, popř. provozní.
 Sám A.~Karr~\cite{Karr1985} uvádí vztahy, které jsou vypsány v rovnicích~\ref{eqn:KarrUpscaleHETS}--\ref{eqn:KarrUpscalePsi}.
 První z rovnic popisuje vztah mezi minimální výškou ekvivalentu teoretického patra ($HETS$) a průměrem kolony $D$ -- vyjadřuje tedy fakt, že širší extraktor bude i za optimálních podmínek vykazovat nižší separační účinnost.
 Druhá z rovnic pak ukazuje, jak se bude při zvětšování průměru posouvat optimální hodnota frekvence $N$.
@@ -69,7 +69,7 @@ Oba tyto typy jsou vybaveny rotující hřídelí s míchadly (rotory), které m
 Rotory mají u RDC podobu hladkých disků, u Kühniho extraktoru se jedná o turbíny, mezi rotory se pak nacházejí zarážky (statory), které jsou u Kühniho kolony perforované, u RDC nikoliv.
 Mechanismus míchání lze vysvětlit tak, že větší kapky dispergované fáze jsou rotorem urychleny od středu ke kraji, kde dojde ke kontaktu se statorem a disipaci energie.
 Výhodou těchto extraktorů je údajná vyšší kapacita a konstrukční jednoduchost oproti Karrovu extraktoru, nevýhodou je značná axiální disperze, která snižuje hybnou sílu přenosu hmoty, a tedy i separační účinnost.
-Tyto extraktory také nelze použití pro systémy s vysokou tendencí k emulzifikaci -- dle zjištění A.~Karra a~kol.~\cite{Karr1990} je pozorováno výrazné zhoršení účinnosti i kapacity RDC při přídavku povrchově aktivního kontaminantu, zatímcu u Karrova extraktoru nebylo pozorováno tak výrazné zhoršení.
+Tyto extraktory také nelze použití pro systémy s vysokou tendencí k emulzifikaci -- dle zjištění A.~Karra a~kol.~\cite{Karr1990} je pozorováno výrazné zhoršení účinnosti i kapacity RDC při přídavku povrchově aktivního kontaminantu, zatímcu u Karrova extraktoru není zhoršení tak výrazné.
 Z alternativních konstrukcí lze zmínit QVF extraktor a Scheibelův extraktor, které jsou konstrukčně podobné Kühniho extraktoru, liší se jen tvarem rotorů a statorů.
 Velmi atypický je extraktor Graesserův (angl. též \textit{raining-bucket contactor}) -- fáze protékají nad sebou v horizontálně položeném válcovém zařízení, kde rotující součásti vytvářejí vertikální míchání.
 Tento extraktor byl vyvinut pro systémy s extrémní tendencí k emulzifikaci, má však velmi malou kapacitu.
@@ -304,7 +304,7 @@ Hodnota $C_1^a$ je použita při přenosu hmoty z kont. fáze do disp. fáze, ho
 	\Xhline{2pt}
 	extraktor & $C_1^a$ & $C_1^b$ & $C_2$ & $C_3$ & $n_1$ & $n_2$ & $n_3$ \\ \hline
 	RDC   & 1 & 1,29 & 2,54 & 0,97  & 0,64 & -0,45 & -1,12 \\
-	Kühni & 1 & 3,04 & 1,60 & 0.034 & 0,45 & -0,63 & -0,38 \\
+	Kühni & 1 & 3,04 & 1,60 & 0,034 & 0,45 & -0,63 & -0,38 \\
 	\Xhline{2pt}
 \end{tabular} \end{center} \end{table}
 
@@ -474,5 +474,20 @@ Rovnice používá jednotky Hz pro $N$ a cm pro $s$ a $h$, jednotkou $E_\mathrm{
 
 
 \subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
-\textit{Krátký teoretický popis, proč my na teorii kašleme, nějaká data z literatury, ta ale nestačí a proč}
-NRTL~\cite{NRTL} a UNIQUAC~\cite{UNIQUAC1,UNIQUAC2}
+Teoretický popis rovnováhy kapalina-kapalina (LLE) byl již mnoha autory podrobně zpracován a termodynamicky podložen.
+Pro matematický popis LLE lze tedy využít termodynamických modelů, které mají tu výhodu, že jejich parametry mají fyzikální význam, proto lze předpokládat určitou univerzální platnost, nebo se spolehnout na jednodušší empirické rovnice, které jsou však striktně omezeny na rozsah naměřených dat a extrapolace bývá velmi nespolehlivá.
+Termodynamických modelů existuje celá řada, mají však společný základ -- dle Perryho příručky od T.~C.~Franka a~kol.~\cite{Perry_15} vychází z podmínky minimalizaci Gibbsovy energie, kterou lze vyjádřit rovností chemických potenciálů ve fázích A a B, a to pro všechna chemická individua $i$.
+Při rovnosti tlaku a teploty v obou fázích lze chemický potenciál vyjádřit dle rovnice~\ref{eqn:TDactivity} jako součin molárních zlomků $y$ a aktivitních koeficientů $\gamma$, které jsou funkcí pouze teploty a složení.
+\begin{equation}
+\label{eqn:TDactivity}
+	y_i^\mathrm{A} \gamma_i^\mathrm{A} = y_i^\mathrm{B} \gamma_i^\mathrm{B}
+\end{equation}
+Pro určení aktivitních koeficientů se nejčastěji používají osvědčené modely NRTL~\cite{NRTL} či UNIQUAC~\cite{UNIQUAC}.
+Vzhledem k tomu, že rovnice pro výpočet $\gamma$ mají stejný tvar pro všechny chemické složky, slouží tyto modely k úplnému popisu LLE -- zahrnují i částečnou mísitelnost vodné a organické fáze, rovnováhu pak lze graficky znázornit v trojúhelníkovém diagramu jako binodální křivku a konody.
+V případě aplikace na kapalinovou extrakci se typicky jedná o systémy s jednou binodální křivkou, avšak nutno podotknout, že toto matematické vyjádření je obecné, a lze jej aplikovat i pro složitější situace (či naopak pro jednofázové systémy).
+
+Právě z toho důvodu, že výše zmíněné modely implicitně zahrnují mísitelnost fází, je pro každý naměřený bod nutná znalost koncentrací všech složek ve všech fázích, jinak nebude možné všechny parametry modelu určit.
+Zároveň je třeba naměřit data v celém možném rozsahu, jinak budou některé parametry určeny s velkou nejistotou a vytrácí se pak výhoda těchto modelů, kterou je reálný fyzikální význam nalezených parametrů.
+Pokud se tedy pro daný systém předpokládá nemísitelnost fází a rozsah naměřených koncentrací přecházející složky je malý, což je případ i této práce, je vhodnější použít rovnici empirickou.
+Zvolená empirická rovnice bude popsána ve výpočetní části práce v kapitole~\ref{compLLE}, naměřená data včetně proložení pak v kapitole~\ref{resLLE}.
+Pro úplnost lze zmínit, že existují i empirické rovnice popisující mísitelnost fází, jako je například korelace K.~Hlavatého~\cite{Hlavaty1972}.
