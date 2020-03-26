@@ -22,9 +22,8 @@ Tabulka \ref{tab:chemicals} je výčtem všech použitých chemikálií.
 \end{table}
 
 \subsection{Měření rovnováhy kapalina-kapalina} \label{LLE}
-\textit{lorem ipsum}
 
-\subsubsection{Aparatury a metodika experimentů} \label{LLE_exp}
+\subsubsection{Aparatura a metodika experimentů} \label{LLE_exp}
 K provádění experimentů na měření dat LLE byla použita aparatura znázorněná na obrázku \ref{fig:LLE_a}. Aparaturu tvoří skleněná cela, ve které je připravena fáze těžší~(1) i lehčí~(2).
 Jejich disperzi zajišťuje magnetické míchadlo~(3), k udržení konstantní teploty slouží duplikátor, do nějž vstupuje~(4) a vystupuje~(5) voda z termostatu.
 Těchto cel bylo k~dispozici celkem sedm. V~celách byly připraveny příslušné kapalné směsi, a~to~tak, aby objem obou fází činil zhruba 20~ml, načež bylo nastaveno míchání dostatečně intenzivní, aby vznikla jemná disperze kapalných fází.
@@ -114,7 +113,7 @@ Pro účely sestavení matematických modelů se později ukázalo, že je třeb
 Proto bylo provedeno měření pro systém \ce{H2O}--SA--CPL--TOL, aby mohla být zjištěna závislost mezifázového napětí na koncentraci CPL ve vodné fázi.
 
 Měření bylo provedeno pomocí kapkové metody (též známá jako stalagmometrická metoda), která je klasicky využívána pro měření povrchového napětí, lze ji však modifikovat pro měření mezifázového napětí, a to tak, že je nádoba stalagmometru naplněna vzorkem těžší fáze a kapilára je ponořena pod hladinu vzorku lehčí fáze, kde se tak tvoří rozhraní obou fází.
-Postup měření je takový, že se nastaví takový vhodný tok těžší fáze, aby vznikaly kapky dostatečně pomalu, a ty jsou pak váženy v sériích čítajících alespoň dvacet kapek.
+Postup měření je takový, že se nastaví takový tok těžší fáze, aby vznikaly kapky dostatečně pomalu, a ty jsou pak váženy v sériích čítajících alespoň dvacet kapek.
 Doba mezi odtržením kapek musí být dostatečně dlouhá, jinak je měření zkresleno jevem, kdy přitékající kapalina kapku zvětší ještě při jejím odtrhávání, což vede k vyšší pozorované hmotnosti~\cite{Harkins1919}.
 
 Mezifázové napětí~($\gamma$) lze vypočítat postupem, který popsali J.~L.~Lando a H.~T.~Oakley~\cite{Lando1967}. Vztah je uveden v rovnici~\ref{eqn:gamma}, kde $\rho_\mathrm{H}$ a $\rho_\mathrm{L}$ znamená hustotu těžší, resp. lehčí fáze, $m$ je hmotnost jedné kapky, $g$ tíhové zrychlení, $r$ poloměr kapiláry a $\Phi$ je korekční faktor, pro který autoři uvádějí empirický vztah. Ten je zde uveden v rovnici~\ref{eqn:gammaCorr}.
@@ -126,6 +125,11 @@ Mezifázové napětí~($\gamma$) lze vypočítat postupem, který popsali J.~L.~
 \label{eqn:gammaCorr}
 	\Phi = -1,044 \left(\frac{r}{\sqrt[3]{m / \rho_\mathrm{H}}}\right)^2 + 1,754 \frac{r}{\sqrt[3]{m / \rho_\mathrm{H}}} + 0,929
 \end{equation}
+
+Přestože zahrnutí korekčního faktoru by mělo samo o sobě zajišťovat přesnost, byla aparatura raději zkalibrována, a to tak, že bylo provedeno měření na dvojicích roztoků se známou hodnotou $\gamma$.
+V literatuře byly proto vyhledány hodnoty pro systémy n"-heptan--voda~\cite{Johnson1966} a toluen--voda~\cite{InternationalCriticalTables}.
+Měření bylo zpracováno tak, že ze známých hodnot $m$ a $\gamma$ byl určen efektivní poloměr kapiláry, který se skutečně ukázal být mírně odlišný od geometrického průměru, a ten byl pak použit pro vyhodnocení měřených vzorků.
+
 \subsection{Laboratorní model extraktoru} \label{labmodel}
 \textit{lorem ipsum}
 

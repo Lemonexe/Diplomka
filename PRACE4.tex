@@ -33,9 +33,17 @@ Hlavním účelem patrového modelu je vyčíslení separační účinnosti labo
 Kromě toho je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace není možná.
 Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež je vypočtena hodnota $\dot{m}_\mathrm{S,min}$ a nakonec je modifikovanou McCabe"-Thielovou metodou určen počet TP.
 
+Bilanci je díky nemísitelnosti fází možné vyjádřit pomocí relativních hm. zlomků $W$ a hm. toků obou fází bez CPL, tedy toku samotného síranového roztoku $\dot{m}_\mathrm{SA}$ a toku samotného solventu $\dot{m}_\mathrm{S}$ (ten je shodný s tokem vstupujícího proudu solventu, neboť obsah CPL je v ní nulový).
+Z těchto šesti bilančních veličin musí být právě jedna libovolná veličina ponechána nedefinovaná, aby mohla být vypočtena a zajištěno tak, že rovnice~\ref{eqn:massBalance} platí.
+\begin{equation}
+\label{eqn:massBalance}
+	\dot{m}_\mathrm{SA} W_\mathrm{F} + \dot{m}_\mathrm{S} W_\mathrm{S} = \dot{m}_\mathrm{SA} W_\mathrm{R} + \dot{m}_\mathrm{S} W_\mathrm{E}
+\end{equation}
 Algoritmus na výpočet $\dot{m}_\mathrm{S,min}$ funguje obdobně jako dobře známá metoda půlení intervalu, nejprve jsou tedy zvoleny dvě hodnoty toku solventu -- velmi nízká hodnota $\dot{m}_1$ a velmi vysoká hodnota $\dot{m}_2$, přičemž se očekává, že hodnota $\dot{m}_\mathrm{S,min}$ bude ležet mezi těmito krajními hodnotami.
-Následuje cyklus, kdy je při každé iteraci určena hodnota $\dot{m}_3$ jako aritmetický průměr hodnot $\dot{m}_1$ a $\dot{m}_2$ a následně je zjištěno, zda-li má pracovní přímka průsečík s rovnovážnou křivkou pro hodnoty $\dot{m}_1$, $\dot{m}_2$ a $\dot{m}_3$.
-Pokud je průsečík nalezen pro $\dot{m}_1$ a $\dot{m}_3$, bude v další iteraci platit $\dot{m}_1 = \dot{m}_3$, zatímco pokud je průsečík nalezen pouze pro $\dot{m}_1$, bude platit $\dot{m}_2 = \dot{m}_3$. Takovýchto iterací je provedeno 30, což zaručuje vysokou přesnost určení hodnoty $\dot{m}_\mathrm{S,min}$.
+Poté je zahájen cyklus, kdy je při každé iteraci určena hodnota $\dot{m}_3$ jako aritmetický průměr hodnot $\dot{m}_1$ a $\dot{m}_2$ a následně je zjištěno, zda-li má pracovní přímka průsečík s rovnovážnou křivkou pro hodnoty $\dot{m}_1$, $\dot{m}_2$ a $\dot{m}_3$.
+Pokud je průsečík nalezen pro $\dot{m}_1$ a $\dot{m}_3$, bude v další iteraci platit $\dot{m}_1 = \dot{m}_3$, zatímco pokud je průsečík nalezen pouze pro $\dot{m}_1$, bude platit $\dot{m}_2 = \dot{m}_3$.
+Tyto iterace jsou prováděny tak dlouho, dokud interval $\dot{m}_1$--$\dot{m}_2$ není velice úzký ($\dot{m}_\mathrm{S} \cdot 10^{-4}$), protože s takovou přesností je hodnota $\dot{m}_\mathrm{S,min}$ určena.
+Jako výslednou hodnotu lze použít $\dot{m}_3$.
 
 Protože tato funkce poskytuje jen strojový výstup, byla vytvořena také funkce \textit{extractorPlot.m}, která přehledně vypíše důležité výsledky do konzole prostředí MATLAB a vykreslí graf závislosti $u(w)$, kde je vynesena rovnovážná křivka, pracovní úsečka a úsečky znázorňující jednotlivá teoretická patra.
 Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extractorFeed.m}, která umožní vybranou vstupní veličinu měnit v definovaném rozmezí, výsledkem je pak tabulka závislosti počtu TP a $\dot{m}_\mathrm{S,min}$ na vybraném parametru.
@@ -48,9 +56,21 @@ Hodnoty pochází z různých literárních zdrojů, a to <<<???CITACE???>>>.
 Rovnovážná funkce tabelovaná jako vektor $u$ a $w$ je získána spuštěním funkce \textit{getEqFun.m} popsané v kapitole~\ref{compLLE}.
 Naměřené hodnoty mezifázového napětí byly zpracovány na funkci $\gamma(w)$, k čemuž postačuje regrese naměřených dat pomocí polynomu druhého řádu (viz kapitolu~\ref{resgamma}).
 
-Přenosový model může být realizován buďto jako výpočet návrhový, kdy jsou vypočteny potřebné rozměry zařízení na dosažení požadované hm. bilance, a nebo jako výpočet simulační, kdy jsou rozměry zařízení specifikovány a model předpovídá separační účinnost extraktoru, čili doplní hm. bilanci.
+Přenosový model slouží k výpočtu koncentrací CPL v obou fázích v závislosti na výškové souřadnici extraktoru, a může být realizován buďto jako výpočet návrhový, kdy je vypočtena výška $L$ potřebná na dosažení požadované hm. bilance, nebo jako výpočet simulační, kdy je $L$ specifikováno a model předpovídá míru separace v extraktoru, čili doplní hm. bilanci.
+Také průměr kolony $d_\mathrm{C}$ může být buďto specifikován (simulační výpočet) nebo vypočten z meze zahlcení (návrhový výpočet).
+Libovolná kombinace těchto cest výpočtu je možná, a na tom pak závisí způsob běhu programu.
 
-\subsubsection{Řešení diferenciálních rovnic} \label{compDesign}
+Celý tento model je implementován ve funkci \textit{design.m}, který nejprve zpracuje zadání a získá příslušná fyzikální data pro zadané fáze.
+Při návrhu $L$ je bilance specifikována tak, jak bylo popsáno pro patrový model -- jedna libovolná bilanční veličina musí zůstat nedefinovaná a bilance je doplněna zavoláním funkce \textit{extractor.m}, která zároveň vypočte počet TP a $\dot{m}_\mathrm{S,min}$.
+V případě simulace $L$ musí být specifikovány všechny bilanční veličiny kromě výstupních koncentrací $w_\mathrm{R}$ a $w_\mathrm{E}$, protože míra separace je předmětem výpočtu, je tedy neznámá.
+Program se dále větví na podprogramy, které pomocí empirických rovnic určí potřebné veličiny charakterizující přenos hmoty v extraktoru -- k tomu slouží funkce \textit{designPacked.m}, \textit{designRotDisc.m} a \textit{designKarr.m}, které budou podrobně vysvětleny v kapitole~\ref{compInsfun}.
+Nejprve jsou zavolány pro výpočet meze zahlcení, která je buďto využita pro návrh $d_\mathrm{C}$, nebo, pokud byla tato hodnota specifikována, je mez zahlcení jen informativní.
+Podruhé (při známých rozměrech kolony) jsou funkce zavolány pro určení všech ostatních potřebných veličin.
+Následuje samotná implementace diferenciálního modelu, který bude podrobně popsán v kapitole~\ref{compDiff}.
+Výsledkem modelu je při návrhu $L$ jeho určená hodnota, při specifikaci $L$ pak bilanční veličiny určené jak pro model s pístovým tokem, tak model s axiální disperzí.
+V případě simulace $L$ jsou teprve nyní známy výstupní koncentrace, takže může být zavolána funkce \textit{extractor.m} na určení počtu TP a $\dot{m}_\mathrm{S,min}$.
+
+\subsubsection{Řešení diferenciálních rovnic} \label{compDiff}
 Jádrem výpočtu je matematický model, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, jak bylo podrobně popsáno v kapitole~\ref{the_Math}.
 
 S.~Hartland a A.~Kumar~\cite{HartlandKumar1997} uvádějí analytické řešení diferenciálních rovnic při návrhovém výpočtu -- řešením modelu s pístovým tokem je přímé vyjádření $L$, zatímco řešením modelu s axiální disperzí je rovnice transcendentní pro $L$, z níž lze $L$ určit numerickým algoritmem na hledáním kořene.
@@ -62,26 +82,26 @@ V případě návrhového výpočtu je třeba zahrnout i počáteční odhad vý
 
 Protože algoritmy řešení okrajových problémů nebývají zcela robustní a řešení může často divergovat, je třeba poskytnout dobrý počáteční odhad řešení.
 Model s axiální disperzí se bez kvalitního odhadu ukázal být velmi nestabilní, proto je nejprve numericky vypočten model s pístovým tokem, jehož řešení je snazší a zcela přitom postačuje jednoduchý odhad lineárních profilů koncentrace.
-V případě návrhového výpočtu, kdy jsou koncentrace vstupních i výstupních proudů známy, jsou lineární profily od $c_F$ do $c_R$, resp. od $c_E$ do $c_S$, v případě simulačního výpočtu lze dosadit namísto $c_R$ nulu a namísto $c_E$ 1~\%.
+V případě návrhového výpočtu, kdy jsou koncentrace vstupních i výstupních proudů známy, jsou lineární profily od $c_\mathrm{F}$ do $c_\mathrm{R}$, resp. od $c_\mathrm{E}$ do $c_\mathrm{S}$, v případě simulačního výpočtu lze dosadit namísto $c_\mathrm{R}$ nulu a namísto $c_\mathrm{E}$ 1~\%.
 Pro odhad výšky, je-li třeba, postačuje použít výšku teoretického patra 0,5~m, která se vynásobí počtem TP získaným zavoláním patrového modelu.
 Diferenciální rovnice prvního řádu i jejich počáteční podmínky byly již popsány v rovnicích~\ref{eqn:diff1}, \ref{eqn:bound1_1}, \ref{eqn:bound1_2} a~\ref{eqn:boundExtra}.
 
 Nalezené řešení pro model s pístovým tokem má využití pro sestavení počátečního odhadu pro model s axiální disperzí, ten je však nutné nejprve upravit ze soustavy dvou dif. rovnic druhého řádu, jak jsou uvedeny v rovnici~\ref{eqn:diff2}, na soustavu čtyř rovnic prvního řádu.
-To je možné provést zavedením derivací koncentrací jako dvou dalších závislých proměnných: $d_x = \D c_x / \D z$ a $d_y = \D c_y / \D z$.
-Diferenciální model ve formě připravené pro numerický řešič je rozveden v rovnici~\ref{eqn:diff24}.
+To je možné provést zavedením derivací koncentrací jako dvou dalších závislých proměnných: $c'_x = \D c_x / \D z$ a $c'_y = \D c_y / \D z$.
+Diferenciální model ve formě připravené pro numerický řešič je rozveden v soustavě rovnic~\ref{eqn:diff24}.
 \begin{align}
 \label{eqn:diff24}
-	\frac{\D c_x}{\D z} &= d_x \\
-	\frac{\D c_y}{\D z} &= d_y \nonumber \\
-	\frac{\D d_x}{\D z} &=  Pe_x d_x + Pe_x T_x (c_x - c_y^*) \nonumber \\
-	\frac{\D d_y}{\D z} &= -Pe_y d_y - Pe_y T_x (c_x - c_y^*) \frac{Q_x}{Q_y} \nonumber
+	\frac{\D c_x}{\D z} &= c'_x \\
+	\frac{\D c_y}{\D z} &= c'_y \nonumber \\
+	\frac{\D c'_x}{\D z} &=  Pe_x c'_x + Pe_x T_x (c_x - c_y^*) \nonumber \\
+	\frac{\D c'_y}{\D z} &= -Pe_y c'_y - Pe_y T_x (c_x - c_y^*) \frac{Q_x}{Q_y} \nonumber
 \end{align}
 Protože řešení modelu s pístovým tokem je ve formě vektorů hodnot $c_x$ a $c_y$ odpovídajících vektoru $z$, odhadovou funkci pro model s axiální disperzí lze realizovat jako algoritmus, který pro požadované $z$ nalezne dva sousedící body existujícího řešení, mezi nimiž požadované $z$ leží.
-Hodnoty $c_x$ a $c_y$ jsou lineárně interpolovány, zatímco hodnoty $d_x$ a $d_y$ jsou vypočteny běžnou dvoubodovou formulí pro numerickou derivaci.
+Hodnoty $c_x$ a $c_y$ jsou lineárně interpolovány, zatímco hodnoty $c'_x$ a $c'_y$ jsou vypočteny běžnou dvoubodovou formulí pro numerickou derivaci.
 Při návrhovém výpočtu je součástí řešení modelu s pístovým tokem také vypočtená výška extraktoru -- její dvojnásobek je použit jako počáteční odhad výšky pro model s axiální disperzí.
 
-Hlavním výsledkem modelu s axiální disperzí je pak řešení diferenciálního modelu, tedy funkce $(c_x, c_y, d_x, d_y) = f(z)$ ve formě vektorů hodnot.
-Při návrhovém výpočtu je klíčovým výsledkem vypočtená výška extraktoru, při simulačním výpočtu zase hmotnostní bilance extraktoru.
+Hlavním výsledkem modelu s axiální disperzí je pak řešení diferenciálního modelu, tedy funkce $(c_x, c_y, c'_x, c'_y) = f(z)$ ve formě vektorů hodnot.
+Při návrhovém výpočtu je klíčovým výsledkem $L$, při simulačním výpočtu zase hmotnostní bilance extraktoru.
 
 \subsubsection{Kvantifikace parametrů přestupu hmoty} \label{compInsfun}
 V kapitole~\ref{insfun} byly podrobně popsány vztahy, pomocí nichž lze kvantifikovat veličiny charakterizující přestup hmoty v extraktoru, kterými jsou specifická mezifázová plocha $a$, koeficient prostupu hmoty $K_x$ a koeficienty axiální disperze $E_y$ a $E_x$.
@@ -101,6 +121,7 @@ Nejprve je pak vypočtena $v_\mathrm{C,F}$, následuje $\phi$, $d_{32}$ a empiri
 K dispozici je však také přímý geometrický výpočet, jako výsledná hodnota rychlosti kluzu proto poslouží průměrná hodnota obou metod výpočtu.
 Pomocí Reynoldsova čísla v kontinuální fázi $Re_\mathrm{C}$, Schmidtových čísel pro obě fáze ($Sc$) a předchozích mezivýsledků je vypočten koeficient přestupu pro disp. fázi $\beta_\mathrm{D}$, Sherwoodovo číslo pro kont. fázi $Sh_\mathrm{C}$ (a z něj vyplývající $\beta_\mathrm{C}$) a Pécletova čísla pro kont. i disp. fázi.
 Pécletovo číslo pro kont. fázi je přitom omezeno maximální hodnotou závisející pouze na $Re_\mathrm{C}$, kterou údajně nemůže překročit, ta je proto použita v případě, že by ji standardně vypočtená hodnota převyšovala.
+Tento postup je implementován ve funkci \textit{designPacked.m}, jako užitečná pomůcka byla vytvořena také funkce \textit{packing.m}, která program prováže s databází předdefinovaných výplní, kterou J."-P.~Duroudier uvádí v příloze.
 
 Řešení pro RDC či Kühniho extraktor (viz kapitolu~\ref{insfunRotDisc}), které sestavili S.~Hartland a A.~Kumar~\cite{HartlandKumar1997}, mají společný postup řešení, byť někdy využívají odlišné tvary rovnic.
 Při návrhovém výpočtu program začíná iterativním cyklem, poněvadž měrný disipovaný výkon $\psi$ velmi strmě závisí na rozměru kolony, a tedy i rozměru míchadla.
@@ -109,6 +130,7 @@ Následuje výpočet ostatních geometrických veličin, výpočet $\psi$ a z n�
 Pro určení $v_\mathrm{C,F}$ je nejprve vypočtena zádrž při zahlcení $\phi_\mathrm{F}$, která z $d_{32}$ vychází.
 Při návrhovém výpočtu je z hodnoty $v_\mathrm{C,F}$ určena nová hodnota $v_\mathrm{C}$ a cyklus se opakuje až do konvergence, kdy relativní rozdíl mezi $d_\mathrm{C}$ činí méně než $10^{-4}$.
 Po ukončení cyklu je vypočtena $\phi$, $Sh_\mathrm{C}$ pro určení $\beta_\mathrm{C}$, přímá korelace $\beta_\mathrm{D}$ a hodnoty $E$ pro obě fáze.
+Tento postup je implementován ve funkci \textit{designRotDisc.m}.
 
 Řešení Karrova extraktoru (viz kapitolu~\ref{insfunKarr}), které bylo v této práci sestaveno za použití různých literárních zdrojů~\cite{Baird1984,Kumar1999,Baird1976,Baird1979}, je opět iterativní, a to kvůli potřebě znát střední hustotu $\bar{\rho}$ pro výpočet $\psi$.
 Nejprve je tedy odhadnuta zádrž $\phi = 0,05$ a v každé iteraci je vypočteno nejprve $\psi$ a z něj vyplývající $d_{32}$.
@@ -116,3 +138,4 @@ Rovnice~\ref{eqn:KarrVC_phi}, která popisuje vztah mezi rychlostí kont. fáze 
 Cyklus se poté opakuje, a vzhledem k tomu, jak malý je vliv $\phi$ na $\bar{\rho}$, bývá velice rychle dosažena konvergence (kdy relativní rozdíl $\phi$ činí méně než $10^{-4}$).
 Po ukončení cyklu je pak proveden výpočet $Sh_\mathrm{C}$, $Sh_\mathrm{D}$ a přímá korelace $E_\mathrm{C}$.
 Protože korelace $E_\mathrm{D}$ nebyla v literatuře nalezena, je jako aproximace předpokládána rovnost $Pe_\mathrm{C} = Pe_\mathrm{D}$.
+Tento postup je implementován ve funkci \textit{designKarr.m}.
