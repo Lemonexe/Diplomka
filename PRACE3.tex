@@ -24,12 +24,13 @@ Tabulka \ref{tab:chemicals} je výčtem všech použitých chemikálií.
 \subsection{Měření rovnováhy kapalina-kapalina} \label{LLE}
 
 \subsubsection{Aparatura a metodika experimentů} \label{LLE_exp}
-K provádění experimentů na měření dat LLE byla použita aparatura znázorněná na obrázku \ref{fig:LLE_a}. Aparaturu tvoří skleněná cela, ve které je připravena fáze těžší~(1) i lehčí~(2).
+K provádění experimentů na měření dat LLE byla použita aparatura znázorněná na obrázku~\ref{fig:LLE_a}.
+Aparaturu tvoří skleněná cela, ve které je připravena fáze těžší~(1) i lehčí~(2).
 Jejich disperzi zajišťuje magnetické míchadlo~(3), k udržení konstantní teploty slouží duplikátor, do nějž vstupuje~(4) a vystupuje~(5) voda z termostatu.
 Těchto cel bylo k~dispozici celkem sedm. V~celách byly připraveny příslušné kapalné směsi, a~to~tak, aby objem obou fází činil zhruba 20~ml, načež bylo nastaveno míchání dostatečně intenzivní, aby vznikla jemná disperze kapalných fází.
 Po zapnutí termostatu s příslušným teplotním nastavením bylo vyčkáno na ustálení teploty, poté bylo míchání ponecháno v běhu minimálně 30~min, aby se systém dostal dostatečně blízko k fázové rovnováze.
 Po uplynutí této doby bylo míchání vypnuto a systém byl ponechán potřebnou dobu v klidu, aby došlo k úplnému mechanickému oddělení kapalných fází, tedy aby byly obě fáze vizuálně čiré (minimálně však 5~min).
-Nakonec byly z obou fází odebrány vzorky o hmotnosti cca. 1~g, pro účely analýzy (kapitola \ref{GC}) byla vždy změřena také jejich přesná navážka na analytických vahách.
+Nakonec byly z obou fází odebrány vzorky o hmotnosti cca. 1~g, pro účely analýzy byla vždy změřena také jejich přesná navážka na analytických vahách.
 
 \begin{figure}[ht]
 \begin{center}
@@ -131,10 +132,61 @@ V literatuře byly proto vyhledány hodnoty pro systémy n"-heptan--voda~\cite{J
 Měření bylo zpracováno tak, že ze známých hodnot $m$ a $\gamma$ byl určen efektivní poloměr kapiláry, který se skutečně ukázal být mírně odlišný od geometrického průměru, a ten byl pak použit pro vyhodnocení měřených vzorků.
 
 \subsection{Laboratorní model extraktoru} \label{labmodel}
-\textit{lorem ipsum}
+Ačkoliv stěžejní částí této práce je matematické modelování extraktorů, byl také sestaven laboratorní model Karrova extraktoru, aby bylo k dispozici srovnání simulací s výsledky měření na skutečném zařízením (alespoň pro tento typ extraktoru).
+A zatímco matematické modely jsou značně idealizované, neboť povětšinou vychází z vlastností roztoků čistých látek, při měření na laboratorním extraktoru bylo pracováno se vzorky síranových louhů odebranými přímo z provozu Spolany -- lze tedy čekat, že laboratorní model bude věrněji reflektovat vlastnosti skutečných směsí, pro které bude technologie navrhnována.
 
 \subsubsection{Popis aparatury} \label{labmodel_a}
-\textit{lorem ipsum}
+Pro toto měření byla sestavena aparatura podobná těm, jaké jsou popisovány v literatuře (např.~\cite{Baird1984}), schéma všech jejích prvků se nachází obrázku~\ref{fig:labmodel}.
+Ústředním prvkem je samotná skleněná kolona~(1) s míchadly, na jejíž oba konce jsou nasazeny skleněné nádoby, čímž je vytvořen prostor pro rozsazení případné emulze.
+Vrchem spodní nádoby~(2) vstupuje lehčí fáze (solvent), zatímco spodem vystupuje těžší fáze (rafinát).
+Spodem horní nádoby~(3) vstupuje těžší fáze (surovina), vrchem pak vystupuje lehčí fáze (extrakt).
+Těžší fáze byla zvolena jako dispergovaná, vstupuje proto skrze jednoduchý distributor, kterým je perforovaná LDPE trubička procházející napříč kolonou.
+Fázové rozhraní tedy vzniká na výstupu těžší fáze a je naznačeno přerušovanou čarou ve spodní nádobě.
+
+\begin{figure}[ht]
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{images/labmodel.png}
+	\caption{Schéma laboratorního extraktoru} \label{fig:labmodel}
+\end{center}
+\end{figure}
+
+Míchání je zajištěno perforovanými ocelovými disky, které jsou přišroubovány na táhlo~(4).
+Aby nedošlo ke kontaktu ocelových disků se skleněnou nádobou, což by mohlo vést k prasknutí skla, mají kovové disky nepatrně menší průměr než vnitřní průměr kolony a několik kovových disků bylo vyměněno za disky z PTFE, které mají stejnou geometrii, avšak nepatrně větší průměr, takže se pláště kolony dotýkají těsněji.
+Táhlo s míchadly je hnáno lineárním elektromotorem s regulací příkonu~(6) přes dvojzvratnou páku s polohovatelným čepem~(5), pomocí něhož lze měnit zdvih míchadel.
+Na výstupní táhlo motoru byl nainstalován elektromagnetický snímač frekvence zdvihů~(7).
+
+Ve spodní částí schématu jsou naznačeny nádoby~(8) -- do nádob E a R se jímá extrakt, resp. rafinát, zatímco ze zásobních nádob S a F se pomocí solenoidových pístových čerpadel~(9) čerpá solvent, resp. surovina.
+Těžší fáze (rafinát) je odebírána přes přepad~(10), který je upevněn na svorkách a lze jej tedy libovolně polohovat.
+To je důležité pro regulaci výšky fázového rozhraní, které by mělo být ustáleno blízko pod vstupem solventu, aby byl ve spodní nádobě zadržován dostatečný objem rafinátu na jeho vyčeření.
+
+Aby bylo možné extraktor provozovat za zvolené teploty, prochází vstupující surovina předehřevem.
+Jako tepelný výměník~(11) byl použit skleněný Dimrothův chladič, který se v laboratoři běžně užívá na destilace, v tomto případě však spirálou chladiče protéká surovina, zatímco vnějším prostorem protéká tepelné médium, kterým je voda.
+Ta proudí v uzavřeném cyklu přes laboratorní termostat~(12), který jí udržuje na konstantní teplotě.
+Teplota v extraktoru je měřena termočlánky, které jsou přiloženy přímo na plášť hadice spojující výměník se vstupem suroviny~(13) a na plášť spodního konce kolony~(14).
+Ohřev je tedy manuálně regulován pomocí nastavení teploty na termostatu, aby byla dosažena vhodná teplota na vstupu suroviny.
+Vzhledem k tomu, že solvent předehříván není, se v koloně tvoří tepelný gradient.
+Počítá se však s tím, že tepelný gradient bude přijatelný, neboť průtok solventu je mnohem menší, navíc má organická fáze nižší měrnou tepelnou kapacitu oproti fázi vodné.
+Pro omezení tepelných ztrát byly určité prvky obaleny izolačním pěnovým pláštěm -- jmenovitě kolona, tepelný výměník, hadice topného okruhu a hadice spojující výměník se vstupem suroviny.
+
+Kolona extraktoru má vnitřní průměr 40,0~mm, kovové disky mají průměr 39,7~mm a každý je perforován šesti otvory o průměru 10,0~mm, takže relativní volná plocha činí 38~\%.
+Míchadla jsou od sebe vzdálena zhruba 32~mm (nejsou zcela ekvidistantní), přičemž vzdálenost prvního a posledního míchadla činí 1370~mm.
+Za účinnou výšku extraktoru však lze považovat 1620~mm, což je vzdálenost mezi distributorem suroviny a vstupem solventu.
+Výstupní otvory jsou na obou stranách vzdáleny ještě dalších 265~mm od těch vstupních, to je tedy maximální dostupná výška na rozsazení emulze.
 
 \subsubsection{Metodika experimentů} \label{labmodel_m}
-o analýze jen viz kapitolu \ref{GC}
+Ve výše popsané aparatuře byly extrahovány síranové louhy čistým toluenem.
+Při náběhu experimentu byl nejprve zapnut ohřev i oběh tepelného média a do extraktoru byl načerpán toluen spolu s malým množstvím vody, která byla zpočátku čerpána namísto suroviny.
+Naplněný extraktor byl poté proplachován maximálním možným průtokem vody a malým průtokem toluenu, přičemž voda i toluen nebyly jímány do nádob na extrakt a rafinát, ale byly vraceny do zásobních nádob na čistou vodu a solvent.
+Důvodem pro tento postup je úspora vzorků síranových louhů po dobu, kdy se extraktor zahřívá -- kvůli absenci předehřevu toluenu je nutné ohřát jeho zádrž v koloně pomocí oběhu dispergované fáze.
+Teplota na laboratorním termostatu byla nastavena tak, aby měla vstupní surovina zhruba 60~°C a zahřívání bylo prováděno tak dlouho, dokud se teplota na spodním konci kolony neustálila.
+Po celou tuto dobu bylo zapnuto míchání s nízkou frekvencí (zhruba 3~Hz), aby se předešlo akumulaci vody na discích, neboť systém voda--toluen má vysoké mezifázové napětí (viz kapitolu~\ref{gamma}).
+
+Chod extraktoru byl zahájen přepojením výstupních proudů do příslušných nádob na jejich jímání, výměnou nádoby s vodou za nádobu se surovinou, nastavením průtoků čerpadel na požadované hodnoty a nastavením příkonu motoru míchadla, aby bylo dosaženo požadované frekvence.
+Po těchto krocích bylo třeba bedlivě hlídat teplotu na vstupu suroviny i polohu fázového rozhraní, proto bylo nutné patřičně snížit nastavenou teplotu termostatu i výšku přepadu rafinátu s tím, jak se zádrž vody v extraktoru proplachovala síranovým roztokem, a tedy se zvyšovala hustota zadržované vodné fáze.
+Extraktor byl ustalován po dobu minimálně jedné hodiny, načež byly s odstupem 30--60~min odebírány vzorky rafinátu a extraktu, a to v takovém množství, aby z něj bylo možné na analytických vahách odvážit zhruba 1~g.
+Hmotnostní průtok vodné a organické fáze byl určen vážením extraktu a rafinátu najímaného za delší časové období, tedy alespoň 5~min.
+Frekvenci míchadla umožnil snímač zobrazovat jako průměrnou hodnotu od posledního vynulování (při odběru vzorku), což je příhodné, neboť i při konstantním nastavení regulátoru příkonu motoru může jeho frekvence mírně kolísat.
+
+Odebrané vzorky vodné i organické fáze byly analyzovány na určení obsahu CPL, a to pomocí zcela stejné metodiky měření, jako byla použita při měření dat LLE -- metoda analýzy na GC tedy byla již popsána v kapitole~\ref{GC}.
+Kromě rafinátu a extraktu byla na GC měřena i vstupní surovina, neboť obsah CPL ve vzorcích ze Spolany kolísal mezi jednotlivými odběry.
+Analyzován byl i solvent, neboť díky jeho vysoké spotřebě bylo nutné jej po skončení experimentu regenerovat, což bylo provedeno pomocí klasické atmosferické destilace, která postačovala na dokonalé oddělení čistého solventu od všech extrahovaných složek, to však bylo nutné chromatograficky ověřit.

@@ -4,6 +4,10 @@
 
 	btw NESMÍ se psát m [kg], matematicky správně je m/kg
 
+	jak je to s okraji?
+		LaTeX šablona (psáno), WORD šablona DP & BP, Tomáš Sommer: left: 35, ostatní: 25
+		blbá WORD šablona (psáno i nastaveno), LaTeX šablona (nastaveno): vše 25
+
 
 <<< LATEX >>>
 	distribuce: MiKTeX
@@ -20,8 +24,6 @@
 			CPL, doplnit i data do úvodu
 		výsledky
 		závěr, souhrn +EN, thx
-	>> vytvořit obrázky - vše co nejvíc černobílé
-		extraktor!
 	>>> udělat prezentaci (viz SVK pro začátek)
 	>>> nahrát zdroják + dokumentaci na CD
 
@@ -32,6 +34,9 @@
 	> projít rešerše Spolana 2017
 		data LLE?
 	> reference na všechna použitá data
+		Ale jak? V Aspenu lze otevřít NIST ThermoData engine a jsou tam exp. data
+		pure: mu, rho; binary: D, avšak D SA/CPL kde?? To je ternary a to tam nejde.
+		ale já jsem vlastně převzal z Aspenu parametry, jak tedy citovat to?
 
 
 <<< ZADÁNÍ >>>

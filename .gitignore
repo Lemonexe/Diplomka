@@ -7,7 +7,7 @@
 !references.bib
 !_notes.txt
 !images/
-!images/*.png
+!images/*
 
 # And the package files
 !*.sty
