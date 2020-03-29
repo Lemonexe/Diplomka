@@ -18,10 +18,6 @@
 
 <<< TODO >>>
 	> psát kapitoly:
-		exp
-			extraktor
-		lit
-			CPL, doplnit i data do úvodu
 		výsledky
 		závěr, souhrn +EN, thx
 	>>> udělat prezentaci (viz SVK pro začátek)

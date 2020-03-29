@@ -4,19 +4,62 @@
 Literární část této práce se bude zabývat výčtem současně užívaných technologií na výrobu kaprolaktamu (dále jen CPL), možnostmi zařízení na průmyslovou kapalinovou extrakci, matematickým popisem extraktoru a teorií rovnováhy kapalina-kapalina.
 
 \subsection{Technologie kaprolaktamu} \label{CPLtechnology}
-\textit{tohle je málo - rozvést alternativy (subsubsection)}
-
-$\varepsilon$-Kaprolaktam je bílá krystalická látka s bodem tání 69,0°C~\cite{CPLSpolanaList}.
-Tato sloučeina se sumárním vzorcem \ce{C6H11NO} je z chemického hlediska laktam $\varepsilon$-aminokapronové kyseliny, molekula tedy tvoří sedmičetný cyklus.
-V literatuře je popsáno mnoho technologií na výrobu kaprolaktamu, z toho nejvýznamnější (?? \% světové produkce) je však postup popsaný v kapitole \ref{CHON}, který je zaveden i ve Spolaně a týká se jej tato práce.
+$\varepsilon$-Kaprolaktam je bílá krystalická látka s bodem tání 69,2°C a normálním bodem varu 268,5°C~\cite{Ullmann_CPL} (strana~1).
+Tato sloučenina se sumárním vzorcem \ce{C6H11NO} je z chemického hlediska laktam $\varepsilon$-aminokapronové kyseliny, molekula tedy tvoří sedmičetný cyklus.
+V literatuře je popsáno mnoho technologií na výrobu CPL, nejvýznamnější je však postup popsaný v kapitole \ref{CHON}, který je zaveden i ve Spolaně a týká se jej tato práce.
+Ve Spolaně bylo v letech 2008--2017 ročně vyrobeno 40--50~kt~\cite{ECHA_Spolana_CPL} (strana 21), což tvoří méně než 1~\% světové produkce, která ročně činí zhruba 5,5 Mt, a zhruba 5~\% evropské produkce, kde jsou vedle Spolany významnými výrobci např. podniky BASF, Fibrant, Lanxess, DOMO Caproleuna či Grupa Azoty~\cite{ECHA_Spolana_CPL} (strana 33).
 
 \subsubsection{Tradiční výroba z cyklohexanonu} \label{CHON}
-\textit{udělat reakční schéma, napsat proč je obsah síranu takový či makový}
-~\cite{Ullmann_CPL}
+Výchozí surovinou pro tuto technologii je cyklohexanon, který se typicky vyrábí přímou oxidací cyklohexanu vzduchem, lze jej však získat také hydrogenací fenolu či hydratací cyklohexenu~\cite{Ullmann_CHON} (strana~50).
+Reakční schéma výroby CPL, jak ji popisuje J.~Tinge a~kol. v~Ullmannově encyklopedii~\cite{Ullmann_CPL} (strany~2--13), je zachyeno na obrázku~\ref{fig:reactions}.
+V prvním kroku této výroby je cyklohexanon substituován hydroxylaminem na cyklohexanon"-oxim.
 
-Surovinou pro tuto technologie je cyklohexanon, typicky vyráběný oxidací cyklohexanu. Ten je nejprve substituován hydroxylaminem na cyklohexanon-oxim <<???CITACE: Ullmann???>> a následně podroben Beckmannově přesmyku katalyzovaném koncentrovanou kyselinou sírovou.
-Vzniklá sloučenina kyseliny sírové a kaprolaktamu je nakonec neutralizována roztokem amoniaku, v důsledku čehož se reakční směs rozdělí na dvě fáze:
-organickou, která obsahuje většinu kaprolaktamu, vedlejších produktů i část vody, a vodný roztok síranu amonného (dále jen SA) o koncentraci okolo 40~\%, který však vedle stopových nečistot obsahuje také zhruba 1~\% hm. CPL (v této práci bude složení uváděno jako hmotnostní zlomek, pokud nebude uvedeno jinak).
+Hydroxylamin (ve formě síranu hydroxylamonného) je pro proces vyráběn buďto Raschigovým procesem přes dusitan amonný a oxid siřičitý, a nebo hydrogenací oxidu dusnatého.
+Rashigův proces je starší a široce používaný, jeho nevýhodou je však velká produkce síranu amonného již při tomto kroku, zatímco proces využívající oxid dusnatý, který vyvinul podnik BASF, může toto množství snížit, ovšem za cenu spotřeby vodíku a čistého kyslíku.
+Kromě toho existuje také HPO proces vyvinutý podnikem Fibrant, při němž vzniká hydroxylamin ve formě soli s fosfátovým pufrem, ze které je možné cyklohexanon"-oxim vzniklý reakcí vyprat pomocí toluenu, nevzniká tedy žádný síran amonný.
+Samotná reakce síranu hydroxylamonného s cyklohexanonem probíhá při 50--100°C, pH 4,5 a neustálého dodávání amoniaku na neutralizaci vznikající kyseliny sírové (\ce{H2SO4}).
+
+\begin{figure}[ht]
+\begin{center}
+	\includegraphics[width=10cm,height=10cm,keepaspectratio,]{images/reactions.png}
+	\caption{Reakční schéma výroby kaprolaktamu} \label{fig:reactions}
+\end{center}
+\end{figure}
+
+Následuje Beckmannův přesmyk cyklohexanon"-oximu na CPL, který je kysele katalyzován, což lze provést v plynné fázi pomocí heterogenního katalyzátoru, který však poskytuje nízkou selektivitu a trpí rychlou deaktivací, nebo v kapalné fázi, kdy se využívá homogenní katalýza koncentrovanou \ce{H2SO4} či oleem, což je postup využívaný naprostou většinou výrobců.
+Z reaktoru je nutné odvádět značné množství tepla, neboť reakční systém je velmi exotermní mj. i díky zároveň probíhající reakci olea s nežádoucí vodou, která vzniká při substituci cyklohexanonu a nelze ji pak zcela oddělit.
+Vzniklá sloučenina \ce{CPL\cdot H2SO4} je nakonec neutralizována roztokem amoniaku, v důsledku čehož se reakční směs rozdělí na dvě fáze:
+organickou, která obsahuje asi 70~\% CPL ve vodě spolu s vedlejšími produkty, a vodný roztok síranu amonného (dále jen SA) o koncentraci 35--45~\%, který však vedle stopových nečistot obsahuje také až 1~\% hm. CPL (v této práci bude složení uváděno jako hmotnostní zlomek, pokud nebude uvedeno jinak).
+Organická fáze, která obsahuje většinu vzniklého CPL, je dále separována, aby byl získán čistý produkt, zatímco vodná fáze je extrahována trichlorethylenem, aby z ní byl získán zbytkový CPL -- právě náhradou trichlorethylenu toluenem při této extrakci se bude práce zabývat.
+Co se týče obsahu SA ve vodné fázi, ten by z ekonomického hlediska měl být co nejvyšší, aby bylo uspořeno teplo při odpařování vody a krystalizaci SA, které po extrakci následují.
+Obsah SA je však limitován jeho rozpustností, protože nesmí docházet k předčasné krystalizaci již v reaktorech či extraktorech.
+Rozpustnost je závislá na teplotě, jak ukazuje tabulka~\ref{tab:wSA}~\cite{SAtabulky}, kde $w$ je hm. zlomek v nasyceném roztoku.
+\begin{table}[ht] \caption{Rozpustnost síranu amonného} \label{tab:wSA}
+\begin{center} \begin{tabular}{ll}
+	\Xhline{2pt}
+	$t$/°C & $w$ \\ \hline
+	0   & 41~\% \\
+	20  & 43~\% \\
+	40  & 45~\% \\
+	60  & 47~\% \\
+	80  & 49~\% \\
+	100 & 51~\% \\
+	\Xhline{2pt}
+\end{tabular} \end{center} \end{table}
+
+\subsubsection{Alternativní výroba kaprolaktamu} \label{CPLalt}
+Jak popisuje J.~Tinge a~kol. v~Ullmannově encyklopedii~\cite{Ullmann_CPL} (strany~16--19), existují i jiné postupy na výrobu CPL.
+Cyklohexanon"-oxim je možné vyrábět i bez použití hydroxylaminu -- při procesu Toray reaguje cyklohexan s nitrosylchloridem za působení světla a přítomnosti \ce{HCl}.
+Vzniklý cyklohexanon"-oxim ve formě dihydrochloridu tvoří samostatnou fázi, která je od cyklohexanu oddělena a pokračuje na Beckmannův přesmyk.
+Nevýhodou tohoto procesu je spotřeba velkého množství elektrické energie a extrémně korozivní prostředí, které vyžaduje použití titanu a jiných drahých materiálů.
+
+Existuje také proces, který nevychází z benzenu (z něhož se vyrábí cyklohexan, cyklohexen či fenol), nýbrž z toluenu, který je přímo oxidován vzduchem na benzoovou kyselinu.
+Ta je následně hydrogenována na kyselinu cyklohexankarboxylovou, která nakonec reaguje s kyselinou nitrosylsírovou a oleem.
+Tato reakce je vlastně Beckmannův přesmyk s in~situ generací cyklohexanon"-oximu.
+
+Kromě výše popsaných procesů, které jsou nebo byly komerčně aplikovány, existuje i mnoho dalších postupů, které byly vyvinuty laboratorně či teoreticky.
+
+
 
 \subsection{Zařízení pro kapalinovou extrakci} \label{extraction}
 Existuje mnoho konstrukčních možností, kterými lze realizovat kontinuální protiproudou kapalinovou extrakci.
@@ -73,6 +116,8 @@ Tyto extraktory také nelze použití pro systémy s vysokou tendencí k emulzif
 Z alternativních konstrukcí lze zmínit QVF extraktor a Scheibelův extraktor, které jsou konstrukčně podobné Kühniho extraktoru, liší se jen tvarem rotorů a statorů.
 Velmi atypický je extraktor Graesserův (angl. též \textit{raining-bucket contactor}) -- fáze protékají nad sebou v horizontálně položeném válcovém zařízení, kde rotující součásti vytvářejí vertikální míchání.
 Tento extraktor byl vyvinut pro systémy s extrémní tendencí k emulzifikaci, má však velmi malou kapacitu.
+
+
 
 \subsection{Matematický popis extraktoru} \label{the_Math}
 Kontinuální protiproudý extraktor v ustáleném stavu lze matematicky popsat buďto patrovým modelem nebo přenosovým modelem, tyto modely se však zásadně liší požadovanými informacemi i možností použití.
@@ -146,6 +191,8 @@ Při návrhovém výpočtu je zde, obdobně jako u modelu s axiální disperzí,
 \end{align}
 
 Model s pístovým tokem je využit jako mezivýpočet při implementaci axiálně disperzního modelu, jak je popsáno v kapitole~\ref{compTransfer}.
+
+
 
 \subsection{Charakterizace přenosu hmoty} \label{insfun}
 Výpočet přenosového modelu, jak byl popsán v kapitole~\ref{the_Math}, vyžaduje znalost průřezu extraktoru $A$ a veličin charakterizujících přenos hmoty v extraktoru, a to $K_x$, $E_y$, $E_x$ a $a$.
@@ -402,9 +449,7 @@ Pro Kühniho kolonu lze využít rovnici~\ref{eqn:kuhniDAC} pro kont. fázi, kte
 	\left( \frac{ N d_\mathrm{R}^2 \phi }{ v_\mathrm{D} d_\mathrm{C} } \right)^{-0,26}
 	\left( \frac{ d_{32} v_\mathrm{D} \rho_\mathrm{D} }{ \phi \mu_\mathrm{D} } \right)^{-0,57}
 \end{align}
-%\frac{
-%}{
-%}
+
 
 
 \subsubsection{Výpočty pro Karrův extraktor} \label{insfunKarr}
@@ -425,7 +470,7 @@ Do této rovnice lze dosadit hodnotu zádrže při zahlcení, která je vypočte
 \label{eqn:KarrP}
 	P &= \frac{\pi}{4} d_\mathrm{C}^2 h \psi \bar{\rho} \\
 \label{eqn:KarrD32}
-	d_{32} &=  0,36 \frac{ \gamma^{0,6} }{ (\psi \bar{\rho})^{0,4} \bar{\rho}^{0,2} } \\
+	d_{32} &= 0,36 \frac{ \gamma^{0,6} }{ (\psi \bar{\rho})^{0,4} \bar{\rho}^{0,2} } \\
 \label{eqn:KarrVchar}
 	v^* &= d_{32} \sqrt[3]{ \frac{ g^2 \Delta\rho^2 }{ \rho_\mathrm{C} \mu_\mathrm{C} } } K^{-2/3} \\
 \label{eqn:Karrphif}
