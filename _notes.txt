@@ -19,7 +19,8 @@
 <<< TODO >>>
 	> psát kapitoly:
 		výsledky
-		závěr, souhrn +EN, thx
+		závěr
+		souhrn +EN po 2000 znacích, thx
 	>>> udělat prezentaci (viz SVK pro začátek)
 	>>> nahrát zdroják + dokumentaci na CD
 

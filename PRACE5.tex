@@ -1,19 +1,82 @@
 % include file for chapter 5
 
 \newpage \section{VÝSLEDKY A DISKUSE} \label{res}
-\textit{lorem ipsum}
+V této kapitole budou popsány výsledky všech experimentálních měření, jejichž metodika byla popsána v kapitole~\ref{exp}, a vybrané výsledky výpočetních modelů, jejichž princip byl popsán v kapitole~\ref{comp}.
 
 \subsection{Výsledky experimentů} \label{resexp}
-\textit{lorem ipsum}
 
 \subsubsection{Rozsah měření rovnovážných dat} \label{LLEscope}
-\textit{lorem ipsum}
+Experimenty na měření LLE, jejichž postup byl již popsán v kapitole~\ref{LLE_exp}, byly prováděny ve dvou etapách -- první z nich byla široce zaměřená s velkým rozsahem měření, zatímco při druhé etapě byl záběr experimentů omezen na oblast, která se jevila zajímavá, a tam byl rozsah měření rozšířen.
+
+Při první etapě zahrnoval plán měření tři nezávislé proměnné či faktory:
+měřeno bylo se dvěma různými rozpouštědly, tedy s toluenem (TOL) a trichlorethylenem (TCE), za třech různých hodnot obsahu SA ve vodné fázi (30~\%, 35~\% a 40~\%) a čtyřech různých teplot (30°C, 40°C, 50°C a 60°C).
+To tedy činí celkem 24 datových sad, přičemž datovou sadou se myslí kolekce rovnovážných bodů, které byly naměřeny za stejných podmínek a liší se jen obsahem CPL.
+V první etapě bylo k dispozici sedm cel na měření LLE, proto se nabízelo, aby každá datová sada měla právě sedm bodů.
+Celkem tedy bylo v celách vytvořeno 42 vsádek s definovaným složením, neboť každá vytvořená vsádka byla postupně použita pro měření za všech požadovaných teplot.
+Vsádky byly připraveny tak, aby vzniklo zhruba 20~ml organické i vodné fáze, do kterých pak bylo odváženo 0,01--2,0~g CPL.
+
+Protože nejdůležitější oblastí měření se ukázal být toluen při obsahu SA 40~\% a teplotě 60°C, bylo při druhé etapě měření omezeno na pouze na TOL, dvě hodnoty obsahu SA ve vodné fázi (40~\% a 42~\%) a tři teploty (60°C, 70°C, 80°C).
+Tímto měřením byla prozkoumána možnost zvýšení obsahu SA, které se pojí se zvýšením provozní teploty při extrakci, což je dáno rozpustností SA.
+Z tabulky~\ref{tab:wSA} je zřetelné, že při změně teploty z 60°C na 80°C se obsah SA v nasyceném roztoku zvýší zhruba o dva procentní body, o stejnou hodnotu lze tedy zvýšit obsah SA ve výstupním proudu z reaktorů při zachování stejné bezpečnostní rezervy.
+Tím se zlepší ekonomika procesu, neboť čím více je výstupní roztok SA zředěn, tím více tepla se spotřebuje při jeho odpařování a krystalizaci.
+Původní mezní teplota 60°C přitom byla dána vysokou těkavostí TCE, zatímco TOL je méně těkavý a extrakci proto bude možné bezpečně provozovat i za 80°C.
+Na měření při druhé etapě byly k dispozici pouze dvě cely, které byly postupně využívány na různá složení, každá datová sada měla nyní šest bodů.
+Celkem šest různých vsádek bylo připraveno stejně jako při první etapě, avšak s širším rozsahem navážky CPL, a to 0,01--3,6~g.
 
 \subsubsection{Rovnovážná data} \label{resLLE}
-\textit{lorem ipsum}
+Všechny naměřené datové sady LLE jsou graficky znázorněny v obrázcích~\ref{fig:TOL_SA30}--~\ref{fig:TCE_SA40}, kde $u$ a $w$ jsou obsahy CPL v organické, resp. ve vodné fázi.
+Z grafů je znát, že křivka závislosti LLE je vždy konvexní, distribuční koeficient (podíl $u/w$) tedy vždy roste s obsahem CPL, také mírně roste s teplotou a prudce roste s obsahem SA ve vodné fázi.
+Při srovnatelných podmínkách měření je také patrné, že distribuční koecifient je pro TCE větší než pro TOL.
+V každém grafu jsou zaneseny všechny datové sady pro daný obsah SA a rozpouštědlo, jednotlivé sady v grafech se tedy od sebe liší teplotou.
+
+\begin{center}
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{images/LLE_TOL_SA30.png}
+	\caption{Naměřené body LLE pro toluen a 30~\% SA} \label{fig:TOL_SA30}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{images/LLE_TOL_SA35.png}
+	\caption{Naměřené body LLE pro toluen a 35~\% SA} \label{fig:TOL_SA35}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{images/LLE_TOL_SA40.png}
+	\caption{Naměřené body LLE pro toluen a 40~\% SA} \label{fig:TOL_SA40}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{images/LLE_TOL_SA42.png}
+	\caption{Naměřené body LLE pro toluen a 42~\% SA} \label{fig:TOL_SA42}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{images/LLE_TCE_SA30.png}
+	\caption{Naměřené body LLE pro trichlorethylen a 30~\% SA} \label{fig:TCE_SA30}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{images/LLE_TCE_SA35.png}
+	\caption{Naměřené body LLE pro trichlorethylen a 35~\% SA} \label{fig:TCE_SA35}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{images/LLE_TCE_SA40.png}
+	\caption{Naměřené body LLE pro trichlorethylen a 40~\% SA} \label{fig:TCE_SA40}
+\end{figure}
+\end{center}
 
 \subsubsection{Mezifázové napětí} \label{resgamma}
-\textit{doba mezi kapkama nebyla dost dlouhá...}
+Podle metody popsané v kapitole~\ref{gamma} byla změřena závislost mezifázového napětí ($\gamma$) na obsahu CPL ve vodné fázi ($w$).
+Narozdíl od měření LLE zde nebylo pracováno s modelovým roztokem, ale přímo s provozním vzorkem roztoku SA ze Spolany, neboť mezifázové napětí je povrchová vlastnost, a může tedy být výrazně ovlivněno i stopovým množstvím případných kontaminantů.
+Vzorky byly připraveny opakovanou extrakcí vzorku roztoku SA pomocí malého množství toluenu, čimž bylo získáno pět dvojic vzorků vodné a organické fáze v rovnováze, mezi nimiž bylo $\gamma$ měřeno.
+Výsledky měření jsou graficky znázorněny v obrázku~\ref{fig:gamma} jakožto závislost $\gamma(w)$ včetně proložení polynomem 2.~řádu, jehož předpis je: $\gamma = 421 w^2 - 6,98 w + 0,0302$, kde jednotkou $\gamma$ je N/m.
+
+\begin{center}
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{images/gamma.png}
+	\caption{Naměřená závislost mezifázového napětí na obsahu CPL} \label{fig:gamma}
+\end{figure}
+\end{center}
+
+Měření mohlo být zkresleno tím, že nebyla dodržena doporučená doba mezi kapkami, která by měla být alespoň 1~min~\cite{Harkins1919}.
+Při měření vzorků s nejnižším $\gamma$, kdy jsou i kapky nejmenší, bylo přitom stěží dosaženo 15~s, neboť i přes veškerou snahu nebylo možné kohout nastavit na dostatečně nízký průtok -- kvůli přilnavosti byl průtok buďto příliš vysoký, nebo byl zcela uzavřen.
+Lze však předpokládat, že vliv této chyby byl kompenzován kalibrací, která byla ještě před měrěním provedena pomocí systémů n"-heptan--voda a toluen--voda, které mají známou hodnotu $\gamma$.
+Namísto toho, aby měření spoléhalo na geometrický poloměr, který činí $r = 2,55~\mathrm{mm}$, byla určena hodnota efektivního poloměru $r = 2,10~\mathrm{mm}$, díky čemuž by měly být systematické chyby z velké míry napraveny.
 
 \subsubsection{Laboratorní model extraktoru} \label{reslabmodel}
 \textit{lorem ipsum}
@@ -22,6 +85,7 @@
 
 \subsection{Výsledky modelů} \label{resmodel}
 \textit{Nejdříve tabulka jednoho modelového zadání programu se verb 2}
+Výpočetní modely byly odladěny a spuštěny pro zajímavý zadání...
 
 \subsubsection{Parametrická studie} \label{restables}
 \textit{Tabulky z callTable}
