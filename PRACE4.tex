@@ -1,7 +1,7 @@
 % include file for chapter 4
 
 \newpage \section{VÝPOČETNÍ ČÁST} \label{comp}
-Stěžejní částí této práce je komplexní počítačový program vytvořený v programovém prostředí MATLAB, který se skládá se z několika oddělených, avšak na sebe navazujících částí, kterými jsou: zpracování dat LLE na rovnovážné funkce, patrový model extraktoru a model přenosový.
+Stěžejní částí této práce je komplexní počítačový program vytvořený v programovém prostředí Matlab, který se skládá se z několika oddělených, avšak na sebe navazujících částí, kterými jsou: zpracování dat LLE na rovnovážné funkce, patrový model extraktoru a model přenosový.
 V následujících kapitolách budou popsány principy fungování programu a způsob výpočtů, zatímco samotný zdrojový kód a podrobná dokumentace jeho použití se nachází v příloze~\ref{sourceCode}.
 
 \subsection{Zpracování rovnovážných dat} \label{compLLE}
@@ -13,7 +13,7 @@ V daném rozsahu $w$ a $t$ plně postačuje funkce, která je polynomem třetíh
 	u = (p_1 w^3 + p_2 w^2 + p_3 w)(p_4 t + p_5)
 \end{equation}
 V tomto tvaru jsou však parametry na sobě jasně závislé.
-Numerický algoritmus na nelineární regresi, který je v prostředí MATLAB poskytován, potom hledá optimum obtížně a nespolehlivě, proto byla funkce použita v jiném tvaru, který je popsán v rovnici~\ref{eqn:eqFun}. Tato funkce má 6 parametrů $p_1$--$p_6$.
+Numerický algoritmus na nelineární regresi, který je v prostředí Matlab poskytován, potom hledá optimum obtížně a nespolehlivě, proto byla funkce použita v jiném tvaru, který je popsán v rovnici~\ref{eqn:eqFun}. Tato funkce má 6 parametrů $p_1$--$p_6$.
 \begin{equation}
 \label{eqn:eqFun}
 	u = p_1 w^3 t + p_2 w^2 t + p_3 w t + p_4 w^3 + p_5 w^2 + p_6 w
@@ -21,7 +21,7 @@ Numerický algoritmus na nelineární regresi, který je v prostředí MATLAB po
 Do regrese by sice bylo možné zahrnout obsah síranu amonného ve vodné fázi jako třetí nezávislou proměnnou, regrese by tím však byla méně spolehlivá.
 Obsah SA lze přitom považovat za zaručený, z důvodů popsaných v kapitole~\ref{CHON} jej navíc ani není možné příliš měnit, proto byly jako nezávislé proměnné zahrnuty pouze $w$ a $t$.
 
-Výše popsaná nelineární regrese je implementována ve funkci \textit{fitEqCurves.m}, kde je využita vestavěná funkce \textit{lsqcurvefit} nabízená prostředím MATLAB, aby byla získána sada parametrů pro každou dvojici fází (vodná fáze s daným obsahem SA a vybrané rozpouštědlo).
+Výše popsaná nelineární regrese je implementována ve funkci \textit{fitEqCurves.m}, kde je využita vestavěná funkce \textit{lsqcurvefit} nabízená prostředím Matlab, aby byla získána sada parametrů pro každou dvojici fází (vodná fáze s daným obsahem SA a vybrané rozpouštědlo).
 Po úspěšném proložení regresních křivek lze spouštět funkci \textit{getEqFun.m}, která do rovnovážné funkce dosadí zadanou teplotu a získanou funkci $u = f(w)$ tabeluje jako vektory $u$ a $w$.
 Tabelace funkce je výhodná pro výpočetně nenáročnou implementaci funkce inverzní, tedy $w = f^{-1}(u)$, která je hojně využívána v modelech extraktorů.
 
@@ -46,7 +46,7 @@ Pokud je průsečík nalezen pro $\dot{m}_1$ a $\dot{m}_3$, bude v další itera
 Tyto iterace jsou prováděny tak dlouho, dokud interval $\dot{m}_1$--$\dot{m}_2$ není velice úzký ($\dot{m}_\mathrm{S} \cdot 10^{-4}$), protože s takovou přesností je hodnota $\dot{m}_\mathrm{S,min}$ určena.
 Jako výslednou hodnotu lze použít $\dot{m}_3$.
 
-Protože tato funkce poskytuje jen strojový výstup, byla vytvořena také funkce \textit{extractorPlot.m}, která přehledně vypíše důležité výsledky do konzole prostředí MATLAB a vykreslí graf závislosti $u(w)$, kde je vynesena rovnovážná křivka, pracovní úsečka a úsečky znázorňující jednotlivá teoretická patra.
+Protože tato funkce poskytuje jen strojový výstup, byla vytvořena také funkce \textit{extractorPlot.m}, která přehledně vypíše důležité výsledky do konzole prostředí Matlab a vykreslí graf závislosti $u(w)$, kde je vynesena rovnovážná křivka, pracovní úsečka a úsečky znázorňující jednotlivá teoretická patra.
 Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extractorFeed.m}, která umožní vybranou vstupní veličinu měnit v definovaném rozmezí, výsledkem je pak tabulka závislosti NTP a $\dot{m}_\mathrm{S,min}$ na vybraném parametru.
 
 \subsection{Implementace přenosového modelu} \label{compTransfer}
@@ -78,7 +78,7 @@ S.~Hartland a A.~Kumar~\cite{HartlandKumar1997} uvádějí analytické řešení
 Analytická řešení ovšem platí pouze za předpokladu lineární rovnováhy, což, jak bude ukázáno v kapitole~\ref{resLLE}, v našem případě neplatí, rovnovážná funkce je totiž značně nelineární.
 Autoři uvádí, že při nelineární rovnováze diferenciální rovnice nemají analytické řešení a je nutné je řešit numericky.
 
-K numerickému řešení diferenciálních rovnic s okrajovou podmínkou MATLAB nabízí funkci \textit{bvp5c}, ta pro svůj běh potřebuje zaprvé funkci popisující diferenciální model prvního řádu, která ze závislých a nezávislých proměnných vypočítá derivace závislých proměnných, zadruhé funkci definující počáteční podmínky jakožto rovnice v anulovaném tvaru, zatřetí pak funkci sloužící jako počáteční odhad řešení.
+K numerickému řešení diferenciálních rovnic s okrajovou podmínkou Matlab nabízí funkci \textit{bvp5c}, ta pro svůj běh potřebuje zaprvé funkci popisující diferenciální model prvního řádu, která ze závislých a nezávislých proměnných vypočítá derivace závislých proměnných, zadruhé funkci definující počáteční podmínky jakožto rovnice v anulovaném tvaru, zatřetí pak funkci sloužící jako počáteční odhad řešení.
 V případě návrhového výpočtu je třeba zahrnout i počáteční odhad výšky extraktoru.
 
 Protože algoritmy řešení okrajových problémů nebývají zcela robustní a řešení může často divergovat, je třeba poskytnout dobrý počáteční odhad řešení.
@@ -114,7 +114,7 @@ Ve všech případech jsou však vypočteny následující veličiny jakožto me
 Hodnota $a$ pak přímo vyplývá z hodnot $d_{32}$ a $\phi$ dle rovnice~\ref{eqn:aint}.
 
 Některé dříve uváděné rovnice nejsou explicitní pro veličinu, k jejímuž výpočtu slouží.
-V takových případech byla rovnice převedena na anulovaný tvar a řešena pomocí \textit{fzero}, což je vestavěná funkce, kterou MATLAB nabízí k hledání kořene.
+V takových případech byla rovnice převedena na anulovaný tvar a řešena pomocí \textit{fzero}, což je vestavěná funkce, kterou Matlab nabízí k hledání kořene.
 
 Řešení výplňové kolony (viz kapitolu~\ref{insfunPacked}), které sestavil J."-P.~Duroudier~\cite{Duroudier2016}, je poměrně přímočaré a mez zahlcení lze přitom vypočítat odděleně od zbytku výpočtu.
 Před samotným výpočtem je provedena kontrola, zda-li zvolený rozměr výplně splňuje dříve popsaná omezení, aby bylo možné zaručit spolehlivost dalších výpočtů.

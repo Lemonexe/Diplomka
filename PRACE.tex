@@ -67,7 +67,7 @@ Při výrobě vznikají dvě nemísitelné fáze -- organická, skládající se
 Tato práce se zabývá právě izolací zbytkového kaprolaktamu z vodné fáze, což se v současnosti provádí kapalinovou extrakcí trichlorethylenem, který je však v rámci evropské směrnice REACH zařazen mezi látky vzbuzující mimořádné obavy (SVHC) i na seznam látek podléhajících povolení (příloha XIV)~\cite{ECHA_TCE}, proto jsou hledány alternativy.
 
 Tato práce poslouží k vypracování technologických podkladů pro náhradu trichlorethylenu toluenem, což se jeví jako velmi perspektivní.
-V rámci práce byla tedy nejprve v laboratoři naměřena data popisující rovnováhy kapalina-kapalina v rozsahu, který je pro řešení problému praktický a následně byl vypracován program v programovém prostředí MATLAB, který obsahuje dva matematické modely, a to zaprvé model patrový, sloužící k vyhodnocení výkonu laboratorního či průmyslového extraktoru, zadruhé model přenosový, který pomocí základních veličin umožní vypočítat buďto návrh geometrie a provozních parametrů extraktoru, nebo simulaci definovaného zařízení pro předpověď jeho separační účinnosti.
+V rámci práce byla tedy nejprve v laboratoři naměřena data popisující rovnováhy kapalina-kapalina v rozsahu, který je pro řešení problému praktický a následně byl vypracován program v programovém prostředí Matlab, který obsahuje dva matematické modely, a to zaprvé model patrový, sloužící k vyhodnocení výkonu laboratorního či průmyslového extraktoru, zadruhé model přenosový, který pomocí základních veličin umožní vypočítat buďto návrh geometrie a provozních parametrů extraktoru, nebo simulaci definovaného zařízení pro předpověď jeho separační účinnosti.
 Kromě toho byl sestaven laboratorní model extraktoru, aby mohla být funkce extraktoru otestována se skutečnými vzorky odebranými z provozu.
 
 Výsledky této práce budou využity k návrhu extraktorů síranových louhů v rámci nové technologie na separaci kaprolaktamu, která již nebude využívat chlorovaných rozpouštědel, a sníží se tak zátěž životního prostředí v České republice.
@@ -84,6 +84,7 @@ Výsledky této práce budou využity k návrhu extraktorů síranových louhů 
 
 \newpage \section{ZÁVĚR} \label{zaver}
 Existuje tedy ještě prostor pro vylepšení aparatury a metodiky, v budoucnu tedy mohou být provedeny další experimenty, aby byly tyto nedostatky napraveny.
+TCE 35, TCE 40
 
 
 
@@ -138,9 +139,11 @@ Existuje tedy ještě prostor pro vylepšení aparatury a metodiky, v budoucnu t
 	$R$ & poměr toků dispergované a kontinuální fáze \\
 	$S_{^i/_j}$ & kalibrační koeficient látky $i$ vůči $j$ \\
 	$T_x$ & počet přenosových jednotek vzhledem k fázi x \\
-	$u$ & hmotnostní zlomek CPL v organické fázi \\
+	$u$ & absolutní hmotnostní zlomek CPL v organické fázi \\
+	$U$ & relativní hmotnostní zlomek CPL v organické fázi \\
 	$V$ & objem [$\mathrm{m^3}$] \\
-	$w$ & hmotnostní zlomek CPL v organické fázi \\
+	$w$ & absolutní hmotnostní zlomek CPL ve vodné fázi \\
+	$W$ & relativní hmotnostní zlomek CPL ve vodné fázi \\
 	$y$ & molární zlomek (jen v kapitole~\ref{LLEtheory}) \\
 	$\beta$ & koeficient přestupu hmoty [$\mathrm{m \cdot s^{-1}}$] \\
 	$\gamma$ & mezifázové napětí [$\mathrm{N \cdot m^{-1}}$] \\
@@ -191,6 +194,6 @@ Existuje tedy ještě prostor pro vylepšení aparatury a metodiky, v budoucnu t
 \appendix
 \section{ZDROJOVÝ KÓD} \label{sourceCode}
 Nedílnou částí této práce je počítačový program, který je možné nalézt na přiloženém CD"-R nosiči.
-Ten obsahuje zaprvé složku \textit{matlab}, v níž se nachází samotný program spustitelný v prostředí MATLAB (verze 2007 či novější), zadruhé soubor \textit{Dokumentace.pdf}, v němž je podrobně popsána struktura programu a použití jednotlivých funkcí včetně příkladů použití.
+Ten obsahuje zaprvé složku \textit{Matlab}, v níž se nachází samotný program spustitelný v prostředí Matlab (verze 2007 či novější), zadruhé soubor \textit{Dokumentace.pdf}, v němž je podrobně popsána struktura programu a použití jednotlivých funkcí včetně příkladů použití.
 
 \end{document}
