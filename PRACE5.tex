@@ -67,7 +67,7 @@ Vzorky byly připraveny opakovanou extrakcí vzorku roztoku SA pomocí malého m
 Výsledky měření jsou graficky znázorněny v obrázku~\ref{fig:gamma} jakožto závislost $\gamma(w)$ včetně proložení polynomem 2.~řádu, jehož předpis je: $\gamma = 421 w^2 - 6,98 w + 0,0302$, kde jednotkou $\gamma$ je N/m.
 
 \begin{center}
-\begin{figure}[H]
+\begin{figure}[ht]
 	\includegraphics[width=\textwidth]{images/gamma.png}
 	\caption{Naměřená závislost mezifázového napětí na obsahu CPL} \label{fig:gamma}
 \end{figure}
@@ -79,9 +79,35 @@ Lze však předpokládat, že vliv této chyby byl kompenzován kalibrací, kter
 Namísto toho, aby měření spoléhalo na geometrický poloměr, který činí $r = 2,55~\mathrm{mm}$, byla určena hodnota efektivního poloměru $r = 2,10~\mathrm{mm}$, díky čemuž by měly být systematické chyby z velké míry napraveny.
 
 \subsubsection{Laboratorní model extraktoru} \label{reslabmodel}
-\textit{lorem ipsum}
-% Je otázkou jaký vliv má pulzování vstupních proudů. Silikonové hadice = tlumení?
-% Nepřesnost při měření mE, mR, lepší by bylo měřit mS, mF, ale to je problematické protože váhy to neutáhnou a hadice to tam kazí.
+Na aparatuře, která byla sestavena a provozována dle popisu v kapitole~\ref{labmodel}, byly provedeny tři experimenty za různých podmínek.
+Při prvním experimentu se ukázalo, že extraktor nebyl provozován dostatečně dlouho na dosažení ustáleného stavu, tedy stavu, kdy se koncentrace extraktu a rafinátu příliš neliší mezi dvěma odběry vzorků.
+Uváděny zde budou tedy pouze výsledky z druhého a třetího experimentu, kdy bylo díky většímu množství vzorku nejen dostatek času na ustálení, ale i na změnu podmínek a vyčkání na opětovné ustálení.
+Při experimentech byly nastavovány různé hodnoty frekvence míchání, poměru toků i zdvihu míchadel.
+
+Tabulka~\ref{tab:labmodel} shrnuje vstupní i výstupní veličiny při ustálených stavech -- každý řádek tabulky obsahuje průměrné hodnoty ze všech měření, které byly při daných podmínkách v ustáleném stavu.
+Veličiny v tabulce jsou: hmotnostní toky rafinátu a extraktu $\dot{m}_\mathrm{R}$ a $\dot{m}_\mathrm{E}$, frekvence $f$, zdvih $s$, obsah CPL v surovině, rafinátu a extraktu, teplota na vstupu suroviny $t_1$, teplota ve spodní části kolony $t_2$ a nakonec údaje vyhodnocené spuštěním patrového modelu, tedy dosažený počet teoretických pater a minimální tok solventu za daných podmínek.
+Patrovým modelem (viz kapitolu~\ref{compStage}) byl extraktor hodnocen při každém odběru vzorku, přičemž za teplotu byla dosazena střední teplota v extraktoru odhadnutá jako průměr mezi $t_1$ a $t_2$.
+
+\begin{table}[ht]
+\caption{Souhrn experimentů na laboratorním extraktoru} \label{tab:labmodel}
+\begin{center}
+\begin{tabular}{lllllllllll}
+	\Xhline{2pt}
+	\makecell{$\dot{m}_\mathrm{R}$ \\ (kg/h)} & \makecell{$\dot{m}_\mathrm{E}$ \\ (kg/h)} & \makecell{$f$ \\ (Hz)} & \makecell{$s$ \\ (mm)} &
+	\makecell{$w_\mathrm{F}$ \\ (\%)} & \makecell{$w_\mathrm{R}$ \\ (\%)} & \makecell{$u_\mathrm{E}$ \\ (\%)} & \makecell{$t_1$ \\ (°C)} & \makecell{$t_2$ \\ (°C)} &
+	NTP & \makecell{$\dot{m}_\mathrm{S,min}$ \\ (kg/h)} \\ \hline
+	9,7 & 1,7 & 9,9 & 2,38 & 0,84 & 0,24 & 3,62 & 61,8 & 52,8 & 1,2 & 0,24 \\
+	8,7 & 1,3 & 0,0 & 2,38 & 0,84 & 0,33 & 3,18 & 61,8 & 53,1 & 0,9 & 0,13 \\
+	9,3 & 1,8 & 7,3 & 8,18 & 0,91 & 0,12 & 4,08 & 61,9 & 53,6 & 2,1 & 0,46 \\
+	4,7 & 1,6 & 7,2 & 8,18 & 0,91 & 0,09 & 2,39 & 62,4 & 45,7 & 1,9 & 0,28 \\
+	\Xhline{2pt}
+\end{tabular}
+\end{center}
+\end{table}
+
+První dva řádky tabulky se týkají druhého experimentu, kdy byl zdvih míchadel menší a porovnán byl chod extraktoru při frekvenci míchání 10~Hz a bez míchání.
+Třetí a čtvrtý řádek tabulky jsou výsledky třetího experimentu, kdy byl zdvih míchadel větší a porovnán byl chod extraktoru při větším a menším toku vodné fáze.
+V kapitole~\ref{rescompare} budou výsledky experimentů porovnány s výsledky přenosového modelu.
 
 \subsection{Výsledky modelů} \label{resmodel}
 \textit{Nejdříve tabulka jednoho modelového zadání programu se verb 2}
@@ -94,4 +120,41 @@ Výpočetní modely byly odladěny a spuštěny pro zajímavý zadání...
 \textit{lorem ipsum}
 
 \subsubsection{Srovnání s laboratorním extraktorem} \label{rescompare}
-\textit{lorem ipsum}
+Výsledky experimentů na laboratorním modelu extraktoru z kapitoly~\ref{reslabmodel} byly porovnány s výsledky přenosového modelu.
+Ten byl spuštěn jako simulační výpočet s výše uvedenými toky, frekvencí, zdvihem a obsahem CPL ve vstupní surovině.
+Vzhledem k tomu, že bez předehřevu solventu se v extraktoru tvoří výškový gradient teploty, byla za teplotu dosazena střední teplota v extraktoru (stejně jako tomu bylo při určení NTP pomocí patrového modelu).
+
+Srovnání se nachází v tabulce~\ref{tab:labmodelcompare}, jejíž řádky odpovídají řádkům v tabulce~\ref{tab:labmodel}.
+Hodnoty s apostrofem jsou hodnoty vypočtené simulací, hodnoty bez apostrofu jsou již uvedené hodnoty experimentální.
+Sloupec $v_\mathrm{C} / v_\mathrm{C,F}$ pak vyjadřuje podíl rychlosti kontinuální fáze oproti vypočtené mezi zahlcení.
+
+\begin{table}[ht]
+\caption{Souhrn experimentů na laboratorním extraktoru} \label{tab:labmodelcompare}
+\begin{center}
+\begin{tabular}{lllllll}
+	\Xhline{2pt}
+    \makecell{$w_\mathrm{R}$ \\ (\%)} & \makecell{$w_\mathrm{R}'$ \\ (\%)} & 
+    \makecell{$u_\mathrm{E}$ \\ (\%)} & \makecell{$u_\mathrm{E}'$ \\ (\%)} & 
+	NTP & NTP' & $v_\mathrm{C} / v_\mathrm{C,F}$\\ \hline
+	0,24 & 0,028 & 3,62 & 4,39 & 1,2 & 5,3 & 0,41 \\
+	0,33 & - & 3,18 & - & 0,9 & - & - \\
+	0,12 & 0,11 & 4,08 & 3,99 & 2,1 & 2,22 & 1,19 \\
+	0,09 & 0,08 & 2,39 & 0,25 & 1,9 & 2,00 & 0,65 \\
+	\Xhline{2pt}
+\end{tabular}
+\end{center}
+\end{table}
+
+V druhém řádku nejsou vyplněny vypočtené hodnoty, neboť výpočetní model Karrova extraktoru nemůže pracovat s nulovou frekvencí míchání, pro tento případ tedy není k dispozici srovnání.
+V prvním řádku, tedy při experimentech s menším zdvihem, je vidět zcela zásadní rozdíl mezi naměřenými a vypočtenými hodnotami, zatímco při experimentech s vyšším zdvihem hodnoty odpovídají velice dobře.
+Z toho lze usuzovat, že model není spolehlivý při příliš malých hodnotách míchání.
+Také si lze povšimnout, že předpověd meze zahlcení je v modelech příliš konzervativní, neboť při jednom z experimentů byla vypočtená mez zahlcení překročena, avšak zahlcení pozorováno nebylo.
+Celkově je však zřejmé, že ještě nebyly nalezeny optimální podmínky provozu laboratorního extraktoru, nebo došlo k chybám při konstrukci aparatury a jejím provozování, protože separační účinnost je stále velmi nízká a nestačí na uspokojivou separaci.
+
+Separační účinnost extraktoru je poněkud snížená gradientem teploty, neboť jak bylo ukázáno v kapitole~\ref{resmodel}, při vyšší teplotě je na zadanou separaci potřeba méně TP.
+Z grafu ??? je navíc zřetelné, že většina teoretických pater se nachází v oblasti nízkých koncentrací, tedy na straně solventu a extraktu, kde je rovnovážná křivka nejblíže pracovní přímce.
+O to silnější je vliv gradientu teploty, neboť právě v této oblasti je teplota nižší a rovnovážná křivka je tedy pracovní přímce ještě blíže, takže na žádanou separaci je potřeba ještě více TP.
+Tento problém by byl vyřešen instalací tepelného výměníku i pro předehřev solventu.
+
+Diskutabilní je také vliv nestejnoměrnosti toku vstupních proudů, neboť na čerpání suroviny i solventu byla použita solenoidová pístová čerpadla, která značně pulzují.
+Pulzování toků nejspíše separační účinnost zvýší, neboť se tím zavádí další mechanismus míchání, na kterém jsou ostatně založeny extraktory s pulzním tokem (viz kapitolu~\ref{extractionKarr}), přesto by však bylo vhodné tento vliv odstínit, aby laboratorní extraktor věrněji předpovídal chování extraktoru poloprovozního či provozního.

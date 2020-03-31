@@ -28,7 +28,8 @@ Tabelace funkce je výhodná pro výpočetně nenáročnou implementaci funkce i
 Pro vizualizaci naměřených dat byla vytvořena ještě funkce \textit{plotLLEdata.m}, která do grafu závislosti $u(w)$ vykreslí pro zadanou dvojici fází všechna data LLE, která jsou seskupena do sad dle teploty při měření.
 
 \subsection{Implementace patrového modelu} \label{compStage}
-Rovnovážné funkce využívá patrový model extraktoru, který ze zadané bilance vypočte počet teoretických pater (TP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro popis kapalinové extrakce, jak ji popisuje T.~W.~Evans~\cite{Evans1934}.
+Rovnovážné funkce využívá patrový model extraktoru, který pracuje s konceptem teoretického patra (TP).
+Model ze zadané bilance určí počet teoretických pater (NTP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro popis kapalinové extrakce, jak ji popisuje T.~W.~Evans~\cite{Evans1934}.
 Hlavním účelem patrového modelu je vyčíslení separační účinnosti laboratorního či průmyslového extraktoru pomocí počtu TP za zadané hmotnostní bilance.
 Kromě toho je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace není možná.
 Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež je vypočtena hodnota $\dot{m}_\mathrm{S,min}$ a nakonec je modifikovanou McCabe"-Thielovou metodou určen počet TP.
@@ -46,7 +47,7 @@ Tyto iterace jsou prováděny tak dlouho, dokud interval $\dot{m}_1$--$\dot{m}_2
 Jako výslednou hodnotu lze použít $\dot{m}_3$.
 
 Protože tato funkce poskytuje jen strojový výstup, byla vytvořena také funkce \textit{extractorPlot.m}, která přehledně vypíše důležité výsledky do konzole prostředí MATLAB a vykreslí graf závislosti $u(w)$, kde je vynesena rovnovážná křivka, pracovní úsečka a úsečky znázorňující jednotlivá teoretická patra.
-Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extractorFeed.m}, která umožní vybranou vstupní veličinu měnit v definovaném rozmezí, výsledkem je pak tabulka závislosti počtu TP a $\dot{m}_\mathrm{S,min}$ na vybraném parametru.
+Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extractorFeed.m}, která umožní vybranou vstupní veličinu měnit v definovaném rozmezí, výsledkem je pak tabulka závislosti NTP a $\dot{m}_\mathrm{S,min}$ na vybraném parametru.
 
 \subsection{Implementace přenosového modelu} \label{compTransfer}
 Jak již bylo dříve zmíněno, přenosový model při předpovědi chování extraktoru vychází ze znalostí základních vlastností látek či systému.
@@ -61,14 +62,14 @@ Také průměr kolony $d_\mathrm{C}$ může být buďto specifikován (simulačn
 Libovolná kombinace těchto cest výpočtu je možná, a na tom pak závisí způsob běhu programu.
 
 Celý tento model je implementován ve funkci \textit{design.m}, který nejprve zpracuje zadání a získá příslušná fyzikální data pro zadané fáze.
-Při návrhu $L$ je bilance specifikována tak, jak bylo popsáno pro patrový model -- jedna libovolná bilanční veličina musí zůstat nedefinovaná a bilance je doplněna zavoláním funkce \textit{extractor.m}, která zároveň vypočte počet TP a $\dot{m}_\mathrm{S,min}$.
+Při návrhu $L$ je bilance specifikována tak, jak bylo popsáno pro patrový model -- jedna libovolná bilanční veličina musí zůstat nedefinovaná a bilance je doplněna zavoláním funkce \textit{extractor.m}, která zároveň vypočte NTP a $\dot{m}_\mathrm{S,min}$.
 V případě simulace $L$ musí být specifikovány všechny bilanční veličiny kromě výstupních koncentrací $w_\mathrm{R}$ a $w_\mathrm{E}$, protože míra separace je předmětem výpočtu, je tedy neznámá.
 Program se dále větví na podprogramy, které pomocí empirických rovnic určí potřebné veličiny charakterizující přenos hmoty v extraktoru -- k tomu slouží funkce \textit{designPacked.m}, \textit{designRotDisc.m} a \textit{designKarr.m}, které budou podrobně vysvětleny v kapitole~\ref{compInsfun}.
 Nejprve jsou zavolány pro výpočet meze zahlcení, která je buďto využita pro návrh $d_\mathrm{C}$, nebo, pokud byla tato hodnota specifikována, je mez zahlcení jen informativní.
 Podruhé (při známých rozměrech kolony) jsou funkce zavolány pro určení všech ostatních potřebných veličin.
 Následuje samotná implementace diferenciálního modelu, který bude podrobně popsán v kapitole~\ref{compDiff}.
 Výsledkem modelu je při návrhu $L$ jeho určená hodnota, při specifikaci $L$ pak bilanční veličiny určené jak pro model s pístovým tokem, tak model s axiální disperzí.
-V případě simulace $L$ jsou teprve nyní známy výstupní koncentrace, takže může být zavolána funkce \textit{extractor.m} na určení počtu TP a $\dot{m}_\mathrm{S,min}$.
+V případě simulace $L$ jsou teprve nyní známy výstupní koncentrace, takže může být zavolána funkce \textit{extractor.m} na určení NTP a $\dot{m}_\mathrm{S,min}$.
 
 \subsubsection{Řešení diferenciálních rovnic} \label{compDiff}
 Jádrem výpočtu je matematický model, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, jak bylo podrobně popsáno v kapitole~\ref{the_Math}.
