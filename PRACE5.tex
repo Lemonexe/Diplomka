@@ -156,17 +156,14 @@ Zadána byla stejná hodnota toku suroviny i stejný obsah CPL v surovině i raf
 Z grafu vyplývá zjištění, že vyšší teplota má jednoznačně pozitivní vliv na separaci, stejně tak i zvýšení koncentrace SA ve vodné fázi.
 Z grafu je také patrná výše zmíněná skutečnost, že NTP se blíží k nekonečnu při snižování toku na minimální hodnotu.
 
-\subsubsection{Výsledky přenosového modelu} \label{restables}
-Díky přenosovému modelu je možné provést detailní výpočet možností návrhu extraktoru, čili určit rozměry a v případě míchaných extraktorů i výkon míchání.
-Byla tedy provedena parametrická studie, kdy byl návrhový výpočet spouštěn při změně různých vstupních veličin, aby mohl být sledován vliv na výstupní veličiny.
-Z důvodu velkého počtu obměňovaných vstupních veličin není možné uvést v tabulkách všechny kombinace.
-Proto zde budou vypisovány kombinace jen vybraných veličin, zatímco vliv ostatních veličin bude popisován pouze souhrnně.
-
-Protože v tabulkách parametrické studie budou pro každý případ uvedeny jen stručné výsledky, je vhodné nejdříve na zvoleném příkladu podrobně rozepsat i mezivýsledky, aby bylo možné udělat si lepší představu o typických podmínkách v extraktoru.
+\subsubsection{Výsledky přenosového modelu} \label{restransfer}
+Díky přenosovému modelu je možné provést detailní výpočet návrhu extraktoru, čili určit rozměry a v případě míchaných extraktorů i výkon míchání.
+To bude v kapitole~\ref{restables} zpracováno do parametrických studií, kde však budou pro každý případ uvedeny jen stručné výsledky.
+Proto je vhodné nejdříve na zvoleném příkladu podrobně rozepsat i mezivýsledky, aby bylo možné udělat si lepší představu o typických podmínkách v extraktoru.
 Příklad pro Karrův extraktor je ukázán v tabulce~\ref{tab:transferexample}, kde jsou uvedeny různé veličiny, které již byly vysvětleny v předchozích kapitolách.
-Hodnoty $L_1$ a $L_2$ jsou výšky extraktoru vypočtené modelem s pístovým tokem, resp. s axiální disperzí.
-V tomto příkladě bylo pracováno se stejnými hodnotami vstupní bilance, jako tomu bylo u patrového modelu: tok suroviny 27~t/h a obsahy CPL 0,9~\% v surovině a 100~ppm v rafinátu, pouze tok solventu je zde nižší (4~t/h).
-Volná plocha disku je zde 0,58 v souladu s doporučenými hodnotami, vzdálenost mezi disky je 50~mm.
+Hodnoty $L_1$ a $L_2$ jsou pak výšky extraktoru vypočtené modelem s pístovým tokem, resp. s axiální disperzí.
+V tomto příkladě bylo pracováno se stejnými hodnotami vstupní bilance, jako tomu bylo u patrového modelu: tok suroviny 27~t/h a obsahy CPL 0,9~\% v surovině a 100~ppm v rafinátu, pouze tok solventu je zde nižší, a to 3,98~t/h.
+Volná plocha disku je zde 0,58 a vzdálenost mezi disky je 50~mm, což je v souladu s doporučenými hodnotami z kapitoly~\ref{insfunKarr}.
 Jako dispergovaná fáze je zde vybrána vodná fáze, kde obsah SA je 40~\%, teplota při extrakci je 80°C.
 
 \begin{table}[ht]
@@ -197,7 +194,7 @@ Jako dispergovaná fáze je zde vybrána vodná fáze, kde obsah SA je 40~\%, te
 		$E_\mathrm{D}$ & $1,22~\mathrm{cm^2/s}$ &
 			$\chi$ & 0,01 \\
 	& &
-		$E_\mathrm{C}$ & $ 0,269~\mathrm{cm^2/s}$ &
+		$E_\mathrm{C}$ & $ 0,27~\mathrm{cm^2/s}$ &
 			& \\
 	\Xhline{2pt}
 \end{tabular}
@@ -205,9 +202,115 @@ Jako dispergovaná fáze je zde vybrána vodná fáze, kde obsah SA je 40~\%, te
 \end{table}
 
 Z tabulky je vidět, že v tomto případě není nijak značný rozdíl mezi modelem s pístovým tokem a modelem s axiální disperzí, neboť koeficienty $E$ jsou poměrně nízké, ovšem ne vždy tomu tak je.
-Vypočtená hodnota $\chi$ je menší než 0,3, tím pádem je potvrzena stabilita dispergované fáze.
-Tak tomu bylo ve všech studovaných případech, neboť hodnoty $\phi$ zde bývají nízké.
+Vypočtená hodnota $\chi$ je mnohem menší než 0,3, tím pádem je potvrzena stabilita dispergované fáze.
+Tak tomu bylo ve všech studovaných případech, neboť hodnoty $\phi$ bývají nízké.
 Poněkud zarážející je velmi nízká hodnota výkonu míchání vzhledem k velikosti zařízení -- tento výpočet tedy nemusí být zcela spolehlivý.
+
+\subsubsection{Parametrická studie přenosového modelu} \label{restables}
+Návrhový výpočet byl spouštěn při změně různých vstupních veličin, aby mohl být sledován vliv na výstupní veličiny.
+Z důvodu velkého počtu obměňovaných vstupních veličin není možné uvést v tabulkách všechny kombinace, proto zde budou vypisovány kombinace jen vybraných veličin, zatímco vliv ostatních veličin bude popisován pouze souhrnně.
+
+Vybrané případy od všech druhů extraktorů jsou popsány v tabulkách~\ref{tab:calltablePacked}--\ref{tab:calltableRotDisc}, kde hodnoty $L_1$ a $L_2$ jsou výšky extraktoru vypočtené modelem s pístovým tokem, respektive s axiální disperzí.
+Některé vstupní veličiny jsou stále stejné: tok suroviny 27~t/h, obsahy CPL 0,9~\% v surovině a 100~ppm v rafinátu, obsah SA 40~\% a teplota při extrakci 80°C.
+Tok solventu je jednou z obměňovaných veličin a nabývá hodnot 3980~kg/h, 4520~kg/h a 6000~kg/h.
+Tyto hodnoty nebyly vybrány nahodile, odpovídají totiž hodnotám NTP 12,0, 9,0 a~6,0, minimální tok solventu je přitom 3133~kg/h.
+Kromě toků solventu je pak v každé tabulce vybrána jedna další nezávisle proměnná dle typu extraktoru.
+Pro všechny druhy extraktorů byla m.j. vytvořena stejná tabulka při definici vodné i organické fáze jakožto dispergované, aby bylo zjištěno, co je pro daný extraktor výhodnější.
+Vyzkoušeno bylo i provést výpočty pro obsah SA 42~\%, kdy je příznivější rovnováha, a tedy větší hybná síla pro přenos hmoty -- pro tuto alternativu lze souhrnně uvést, že výška extraktoru se sníží o 10--25~\%.
+Reálně však lze předpokládat ještě větší úsporu, neboť větší obsah SA by s velkou pravděpodobností znamenal nižší obsah CPL už v samotné surovině, tedy vodné fázi, co vystupuje z reaktoru.
+
+\begin{table}[ht]
+\caption{Parametrická studie výplňového extraktoru} \label{tab:calltablePacked}
+\begin{center}
+\begin{tabular}{ll|lll}
+	\Xhline{2pt}
+	$\dot{m}_\mathrm{S}$ (kg/h) & výplň & $d_\mathrm{C}$ (mm) & $L_1$ [mm] & $L_2$ [mm] \\ \hline
+	3980 & A & 606  & 1879 & 8032 \\
+	3980 & B & 876  & 1842 & 6354 \\
+	3980 & C & 1222 & 1774 & 5558 \\
+	4520 & A & 619  & 1614 & 6098 \\
+	4520 & B & 895  & 1594 & 4828 \\
+	4520 & C & 1247 & 1539 & 4228 \\
+	6000 & A & 651  & 1268 & 3737 \\
+	6000 & B & 940  & 1273 & 2971 \\
+	6000 & C & 1310 & 1239 & 2611 \\
+	\Xhline{2pt}
+\end{tabular}
+\end{center}
+\end{table}
+
+V případě výplňové kolony (tabulka~\ref{tab:calltablePacked}, dispergována je vodná fáze) je pouze jedna nezávisle proměnná, a to zvolená výplň.
+Uvažovány byly tři výplně označené písmeny A, B a C, ve všech případech se jedná o Raschigovy kroužky z oceli:\\
+\-\hspace{1cm} A: rozměr 51 mm, měrný povrch 100 $\mathrm{m}^{-1}$, porozita 94~\% \\
+\-\hspace{1cm} B: rozměr 19 mm, měrný povrch 270 $\mathrm{m}^{-1}$, porozita 93~\% \\
+\-\hspace{1cm} C: rozměr 9,5 mm, měrný povrch 600 $\mathrm{m}^{-1}$, porozita 88~\% \\
+Tyto možnosti částic výplní byly převzaty z přílohy knihy J."-P.~Duroudiera~\cite{Duroudier2016} a všechny jsou v mezích, kterými jsou rozměry výplně vázány (viz kapitolu~\ref{insfunPacked}).
+Z tabulky se ukazuje, že při menším rozměru výplně je sice nižší mez zahlcení, a tedy větší šířka extraktoru, avšak účinnější přenos hmoty, a tedy menší výška, a to zejména hodnota $L_2$.
+Menší částice výplně tedy poněkud potlačují axiální disperzi.
+Kromě těchto uvedených výplní byly vyzkoušeny i další -- ukázalo se, že jiné tvary (např. Pallovy kroužky či Berlova sedla) nejsou výhodné, poněvadž vedou k větší šířce i výšce extraktoru.
+Co se týče vlivu volby dispergované fáze, tak ačkoliv disperze organické fáze poskytne o něco menší šířku i výšku extraktoru, snížení není příliš výrazné, proto by bylo nejspíše vhodnější držet se doporučení z kapitoly~\ref{extraction} a dispergovat vodnou fázi, která hůře smáčí většinu použitelných materiálů~\cite{Zbytovsky2018}.
+Narozdíl od pohyblivých součástek (míchadla) je výplň dokonce možné vyrobit z polymeru, kde je rozdíl smáčivosti obzvláště výrazný.
+
+\begin{table}[ht]
+\caption{Parametrická studie Karrova extraktoru} \label{tab:calltableKarr}
+\begin{center}
+\begin{tabular}{lll|llll}
+	\Xhline{2pt}
+	$\dot{m}_\mathrm{S}$ (kg/h) & $N$ (Hz) & $s$ (mm) & $d_\mathrm{C}$ (mm) & $L_1$ [mm] & $L_2$ [mm] & $P$ (W) \\ \hline
+	3980 & 5 & 2,0 &  789 & 4240 & 4342 & 1 \\
+	3980 & 6 & 2,5 & 1006 & 2046 & 2301 & 4 \\
+	3980 & 7 & 3,0 & 1231 & 1142 & 1675 & 11 \\
+	3980 & 9 & 4,0 & 1701 &  464 & 2197 & 137 \\
+	4520 & 5 & 2,0 &  794 & 3696 & 3770 & 1 \\
+	4520 & 6 & 2,5 & 1013 & 1783 & 1974 & 3 \\
+	4520 & 7 & 3,0 & 1239 &  995 & 1394 & 9 \\
+	4520 & 9 & 4,0 & 1713 &  405 & 1683 & 107 \\
+	6000 & 5 & 2,0 &  808 & 3010 & 3057 & 1 \\
+	6000 & 6 & 2,5 & 1030 & 1453 & 1566 & 3 \\
+	6000 & 7 & 3,0 & 1261 &  810 & 1044 & 7 \\
+	6000 & 9 & 4,0 & 1742 &  329 & 1056 & 72 \\
+	\Xhline{2pt}
+\end{tabular}
+\end{center}
+\end{table}
+
+V případě Karrova extraktoru (tabulka~\ref{tab:calltableKarr}, dispergována je vodná fáze) jsou sice uvedeny dvě nezávisle proměnné, a to frekvence $N$ a zdvih $s$, avšak ve výpočetním modelu se s nimi většinou pracuje v součinu (který tvoří střední lineární rychlost), jsou proto odstupňovány společně.
+Pouze výpočet koeficientů axiální disperze $E$ na tyto veličiny nahlíží zvlášť, a to takovým způsobem, že $E_\mathrm{C}$ závisí mnohem více na $s$ než na $N$ (viz rovnici~\ref{eqn:KarrDAC}).
+Proto se jeví jako výhodnější snížit $s$ ve prospěch $N$ při zachování stejné hodnoty jejich součinu.
+Intenzita míchání je klíčová, neboť jak je z tabulky vidět, vede dle očekávání k větší šířce extraktoru a menší výšce $L_1$, avšak výška extraktoru $L_2$ může někdy vykazovat minimum.
+Nad tímto bodem roste axiální disperze tak prudce, že se přenos hmoty zhoršuje.
+S rychlostí míchání se také zvyšuje disipovaný výkon, ten je však v celé oblasti podezřele nízký, jak již bylo zmíněno v předchozí kapitole.
+Volba vzdálenosti disků $H$ se ukázala být jednoznačná -- byla nastavena na horní doporučenou mez (50~mm), neboť menším odstupem disků se dosáhne pouze drobného snížení výšky extraktoru, avšak za cenu větší šířky a disipovaného výkonu.
+Dispergovanou fází by pro Karrův extraktor zcela jasně měla být fáze vodná, v opačném případě se totiž sice mírně zmenší šířka extraktoru, avšak výška je mnohem větší, někdy dokonce až desetinásobná.
+
+\begin{table}[ht]
+\caption{Parametrická studie extraktorů s rotujícími míchadly} \label{tab:calltableRotDisc}
+\begin{center}
+\begin{tabular}{lll|lllll}
+	\Xhline{2pt}
+	extraktor & $\dot{m}_\mathrm{S}$ (kg/h) & $N$ (Hz) & $d_\mathrm{C}$ (mm) & $L_1$ [mm] & $L_2$ [mm] & $P$ (W) \\ \hline
+	RDC   & 4520 & 0,05 & 1445 & 4073 & 7157 & 0  \\
+	RDC   & 4520 & 0,15 & 1577 & 3360 & 6452 & 4  \\
+	RDC   & 4520 & 0,25 & 1792 & 2556 & 6224 & 29 \\
+	RDC   & 6000 & 0,05 & 1563 & 2588 & 4922 & 0  \\
+	RDC   & 6000 & 0,15 & 1723 & 2089 & 4535 & 4  \\
+	RDC   & 6000 & 0,25 & 1993 & 1535 & 4580 & 34 \\ \hline
+	Kühni & 4520 & 0,20 & 1886 & 2239 & 4324 & 38   \\
+	Kühni & 4520 & 0,40 & 1998 & 1386 & 4074 & 371  \\
+	Kühni & 4520 & 0,60 & 2218 &  724 & 4962 & 2492 \\
+	Kühni & 6000 & 0,20 & 2048 & 1411 & 2983 & 38   \\
+	Kühni & 6000 & 0,40 & 2185 &  841 & 2997 & 422  \\
+	Kühni & 6000 & 0,60 & 2463 &  419 & 4062 & 3233 \\
+	\Xhline{2pt}
+\end{tabular}
+\end{center}
+\end{table}
+
+V případě extraktorů s rotujícími míchadly, tedy RDC a Kühniho extraktoru, které jsou oba uvedeny v tabulce~\ref{tab:calltableRotDisc} (dispergována je organická fáze), je vidět obdobný vliv míchání jako u Karrova extraktoru.
+S vyšší frekvencí $N$ se tedy vždy zvětšuje šířka extraktoru a zmenšuje výška $L_1$, zatímco výška $L_2$ může mít minimum, je tedy třeba najít optimální hodnotu $N$.
+Co se týče volby dispergované fáze, tak zde se narozdíl od předchozích případů ukázala být organická fáze vhodnější, neboť je dosaženo výrazně nižší výšky kolony, zatímco šířka zůstává přibližně stejná.
+Celkově se však nyní ukazuje, že tyto konstrukce extraktorů nejsou pro dané použití vhodné, neboť je celkově dosahováno horší separační účinnosti než pro Karrův extraktor, ba dokonce i nemíchaná výplňová kolona umožňuje dosáhnout menších rozměrů.
+To je dáno značným vlivem axiální disperze u extraktorů s rotujícími míchadly.
 
 \subsubsection{Možnosti návrhu extraktorů} \label{rescases}
 \textit{lorem ipsum}
@@ -245,7 +348,7 @@ Také si lze povšimnout, že předpověd meze zahlcení je v modelech příliš
 Celkově je však zřejmé, že ještě nebyly nalezeny optimální podmínky provozu laboratorního extraktoru, nebo došlo k chybám při konstrukci aparatury a jejím provozování, protože separační účinnost je stále velmi nízká a nestačí na uspokojivou separaci.
 
 Separační účinnost extraktoru je poněkud snížená gradientem teploty, neboť jak bylo ukázáno v kapitole~\ref{resmodel}, při vyšší teplotě je na zadanou separaci potřeba méně TP.
-Z grafu ??? je navíc zřetelné, že většina teoretických pater se nachází v oblasti nízkých koncentrací, tedy na straně solventu a extraktu, kde je rovnovážná křivka nejblíže pracovní přímce.
+Z grafu~\ref{fig:McCabe} je navíc zřetelné, že většina teoretických pater se nachází v oblasti nízkých koncentrací, tedy na straně solventu a extraktu, kde je rovnovážná křivka nejblíže pracovní přímce.
 O to silnější je vliv gradientu teploty, neboť právě v této oblasti je teplota nižší a rovnovážná křivka je tedy pracovní přímce ještě blíže, takže na žádanou separaci je potřeba ještě více TP.
 Tento problém by byl vyřešen instalací tepelného výměníku i pro předehřev solventu.
 
