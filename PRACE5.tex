@@ -218,13 +218,14 @@ Kromě toků solventu je pak v každé tabulce vybrána jedna další nezávisle
 Pro všechny druhy extraktorů byla m.j. vytvořena stejná tabulka při definici vodné i organické fáze jakožto dispergované, aby bylo zjištěno, co je pro daný extraktor výhodnější.
 Vyzkoušeno bylo i provést výpočty pro obsah SA 42~\%, kdy je příznivější rovnováha, a tedy větší hybná síla pro přenos hmoty -- pro tuto alternativu lze souhrnně uvést, že výška extraktoru se sníží o 10--25~\%.
 Reálně však lze předpokládat ještě větší úsporu, neboť větší obsah SA by s velkou pravděpodobností znamenal nižší obsah CPL už v samotné surovině, tedy vodné fázi, co vystupuje z reaktoru.
+Celkově se také ukázalo, že vliv teploty na extrakci je jednoznačně pozitivní, neboť je nejen příznivější rovnováha, ale i nižší viskozita, což vede k lepším hydrodynamickým podmínkám (vyšší mez zahlcení, vyšší koeficienty přestupu hmoty).
 
 \begin{table}[ht]
 \caption{Parametrická studie výplňového extraktoru} \label{tab:calltablePacked}
 \begin{center}
 \begin{tabular}{ll|lll}
 	\Xhline{2pt}
-	$\dot{m}_\mathrm{S}$ (kg/h) & výplň & $d_\mathrm{C}$ (mm) & $L_1$ [mm] & $L_2$ [mm] \\ \hline
+	$\dot{m}_\mathrm{S}$ (kg/h) & výplň & $d_\mathrm{C}$ (mm) & $L_1$ (mm) & $L_2$ (mm) \\ \hline
 	3980 & A & 606  & 1879 & 8032 \\
 	3980 & B & 876  & 1842 & 6354 \\
 	3980 & C & 1222 & 1774 & 5558 \\
@@ -256,7 +257,7 @@ Narozdíl od pohyblivých součástek (míchadla) je výplň dokonce možné vyr
 \begin{center}
 \begin{tabular}{lll|llll}
 	\Xhline{2pt}
-	$\dot{m}_\mathrm{S}$ (kg/h) & $N$ (Hz) & $s$ (mm) & $d_\mathrm{C}$ (mm) & $L_1$ [mm] & $L_2$ [mm] & $P$ (W) \\ \hline
+	$\dot{m}_\mathrm{S}$ (kg/h) & $N$ (Hz) & $s$ (mm) & $d_\mathrm{C}$ (mm) & $L_1$ (mm) & $L_2$ (mm) & $P$ (W) \\ \hline
 	3980 & 5 & 2,0 &  789 & 4240 & 4342 & 1 \\
 	3980 & 6 & 2,5 & 1006 & 2046 & 2301 & 4 \\
 	3980 & 7 & 3,0 & 1231 & 1142 & 1675 & 11 \\
@@ -288,7 +289,7 @@ Dispergovanou fází by pro Karrův extraktor zcela jasně měla být fáze vodn
 \begin{center}
 \begin{tabular}{lll|lllll}
 	\Xhline{2pt}
-	extraktor & $\dot{m}_\mathrm{S}$ (kg/h) & $N$ (Hz) & $d_\mathrm{C}$ (mm) & $L_1$ [mm] & $L_2$ [mm] & $P$ (W) \\ \hline
+	extraktor & $\dot{m}_\mathrm{S}$ (kg/h) & $N$ (Hz) & $d_\mathrm{C}$ (mm) & $L_1$ (mm) & $L_2$ (mm) & $P$ (W) \\ \hline
 	RDC   & 4520 & 0,05 & 1445 & 4073 & 7157 & 0  \\
 	RDC   & 4520 & 0,15 & 1577 & 3360 & 6452 & 4  \\
 	RDC   & 4520 & 0,25 & 1792 & 2556 & 6224 & 29 \\
@@ -313,24 +314,44 @@ Celkově se však nyní ukazuje, že tyto konstrukce extraktorů nejsou pro dan�
 To je dáno značným vlivem axiální disperze u extraktorů s rotujícími míchadly.
 
 \subsubsection{Možnosti návrhu extraktorů} \label{rescases}
-\textit{lorem ipsum}
+Z parametrické studie byly vybrány dva finální návrhy zařízení -- jedna výplňová kolona a jeden Karrův extraktor.
+Tyto modely byly nyní spuštěny jakožto simulační výpočet, jejich výsledky jsou uvedeny v tabulce~\ref{tab:cases}, kde sloupec $v_\mathrm{C} / v_\mathrm{C,F}$ vyjadřuje podíl rychlosti kontinuální fáze oproti vypočtené mezi zahlcení.
+Vychází se opět z toku suroviny 27~t/h a obsahu CPL v surovině 0,9~\%, zatímco obsah rafinátu při simulačním výpočtu není specifikován, namísto toho byly zadány rozměry zařízení.
+Obsah SA ve vodné fázi je zvolen 42~\% a teplota při extrakci 80°C, protože to jsou nejvhodnější podmínky pro extrakci.
+Vodná fáze byla vybrána jako dispergovaná vzhledem ke zjištěním uvedeným dříve.
+Tok solventu byl zvolen 4~t/h, což je nízká hodnota, při níž však extraktor ještě není nepřiměřeně vysoký.
+Koncentrace v rafinátu, které byly vypočteny jako nižší než 100~ppm, se u obou návrhů liší pouze z toho důvodu, že byly navržené rozměry kolony zaokrouhleny.
+Karrův extraktor pracuje s hodnotami frekvence 5~Hz, zdvihem 2~mm a vzdáleností disků 50~mm.
+Jeho výkon není uveden, neboť byla vypočtena nulová hodnota, výpočet tedy nejspíše není věrohodný.
+Jako výplň byly vybrány ocelové Raschigovy kroužky s rozměrem 51 mm, měrným povrchem 100 $\mathrm{m}^{-1}$ a porozitou 94~\%.
+\begin{table}[ht]
+\caption{Dvě možnosti návrhů extraktorů} \label{tab:cases}
+\begin{center}
+\begin{tabular}{lll|lllll}
+	\Xhline{2pt}
+	extraktor & \makecell{$d_\mathrm{C}$ \\ (mm)} & \makecell{$L$ \\ (mm)} & \makecell{$w_\mathrm{R}$ \\ (ppm)} & \makecell{$u_\mathrm{E}$ \\ (\%)} &
+	$v_\mathrm{C} / v_\mathrm{C,F}$ & NTP & \makecell{$\dot{m}_\mathrm{S,min}$ \\ (kg/h)} \\ \hline
+	výplňový & 600 & 7000 & 64 & 5,69 & 0,50 & 6,5 & 2147 \\
+	Karrův   & 800 & 3500 & 83 & 5,68 & 0,47 & 6,0 & 2079 \\
+	\Xhline{2pt}
+\end{tabular}
+\end{center}
+\end{table}
 
 \subsubsection{Srovnání s laboratorním extraktorem} \label{rescompare}
 Výsledky experimentů na laboratorním modelu extraktoru z kapitoly~\ref{reslabmodel} byly porovnány s výsledky přenosového modelu.
-Ten byl spuštěn jako simulační výpočet s výše uvedenými toky, frekvencí, zdvihem a obsahem CPL ve vstupní surovině.
+Ten byl spuštěn jako simulační výpočet, přičemž jako vstupní hodnoty byly zadány naměřené hodnoty toků, frekvencí, zdvihu a obsahu CPL ve vstupní surovině.
 Vzhledem k tomu, že bez předehřevu solventu se v extraktoru tvoří výškový gradient teploty, byla za teplotu dosazena střední teplota v extraktoru (stejně jako tomu bylo při určení NTP pomocí patrového modelu).
 
 Srovnání se nachází v tabulce~\ref{tab:labmodelcompare}, jejíž řádky odpovídají řádkům v tabulce~\ref{tab:labmodel}.
-Hodnoty s apostrofem jsou hodnoty vypočtené simulací, hodnoty bez apostrofu jsou již uvedené hodnoty experimentální.
-Sloupec $v_\mathrm{C} / v_\mathrm{C,F}$ pak vyjadřuje podíl rychlosti kontinuální fáze oproti vypočtené mezi zahlcení.
-
+Hodnoty s apostrofem jsou hodnoty vypočtené modelem s axiální disperzí, hodnoty bez apostrofu jsou již uvedené hodnoty experimentální.
 \begin{table}[ht]
 \caption{Souhrn experimentů na laboratorním extraktoru} \label{tab:labmodelcompare}
 \begin{center}
 \begin{tabular}{lllllll}
 	\Xhline{2pt}
-    \makecell{$w_\mathrm{R}$ \\ (\%)} & \makecell{$w_\mathrm{R}'$ \\ (\%)} & 
-    \makecell{$u_\mathrm{E}$ \\ (\%)} & \makecell{$u_\mathrm{E}'$ \\ (\%)} & 
+	\makecell{$w_\mathrm{R}$ \\ (\%)} & \makecell{$w_\mathrm{R}'$ \\ (\%)} &
+	\makecell{$u_\mathrm{E}$ \\ (\%)} & \makecell{$u_\mathrm{E}'$ \\ (\%)} &
 	NTP & NTP' & $v_\mathrm{C} / v_\mathrm{C,F}$\\ \hline
 	0,24 & 0,028 & 3,62 & 4,39 & 1,2 & 5,3 & 0,41 \\
 	0,33 & - & 3,18 & - & 0,9 & - & - \\
@@ -345,12 +366,11 @@ V druhém řádku nejsou vyplněny vypočtené hodnoty, neboť výpočetní mode
 V prvním řádku, tedy při experimentech s menším zdvihem, je vidět zcela zásadní rozdíl mezi naměřenými a vypočtenými hodnotami, zatímco při experimentech s vyšším zdvihem hodnoty odpovídají velice dobře.
 Z toho lze usuzovat, že model není spolehlivý při příliš malých hodnotách míchání.
 Také si lze povšimnout, že předpověd meze zahlcení je v modelech příliš konzervativní, neboť při jednom z experimentů byla vypočtená mez zahlcení překročena, avšak zahlcení pozorováno nebylo.
-Celkově je však zřejmé, že ještě nebyly nalezeny optimální podmínky provozu laboratorního extraktoru, nebo došlo k chybám při konstrukci aparatury a jejím provozování, protože separační účinnost je stále velmi nízká a nestačí na uspokojivou separaci.
+Celkově je však zřejmé, že ještě nebyly nalezeny optimální podmínky provozu laboratorního extraktoru, nebo došlo k chybám při konstrukci aparatury a jejímu provozování, protože separační účinnost je stále velmi nízká a nestačí na uspokojivou separaci.
 
-Separační účinnost extraktoru je poněkud snížená gradientem teploty, neboť jak bylo ukázáno v kapitole~\ref{resmodel}, při vyšší teplotě je na zadanou separaci potřeba méně TP.
-Z grafu~\ref{fig:McCabe} je navíc zřetelné, že většina teoretických pater se nachází v oblasti nízkých koncentrací, tedy na straně solventu a extraktu, kde je rovnovážná křivka nejblíže pracovní přímce.
-O to silnější je vliv gradientu teploty, neboť právě v této oblasti je teplota nižší a rovnovážná křivka je tedy pracovní přímce ještě blíže, takže na žádanou separaci je potřeba ještě více TP.
+Separační účinnost extraktoru je poněkud snížená gradientem teploty, neboť jak bylo ukázáno v kapitole~\ref{resmodel}, při nižší teplotě je na zadanou separaci potřeba více TP.
+Vliv je o to silnější, že nižší teplota je právě v oblasti solventu a rafinátu, kde je rovnovážná křivka nejblíže pracovní přímce.
 Tento problém by byl vyřešen instalací tepelného výměníku i pro předehřev solventu.
 
 Diskutabilní je také vliv nestejnoměrnosti toku vstupních proudů, neboť na čerpání suroviny i solventu byla použita solenoidová pístová čerpadla, která značně pulzují.
-Pulzování toků nejspíše separační účinnost zvýší, neboť se tím zavádí další mechanismus míchání, na kterém jsou ostatně založeny extraktory s pulzním tokem (viz kapitolu~\ref{extractionKarr}), přesto by však bylo vhodné tento vliv odstínit, aby laboratorní extraktor věrněji předpovídal chování extraktoru poloprovozního či provozního.
+Pulzování toků nejspíše separační účinnost zvýší, neboť se tím zavádí další mechanismus míchání, na kterém jsou ostatně založeny extraktory s pulzním tokem, přesto by však bylo ideální tento vliv odstínit (například instalací expanzních nádob), aby laboratorní extraktor věrněji předpovídal chování extraktoru poloprovozního či provozního.
