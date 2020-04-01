@@ -107,6 +107,8 @@ První dva řádky tabulky se týkají druhého experimentu, kdy byl zdvih mích
 Třetí a čtvrtý řádek tabulky jsou výsledky třetího experimentu, kdy byl zdvih míchadel větší a porovnán byl chod extraktoru při větším a menším toku vodné fáze.
 V kapitole~\ref{rescompare} budou výsledky experimentů porovnány s výsledky přenosového modelu.
 
+
+
 \subsection{Výsledky modelů} \label{resmodel}
 \begin{figure}[ht]
 \begin{center}
@@ -139,7 +141,8 @@ Ta je zakončena křížky, které označují polohu suroviny a extraktu, respek
 Jednotlivá teoretická patra jsou pak znázorněna plnými čarami, přičemž je vidět, že většina pater leží v oblasti nízkých koncentrací, neboť je tam rovnovážná křivka nejblíže k pracovní přímce.
 Tím je také dán minimální tok solventu -- jedná se o hodnotu, kdy se obě čáry dotknou a žádný počet TP již nebude stačit na dosažení speficikované koncentrace rafinátu.
 Uvedený příklad vychází z toku síranového louhu 27~t/h, toku solventu 6~t/h, obsahu CPL v surovině 0,9~\%, což je typická hodnota zjištěná při analýzách vzorků ze Spolany, a obsahu CPL v rafinátu 100~ppm, což je požadovaný cíl separace.
-Na dosažení tohoto cíle je v tomto případě třeba 6,1 TP a minimální tok solventu 3,2~t/h.
+Obsah SA ve vodné fázi je zde 40~\% a teplota je 60°C.
+Na dosažení dané separace je v tomto případě potřeba 6,1 TP a minimální tok solventu 3,2~t/h.
 
 \begin{figure}[ht]
 \begin{center}
@@ -154,8 +157,57 @@ Z grafu vyplývá zjištění, že vyšší teplota má jednoznačně pozitivní
 Z grafu je také patrná výše zmíněná skutečnost, že NTP se blíží k nekonečnu při snižování toku na minimální hodnotu.
 
 \subsubsection{Výsledky přenosového modelu} \label{restables}
-% Nejdříve tabulka jednoho modelového zadání programu se verb 2
-\textit{Tabulky z callTable}
+Díky přenosovému modelu je možné provést detailní výpočet možností návrhu extraktoru, čili určit rozměry a v případě míchaných extraktorů i výkon míchání.
+Byla tedy provedena parametrická studie, kdy byl návrhový výpočet spouštěn při změně různých vstupních veličin, aby mohl být sledován vliv na výstupní veličiny.
+Z důvodu velkého počtu obměňovaných vstupních veličin není možné uvést v tabulkách všechny kombinace.
+Proto zde budou vypisovány kombinace jen vybraných veličin, zatímco vliv ostatních veličin bude popisován pouze souhrnně.
+
+Protože v tabulkách parametrické studie budou pro každý případ uvedeny jen stručné výsledky, je vhodné nejdříve na zvoleném příkladu podrobně rozepsat i mezivýsledky, aby bylo možné udělat si lepší představu o typických podmínkách v extraktoru.
+Příklad pro Karrův extraktor je ukázán v tabulce~\ref{tab:transferexample}, kde jsou uvedeny různé veličiny, které již byly vysvětleny v předchozích kapitolách.
+Hodnoty $L_1$ a $L_2$ jsou výšky extraktoru vypočtené modelem s pístovým tokem, resp. s axiální disperzí.
+V tomto příkladě bylo pracováno se stejnými hodnotami vstupní bilance, jako tomu bylo u patrového modelu: tok suroviny 27~t/h a obsahy CPL 0,9~\% v surovině a 100~ppm v rafinátu, pouze tok solventu je zde nižší (4~t/h).
+Volná plocha disku je zde 0,58 v souladu s doporučenými hodnotami, vzdálenost mezi disky je 50~mm.
+Jako dispergovaná fáze je zde vybrána vodná fáze, kde obsah SA je 40~\%, teplota při extrakci je 80°C.
+
+\begin{table}[ht]
+\caption{Detailní popis případu přenosového modelu} \label{tab:transferexample}
+\begin{center}
+\begin{tabular}{ll|ll|ll}
+	\Xhline{2pt}
+	\multicolumn{2}{l|}{Vlastnosti látek} & \multicolumn{2}{l|}{Mezivýsledky} & \multicolumn{2}{l}{Výsledky} \\ \hline
+	$\gamma$ & 10 mN/m &
+		$\psi$ & 2,4 mW/kg &
+			NTP & 7,5 \\
+	$\rho_\mathrm{C}$ & $810~\mathrm{kg/m^3}$ &
+		$\phi$ & 0,009 &
+			$Dt$ & 1006 mm \\
+	$\rho_\mathrm{D}$ & $1207~\mathrm{kg/m^3}$ &
+		$d_{32}$ & $4,54~\mathrm{mm}$ &
+			$L_1$ & 2046 mm \\
+	$\mu_\mathrm{C}$ & $0,309~\mathrm{mPa \cdot s}$ &
+		$a$ & $11,7~\mathrm{m^{-1}}$ &
+			$L_2$ & 2301 mm \\
+	$\mu_\mathrm{D}$ & $0,523~\mathrm{mPa \cdot s}$ &
+		$\beta_\mathrm{D}$ & $4,99~\mathrm{mm/s}$ &
+			$v_\mathrm{C,F}$ & $3,43~\mathrm{mm/s}$ \\
+	$D_\mathrm{C}$ & $4,31 \cdot 10^{9}~\mathrm{m^2 / s}$ &
+		$\beta_\mathrm{C}$ & $1,07~\mathrm{mm/s}$ &
+			$P$ & 4 W \\
+	$D_\mathrm{D}$ & $2,50 \cdot 10^{9}~\mathrm{m^2 / s}$ &
+		$E_\mathrm{D}$ & $1,22~\mathrm{cm^2/s}$ &
+			$\chi$ & 0,01 \\
+	& &
+		$E_\mathrm{C}$ & $ 0,269~\mathrm{cm^2/s}$ &
+			& \\
+	\Xhline{2pt}
+\end{tabular}
+\end{center}
+\end{table}
+
+Z tabulky je vidět, že v tomto případě není nijak značný rozdíl mezi modelem s pístovým tokem a modelem s axiální disperzí, neboť koeficienty $E$ jsou poměrně nízké, ovšem ne vždy tomu tak je.
+Vypočtená hodnota $\chi$ je menší než 0,3, tím pádem je potvrzena stabilita dispergované fáze.
+Tak tomu bylo ve všech studovaných případech, neboť hodnoty $\phi$ zde bývají nízké.
+Poněkud zarážející je velmi nízká hodnota výkonu míchání vzhledem k velikosti zařízení -- tento výpočet tedy nemusí být zcela spolehlivý.
 
 \subsubsection{Možnosti návrhu extraktorů} \label{rescases}
 \textit{lorem ipsum}

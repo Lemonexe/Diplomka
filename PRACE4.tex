@@ -6,18 +6,17 @@ V následujících kapitolách budou popsány principy fungování programu a zp
 
 \subsection{Zpracování rovnovážných dat} \label{compLLE}
 Tato část programu slouží ke zpracování naměřených dat LLE na funkce popisující rovnováhu ve tvaru $u = f(w, t)$.
-Vzhledem k tomu, že data byla měřena pouze v malém koncentračním rozmezí ($w$ nepřesahuje 1~\%), bylo možné použít empirickou rovnici namísto modelů aktivitních koeficientů, které, byť jsou termodynamicky konzistentní, nebylo možné spolehlivě proložit.
+Jak již bylo rozebráno v kapitole~\ref{LLEtheory}, vzhledem k malému koncentračnímu rozmezí je možné použít empirickou rovnici namísto modelů aktivitních koeficientů.
 V daném rozsahu $w$ a $t$ plně postačuje funkce, která je polynomem třetího řádu vůči $w$ (avšak bez absolutního členu, neboť funkce musí procházet bodem $(0,0)$) a polynom prvního řádu (lineární funkce) vůči $t$, jak je popsáno v rovnici~\ref{eqn:eqFun0}. Tato funkce má 5 parametrů $p_1$--$p_5$.
-\begin{equation}
+\begin{align}
 \label{eqn:eqFun0}
-	u = (p_1 w^3 + p_2 w^2 + p_3 w)(p_4 t + p_5)
-\end{equation}
+	u &= (p_1 w^3 + p_2 w^2 + p_3 w)(p_4 t + p_5) \\
+\label{eqn:eqFun}
+	u &= p_1 w^3 t + p_2 w^2 t + p_3 w t + p_4 w^3 + p_5 w^2 + p_6 w
+\end{align}
 V tomto tvaru jsou však parametry na sobě jasně závislé.
 Numerický algoritmus na nelineární regresi, který je v prostředí Matlab poskytován, potom hledá optimum obtížně a nespolehlivě, proto byla funkce použita v jiném tvaru, který je popsán v rovnici~\ref{eqn:eqFun}. Tato funkce má 6 parametrů $p_1$--$p_6$.
-\begin{equation}
-\label{eqn:eqFun}
-	u = p_1 w^3 t + p_2 w^2 t + p_3 w t + p_4 w^3 + p_5 w^2 + p_6 w
-\end{equation}
+
 Do regrese by sice bylo možné zahrnout obsah síranu amonného ve vodné fázi jako třetí nezávislou proměnnou, regrese by tím však byla méně spolehlivá.
 Obsah SA lze přitom považovat za zaručený, z důvodů popsaných v kapitole~\ref{CHON} jej navíc ani není možné příliš měnit, proto byly jako nezávislé proměnné zahrnuty pouze $w$ a $t$.
 
@@ -26,13 +25,13 @@ Po úspěšném proložení regresních křivek lze spouštět funkci \textit{ge
 Tabelace funkce je výhodná pro výpočetně nenáročnou implementaci funkce inverzní, tedy $w = f^{-1}(u)$, která je hojně využívána v modelech extraktorů.
 
 Pro vizualizaci naměřených dat byla vytvořena ještě funkce \textit{plotLLEdata.m}, která do grafu závislosti $u(w)$ vykreslí pro zadanou dvojici fází všechna data LLE, která jsou seskupena do sad dle teploty při měření.
+Tyto grafy budou ukázány v kapitole~\ref{resLLE}.
 
 \subsection{Implementace patrového modelu} \label{compStage}
 Rovnovážné funkce využívá patrový model extraktoru, který pracuje s konceptem teoretického patra (TP).
 Model ze zadané bilance určí počet teoretických pater (NTP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro popis kapalinové extrakce, jak ji popisuje T.~W.~Evans~\cite{Evans1934}.
-Hlavním účelem patrového modelu je vyčíslení separační účinnosti laboratorního či průmyslového extraktoru pomocí počtu TP za zadané hmotnostní bilance.
-Kromě toho je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace není možná.
-Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež je vypočtena hodnota $\dot{m}_\mathrm{S,min}$ a nakonec je modifikovanou McCabe"-Thielovou metodou určen počet TP.
+Kromě určení NTP je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace ani není možná.
+Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež jsou určeny hodnoty $\dot{m}_\mathrm{S,min}$ a NTP.
 
 Bilanci je díky nemísitelnosti fází možné vyjádřit pomocí relativních hm. zlomků $W$ a hm. toků obou fází bez CPL, tedy toku samotného síranového roztoku $\dot{m}_\mathrm{SA}$ a toku samotného solventu $\dot{m}_\mathrm{S}$ (ten je shodný s tokem vstupujícího proudu solventu, neboť obsah CPL je v ní nulový).
 Z těchto šesti bilančních veličin musí být právě jedna libovolná veličina ponechána nedefinovaná, aby mohla být vypočtena a zajištěno tak, že rovnice~\ref{eqn:massBalance} platí.
@@ -53,9 +52,10 @@ Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extr
 Jak již bylo dříve zmíněno, přenosový model při předpovědi chování extraktoru vychází ze znalostí základních vlastností látek či systému.
 Relevantní vlastnosti látek jsou hustota, dynamická viskozita a difuzivita kaprolaktamu v dané látce, vlastnosti systému jsou rovnovážná funkce $u = f(w)$ a mezifázové napětí ($\gamma$).
 Vlastnosti látek byly exportovány z databáze simulačního programu Aspen Plus v širokém rozmezí teplot, aby je bylo možné dle potřeby interpolovat a získat tak hodnoty za libovolně zvolené teploty.
-Hodnoty pochází z různých literárních zdrojů, a to <<<???CITACE???>>>.
+Hodnoty pochází z různých literárních zdrojů, a to ???CITACE???.
 Rovnovážná funkce tabelovaná jako vektor $u$ a $w$ je získána spuštěním funkce \textit{getEqFun.m} popsané v kapitole~\ref{compLLE}.
 Naměřené hodnoty mezifázového napětí byly zpracovány na funkci $\gamma(w)$, k čemuž postačuje regrese naměřených dat pomocí polynomu druhého řádu (viz kapitolu~\ref{resgamma}).
+Do této funkce je dosazena střední hodnota $w$ v profilu extraktoru, aby byla získána střední hodnota $\gamma$, se kterou je dále pracováno.
 
 Přenosový model slouží k výpočtu koncentrací CPL v obou fázích v závislosti na výškové souřadnici extraktoru, a může být realizován buďto jako výpočet návrhový, kdy je vypočtena výška $L$ potřebná na dosažení požadované hm. bilance, nebo jako výpočet simulační, kdy je $L$ specifikováno a model předpovídá míru separace v extraktoru, čili doplní hm. bilanci.
 Také průměr kolony $d_\mathrm{C}$ může být buďto specifikován (simulační výpočet) nebo vypočten z meze zahlcení (návrhový výpočet).
@@ -90,6 +90,7 @@ Diferenciální rovnice prvního řádu i jejich počáteční podmínky byly ji
 Nalezené řešení pro model s pístovým tokem má využití pro sestavení počátečního odhadu pro model s axiální disperzí, ten je však nutné nejprve upravit ze soustavy dvou dif. rovnic druhého řádu, jak jsou uvedeny v rovnici~\ref{eqn:diff2}, na soustavu čtyř rovnic prvního řádu.
 To je možné provést zavedením derivací koncentrací jako dvou dalších závislých proměnných: $c'_x = \D c_x / \D z$ a $c'_y = \D c_y / \D z$.
 Diferenciální model ve formě připravené pro numerický řešič je rozveden v soustavě rovnic~\ref{eqn:diff24}.
+
 \begin{align}
 \label{eqn:diff24}
 	\frac{\D c_x}{\D z} &= c'_x \\
