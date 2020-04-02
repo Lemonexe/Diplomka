@@ -1,7 +1,7 @@
 % include file for chapter 2
 
 \newpage \section{LITERÁRNÍ ČÁST} \label{lit}
-Literární část této práce se bude zabývat výčtem současně užívaných technologií na výrobu kaprolaktamu (dále jen CPL), možnostmi zařízení na průmyslovou kapalinovou extrakci, matematickým popisem extraktoru a teorií rovnováhy kapalina-kapalina.
+Literární část této práce se bude zabývat výčtem současně užívaných technologií na výrobu kaprolaktamu (dále jen CPL), možnostmi zařízení na průmyslovou kapalinovou extrakci, matematickým popisem extraktoru a teorií rovnováhy kapalina--kapalina.
 
 \subsection{Technologie kaprolaktamu} \label{CPLtechnology}
 $\varepsilon$-Kaprolaktam je bílá krystalická látka s bodem tání 69,2°C a normálním bodem varu 268,5°C~\cite{Ullmann_CPL} (strana~1).
@@ -124,7 +124,7 @@ Tento extraktor byl vyvinut pro systémy s extrémní tendencí k emulzifikaci, 
 Kontinuální protiproudý extraktor v ustáleném stavu lze matematicky popsat buďto patrovým modelem nebo přenosovým modelem, tyto modely se však zásadně liší požadovanými informacemi i možností použití.
 Patrový model, který bude dále popsán až v kapitole~\ref{compStage}, má využití zejména na porovnání separační účinnosti reálných extraktorů na základě změřených bilančních veličin, v případě Karrova extraktoru i na zvětšování měřítka z laboratorních experimentů na průmyslové zařízení, jak bylo popsáno v kapitole~\ref{extraction}.
 
-Naproti tomu přenosový model k problému přistupuje jiným způsobem -- cílem je namodelovat chování extraktoru pouze ze znalostí základních vlastností, jedná se o vlastnosti látek, jako je hustota~($\rho$), dynamická viskozita~($\mu$) a difuzivita kaprolaktamu v dané látce~($D$), a také o vlastnosti celého systému, jako je mezifázové napětí a popis rovnováhy kapalina-kapalina v podobě rovnovážné funkce: $u=f(w)$.
+Naproti tomu přenosový model k problému přistupuje jiným způsobem -- cílem je namodelovat chování extraktoru pouze ze znalostí základních vlastností, jedná se o vlastnosti látek, jako je hustota~($\rho$), dynamická viskozita~($\mu$) a difuzivita kaprolaktamu v dané látce~($D$), a také o vlastnosti celého systému, jako je mezifázové napětí a popis rovnováhy kapalina--kapalina v podobě rovnovážné funkce: $u=f(w)$.
 
 Ve tomto textu budou dále používány m.j. tyto veličiny: $t$ znamená teplota v °C, $\dot{m}$ je hmotnostní tok, $Q$ je objemový tok, $u$ a $w$ jsou obecně hmotnostní zlomky CPL v organické fázi, resp. ve vodné fázi.
 Veličiny s dolními indexy F, R, S a E se vztahují popořadě k surovině, rafinátu, solventu a extraktu.
@@ -150,7 +150,7 @@ $K_x$ v rovnici~\ref{eqn:Tx} je koeficient prostupu hmoty vztažený vždy k fá
 	T_x = \frac{K_x a A L}{Q_x}
 \end{equation}
 
-Řešení soustavy rovnic~\ref{eqn:diff2} musí splňovat okrajové podmínky, které jsou pro bod $z=0$ definovány v rovnicích~\ref{eqn:bound2_1} a~\ref{eqn:bound2_2}.
+Řešení soustavy rovnic~\ref{eqn:diff2} musí splňovat okrajové podmínky, které jsou pro bod $z=0$ definovány v rovnicích~\ref{eqn:bound2_1} a~\ref{eqn:bound2_2}, kde $c_\mathrm{in}$ značí koncentraci vstupního proudu.
 \begin{align}
 \label{eqn:bound2_1}
 	\left( \frac{\D c_x}{\D z} \right)_{z=0} &= Pe_x (c_{x,0} - c_{x,\mathrm{in}}) \\
@@ -519,8 +519,8 @@ Rovnice používá jednotky Hz pro $N$ a cm pro $s$ a $h$, jednotkou $E_\mathrm{
 
 
 
-\subsection{Rovnováha kapalina-kapalina} \label{LLEtheory}
-Teoretický popis rovnováhy kapalina-kapalina (LLE) byl již mnoha autory podrobně zpracován a termodynamicky podložen.
+\subsection{Rovnováha kapalina--kapalina} \label{LLEtheory}
+Teoretický popis rovnováhy kapalina--kapalina (LLE) byl již mnoha autory podrobně zpracován a termodynamicky podložen.
 Pro matematický popis LLE lze tedy využít termodynamických modelů, které mají tu výhodu, že jejich parametry mají fyzikální význam, proto lze předpokládat určitou univerzální platnost, nebo se spolehnout na jednodušší empirické rovnice, které jsou však striktně omezeny na rozsah naměřených dat a extrapolace bývá velmi nespolehlivá.
 Termodynamických modelů existuje celá řada, mají však společný základ -- dle Perryho příručky od T.~C.~Franka a~kol.~\cite{Perry_15} vychází z podmínky minimalizaci Gibbsovy energie, kterou lze vyjádřit rovností chemických potenciálů ve fázích A a B, a to pro všechna chemická individua $i$.
 Při rovnosti tlaku a teploty v obou fázích lze chemický potenciál vyjádřit dle rovnice~\ref{eqn:TDactivity} jako součin molárních zlomků $y$ a aktivitních koeficientů $\gamma$, které jsou funkcí pouze teploty a složení.

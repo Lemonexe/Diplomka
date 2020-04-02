@@ -18,16 +18,14 @@
 
 <<< TODO >>>
 	> psát kapitoly:
-		závěr
-		souhrn +EN po 2000 znacích, thx
+		souhrn +EN po 1000 znacích, thx
 	>>> udělat prezentaci (viz SVK pro začátek)
 	>>> nahrát zdroják + dokumentaci na CD
 
 <<< REŠERŠE >>>
-	> reference pro GC vnitřní kalibrace?
-	> najít si diplomky z ústavu 111 a Trejbalovy články
 	> projít rešerše Spolana 2017
-		data LLE?
+		data LLE H2O-SA-TOL-CPL?
+			2017/30.pdf (Van Delden)
 	> reference na všechna použitá data
 		Ale jak? V Aspenu lze otevřít NIST ThermoData engine a jsou tam exp. data
 		pure: mu, rho; binary: D, avšak D SA/CPL kde?? To je ternary a to tam nejde.

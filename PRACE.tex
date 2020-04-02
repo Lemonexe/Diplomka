@@ -67,7 +67,7 @@ Při výrobě vznikají dvě nemísitelné fáze -- organická, skládající se
 Tato práce se zabývá právě izolací zbytkového kaprolaktamu z vodné fáze, což se v současnosti provádí kapalinovou extrakcí trichlorethylenem, který je však v rámci evropské směrnice REACH zařazen mezi látky vzbuzující mimořádné obavy (SVHC) i na seznam látek podléhajících povolení (příloha XIV)~\cite{ECHA_TCE}, proto jsou hledány alternativy.
 
 Tato práce poslouží k vypracování technologických podkladů pro náhradu trichlorethylenu toluenem, což se jeví jako velmi perspektivní.
-V rámci práce byla tedy nejprve v laboratoři naměřena data popisující rovnováhy kapalina-kapalina v rozsahu, který je pro řešení problému praktický a následně byl vypracován program v programovém prostředí Matlab, který obsahuje dva matematické modely, a to zaprvé model patrový, sloužící k vyhodnocení výkonu laboratorního či průmyslového extraktoru, zadruhé model přenosový, který pomocí základních veličin umožní vypočítat buďto návrh geometrie a provozních parametrů extraktoru, nebo simulaci definovaného zařízení pro předpověď jeho separační účinnosti.
+V rámci práce byla tedy nejprve v laboratoři naměřena data popisující rovnováhy kapalina--kapalina v rozsahu, který je pro řešení problému praktický a následně byl vypracován program v programovém prostředí Matlab, který obsahuje dva matematické modely, a to zaprvé model patrový, sloužící k vyhodnocení výkonu laboratorního či průmyslového extraktoru, zadruhé model přenosový, který pomocí základních veličin umožní vypočítat buďto návrh geometrie a provozních parametrů extraktoru, nebo simulaci definovaného zařízení pro předpověď jeho separační účinnosti.
 Kromě toho byl sestaven laboratorní model extraktoru, aby mohla být funkce extraktoru otestována se skutečnými vzorky odebranými z provozu.
 
 Výsledky této práce budou využity k návrhu extraktorů síranových louhů v rámci nové technologie na separaci kaprolaktamu, která již nebude využívat chlorovaných rozpouštědel, a sníží se tak zátěž životního prostředí v České republice.
@@ -82,10 +82,22 @@ Výsledky této práce budou využity k návrhu extraktorů síranových louhů 
 
 
 
-\newpage \section{ZÁVĚR} \label{zaver}
-Existuje tedy ještě prostor pro vylepšení aparatury a metodiky, v budoucnu tedy mohou být provedeny další experimenty, aby byly tyto nedostatky napraveny.
-TCE 35, TCE 40 jsou špatný data
-SA42 je dobrý
+\newpage \section{ZÁVĚR} \label{conclusions}
+Tato práce se zabývala výzkumem možnosti náhrady trichlorethylenu toluenem při extrakci zbytkového kaprolaktamu ze síranového louhu, který při výrobě kaprolaktamu odpadá jako vedlejší produkt.
+Téma bylo zpracováno jak z experimentální, tak z výpočetní stránky, nejprve tedy byla naměřena data rovnováh kapalina--kapalina v relevantní oblasti a data mezifázového napětí (jen pro toluen), aby mohly být sestaveny matematické modely extraktorů, a to patrový model a přenosový model.
+Ve výpočetních modelech byly zkoumány čtyři typy konstrukce extraktorů, kterými jsou výplňová kolona, extraktor s rotujícími disky, Kühniho a Karrův.
+Podrobnou studií přenosového modelu bylo usouzeno, že nejvhodnějšími alternativami pro dané použití jsou Karrův extraktor a výplňová kolona.
+První z možností umožňuje dosáhnout vyšší separační účinnosti, druhá zase poskytuje vyšší kapacitu a pravděpodobně také mnohem nižší náklady jak na pořízení, tak na provoz.
+Pro obě varianty byly nalezeny optimální podmínky a zpracovány stručné návrhy parametrů zařízení.
+V budoucnu se nabízí znovu změřit rovnovážná data pro trichlorethylen, neboť existující data bohužel nejsou kvalitní a není možné použít je jako podklad pro modelování.
+Pro přenosový model by také bylo vhodné změřit mezifázové napětí systému s trichlorethylenem, což by umožnilo vytvořit simulaci existujícího provozního extraktoru a ověřit tak platnost matematických modelů na příkladu reálného zařízení. 
+
+V této práci byla také zkoumána možnost zvýšení teploty z 60°C na 80°C a zvýšení obsahu síranu amonného ve vodné fázi z 40~\% na 42~\% -- už samotná naměřená data rovnováh ukazují, že je tato možnost velice perspektivní.
+Výpočetní modely pak ukazují, že lze při zachování toku solventu dosáhnout značné úspory potřebného počtu teoretických pater, a tedy potřebné výšky extraktoru, nebo lze ušetřit provozní náklady snížením toku solventu.
+
+Nakonec byl také sestaven Karrův extraktor v laboratorním měřítku, na němž byly provedeny experimenty s provozními vzorky síranových louhů, aby mohly být předpovědi výpočetních modelů porovnány s realitou.
+Ukázalo se však, že aparatura trpí několika nedostatky, v jejichž důsledku není dosahováno požadované separační účinnosti.
+V budoucnu bude tedy třeba provést další experimenty, aby byly tyto nedostatky napraveny.
 
 
 
@@ -95,30 +107,9 @@ SA42 je dobrý
 \setstretch{1}
 \bibliography{references}
 
-\newpage \section*{SEZNAM POUŽITÝCH ZKRATEK}
-\addcontentsline{toc}{section}{SEZNAM POUŽITÝCH ZKRATEK}
-% abecedně seřadit, pokud jsou anglicky, tak: český překlad (english meaning)
-
-\begin{tabular}{ll}
-	CPL & kaprolaktam \\
-	FID & plamenově-ionizační detektor pro GC \\
-	GC  & plynová chromatografie \\
-	HETS& výška ekvivalentu TP (height of equivalent to a theoretical stage) \\
-	LDPE& nízkohustotní polyethylen \\
-	LLE & rovnováha kapalina-kapalina (liquid-liquid equilibrium) \\
-	NTP & počet teoretických pater \\
-	PTFE& polytetrafluorethylen \\
-	RDC & extraktor s rotujícími disky (rotating-disc column) \\
-	SA  & síran amonný \\
-	TCE & trichlorethylen \\
-	TOL & toluen \\
-	TP  & teoretické patro \\
-\end{tabular}
-
 \newpage \section*{SEZNAM SYMBOLŮ}
 \addcontentsline{toc}{section}{SEZNAM SYMBOLŮ}
 % seřadit abecedně, a to: latinka (aAbBcC), řecká písmena, jiné znaky
-
 \singlespacing
 \begin{tabular}{ll}
 	$a$ & specifická mezifázová plocha [$\mathrm{m^{-1}}$] \\
@@ -160,8 +151,7 @@ SA42 je dobrý
 	$\psi$ & měrný disipovaný výkon [$\mathrm{W \cdot kg^{-1}}$] \\
 \end{tabular}
 
-\vspace{0.5cm} \textbf{Indexy}
-
+\newpage \subsubsection*{Indexy symbolů}
 \begin{tabular}{ll}
 	* & hodnota v rovnováze \\
 	C & kontinuální fáze \\
@@ -177,7 +167,25 @@ SA42 je dobrý
 	S & solvent \\
 	E & extrakt \\
 	in  & vstupní \\
-	out & výstupní \\
+\end{tabular}
+
+\vspace{1cm} \section*{SEZNAM POUŽITÝCH ZKRATEK}
+\addcontentsline{toc}{section}{SEZNAM POUŽITÝCH ZKRATEK}
+% abecedně seřadit, pokud jsou anglicky, tak: český překlad (english meaning)
+\begin{tabular}{ll}
+	CPL & kaprolaktam \\
+	FID & plamenově-ionizační detektor (flame-ionization detector) \\
+	GC  & plynová chromatografie (gas chromatography) \\
+	HETS& výška ekvivalentu TP (height of equivalent to a theoretical stage) \\
+	LDPE& nízkohustotní polyethylen (low-density polyethylene) \\
+	LLE & rovnováha kapalina--kapalina (liquid--liquid equilibrium) \\
+	NTP & počet teoretických pater \\
+	PTFE& polytetrafluorethylen \\
+	RDC & extraktor s rotujícími disky (rotating-disc column) \\
+	SA  & síran amonný \\
+	TCE & trichlorethylen \\
+	TOL & toluen \\
+	TP  & teoretické patro \\
 \end{tabular}
 \onehalfspacing
 
