@@ -17,8 +17,6 @@
 
 
 <<< TODO >>>
-	> psát kapitoly:
-		souhrn +EN po 1000 znacích, thx
 	>>> udělat prezentaci (viz SVK pro začátek)
 	>>> nahrát zdroják + dokumentaci na CD
 

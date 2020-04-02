@@ -29,7 +29,7 @@ Tyto grafy budou ukázány v kapitole~\ref{resLLE}.
 
 \subsection{Implementace patrového modelu} \label{compStage}
 Rovnovážné funkce využívá patrový model extraktoru, který pracuje s konceptem teoretického patra (TP).
-Model ze zadané bilance určí počet teoretických pater (NTP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro popis kapalinové extrakce, jak ji popisuje T.~W.~Evans~\cite{Evans1934}.
+Model ze zadané bilance určí počet teoretických pater (NTP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro kapalinovou extrakci, jak ji popisuje T.~W.~Evans~\cite{Evans1934}.
 Kromě určení NTP je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace ani není možná.
 Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež jsou určeny hodnoty $\dot{m}_\mathrm{S,min}$ a NTP.
 
@@ -51,8 +51,7 @@ Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extr
 \subsection{Implementace přenosového modelu} \label{compTransfer}
 Jak již bylo dříve zmíněno, přenosový model při předpovědi chování extraktoru vychází ze znalostí základních vlastností látek či systému.
 Relevantní vlastnosti látek jsou hustota, dynamická viskozita a difuzivita kaprolaktamu v dané látce, vlastnosti systému jsou rovnovážná funkce $u = f(w)$ a mezifázové napětí ($\gamma$).
-Vlastnosti látek byly exportovány z databáze simulačního programu Aspen Plus v širokém rozmezí teplot, aby je bylo možné dle potřeby interpolovat a získat tak hodnoty za libovolně zvolené teploty.
-Hodnoty pochází z různých literárních zdrojů, a to ???CITACE???.
+Vlastnosti látek byly exportovány z databáze simulačního programu Aspen Plus V10~\cite{Aspen} v širokém rozmezí teplot, aby je bylo možné dle potřeby interpolovat a získat tak hodnoty za libovolně zvolené teploty.
 Rovnovážná funkce tabelovaná jako vektor $u$ a $w$ je získána spuštěním funkce \textit{getEqFun.m} popsané v kapitole~\ref{compLLE}.
 Naměřené hodnoty mezifázového napětí byly zpracovány na funkci $\gamma(w)$, k čemuž postačuje regrese naměřených dat pomocí polynomu druhého řádu (viz kapitolu~\ref{resgamma}).
 Do této funkce je dosazena střední hodnota $w$ v profilu extraktoru, aby byla získána střední hodnota $\gamma$, se kterou je dále pracováno.
@@ -69,7 +68,7 @@ Nejprve jsou zavolány pro výpočet meze zahlcení, která je buďto využita p
 Podruhé (při známých rozměrech kolony) jsou funkce zavolány pro určení všech ostatních potřebných veličin.
 Následuje samotná implementace diferenciálního modelu, který bude podrobně popsán v kapitole~\ref{compDiff}.
 Výsledkem modelu je při návrhu $L$ jeho určená hodnota, při specifikaci $L$ pak bilanční veličiny určené jak pro model s pístovým tokem, tak model s axiální disperzí.
-V případě simulace $L$ jsou teprve nyní známy výstupní koncentrace, takže může být zavolána funkce \textit{extractor.m} na určení NTP a $\dot{m}_\mathrm{S,min}$.
+V případě simulace $L$ jsou teprve nyní známy výstupní koncentrace, takže může být zavolána funkce \textit{extractor.m} na určení hodnot NTP a $\dot{m}_\mathrm{S,min}$.
 
 \subsubsection{Řešení diferenciálních rovnic} \label{compDiff}
 Jádrem výpočtu je matematický model, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, jak bylo podrobně popsáno v kapitole~\ref{the_Math}.
@@ -119,7 +118,7 @@ V takových případech byla rovnice převedena na anulovaný tvar a řešena po
 
 Řešení výplňové kolony (viz kapitolu~\ref{insfunPacked}), které sestavil J."-P.~Duroudier~\cite{Duroudier2016}, je poměrně přímočaré a mez zahlcení lze přitom vypočítat odděleně od zbytku výpočtu.
 Před samotným výpočtem je provedena kontrola, zda-li zvolený rozměr výplně splňuje dříve popsaná omezení, aby bylo možné zaručit spolehlivost dalších výpočtů.
-Nejprve je pak vypočtena $v_\mathrm{C,F}$, následuje $\phi$, $d_{32}$ a empirický výpočet $v_\mathrm{s}$ pomocí $\phi$.
+Pak je nejprve vypočtena $v_\mathrm{C,F}$, následuje $\phi$, $d_{32}$ a empirický výpočet $v_\mathrm{s}$ pomocí $\phi$.
 K dispozici je však také přímý geometrický výpočet, jako výsledná hodnota rychlosti kluzu proto poslouží průměrná hodnota obou metod výpočtu.
 Pomocí Reynoldsova čísla v kontinuální fázi $Re_\mathrm{C}$, Schmidtových čísel pro obě fáze ($Sc$) a předchozích mezivýsledků je vypočten koeficient přestupu pro disp. fázi $\beta_\mathrm{D}$, Sherwoodovo číslo pro kont. fázi $Sh_\mathrm{C}$ (a z něj vyplývající $\beta_\mathrm{C}$) a Pécletova čísla pro kont. i disp. fázi.
 Pécletovo číslo pro kont. fázi je přitom omezeno maximální hodnotou závisející pouze na $Re_\mathrm{C}$, kterou údajně nemůže překročit, ta je proto použita v případě, že by ji standardně vypočtená hodnota převyšovala.

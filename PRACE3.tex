@@ -53,7 +53,7 @@ Parametry kolony a podmínky při chromatografii jsou uvedeny v tabulce \ref{tab
 Teplotní profil byl zvolen tak, aby byl retenční čas kaprolaktamu (nejméně těkavá látka z analytů) co nejnižší, a tedy aby jeho pík měl tvar co nejbližší Gaussově funkci, ale zároveň aby byly píky kaprolaktamu i n"-heptanolu dostatečně oddělené od sebe i od píků rozpouštědel.
 K tomuto účelu byl přizpůsoben následující teplotní profil: 100°C po dobu 2~min, ohřev na teplotu 200°C trvající 4~min a nakonec 2~min při této teplotě.
 Tabulka \ref{tab:GCtime} shrnuje přibližné hodnoty retenčních časů ($\tau_\mathrm{R}$), které byly za těchto podmínek pozorovány.
-V případě, že je retenční čas zadán jako rozmezí, se jedná o pík s šikmým tvarem a jeho vrchol se proto pohybuje v závislosti na celkové ploše píku.
+V případě, že je retenční čas zadán jako rozmezí, se jedná o pík s šikmým tvarem, jeho vrchol se proto pohybuje v závislosti na celkové ploše píku.
 
 \begin{table}[ht]
 \caption{Podmínky při analýze GC a popis kolony} \label{tab:GC}
@@ -128,12 +128,12 @@ Mezifázové napětí~($\gamma$) lze vypočítat postupem, který popsali J.~L.~
 \end{equation}
 
 Přestože zahrnutí korekčního faktoru by mělo samo o sobě zajišťovat přesnost, byla aparatura raději zkalibrována, a to tak, že bylo provedeno měření na dvojicích roztoků se známou hodnotou $\gamma$.
-V literatuře byly proto vyhledány hodnoty pro systémy n"-heptan--voda~\cite{Johnson1966} a toluen--voda~\cite{InternationalCriticalTables}.
+V literatuře byly proto vyhledány hodnoty pro systémy n"-heptan--voda~\cite{Johnson1966} (50,7~mN/m) a toluen--voda~\cite{InternationalCriticalTables} (36,1~mN/m).
 Měření bylo zpracováno tak, že ze známých hodnot $m$ a $\gamma$ byl určen efektivní poloměr kapiláry, který se skutečně ukázal být mírně odlišný od geometrického průměru, a ten byl pak použit pro vyhodnocení měřených vzorků.
 
 \subsection{Laboratorní model extraktoru} \label{labmodel}
 Ačkoliv stěžejní částí této práce je matematické modelování extraktorů, byl také sestaven laboratorní model Karrova extraktoru, aby bylo k dispozici srovnání simulací s výsledky měření na skutečném zařízením (alespoň pro tento typ extraktoru).
-A zatímco matematické modely jsou značně idealizované, neboť povětšinou vychází z vlastností roztoků čistých látek, při měření na laboratorním extraktoru bylo pracováno se vzorky síranových louhů odebranými přímo z provozu Spolany -- lze tedy čekat, že laboratorní model bude věrněji reflektovat vlastnosti skutečných směsí, pro které bude technologie navrhnována.
+A zatímco matematické modely jsou značně idealizované, neboť povětšinou vychází z vlastností roztoků čistých látek, při měření na laboratorním extraktoru bylo pracováno se vzorky síranových louhů odebranými přímo z provozu Spolany -- lze tedy čekat, že laboratorní model bude věrněji reflektovat vlastnosti skutečných směsí, pro které bude technologie navrhována.
 
 \subsubsection{Popis aparatury} \label{labmodel_a}
 Pro toto měření byla sestavena aparatura podobná těm, jaké jsou popisovány v literatuře (např.~\cite{Baird1984}), schéma všech jejích prvků se nachází obrázku~\ref{fig:labmodel}.
@@ -189,4 +189,4 @@ Frekvenci míchadla umožnil snímač zobrazovat jako průměrnou hodnotu od pos
 
 Odebrané vzorky vodné i organické fáze byly analyzovány na určení obsahu CPL, a to pomocí zcela stejné metodiky měření, jako byla použita při měření dat LLE -- metoda analýzy na GC tedy byla již popsána v kapitole~\ref{GC}.
 Kromě rafinátu a extraktu byla na GC měřena i vstupní surovina, neboť obsah CPL ve vzorcích ze Spolany kolísal mezi jednotlivými odběry.
-Analyzován byl i solvent, neboť díky jeho vysoké spotřebě bylo nutné jej po skončení experimentu regenerovat, což bylo provedeno pomocí klasické atmosferické destilace, která postačovala na dokonalé oddělení čistého solventu od všech extrahovaných složek, to však bylo nutné chromatograficky ověřit.
+Analyzován byl i solvent, neboť díky jeho vysoké spotřebě bylo nutné jej po skončení experimentu regenerovat, což bylo provedeno pomocí klasické atmosférické destilace, která postačovala na dokonalé oddělení čistého solventu od všech extrahovaných složek, to však bylo nutné vždy chromatograficky ověřit.
