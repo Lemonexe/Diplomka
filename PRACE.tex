@@ -35,20 +35,33 @@
 \defineshorthand{"-}{\babelhyphen{nobreak}} % non-breakable hyphen
 \def\D{\mathrm{d}} % non-italic differential sign
 
-% BEGIN
+% BEGIN THE DOCUMENT
 \begin{document}
 \pagenumbering{gobble} % don't number pages until after TOC
 
-% souhrn
 \section*{SOUHRN}
-Souhrn v ČJ
+Při výrobě kaprolaktamu vzniká jako vedlejší produkt 40\% roztok síranu amonného, z něhož je nutné extrahovat zbytkový kaprolaktam.
+Tato práce studuje možnost použití toluenu jako náhrady trichlorethylenu, který se nyní při extrakci používá jako rozpouštědlo, avšak z legislativních důvodů je třeba jej nahradit.
+Cílem této práce je tedy prostudovat možnosti návrhu a optimalizace extraktoru v novém procesu na výrobu kaprolaktamu.
+Proto byla provedena měření rovnováh kapalina--kapalina a dalších relevantních vlastností, na jejichž základě byly sestaveny matematické modely -- patrový model a přenosové modely pro různé konstrukce extraktorů.
+Měřením rovnováh a následným modelováním bylo zjištěno, že na danou aplikaci je nejvhodnější Karrův extraktor či výplňová kolona, a pro tyto typy byly nalezeny optimální podmínky provozu.
+Práce také prozkoumala možnost zvýšit teplotu z 60°C na 80°C a obsah síranu amonného až na 42~\%, což se ukazuje jako velmi výhodné.
+Kromě toho byl sestaven laboratorní Karrův extraktor, kde byly extrahovány provozní vzorky síranových louhů, aby bylo k dispozici porovnání s výsledky výpočetních modelů.
 
 \section*{SUMMARY}
-Souhrn v AJ
+In the caprolactam production process a 40\% ammonium sulfate solution is formed as a byproduct, which contains residual caprolactam that has to be extracted.
+This thesis studies the possibility of using toluene as a replacement for trichloroethylene, which is currently used as solvent for the extraction, but replacement is sought due to legal reasons.
+The aim of this study is to explore possibilities of design and optimalization of extraction in a new caprolactam production process.
+Therefore, measurements of liquid--liquid equilibria and other relevant properties were carried out and utilized for implementation of mathemathical models -- a stage model and transfer models for various extractor designs.
+Measurements and subsequent modelling have shown that Karr extractor or packed column are the most suitable choices and optimal conditions were found for these types.
+The possibility of raising temperature from 60°C to 80°C and ammonium sulfate content up to 42~\% was explored and turned out to be very favorable.
+Moreover, a laboratory Karr extractor was assembled and operated using sulfate solution samples from the process in order to provide comparison with results of computational modelling.
 
-% podekovani
-\newpage ~ \vspace{17cm} \section*{PODĚKOVÁNÍ}
-Rád bych poděkoval atd\ldots
+\newpage \section*{PODĚKOVÁNÍ}
+\vspace{19cm}
+Tímto bych rád poděkoval Ing. Jiřímu Trejbalovi, Ph.D. za odborné vedení při vypracování diplomové práce a především za cenné znalosti a zkušenosti, které mi při vedení práce a konzultacích předal.
+Rovněž bych rád poděkoval Ing. Martinu Zapletalovi, Ph.D. za konzultace a pomoc při laboratorních pracích.
+Velké díky za podporu během mého studia též náleží mé rodině, zejména mým rodičům Jiřímu a Evě Zbytovským.
 
 % insert TOC, and start numbering pages
 \newpage \tableofcontents \newpage
@@ -83,12 +96,14 @@ Výsledky této práce budou využity k návrhu extraktorů síranových louhů 
 
 
 \newpage \section{ZÁVĚR} \label{conclusions}
-Tato práce se zabývala výzkumem možnosti náhrady trichlorethylenu toluenem při extrakci zbytkového kaprolaktamu ze síranového louhu, který při výrobě kaprolaktamu odpadá jako vedlejší produkt.
-Téma bylo zpracováno jak z experimentální, tak z výpočetní stránky, nejprve tedy byla naměřena data rovnováh kapalina--kapalina v relevantní oblasti a data mezifázového napětí (jen pro toluen), aby mohly být sestaveny matematické modely extraktorů, a to patrový model a přenosový model.
-Ve výpočetních modelech byly zkoumány čtyři typy konstrukce extraktorů, kterými jsou výplňová kolona, extraktor s rotujícími disky, Kühniho a Karrův.
+Tato práce se zabývala výzkumem možnosti náhrady trichlorethylenu toluenem při extrakci síranového louhu, který při výrobě kaprolaktamu odpadá jako vedlejší produkt a kromě 40~\% síranu amonného obsahuje také zhruba 0,9~\% zbytkového kaprolaktamu.
+Téma bylo zpracováno jak z experimentální, tak z výpočetní stránky, nejprve tedy byla naměřena data rovnováh kapalina--kapalina v relevantní oblasti a pro toluen také data mezifázového napětí, aby mohly být sestaveny matematické modely extraktorů, a to patrový model a přenosový model.
+
+V přenosovém modelu byly zkoumány čtyři typy konstrukce extraktorů, kterými jsou výplňová kolona, extraktor s rotujícími disky, Kühniho a Karrův.
 Podrobnou studií přenosového modelu bylo usouzeno, že nejvhodnějšími alternativami pro dané použití jsou Karrův extraktor a výplňová kolona.
 První z možností umožňuje dosáhnout vyšší separační účinnosti, druhá zase poskytuje vyšší kapacitu a pravděpodobně také mnohem nižší náklady jak na pořízení, tak na provoz.
-Pro obě varianty byly nalezeny optimální podmínky a zpracovány stručné návrhy parametrů zařízení.
+Pro obě varianty byly nalezeny optimální podmínky a zpracovány stručné návrhy parametrů zařízení -- pro výplňovou kolonu byl zkoumán vliv výplně a ukázalo se, že vhodnější bývají spíše větší rozměry, pro Karrův extraktor byl zase prozkoumán vliv intenzity míchání, přičemž byly nalezeny optimální hodnoty frekvence a zdvihu.
+Pro obě konstrukce platí, že vodná fáze by měla být zvolena jako dispergovaná, a že vyšší teplota je jednoznačně příznivá pro extrakci.
 V budoucnu se nabízí znovu změřit rovnovážná data pro trichlorethylen, neboť existující data bohužel nejsou kvalitní a není možné použít je jako podklad pro modelování.
 Pro přenosový model by také bylo vhodné změřit mezifázové napětí systému s trichlorethylenem, což by umožnilo vytvořit simulaci existujícího provozního extraktoru a ověřit tak platnost matematických modelů na příkladu reálného zařízení. 
 
@@ -113,15 +128,15 @@ V budoucnu bude tedy třeba provést další experimenty, aby byly tyto nedostat
 \singlespacing
 \begin{tabular}{ll}
 	$a$ & specifická mezifázová plocha [$\mathrm{m^{-1}}$] \\
-	$A$ & plocha píku chromatogramu [$\mathrm{mV \cdot s}$] \\
 	$A$ & průřez kolony [$\mathrm{m^2}$] \\
+	& plocha píku chromatogramu [$\mathrm{mV \cdot s}$] (jen v kapitole~\ref{GC}) \\
 	$d$ & průměr [m] \\
 	$d_{32}$ & Sauterova střední velikost kapek [m] \\
 	$D$ & difuzivita kaprolaktamu v prostředí [$\mathrm{m^2 \cdot s^{-1}}$] \\
 	$E$ & koeficient axiální disperze [$\mathrm{m^2 \cdot s^{-1}}$] \\
 	$g$ & tíhové zrychlení [$\mathrm{m \cdot s^{-2}}$] \\
 	$h$ & vzdálenost mezi disky [m] \\
-	$K_x$ & koeficient prostupu hmoty vzhledem k fázi x [$\mathrm{m \cdot s^{-1}}$] \\
+	$K_x$ & koeficient prostupu hmoty vzhledem k fázi $x$ [$\mathrm{m \cdot s^{-1}}$] \\
 	$m$ & hmotnost [$\mathrm{kg}$] \\
 	$\dot{m}$ & hmotnostní tok [$\mathrm{kg \cdot s^{-1}}$] \\
 	$N$ & frekvence [Hz] \\
@@ -130,14 +145,14 @@ V budoucnu bude tedy třeba provést další experimenty, aby byly tyto nedostat
 	$r$ & efektivní poloměr kapiláry [$\mathrm{m}$] \\
 	$R$ & poměr toků dispergované a kontinuální fáze \\
 	$S_{^i/_j}$ & kalibrační koeficient látky $i$ vůči $j$ \\
-	$T_x$ & počet přenosových jednotek vzhledem k fázi x \\
+	$T_x$ & počet přenosových jednotek vzhledem k fázi $x$ \\
 	$u$ & absolutní hmotnostní zlomek CPL v organické fázi \\
 	$U$ & relativní hmotnostní zlomek CPL v organické fázi \\
 	$V$ & objem [$\mathrm{m^3}$] \\
 	$w$ & absolutní hmotnostní zlomek CPL ve vodné fázi \\
 	$W$ & relativní hmotnostní zlomek CPL ve vodné fázi \\
 	$y$ & molární zlomek (jen v kapitole~\ref{LLEtheory}) \\
-	$\beta$ & koeficient přestupu hmoty [$\mathrm{m \cdot s^{-1}}$] \\
+	$\beta$ & koeficient přestupu hmoty pro CPL [$\mathrm{m \cdot s^{-1}}$] \\
 	$\gamma$ & mezifázové napětí [$\mathrm{N \cdot m^{-1}}$] \\
 	& aktivitní koeficient (jen v kapitole~\ref{LLEtheory}) \\
 	$\varepsilon$ & porozita výplně \\
@@ -147,7 +162,7 @@ V budoucnu bude tedy třeba provést další experimenty, aby byly tyto nedostat
 	$\sigma$ & relativní volná plocha disku \\
 	$\phi$ & zádrž dispergované fáze v kontinuální (objemový zlomek) \\
 	$\Phi$ & korekční faktor pro výpočet mezifázového napětí \\
-	$\chi$ & parametr pro předpověď disperze \\
+	$\chi$ & bezrozměrné číslo pro předpověď stability disperze \\
 	$\psi$ & měrný disipovaný výkon [$\mathrm{W \cdot kg^{-1}}$] \\
 \end{tabular}
 
@@ -166,7 +181,7 @@ V budoucnu bude tedy třeba provést další experimenty, aby byly tyto nedostat
 	R & rafinát \\
 	S & solvent \\
 	E & extrakt \\
-	in  & vstupní \\
+	in  & vstupní proud \\
 \end{tabular}
 
 \vspace{1cm} \section*{SEZNAM POUŽITÝCH ZKRATEK}
