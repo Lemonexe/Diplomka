@@ -24,11 +24,6 @@
 	> projít rešerše Spolana 2017
 		data LLE H2O-SA-TOL-CPL?
 			2017/30.pdf (Van Delden)
-	> reference na všechna použitá data
-		Ale jak? V Aspenu lze otevřít NIST ThermoData engine a jsou tam exp. data
-		pure: mu, rho; binary: D, avšak D SA/CPL kde?? To je ternary a to tam nejde.
-		ale já jsem vlastně převzal z Aspenu parametry, jak tedy citovat to?
-
 
 <<< ZADÁNÍ >>>
 	Extrakce kaprolaktamu ze síranových louhů (Caprolactame recovery from sulfate solution)

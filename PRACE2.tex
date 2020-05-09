@@ -14,7 +14,7 @@ Výchozí surovinou pro tuto technologii je cyklohexanon, který se typicky vyr�
 Reakční schéma výroby CPL, jak ji popisuje J.~Tinge a~kol. v~Ullmannově encyklopedii~\cite{Ullmann_CPL} (strany~2--13), je zachyceno na obrázku~\ref{fig:reactions}.
 V prvním kroku této výroby je cyklohexanon substituován hydroxylaminem na cyklohexanon"-oxim.
 
-Hydroxylamin (ve formě síranu hydroxylamonného) je pro proces vyráběn buďto Raschigovým procesem přes dusitan amonný a oxid siřičitý, a nebo hydrogenací oxidu dusnatého.
+Hydroxylamin ve formě síranu hydroxylamonného je pro proces vyráběn buďto Raschigovým procesem přes dusitan amonný a oxid siřičitý, a nebo hydrogenací oxidu dusnatého.
 Raschigův proces je starší a široce používaný, jeho nevýhodou je však velká produkce síranu amonného již při tomto kroku, zatímco proces využívající oxid dusnatý, který vyvinul podnik BASF, může toto množství snížit, ovšem za cenu spotřeby vodíku a čistého kyslíku.
 Kromě toho existuje také HPO proces vyvinutý podnikem Fibrant, při němž vzniká hydroxylamin ve formě soli s fosfátovým pufrem, ze které je možné cyklohexanon"-oxim vzniklý reakcí vyprat pomocí toluenu, nevzniká tedy žádný síran amonný.
 Samotná reakce síranu hydroxylamonného s cyklohexanonem probíhá při 50--100°C, pH 4,5 a neustálého dodávání amoniaku na neutralizaci vznikající kyseliny sírové (\ce{H2SO4}).
@@ -30,7 +30,12 @@ Následuje Beckmannův přesmyk cyklohexanon"-oximu na CPL, který je kysele kat
 Z reaktoru je nutné odvádět značné množství tepla, neboť reakční systém je velmi exotermní mj. i díky zároveň probíhající reakci olea s nežádoucí vodou, která vzniká při substituci cyklohexanonu a nelze ji pak zcela oddělit.
 Vzniklá sloučenina \ce{CPL\cdot H2SO4} je nakonec neutralizována roztokem amoniaku, v důsledku čehož se reakční směs rozdělí na dvě fáze:
 organickou, která obsahuje asi 70~\% CPL ve vodě spolu s vedlejšími produkty, a vodný roztok síranu amonného (dále jen SA) o koncentraci 35--45~\%, který však vedle stopových nečistot obsahuje také až 1~\% hm. CPL (v této práci bude složení uváděno jako hmotnostní zlomek, pokud nebude uvedeno jinak).
-Organická fáze, která obsahuje většinu vzniklého CPL, je dále separována, aby byl získán čistý produkt, zatímco vodná fáze je extrahována trichlorethylenem, aby z ní byl získán zbytkový CPL -- právě náhradou trichlorethylenu toluenem při této extrakci se bude práce zabývat.
+
+Organická fáze, která obsahuje většinu vzniklého CPL, je dále zpracovávána až na čistý produkt pomocí série extrakcí, destilací a rektifikací.
+Z vodné fáze je nutné oddělit zbytkový CPL, což je v současnosti prováděno extrakcí trichlorethylenem~\cite{ECHA_Spolana_CPL} (strana 10).
+Při ní je získán extrakt, tedy CPL rozpuštěný v trichlorethylenu, a rafinát, tedy vodný roztok SA.
+Extrakt z první extrakce je znovu extrahován demineralizovanou vodou, čímž je rozpouštědlo regenerováno.
+Tato práce se bude zabývat právě náhradou trichlorethylenu toluenem v této soustavě extraktorů, přičemž pozornost bude věnována především první extrakci.
 Extrakci je třeba navrhnout pečlivě, protože nároky na separaci jsou poměrně vysoké -- aby bylo možné tuhý síran amonný dobře uplatnit jako hnojivo, neměl by obsahovat více než 100~ppm CPL.
 Co se týče obsahu SA ve vodné fázi, ten by z ekonomického hlediska měl být co nejvyšší, aby bylo uspořeno teplo při odpařování vody a krystalizaci SA, které po extrakci následují.
 Obsah SA je však limitován jeho rozpustností, protože nesmí docházet k předčasné krystalizaci již v reaktorech či extraktorech.
@@ -288,7 +293,7 @@ Přibližně se jedná o hodnoty pro čistou vodu při 25°C.
 Ačkoliv $v_\mathrm{s}$ lze exaktně vypočítat pomocí rovnice~\ref{eqn:vSlipCalc} na základě předchozích výpočtů, existuje také přímá empirická korelace v rovnici~\ref{eqn:packedVSlipCorr}.
 J."-P.~Duroudier~\cite{Duroudier2016} doporučuje použít průměr obou získaných hodnot.
 
-Způsoby výpočtů koeficientů přestupu hmoty jsou odlišné -- A.~F.~Seibert a J.~R.~Fair~\cite{Seibert1988} popsali nepřímý výpočet $\beta_\mathrm{C}$ pomocí Sherwoodova kritéria (rovnice~\ref{eqn:packedBetaC}), zatímco výpočet $\beta_\mathrm{D}$ je přímý, jak uvádějí G.~S.~Laddha a T.~E.~Degaleesan~\cite{Laddha1978} (rovnice~\ref{eqn:packedBetaD}).
+Výpočty koeficientů přestupu hmoty se liší -- A.~F.~Seibert a J.~R.~Fair~\cite{Seibert1988} popsali nepřímý výpočet $\beta_\mathrm{C}$ pomocí Sherwoodova kritéria (rovnice~\ref{eqn:packedBetaC}), zatímco výpočet $\beta_\mathrm{D}$ je přímý, jak uvádějí G.~S.~Laddha a T.~E.~Degaleesan~\cite{Laddha1978} (rovnice~\ref{eqn:packedBetaD}).
 \begin{align}
 \label{eqn:packedBetaC}
 	Sh_\mathrm{C} &= 0,698 Sc_\mathrm{C}^{0,4} Re_\mathrm{C}^{0,5} (1-\phi) \\

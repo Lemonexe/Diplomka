@@ -1,8 +1,8 @@
 % include file for chapter 4
 
 \newpage \section{VÝPOČETNÍ ČÁST} \label{comp}
-Stěžejní částí této práce je komplexní počítačový program vytvořený v programovém prostředí Matlab, který se skládá se z několika oddělených, avšak na sebe navazujících částí, kterými jsou: zpracování dat LLE na rovnovážné funkce, patrový model extraktoru a model přenosový.
-V následujících kapitolách budou popsány principy fungování programu a způsob výpočtů, zatímco samotný zdrojový kód a podrobná dokumentace jeho použití se nachází v příloze~\ref{sourceCode}.
+Stěžejní částí této práce je počítačový program vytvořený v prostředí Matlab, který se skládá se z několika oddělených, avšak na sebe navazujících částí, kterými jsou: zpracování dat LLE na rovnovážné funkce, patrový model extraktoru a model přenosový.
+V této kapitole budou popsány principy fungování programu a způsob výpočtů, zatímco samotný zdrojový kód a podrobná dokumentace jeho použití se nachází v příloze~\ref{sourceCode}.
 
 \subsection{Zpracování rovnovážných dat} \label{compLLE}
 Tato část programu slouží ke zpracování naměřených dat LLE na funkce popisující rovnováhu ve tvaru $u = f(w, t)$.
@@ -49,9 +49,9 @@ Protože tato funkce poskytuje jen strojový výstup, byla vytvořena také funk
 Pro usnadnění parametrické studie byla vytvořena ještě funkce \textit{extractorFeed.m}, která umožní vybranou vstupní veličinu měnit v definovaném rozmezí, výsledkem je pak tabulka závislosti NTP a $\dot{m}_\mathrm{S,min}$ na vybraném parametru.
 
 \subsection{Implementace přenosového modelu} \label{compTransfer}
-Jak již bylo dříve zmíněno, přenosový model při předpovědi chování extraktoru vychází ze znalostí základních vlastností látek či systému.
-Relevantní vlastnosti látek jsou hustota, dynamická viskozita a difuzivita kaprolaktamu v dané látce, vlastnosti systému jsou rovnovážná funkce $u = f(w)$ a mezifázové napětí ($\gamma$).
-Vlastnosti látek byly exportovány z databáze simulačního programu Aspen Plus V10~\cite{Aspen} v širokém rozmezí teplot, aby je bylo možné dle potřeby interpolovat a získat tak hodnoty za libovolně zvolené teploty.
+Jak již bylo dříve zmíněno, přenosový model při předpovědi chování extraktoru vychází ze znalostí základních vlastností látek a systému.
+Relevantní vlastnosti látek jsou hustota, dynamická viskozita a difuzivita kaprolaktamu v dané látce, vlastnostmi systému jsou rovnovážná funkce $u = f(w)$ a mezifázové napětí ($\gamma$).
+Vlastnosti látek byly exportovány z databáze simulačního programu Aspen Plus V10~\cite{Aspen} v širokém rozmezí teplot, aby bylo možné jejich hodnoty dle potřeby interpolovat za zvolené teploty.
 Rovnovážná funkce tabelovaná jako vektor $u$ a $w$ je získána spuštěním funkce \textit{getEqFun.m} popsané v kapitole~\ref{compLLE}.
 Naměřené hodnoty mezifázového napětí byly zpracovány na funkci $\gamma(w)$, k čemuž postačuje regrese naměřených dat pomocí polynomu druhého řádu (viz kapitolu~\ref{resgamma}).
 Do této funkce je dosazena střední hodnota $w$ v profilu extraktoru, aby byla získána střední hodnota $\gamma$, se kterou je dále pracováno.
