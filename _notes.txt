@@ -17,6 +17,7 @@
 
 
 <<< TODO >>>
+	> rozšířit závěr
 	>>> udělat prezentaci (viz SVK pro začátek)
 	>>> nahrát zdroják + dokumentaci na CD
 

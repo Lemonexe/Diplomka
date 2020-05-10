@@ -10,8 +10,8 @@ Experimenty na měření LLE, jejichž postup byl již popsán v kapitole~\ref{L
 
 Při první etapě zahrnoval plán měření tři nezávislé proměnné či faktory:
 měřeno bylo se dvěma různými rozpouštědly, tedy s toluenem (TOL) a trichlorethylenem (TCE), za třech různých hodnot obsahu SA ve vodné fázi (30~\%, 35~\% a 40~\%) a čtyřech různých teplot (30°C, 40°C, 50°C a 60°C).
-To tedy činí celkem 24 datových sad, přičemž datovou sadou se myslí kolekce rovnovážných bodů, které byly naměřeny za stejných podmínek a liší se jen obsahem CPL.
-V první etapě bylo k dispozici sedm cel na měření LLE, proto se nabízelo, aby každá datová sada měla právě sedm bodů.
+To tedy činí celkem 24 datových sad, tedy kolekcí rovnovážných bodů, které byly naměřeny za stejných podmínek a liší se jen obsahem CPL.
+V první etapě bylo k dispozici sedm cel na měření LLE, proto měla každá datová sada právě sedm bodů.
 Celkem tedy bylo v celách vytvořeno 42 vsádek s definovaným složením, neboť každá vytvořená vsádka byla postupně použita pro měření za všech požadovaných teplot.
 Vsádky byly připraveny tak, aby vzniklo zhruba 20~ml organické i vodné fáze, do kterých pak bylo odváženo 0,01--2,0~g CPL.
 
@@ -83,35 +83,66 @@ Lze však předpokládat, že vliv všech systematických chyb by měl být komp
 Namísto spolehnutí se na geometrický poloměr $r = 2,55~\mathrm{mm}$ byla tedy určena hodnota efektivního poloměru $r = 2,10~\mathrm{mm}$.
 
 \subsubsection{Laboratorní model extraktoru} \label{reslabmodel}
-Na aparatuře, která byla sestavena a provozována dle popisu v kapitole~\ref{labmodel}, byly provedeny tři experimenty za různých podmínek.
-Při prvním experimentu se ukázalo, že extraktor nebyl provozován dostatečně dlouho na dosažení ustáleného stavu, tedy stavu, kdy se koncentrace extraktu a rafinátu příliš neliší mezi dvěma odběry vzorků.
-Uváděny zde budou tedy pouze výsledky z druhého a třetího experimentu, kdy bylo díky většímu množství vzorku nejen dostatek času na ustálení, ale i na změnu podmínek a vyčkání na opětovné ustálení.
-Při experimentech byly nastavovány různé hodnoty frekvence míchání, poměru toků i zdvihu míchadel.
-
+Na aparatuře, která byla sestavena a provozována dle popisu v kapitole~\ref{labmodel}, bylo za různých podmínek provedeno šest experimentů se síranovými louhy a dva dodatečné experimenty s jinými systémy.
+Nastavovány byly různé hodnoty toků, zdvihu míchadel a frekvence míchání.
 Tabulka~\ref{tab:labmodel} shrnuje vstupní i výstupní veličiny při ustálených stavech -- každý řádek tabulky obsahuje průměrné hodnoty ze všech měření, které byly při daných podmínkách v ustáleném stavu.
-Veličiny v tabulce jsou: hmotnostní toky rafinátu a extraktu $\dot{m}_\mathrm{R}$ a $\dot{m}_\mathrm{E}$, frekvence $f$, zdvih $s$, obsah CPL v surovině, rafinátu a extraktu, teplota na vstupu suroviny $t_1$, teplota ve spodní části kolony $t_2$ a nakonec údaje vyhodnocené spuštěním patrového modelu, tedy dosažený počet teoretických pater a minimální tok solventu za daných podmínek.
-Patrovým modelem (viz kapitolu~\ref{compStage}) byl extraktor hodnocen při každém odběru vzorku, přičemž za teplotu byla dosazena střední teplota v extraktoru odhadnutá jako průměr mezi $t_1$ a $t_2$.
+Sloupec s křížkem slouží pro označení experimentu, dále jsou v tabulce následující veličiny: hmotnostní toky rafinátu a extraktu $\dot{m}_\mathrm{R}$ a $\dot{m}_\mathrm{E}$, frekvence $f$, zdvih $s$, obsah CPL v surovině, rafinátu a extraktu, teplota na vstupu suroviny $t_1$, teplota ve spodní části kolony $t_2$ a dosažený počet teoretických pater, který byl vyhodnocen patrovým modelem (viz kapitolu~\ref{compStage}) při každém odběru vzorku, přičemž za teplotu byla dosazena střední teplota v extraktoru odhadnutá jako průměr mezi $t_1$ a $t_2$.
 
 \begin{table}[ht]
 \caption{Souhrn experimentů na laboratorním extraktoru} \label{tab:labmodel}
 \begin{center}
-\begin{tabular}{lllllllllll}
+\begin{tabular}{lcccccccccc}
 	\Xhline{2pt}
-	\makecell{$\dot{m}_\mathrm{R}$ \\ (kg/h)} & \makecell{$\dot{m}_\mathrm{E}$ \\ (kg/h)} & \makecell{$f$ \\ (Hz)} & \makecell{$s$ \\ (mm)} &
+	\# & \makecell{$\dot{m}_\mathrm{R}$ \\ (kg/h)} & \makecell{$\dot{m}_\mathrm{E}$ \\ (kg/h)} & \makecell{$f$ \\ (Hz)} & \makecell{$s$ \\ (mm)} &
 	\makecell{$w_\mathrm{F}$ \\ (\%)} & \makecell{$w_\mathrm{R}$ \\ (\%)} & \makecell{$u_\mathrm{E}$ \\ (\%)} & \makecell{$t_1$ \\ (°C)} & \makecell{$t_2$ \\ (°C)} &
-	NTP & \makecell{$\dot{m}_\mathrm{S,min}$ \\ (kg/h)} \\ \hline
-	9,7 & 1,7 & 9,9 & 2,38 & 0,84 & 0,24 & 3,62 & 61,8 & 52,8 & 1,2 & 0,24 \\
-	8,7 & 1,3 & 0,0 & 2,38 & 0,84 & 0,33 & 3,18 & 61,8 & 53,1 & 0,9 & 0,13 \\
-	9,3 & 1,8 & 7,3 & 8,18 & 0,91 & 0,12 & 4,08 & 61,9 & 53,6 & 2,1 & 0,46 \\
-	4,7 & 1,6 & 7,2 & 8,18 & 0,91 & 0,09 & 2,39 & 62,4 & 45,7 & 1,9 & 0,28 \\
+	NTP \\ \hline % \makecell{$\dot{m}_\mathrm{S,min}$ \\ (kg/h)}
+	2a & 11,1 & 2,3 & 9,9 & 2,38 & 0,84 & 0,24 & 3,62 & 61,7 & 52,8 & 1,2 \\ % 0,24
+	2b & ~9,5 & 1,3 & 0,0 & 2,38 & 0,84 & 0,32 & 3,16 & 61,8 & 53,2 & 1,0 \\ % 0,15
+	3a & ~9,3 & 2,1 & 7,3 & 8,18 & 0,91 & 0,11 & 3,47 & 61,9 & 53,1 & 2,0 \\ % 0,47
+	3b & ~4,7 & 1,6 & 7,3 & 8,18 & 0,91 & 0,09 & 2,39 & 62,5 & 45,8 & 1,9 \\ % 0,28
+	4a & ~9,0 & 2,0 & 6,8 & 8,18 & 0,98 & 0,12 & 3,50 & 62,2 & 52,1 & 2,0 \\ % 0,43
+	4b & ~9,6 & 2,0 & 5,0 & 8,18 & 0,98 & 0,16 & 3,42 & 61,9 & 52,5 & 1,7 \\ % 0,35
+	5a & 15,6 & 3,7 & 6,8 & 8,18 & 0,91 & 0,12 & 3,35 & 58,9 & 52,2 & 1,9 \\ % 0,76
+	5b & 14,8 & 3,8 & 5,2 & 8,18 & 0,91 & 0,18 & 2,60 & 59,3 & 51,8 & 1,4 \\ % 0,50
+	6  & 10,3 & 1,7 & 3,5 & 15,6 & 0,91 & 0,14 & 3,66 & 62,1 & 53,3 & 2,1 \\ % 0,42
+	\hline
+	7  & ~3,5 & 2,7 & 3,2 & 8,18 & 20,0 & 3,64 & 13,9 & 71,8 & 33,6 & - \\
+	8  & ~0,0 & 0,0 & 0,0 & 0,00 & 5,37 & 0,00 & 0,00 & 00,0 & 00,0 & - \\
 	\Xhline{2pt}
 \end{tabular}
 \end{center}
 \end{table}
 
-První dva řádky tabulky se týkají druhého experimentu, kdy byl zdvih míchadel menší a porovnán byl chod extraktoru při frekvenci míchání 10~Hz a bez míchání.
-Třetí a čtvrtý řádek tabulky jsou výsledky třetího experimentu, kdy byl zdvih míchadel větší a porovnán byl chod extraktoru při větším a menším toku vodné fáze.
+Při prvním experimentu se ukázalo, že extraktor nebyl provozován dostatečně dlouho na dosažení ustáleného stavu, tedy stavu, kdy se koncentrace extraktu a rafinátu příliš neliší mezi dvěma odběry vzorků.
+Uváděny zde budou tedy pouze výsledky z následujících experimentů, kdy bylo díky většímu množství vzorku nejen dostatek času na ustálení, ale i na změnu podmínek a vyčkání na opětovné ustálení.
+Při druhém experimentu bylo pracováno s nízkou hodnotou zdvihu a byl porovnán chod extraktoru při frekvenci míchání 10~Hz (2a) a bez míchání (2b).
+Dosažená hodnota NTP je evidentně velmi nízká a i vizuálně bylo znát, že míchání je nedostatečné a kapky jsou stále velké, proto byl zdvih zvýšen.
+Při třetím experimentu byl porovnán chod s vyšším (3a) a nižším (3b) tokem vodné fáze.
+Ukázalo se, že snížením toku není dosaženo vyšší hodnoty NTP.
+Při čtvrtém experimentu byly nejprve opakovány podmínky 3a, neboť mezi realizací třetího a čtvrtého experimentem uplynula značná doba, bylo tedy pracováno za frekvence 7~Hz (4a) a následně ještě při 5~Hz (4b).
+Při pátém experimentu byly nastaveny vyššími toky obou fází a opět bylo pracováno za frekvencí 7~Hz (5a) a 5~Hz (5b).
+Ukázalo se tedy, že s vyšší frekvencí je dosaženo vyšší hodnoty NTP, která je však za vyšších toků mírně snížena.
+Při šestém, posledním experimentu se síranovými roztoky byl zdvih zvýšen na nejvyšší možnou hodnotu, v důsledku čehož musela být frekvence z mechanických důvodů omezena na 3,5~Hz, aby bylo zamezeno poškození zařízení.
+Při tomto experimentu byla zjištěna nejvyšší naměřená hodnota NTP, která však nejspíše byla poněkud nadsazená, neboť čerpadlo organické fáze z neznámého důvodu postupně sláblo.
+Vzhledem k velmi nepatrnému nárůstu počtu NTP a značnému mechanickému namáhání zařízení nebyly prováděny další experimenty s nejvyšší hodnotou zdvihu.
+Optimálních podmínek bylo nejspíše dosaženo při experimentech 3a, resp. 4a.
 V kapitole~\ref{rescompare} budou výsledky experimentů porovnány s výsledky přenosového modelu.
+
+Z výsledků experimentů 3a a 4a lze provést přepočet na hypotetické průmyslové zařízení.
+Při toku vodné fáze 27~t/h a zachování poměru toků (tok solventu 5,9~t/h) musí být průměr kolony 2200~mm, aby byly rychlosti fází stejné.
+Hodnotu výšky ekvivalentu teoretického patra HETS, která při experimentech činila zhruba 760~mm, lze pomocí rovnice~\ref{eqn:KarrUpscaleHETS} přepočítat na HETS pro průmyslové zařízení, což činí 3500~mm.
+Optimální hodnota frekvence je přepočtena pomocí rovnice~\ref{eqn:KarrUpscaleN} z 7~Hz na 4~Hz.
+Pokud by byl použit 40\% roztok síranu a teplota 60°C, bylo by zapotřebí 6 TP, což by znamenalo celkovou výšku extraktoru 21600~mm, zatímco s 42\% roztokem při 80°C by stačily 4 TP a výška extraktoru 13900~mm.
+I to jsou však nejspíše příliš velké rozměry na realizaci.
+Nutno však podotknout, že při extrakci bylo pracováno hluboko pod mezí zahlcení, která nikdy nebyla dosažena, neboť intenzita míchání byla mechanicky omezena.
+Lze tedy říci, že na laboratorním extraktoru nebyly nalezeny optimální podmínky -- při výstavbě poloprovozního zařízení s tím bude nutno počítat a postavit jej tak, aby bylo možné prozkoumat intenzitu míchání až k mezi zahlcení.
+
+Jak již bylo zmíněno v kapitole~\ref{labmodel_m}, byly také provedeny dva předběžné experimenty na ověření možnosti následných extrakcí.
+Při těchto experimentech byl měřen obsah CPL v extraktu i v rafinátu, avšak nemohla být vyhodnocena hodnota NTP -- rovnovážná data pro systém \ce{H2O}--CPL--TOL by sice mohla být nalezena v literatuře, avšak vypracované matematické modely jsou založené na předpokladu nemísitelnosti fází, který zde již, vzhledem k vysokým koncentracím CPL, není splněn.
+Při experimentu 7 byly toluenem extrahovány frakce znečištěného CPL a ukázalo se, že extraktor zdaleka nestačí na převedení veškerého CPL z vodné fáze do toluenu.
+Protože při této extrakci byl mnohem nižší rozdíl hustot obou fází, bylo při 5~Hz dosaženo meze zahlcení a frekvence tedy musela být snížena na 3~Hz.
+% Experimentu 8 se zabýval reextrakcí vodou, surovinou tedy byly spojené extrakty z extrakce síranových louhů i z experimentu 7 a solventem destilovaná voda.
+% TODO expH2O
 
 
 
@@ -230,7 +261,7 @@ Celkově se také ukázalo, že vliv teploty na extrakci je jednoznačně poziti
 \begin{table}[ht]
 \caption{Parametrická studie výplňového extraktoru} \label{tab:calltablePacked}
 \begin{center}
-\begin{tabular}{ll|lll}
+\begin{tabular}{cc|rrr}
 	\Xhline{2pt}
 	$\dot{m}_\mathrm{S}$ (kg/h) & výplň & $d_\mathrm{C}$ (mm) & $L_1$ (mm) & $L_2$ (mm) \\ \hline
 	3980 & A & 606  & 1879 & 8032 \\
@@ -264,7 +295,7 @@ Narozdíl od pohyblivých součástek (míchadla) je výplň dokonce možné vyr
 \begin{table}[ht]
 \caption{Parametrická studie Karrova extraktoru} \label{tab:calltableKarr}
 \begin{center}
-\begin{tabular}{lll|llll}
+\begin{tabular}{ccc|rrrr}
 	\Xhline{2pt}
 	$\dot{m}_\mathrm{S}$ (kg/h) & $N$ (Hz) & $s$ (mm) & $d_\mathrm{C}$ (mm) & $L_1$ (mm) & $L_2$ (mm) & $P$ (W) \\ \hline
 	3980 & 5 & 2,0 &  789 & 4240 & 4342 & 1 \\
@@ -295,7 +326,7 @@ Dispergovanou fází by pro Karrův extraktor zcela jasně měla být fáze vodn
 \begin{table}[ht]
 \caption{Parametrická studie extraktorů s rotujícími míchadly} \label{tab:calltableRotDisc}
 \begin{center}
-\begin{tabular}{lll|lllll}
+\begin{tabular}{ccc|rrrr}
 	\Xhline{2pt}
 	extraktor & $\dot{m}_\mathrm{S}$ (kg/h) & $N$ (Hz) & $d_\mathrm{C}$ (mm) & $L_1$ (mm) & $L_2$ (mm) & $P$ (W) \\ \hline
 	RDC   & 4520 & 0,05 & 1445 & 4073 & 7157 & 0  \\
@@ -329,12 +360,13 @@ Vodná fáze byla vybrána jako dispergovaná vzhledem ke zjištěním uvedeným
 Tok solventu byl zvolen 4~t/h, což je nízká hodnota, při níž však extraktor ještě není nepřiměřeně vysoký.
 Koncentrace v rafinátu, které byly vypočteny jako nižší než 100~ppm, se u obou návrhů liší pouze z toho důvodu, že byly navržené rozměry kolony zaokrouhleny.
 Karrův extraktor pracuje s hodnotami frekvence 5~Hz, zdvihem 2~mm a vzdáleností disků 50~mm.
-Jeho výkon není uveden, neboť byla vypočtena nulová hodnota, výpočet tedy nejspíše není věrohodný.
+Jeho výkon není uveden, neboť byla vypočtena nulová hodnota, výpočet výkonu tedy nejspíše není věrohodný.
 Jako výplň byly vybrány ocelové Raschigovy kroužky s rozměrem 51 mm, měrným povrchem 100 $\mathrm{m}^{-1}$ a porozitou 94~\%.
+Nutno podotknout, že optimální návrh Karrova extraktoru výpočetním modelem se zásadně liší od návrhu přepočteného z výsledků experimentů (kapitola~\ref{reslabmodel}).
 \begin{table}[ht]
 \caption{Dvě možnosti návrhů extraktorů} \label{tab:cases}
 \begin{center}
-\begin{tabular}{lll|lllll}
+\begin{tabular}{ccc|ccccc}
 	\Xhline{2pt}
 	extraktor & \makecell{$d_\mathrm{C}$ \\ (mm)} & \makecell{$L$ \\ (mm)} & \makecell{$w_\mathrm{R}$ \\ (ppm)} & \makecell{$u_\mathrm{E}$ \\ (\%)} &
 	$v_\mathrm{C} / v_\mathrm{C,F}$ & NTP & \makecell{$\dot{m}_\mathrm{S,min}$ \\ (kg/h)} \\ \hline
@@ -351,33 +383,40 @@ Ten byl spuštěn jako simulační výpočet, přičemž jako vstupní hodnoty b
 Vzhledem k tomu, že bez předehřevu solventu se v extraktoru tvoří výškový gradient teploty, byla za teplotu dosazena střední teplota v extraktoru (stejně jako tomu bylo při určení NTP pomocí patrového modelu).
 
 Srovnání se nachází v tabulce~\ref{tab:labmodelcompare}, jejíž řádky odpovídají řádkům v tabulce~\ref{tab:labmodel}.
-Hodnoty s apostrofem jsou hodnoty vypočtené modelem s axiální disperzí, hodnoty bez apostrofu jsou již uvedené hodnoty experimentální.
+Hodnoty s apostrofem jsou hodnoty vypočtené modelem s axiální disperzí, hodnoty bez apostrofu jsou již uvedené hodnoty experimentální, sloupec nadepsaný křížkem je označení experimentu a $v_\mathrm{C} / v_\mathrm{C,F}$ opět vyjadřuje podíl toku kont. fáze oproti mezi zahlcení.
 \begin{table}[ht]
-\caption{Souhrn experimentů na laboratorním extraktoru} \label{tab:labmodelcompare}
+\caption{Srovnání výsledků experimentů s výpočetním modelem} \label{tab:labmodelcompare}
 \begin{center}
-\begin{tabular}{lllllll}
-	\Xhline{2pt}
+\begin{tabular}{lccccccc}
+	\Xhline{2pt} \# &
 	\makecell{$w_\mathrm{R}$ \\ (\%)} & \makecell{$w_\mathrm{R}'$ \\ (\%)} &
 	\makecell{$u_\mathrm{E}$ \\ (\%)} & \makecell{$u_\mathrm{E}'$ \\ (\%)} &
 	NTP & NTP' & $v_\mathrm{C} / v_\mathrm{C,F}$\\ \hline
-	0,24 & 0,028 & 3,62 & 4,39 & 1,2 & 5,3 & 0,41 \\
-	0,33 & - & 3,18 & - & 0,9 & - & - \\
-	0,12 & 0,11 & 4,08 & 3,99 & 2,1 & 2,22 & 1,19 \\
-	0,09 & 0,08 & 2,39 & 0,25 & 1,9 & 2,00 & 0,65 \\
+	2a & 0,24 & 0,015 & 3,62 & 3,83 & 1,2 & 5,9 & 0,47 \\
+	3a & 0,11 & 0,086 & 3,47 & 3,52 & 2,0 & 2,3 & 1,22 \\
+	3b & 0,09 & 0,078 & 2,39 & 2,39 & 1,9 & 2,0 & 0,67 \\
+	4a & 0,12 & 0,092 & 3,50 & 3,85 & 2,0 & 2,3 & 1,08 \\
+	4b & 0,16 & 0,082 & 3,42 & 4,14 & 1,7 & 2,6 & 0,79 \\
+	5a & 0,12 & 0,037 & 3,35 & 3,55 & 1,9 & 3,6 & 1,91 \\
+	5b & 0,18 & 0,024 & 2,60 & 3,34 & 1,4 & 4,0 & 1,33 \\
+	6  & 0,14 & 0,176 & 3,66 & 4,26 & 2,1 & 1,7 & 1,17 \\
 	\Xhline{2pt}
 \end{tabular}
 \end{center}
 \end{table}
 
-V druhém řádku nejsou vyplněny vypočtené hodnoty, neboť výpočetní model Karrova extraktoru nemůže pracovat s nulovou frekvencí míchání, pro tento případ tedy není k dispozici srovnání.
-V prvním řádku, tedy při experimentech s menším zdvihem, je vidět zcela zásadní rozdíl mezi naměřenými a vypočtenými hodnotami, zatímco při experimentech s vyšším zdvihem hodnoty odpovídají velice dobře.
-Z toho lze usuzovat, že model není spolehlivý při příliš malých hodnotách míchání.
-Také si lze povšimnout, že předpověď meze zahlcení je v modelech příliš konzervativní, neboť při jednom z experimentů byla vypočtená mez zahlcení překročena, avšak zahlcení pozorováno nebylo.
-Celkově je však zřejmé, že ještě nebyly nalezeny optimální podmínky provozu laboratorního extraktoru, nebo došlo k chybám při konstrukci aparatury a jejímu provozování, protože separační účinnost je stále velmi nízká a nestačí na uspokojivou separaci.
+U experimentu s menším zdvihem (2a) je vidět zcela zásadní rozdíl mezi naměřenými a vypočtenými hodnotami.
+Tato hodnota zdvihu se nachází mimo rozsah doporučený v kapitole~\ref{insfunKarr}, není proto překvapením, že model není spolehlivý.
+Pro experiment 2b nejsou k dispozici vypočtené hodnoty pro srovnání, neboť výpočetní model Karrova extraktoru nemůže pracovat s nulovou frekvencí míchání.
+Při experimentech s větším zdvihem (3--6) je rozdíl mezi naměřenými a vypočtenými hodnotami obecně nižší, nesouhlasí však trendy počtu NTP vůči nastavovaným veličinám -- při experimentech 4 a 5 model předpovídá, že vyšší účinnosti bude dosaženo při nižší frekvenci, pozorován však byl opak.
+Model také předpovídá, že při vyšších hodnotách toku bude účinnost extraktoru vyšší, a opět byl pozorován opak.
+Lze tedy vyvodit, že matematický model nejspíše klade příliš velký důraz na axiální disperzi, neboť ta je zvyšována frekvencí míchání, v důsledku čehož model předpovídá maximum NTP vůči intenzitě míchání.
+Kromě toho je účinek axiální disperze na NTP tlumen při vyšším toku.
+Také si lze povšimnout, že předpověď meze zahlcení je v modelech příliš konzervativní, neboť při mnoha experimentech byla vypočtená mez zahlcení překročena, avšak zahlcení pozorováno nebylo.
 
 Separační účinnost extraktoru je poněkud snížená gradientem teploty, neboť jak bylo ukázáno v kapitole~\ref{resmodel}, při nižší teplotě je na zadanou separaci potřeba více TP.
 Vliv je o to silnější, že nižší teplota je právě v oblasti solventu a rafinátu, kde je rovnovážná křivka nejblíže pracovní přímce.
 Tento problém by byl vyřešen instalací tepelného výměníku i pro předehřev solventu.
 
 Diskutabilní je také vliv nestejnoměrnosti toku vstupních proudů, neboť na čerpání suroviny i solventu byla použita solenoidová pístová čerpadla, která značně pulzují.
-Pulzování toků nejspíše separační účinnost zvýší, neboť se tím zavádí další mechanismus míchání, na kterém jsou ostatně založeny extraktory s pulzním tokem, přesto by však bylo ideální tento vliv odstínit (například instalací expanzních nádob), aby laboratorní extraktor věrněji předpovídal chování extraktoru poloprovozního či provozního.
+Pulzování toků nejspíše separační účinnost zvýší, neboť se tím zavádí další mechanismus míchání, na kterém jsou ostatně založeny extraktory s pulzním tokem, tento vliv by však bylo možné odstínit například instalací expanzních nádob.
