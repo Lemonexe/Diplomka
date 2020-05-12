@@ -4,22 +4,17 @@
 
 	btw NESMÍ se psát m [kg], matematicky správně je m/kg
 
-	jak je to s okraji?
-		LaTeX šablona (psáno), WORD šablona DP & BP, Tomáš Sommer: left: 35, ostatní: 25
-		blbá WORD šablona (psáno i nastaveno), LaTeX šablona (nastaveno): vše 25
-
 
 <<< LATEX >>>
-	distribuce: MiKTeX
-	typesetting engine: XeTeX
-	editor: používám Texmaker, jaké jsou výhody Texstudio?
-	btw tablemaker je velmi užitečný
+	distribuce: MiKTeX, typesetting engine: XeTeX, editor: Texmaker
+	btw https://www.tablesgenerator.com/
 
 
 <<< TODO >>>
-	> rozšířit závěr
+	> závěr++
+	> REM reference na zdroják, REM příloha A
+	> final corrections 2
 	>>> udělat prezentaci (viz SVK pro začátek)
-	>>> nahrát zdroják + dokumentaci na CD
 
 <<< REŠERŠE >>>
 	> projít rešerše Spolana 2017
