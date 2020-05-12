@@ -2,24 +2,11 @@
 	https://intranet.vscht.cz/student/zaverecne-prace/D
 	https://intranet.vscht.cz/student/zaverecne-prace/generator
 
-	btw NESMÍ se psát m [kg], matematicky správně je m/kg
-
 
 <<< LATEX >>>
 	distribuce: MiKTeX, typesetting engine: XeTeX, editor: Texmaker
 	btw https://www.tablesgenerator.com/
 
-
-<<< TODO >>>
-	> závěr++
-	> REM reference na zdroják, REM příloha A
-	> final corrections 2
-	>>> udělat prezentaci (viz SVK pro začátek)
-
-<<< REŠERŠE >>>
-	> projít rešerše Spolana 2017
-		data LLE H2O-SA-TOL-CPL?
-			2017/30.pdf (Van Delden)
 
 <<< ZADÁNÍ >>>
 	Extrakce kaprolaktamu ze síranových louhů (Caprolactame recovery from sulfate solution)

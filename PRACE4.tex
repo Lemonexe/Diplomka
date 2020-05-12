@@ -2,7 +2,7 @@
 
 \newpage \section{VÝPOČETNÍ ČÁST} \label{comp}
 Stěžejní částí této práce je počítačový program vytvořený v prostředí Matlab, který se skládá se z několika oddělených, avšak na sebe navazujících částí, kterými jsou: zpracování dat LLE na rovnovážné funkce, patrový model extraktoru a model přenosový.
-V této kapitole budou popsány principy fungování programu a způsob výpočtů, zatímco samotný zdrojový kód a podrobná dokumentace jeho použití se nachází v příloze~\ref{sourceCode}.
+V této kapitole budou popsány principy fungování programu a způsob výpočtů.
 
 \subsection{Zpracování rovnovážných dat} \label{compLLE}
 Tato část programu slouží ke zpracování naměřených dat LLE na funkce popisující rovnováhu ve tvaru $u = f(w, t)$.
@@ -31,7 +31,7 @@ Tyto grafy budou ukázány v kapitole~\ref{resLLE}.
 Rovnovážné funkce využívá patrový model extraktoru, který pracuje s konceptem teoretického patra (TP).
 Model ze zadané bilance určí počet teoretických pater (NTP) pomocí McCabe"-Thielovy metody~\cite{McCabe1925} modifikované pro kapalinovou extrakci, jak ji popisuje T.~W.~Evans~\cite{Evans1934}.
 Kromě určení NTP je také vypočtena minimální hodnota hmotnostního toku solventu ($\dot{m}_\mathrm{S,min}$), což je klíčová informace pro navrhování procesu, neboť počet TP potřebných pro separaci se zvyšuje s klesajícím tokem solventu a při hodnotě $\dot{m}_\mathrm{S,min}$ limitně dosahuje nekonečna, při nižších hodnotách pak separace ani není možná.
-Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance a zkontroluje její smysluplnost, načež jsou určeny hodnoty $\dot{m}_\mathrm{S,min}$ a NTP.
+Centrální funkcí tohoto modelu je \textit{extractor.m}, kde se nejprve dopočte hmotnostní bilance, načež jsou určeny hodnoty $\dot{m}_\mathrm{S,min}$ a NTP.
 
 Bilanci je díky nemísitelnosti fází možné vyjádřit pomocí relativních hm. zlomků $W$ a hm. toků obou fází bez CPL, tedy toku samotného síranového roztoku $\dot{m}_\mathrm{SA}$ a toku samotného solventu $\dot{m}_\mathrm{S}$ (ten je shodný s tokem vstupujícího proudu solventu, neboť obsah CPL je v ní nulový).
 Z těchto šesti bilančních veličin musí být právě jedna libovolná veličina ponechána nedefinovaná, aby mohla být vypočtena a zajištěno tak, že rovnice~\ref{eqn:massBalance} platí.
@@ -71,7 +71,7 @@ Výsledkem modelu je při návrhu $L$ jeho určená hodnota, při specifikaci $L
 V případě simulace $L$ jsou teprve nyní známy výstupní koncentrace, takže může být zavolána funkce \textit{extractor.m} na určení hodnot NTP a $\dot{m}_\mathrm{S,min}$.
 
 \subsubsection{Řešení diferenciálních rovnic} \label{compDiff}
-Jádrem výpočtu je matematický model, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, jak bylo podrobně popsáno v kapitole~\ref{the_Math}.
+Jádrem výpočtu je matematický model, který popisuje extraktor jako soustavu dvou nelineárních diferenciálních rovnic druhého řádu, jak již bylo podrobně popsáno v kapitole~\ref{the_Math}.
 
 S.~Hartland a A.~Kumar~\cite{HartlandKumar1997} uvádějí analytické řešení diferenciálních rovnic při návrhovém výpočtu -- řešením modelu s pístovým tokem je přímé vyjádření $L$, zatímco řešením modelu s axiální disperzí je rovnice transcendentní pro $L$, z níž lze $L$ určit numerickým algoritmem na hledáním kořene.
 Analytická řešení ovšem platí pouze za předpokladu lineární rovnováhy, což, jak bude ukázáno v kapitole~\ref{resLLE}, v našem případě neplatí, rovnovážná funkce je totiž značně nelineární.
@@ -82,7 +82,7 @@ V případě návrhového výpočtu je třeba zahrnout i počáteční odhad vý
 
 Protože algoritmy řešení okrajových problémů nebývají zcela robustní a řešení může často divergovat, je třeba poskytnout dobrý počáteční odhad řešení.
 Model s axiální disperzí se bez kvalitního odhadu ukázal být velmi nestabilní, proto je nejprve numericky vypočten model s pístovým tokem, jehož řešení je snazší a zcela přitom postačuje jednoduchý odhad lineárních profilů koncentrace.
-V případě návrhového výpočtu, kdy jsou koncentrace vstupních i výstupních proudů známy, jsou lineární profily od $c_\mathrm{F}$ do $c_\mathrm{R}$, resp. od $c_\mathrm{E}$ do $c_\mathrm{S}$, v případě simulačního výpočtu lze dosadit namísto $c_\mathrm{R}$ nulu a namísto $c_\mathrm{E}$ 1~\%.
+V případě návrhového výpočtu, kdy jsou koncentrace vstupních i výstupních proudů známy, jsou lineární profily od $c_\mathrm{F}$ do $c_\mathrm{R}$, resp. od $c_\mathrm{E}$ do $c_\mathrm{S}$, v případě simulačního výpočtu zcela postačí dosadit namísto $c_\mathrm{R}$ nulu a namísto $c_\mathrm{E}$ 1~\%.
 Pro odhad výšky, je-li třeba, postačuje použít výšku teoretického patra 0,5~m, která se vynásobí počtem TP získaným zavoláním patrového modelu.
 Diferenciální rovnice prvního řádu i jejich počáteční podmínky byly již popsány v rovnicích~\ref{eqn:diff1}, \ref{eqn:bound1_1}, \ref{eqn:bound1_2} a~\ref{eqn:boundExtra}.
 
@@ -99,7 +99,7 @@ Diferenciální model ve formě připravené pro numerický řešič je rozveden
 \end{align}
 Protože řešení modelu s pístovým tokem je ve formě vektorů hodnot $c_x$ a $c_y$ odpovídajících vektoru $z$, odhadovou funkci pro model s axiální disperzí lze realizovat jako algoritmus, který pro požadované $z$ nalezne dva sousedící body existujícího řešení, mezi nimiž požadované $z$ leží.
 Hodnoty $c_x$ a $c_y$ jsou lineárně interpolovány, zatímco hodnoty $c'_x$ a $c'_y$ jsou vypočteny běžnou dvoubodovou formulí pro numerickou derivaci.
-Při návrhovém výpočtu je součástí řešení modelu s pístovým tokem také vypočtená výška extraktoru -- její dvojnásobek je použit jako počáteční odhad výšky pro model s axiální disperzí.
+Při návrhovém výpočtu je součástí řešení modelu s pístovým tokem také vypočtená výška extraktoru -- její dvojnásobek je následně použit jako nový počáteční odhad výšky.
 
 Hlavním výsledkem modelu s axiální disperzí je pak řešení diferenciálního modelu, tedy funkce $(c_x, c_y, c'_x, c'_y) = f(z)$ ve formě vektorů hodnot.
 Při návrhovém výpočtu je klíčovým výsledkem $L$, při simulačním výpočtu zase hmotnostní bilance extraktoru.

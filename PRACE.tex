@@ -43,24 +43,26 @@
 Při průmyslové výrobě kaprolaktamu vzniká jako vedlejší produkt 40\% roztok síranu amonného, z něhož je nutné extrahovat zbytkový kaprolaktam.
 Tato práce studuje možnost použití toluenu jako náhrady trichlorethylenu, který se nyní při extrakci používá jako rozpouštědlo, avšak z legislativních důvodů je třeba jej nahradit.
 Cílem této práce je tedy prostudovat možnosti návrhu a optimalizace extraktoru v novém procesu na výrobu kaprolaktamu.
-Proto byla provedena měření rovnováh kapalina--kapalina a dalších relevantních vlastností, na jejichž základě byly sestaveny matematické modely -- patrový model a přenosové modely pro různé konstrukce extraktorů.
+Proto byla provedena měření rovnováh kapalina--kapalina a dalších relevantních vlastností, na jejichž základě byly sestaveny matematické modely -- patrový model a několik přenosových modelů pro různé konstrukce extraktorů.
 Měřením rovnováh a následným modelováním bylo zjištěno, že na danou aplikaci je nejvhodnější Karrův extraktor či výplňová kolona, a pro tyto typy byly nalezeny optimální podmínky provozu.
 Práce také prozkoumala možnost zvýšit teplotu z 60°C na 80°C a obsah síranu amonného až na 42~\%, což se ukazuje jako velmi výhodné.
 Kromě toho byl sestaven laboratorní Karrův extraktor, kde byly extrahovány provozní vzorky síranových louhů, aby bylo k dispozici porovnání s výsledky výpočetních modelů.
+Tyto výsledky mohou být využity pro návrh poloprovozní jednotky, která bude představovat další krok při vývoji nového procesu.
 
 \section*{SUMMARY}
 In the caprolactam production process a 40\% ammonium sulfate solution is formed as a byproduct, which contains residual caprolactam that has to be extracted.
-This thesis studies the possibility of using toluene as a replacement for trichloroethylene, which is currently used as solvent for the extraction, but replacement is sought due to legal reasons.
+This thesis studies the possibility of using toluene as a replacement for trichloroethylene, which is currently used as solvent for the extraction, but a replacement is sought due to legal reasons.
 The aim of this study is to explore possibilities of design and optimization of extraction in a new caprolactam production process.
-Therefore, measurements of liquid--liquid equilibria and other relevant properties were carried out and utilized for implementation of mathematical models -- a stage model and transfer models for various extractor designs.
+Therefore, measurements of liquid--liquid equilibria and other relevant properties were carried out and utilized for implementation of mathematical models -- a stage model and several transfer models for various extractor designs.
 Measurements and subsequent modelling have shown that Karr extractor or packed column are the most suitable choices and optimal conditions were found for these types.
 The possibility of raising temperature from 60°C to 80°C and ammonium sulfate content up to 42~\% was explored and turned out to be very favorable.
 Moreover, a laboratory Karr extractor was assembled and operated using sulfate solution samples from the process in order to provide comparison with results of computational modelling.
+These results can be used to design a pilot plant, which is the next step of a new process development.
 
 \newpage \section*{PODĚKOVÁNÍ}
-\vspace{19cm}
-Tímto bych rád poděkoval Ing. Jiřímu Trejbalovi, Ph.D. za odborné vedení při vypracování diplomové práce a především za cenné znalosti a zkušenosti, které mi při vedení práce a konzultacích předal.
-Rovněž bych rád poděkoval Ing. Martinu Zapletalovi, Ph.D. za konzultace a pomoc při laboratorních pracích.
+\vspace{18cm}
+Tímto bych rád poděkoval Ing. Jiřímu Trejbalovi, Ph.D. za odborné vedení při vypracování diplomové práce a především za cenné znalosti a zkušenosti, které mi při vedení práce a s ní souvisejících konzultacích předal.
+Rovněž bych rád poděkoval Ing. Martinu Zapletalovi, Ph.D. za konzultace a neocenitelnou pomoc při laboratorních pracích.
 Velké díky za podporu během mého studia též náleží mé rodině, zejména mým rodičům Jiřímu a Evě Zbytovským.
 
 % insert TOC, and start numbering pages
@@ -80,10 +82,10 @@ Při výrobě vznikají dvě nemísitelné fáze -- organická, skládající se
 Tato práce se zabývá právě izolací zbytkového kaprolaktamu z vodné fáze, což se v současnosti provádí kapalinovou extrakcí trichlorethylenem, který je však v rámci evropské směrnice REACH zařazen mezi látky vzbuzující mimořádné obavy (SVHC) i na seznam látek podléhajících povolení (příloha XIV)~\cite{ECHA_TCE}, proto jsou hledány alternativy.
 
 Tato práce poslouží k vypracování technologických podkladů pro náhradu trichlorethylenu toluenem, což se jeví jako velmi perspektivní.
-V rámci práce byla tedy nejprve v laboratoři naměřena data popisující rovnováhy kapalina--kapalina v rozsahu, který je pro řešení problému praktický a následně byl vypracován program v programovém prostředí Matlab, který obsahuje dva matematické modely, a to zaprvé model patrový, sloužící k vyhodnocení výkonu laboratorního či průmyslového extraktoru, zadruhé model přenosový, který pomocí základních veličin umožní vypočítat buďto návrh geometrie a provozních parametrů extraktoru, nebo simulaci definovaného zařízení pro předpověď jeho separační účinnosti.
+V rámci práce byla tedy nejprve v laboratoři naměřena data popisující rovnováhy kapalina--kapalina v rozsahu, který je pro řešení problému praktický a následně byl vypracován program v programovém prostředí Matlab, který obsahuje dva matematické modely, a to zaprvé model patrový, sloužící k vyhodnocení výkonu laboratorního či průmyslového extraktoru, zadruhé pak model přenosový, který pomocí základních veličin umožní vypočítat buďto návrh geometrie a provozních parametrů extraktoru, nebo simulaci definovaného zařízení pro předpověď jeho separační účinnosti.
 Kromě toho byl sestaven laboratorní model extraktoru, aby mohla být funkce extraktoru otestována se skutečnými vzorky odebranými z provozu.
 
-Výsledky této práce budou využity k návrhu extraktorů síranových louhů v rámci nové technologie na separaci kaprolaktamu, která již nebude využívat chlorovaných rozpouštědel, a sníží se tak zátěž životního prostředí v České republice.
+Výsledky této práce budou využity k návrhu poloprovozních extraktorů v rámci vývoje nové technologie na separaci kaprolaktamu, která již nebude využívat chlorovaná rozpouštědla, a sníží se tak zátěž životního prostředí v České republice.
 
 
 
@@ -102,7 +104,7 @@ Téma bylo zpracováno jak z experimentální, tak z výpočetní stránky, nejp
 V přenosovém modelu byly zkoumány čtyři typy konstrukce extraktorů, kterými jsou výplňová kolona, extraktor s rotujícími disky, Kühniho extraktor a Karrův extraktor.
 Podrobnou studií přenosového modelu bylo usouzeno, že nejvhodnějšími alternativami pro dané použití jsou Karrův extraktor a výplňová kolona.
 První z možností umožňuje dosáhnout vyšší separační účinnosti, druhá zase poskytuje vyšší kapacitu a pravděpodobně také mnohem nižší náklady jak na pořízení, tak na provoz.
-Pro obě varianty byly nalezeny optimální podmínky a zpracovány stručné návrhy parametrů zařízení -- pro výplňovou kolonu byl zkoumán vliv výplně a ukázalo se, že vhodnější bývají spíše větší rozměry výplně, pro Karrův extraktor byl zase prozkoumán vliv intenzity míchání, přičemž byly nalezeny optimální hodnoty frekvence a zdvihu.
+Pro obě varianty byly nalezeny optimální podmínky a zpracovány stručné návrhy parametrů zařízení -- pro výplňovou kolonu byl zkoumán vliv výplně a ukázalo se, že vhodnější bývají spíše větší rozměry výplně, pro Karrův extraktor byl zase prozkoumán vliv intenzity míchání, přičemž byly nalezeny optimální hodnoty frekvence a zdvihu, kdy existuje minimum výšky ekvivalentu teoretického patra.
 Pro obě konstrukce platí, že vodná fáze by měla být zvolena jako dispergovaná, a že vyšší teplota je jednoznačně příznivá pro extrakci.
 V budoucnu se nabízí znovu změřit rovnovážná data pro trichlorethylen, neboť existující data bohužel nejsou kvalitní a není možné použít je jako podklad pro modelování.
 Pro přenosový model by také bylo vhodné změřit mezifázové napětí systému s trichlorethylenem, což by umožnilo vytvořit simulaci existujícího provozního extraktoru a ověřit tak platnost matematických modelů na příkladu reálného zařízení. 
@@ -112,17 +114,17 @@ Výpočetní modely pak ukazují, že lze při zachování toku solventu dosáhn
 Budoucí poloprovozní zařízení by tedy mělo umožnit provoz za těchto podmínek.
 
 Nakonec byl také sestaven Karrův extraktor v laboratorním měřítku, na němž byly provedeny experimenty s provozními vzorky síranových louhů, aby mohly být předpovědi výpočetních modelů porovnány s realitou a aby byly připraveny podklady pro výstavbu poloprovozního zařízení.
-Při šesti experimentech s extrakcí síranových louhů ze Spolany bylo zjištěno, že separační účinnost je mnohem nižší, než předpovídají modely, a předpověď pro zvětšení měřítka je tedy velmi nepříznivá co do rozměrů zařízení.
+Při šesti experimentech s extrakcí síranových louhů ze Spolany bylo zjištěno, že separační účinnost je mnohem nižší, než jakou předpovídají modely, a předpověď pro zvětšení měřítka je tedy velmi nepříznivá co do rozměrů zařízení.
 To je však nejspíše dáno tím, že konstrukce laboratorního extraktoru z důvodu mechanického namáhání neumožnila zvýšit intenzitu míchání až k mezi zahlcení a odhalit tedy skutečně optimální podmínky.
 Určitý nedostatek laboratorního extraktoru spočíval také v absenci předehřevu solventu, což může mít na extrakci významný vliv.
-Při výstavbě poloprovozního extraktoru by tyto skutečnosti měly být brány v úvahu, měl by tedy umožnit vyšší intenzitu míchání než je obvyklé i vzhledem k tomu, že tento systém vykazuje neobvykle vysoký rozdíl hustot.
+Při výstavbě poloprovozního extraktoru by tyto skutečnosti měly být brány v úvahu, měl by tedy umožnit vyšší intenzitu míchání než je obvyklé i vzhledem k tomu, že tento systém vykazuje velmi vysoký rozdíl hustot.
 Ideální by bylo realizovat i předehřev solventu na stejnou teplotu, jakou má surovina.
 
-V rámci této práce byly také provedeny dva předběžné experimenty s následnými extrakcemi a ukázalo se, že znečištěný kaprolaktam z procesu zpracování čistého produktu lze jen velmi obtížně extrahovat do toluenu a možná by bylo vhodné uvažovat o alternativním zpracování tohoto proudu.
+V rámci této práce byly také provedeny dva předběžné experimenty s následnými extrakcemi a ukázalo se, že znečištěný kaprolaktam z procesu zpracování čistého produktu lze jen velmi obtížně extrahovat do toluenu a možná by bylo na místě uvažovat o alternativním zpracování tohoto proudu.
 Naproti tomu reextrakce kaprolaktamu z toluenu do vody se ukázala být velmi výhodná.
 
 Plánováno bylo také sestavení laboratorního výplňového extraktoru, avšak kvůli společenské situaci v roce 2020 již nebyl čas toto realizovat.
-V budoucnu by tedy bylo vhodné provést další experimenty v rámci problematiky extrakce při výrobě kaprolaktamu.
+V budoucnu je tedy ještě prostor pro provedení dalších experimentů v rámci této problematiky.
 
 
 \newpage \section*{LITERATURA}
@@ -147,7 +149,7 @@ V budoucnu by tedy bylo vhodné provést další experimenty v rámci problemati
 	$h$ & vzdálenost mezi disky [m] \\
 	$K_x$ & koeficient prostupu hmoty vzhledem k fázi $x$ [$\mathrm{m \cdot s^{-1}}$] \\
 	$m$ & hmotnost [$\mathrm{kg}$] \\
-	$\dot{m}$ & hmotnostní tok [$\mathrm{kg \cdot s^{-1}}$] \\
+	$\dot{m}$ & hmotnostní tok [$\mathrm{kg \cdot h^{-1}}$] \\
 	$N$ & frekvence [Hz] \\
 	$Pe$ & Pécletovo číslo \\
 	$Q$ & objemový tok [$\mathrm{m^3 \cdot s^{-1}}$] \\
@@ -222,11 +224,5 @@ V budoucnu by tedy bylo vhodné provést další experimenty v rámci problemati
 \addcontentsline{toc}{section}{SEZNAM OBRÁZKŮ}
 \renewcommand{\listfigurename}{\vskip -1cm}
 \listoffigures
-
-\newpage
-\appendix
-\section{ZDROJOVÝ KÓD} \label{sourceCode}
-Nedílnou částí této práce je počítačový program, který je možné nalézt na přiloženém CD"-R nosiči.
-Ten obsahuje zaprvé složku \textit{Matlab}, v níž se nachází samotný program spustitelný v prostředí Matlab (verze 2007 či novější), zadruhé soubor \textit{Dokumentace.pdf}, v němž je podrobně popsána struktura programu a použití jednotlivých funkcí včetně příkladů použití.
 
 \end{document}

@@ -20,7 +20,7 @@ Tímto měřením byla prozkoumána možnost zvýšení obsahu SA, které se poj
 Z tabulky~\ref{tab:wSA} je zřetelné, že při změně teploty z 60°C na 80°C se obsah SA v nasyceném roztoku zvýší zhruba o dva procentní body, o stejnou hodnotu lze tedy zvýšit obsah SA ve výstupním proudu z reaktorů při zachování stejné bezpečnostní rezervy.
 Tím se zlepší ekonomika procesu, neboť čím více je výstupní roztok SA zředěn, tím více tepla se spotřebuje při jeho odpařování a krystalizaci.
 Původní mezní teplota 60°C přitom byla dána vysokou těkavostí TCE, zatímco TOL je méně těkavý a extrakci proto bude možné bezpečně provozovat i za 80°C.
-Při druhé etapě byly na měření k dispozici pouze dvě cely, které byly postupně využívány na různá složení, každá datová sada měla nyní šest bodů.
+Při druhé etapě měření byly používány dvě cely a každá datová sada nyní měla šest bodů.
 Celkem šest různých vsádek bylo připraveno stejně jako při první etapě, avšak s širším rozsahem navážky CPL, a to 0,01--3,6~g.
 
 \subsubsection{Rovnovážná data} \label{resLLE}
@@ -149,15 +149,15 @@ Lze tedy říci, že na laboratorním extraktoru nebyly nalezeny optimální pod
 Poloprovozní zařízení by také mělo umožnit měření za zvýšeného obsahu SA a zvýšené teploty, neboť nejenže by bylo sníženo požadované NTP, ale jak později ukážou výpočetní modely, mohlo by být díky lepším hydrodynamickým podmínkám sníženo i HETS.
 
 Jak již bylo zmíněno v kapitole~\ref{labmodel_m}, byly také provedeny dva předběžné experimenty na ověření možnosti následných extrakcí.
-Při těchto experimentech byl měřen obsah CPL v extraktu i v rafinátu, avšak nemohlo být vyhodnoceno NTP -- rovnovážná data pro systém \ce{H2O}--CPL--TOL by sice mohla být nalezena v literatuře, vypracované matematické modely jsou však založené na předpokladu nemísitelnosti fází, který zde již, vzhledem k vysokým koncentracím CPL, určitě není splněn.
+Při těchto experimentech byl měřen obsah CPL v extraktu i v rafinátu, avšak nemohlo být vyhodnoceno NTP -- rovnovážná data pro systém \ce{H2O}--CPL--TOL by sice mohla být nalezena v literatuře, vypracované matematické modely jsou však založené na předpokladu nemísitelnosti fází, který zde již určitě není splněn vzhledem k vysokým koncentracím CPL.
 
 Při experimentu 7 byly toluenem extrahovány frakce znečištěného CPL zředěné ve vodě na 20~\% (přední a zadní frakce z rektifikace CPL, která byla provedena v jiné studentské práci).
-Protože při této extrakci byl mnohem nižší rozdíl hustot obou fází, bylo při 5~Hz dosaženo meze zahlcení a frekvence tedy musela být snížena na 3~Hz, i vizuálně bylo pozorována podstatně delší doba zdržení kapek dispergované fáze.
-Ukázalo se, že extraktor zdaleka nestačí na převedení veškerého CPL z vodné fáze do toluenu, což může být zapříčiněno i tím, že zde byl mnohem větší poměr toku organické a vodné fáze, takže gradient teploty byl zde velmi výrazný.
+Protože při této extrakci byl mnohem nižší rozdíl hustot obou fází, bylo při 5~Hz dosaženo meze zahlcení a frekvence tedy musela být snížena na 3~Hz, i vizuálně byla pozorována podstatně delší doba zdržení kapek dispergované fáze.
+Ukázalo se, že extraktor zdaleka nestačí na převedení veškerého CPL z vodné fáze do toluenu, což může být zapříčiněno i tím, že zde byl mnohem větší poměr toku organické a vodné fáze, takže gradient teploty byl zde velmi výrazný, především je však při absenci SA nepříznivá rovnováha.
 
 Experiment 8 se zabýval reextrakcí vodou, surovinou tedy byl roztok CPL v TOL vzniklý spojením extraktu z experimentu 7 a zahuštěných extraktů z experimentů 1--6 (destilační zbytek z regenerace toluenu).
 Solventem byla destilovaná voda a extrakce byla provozována za pokojové teploty.
-Frekvence byla nastavena na 5,0~Hz, což už bylo velmi blízko mezi zahlcení, která byla přibližně 5,3~Hz.
+Frekvence byla nastavena na 5,0~Hz, což už bylo velmi blízko mezi zahlcení, která byla přibližně 5,5~Hz.
 Ukázalo se, že reextrakce do vody je velmi účinná a v rafinátu (TOL) zbylo jen stopové množství CPL.
 
 \subsection{Výsledky modelů} \label{resmodel}
@@ -206,7 +206,6 @@ Na dosažení dané separace je v tomto případě potřeba 6,1 TP a minimální
 Obrázek~\ref{fig:NTP} může být podkladem pro volbu toku solventu, jsou v něm totiž obsaženy závislosti NTP na hodnotě toku.
 Zadána byla stejná hodnota toku suroviny i stejný obsah CPL v surovině i rafinátu, byly však vyneseny závislosti pro různé teploty a kromě obsahu SA 40~\% byl také vynesen 42~\%.
 Z grafu vyplývá zjištění, že vyšší teplota má jednoznačně pozitivní vliv na separaci, stejně tak i zvýšení koncentrace SA ve vodné fázi.
-Z grafu je také patrná výše zmíněná skutečnost, že NTP se blíží k nekonečnu při snižování toku na minimální hodnotu.
 
 \subsubsection{Výsledky přenosového modelu} \label{restransfer}
 Díky přenosovému modelu je možné provést detailní výpočet návrhu extraktoru, čili určit rozměry a v případě míchaných extraktorů i výkon míchání.
@@ -215,8 +214,8 @@ Proto je vhodné nejdříve na zvoleném příkladu podrobně rozepsat i mezivý
 Příklad pro Karrův extraktor je ukázán v tabulce~\ref{tab:transferexample}, kde jsou uvedeny různé veličiny, které již byly vysvětleny v předchozích kapitolách.
 Hodnoty $L_1$ a $L_2$ jsou pak výšky extraktoru vypočtené modelem s pístovým tokem, resp. s axiální disperzí.
 V tomto příkladě bylo pracováno se stejnými hodnotami vstupní bilance, jako tomu bylo u příkladu patrového modelu: tok suroviny 27~t/h a obsahy CPL 0,9~\% v surovině a 100~ppm v rafinátu, pouze tok solventu je zde nižší, a to 3,98~t/h.
-Volná plocha disku je zde 0,58, vzdálenost mezi disky 50~mm, frekvence 6~Hz a zdvih 2,5~mm, což je v souladu s doporučeními z kapitoly~\ref{insfunKarr}.
-Jako dispergovaná fáze je zde vybrána vodná fáze, kde obsah SA je 40~\%, teplota při extrakci je 80°C.
+Volná plocha disku je zde 0,58, vzdálenost mezi disky 50~mm, frekvence 6~Hz a zdvih 2,5~mm.
+Jako dispergovaná fáze je zde vybrána vodná fáze, kde obsah SA je 40~\%, teplota je 80°C.
 
 \begin{table}[ht]
 \caption{Detailní popis případu přenosového modelu} \label{tab:transferexample}
@@ -367,7 +366,7 @@ To je dáno zejména značným vlivem axiální disperze u extraktorů s rotují
 
 \subsubsection{Možnosti návrhu extraktorů} \label{rescases}
 Z parametrické studie byly vybrány dva finální návrhy zařízení -- jedna výplňová kolona a jeden Karrův extraktor.
-Tyto modely byly nyní spuštěny jakožto simulační výpočet, jejich výsledky jsou uvedeny v tabulce~\ref{tab:cases}, kde sloupec $v_\mathrm{C} / v_\mathrm{C,F}$ vyjadřuje podíl rychlosti kontinuální fáze oproti vypočtené mezi zahlcení.
+Tyto modely byly nyní spuštěny jakožto simulační výpočet a jejich výsledky jsou uvedeny v tabulce~\ref{tab:cases}, kde sloupec $v_\mathrm{C} / v_\mathrm{C,F}$ vyjadřuje podíl rychlosti kontinuální fáze oproti vypočtené mezi zahlcení.
 Vychází se opět z toku suroviny 27~t/h a obsahu CPL v surovině 0,9~\%, zatímco obsah rafinátu při simulačním výpočtu není specifikován, namísto toho byly zadány rozměry zařízení.
 Obsah SA ve vodné fázi je zvolen 42~\% a teplota je zvolena 80°C, protože to jsou nejvhodnější podmínky pro extrakci.
 Vodná fáze byla vybrána jako dispergovaná vzhledem ke zjištěním uvedeným dříve.
